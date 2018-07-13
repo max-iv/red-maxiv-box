@@ -1,0 +1,58 @@
+body {
+  background-color: #d9d9d9;
+  padding-left:25px;
+  padding-right:25px;
+
+/*  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif; */
+}
+
+a {
+  color: #066e22;
+}
+.jumbotron {
+  background-color:#066e22 !important;
+  color:#ffffff
+}
+.card
+{
+/*  width: 18rem; */
+  background-color: #066e22;
+
+}
+.card-body
+{
+  background-color: #b3b3b3;
+}
+.index-page-card-button
+{
+  color: #ffffff;
+  background-color: #066e22
+}
+.card-title
+{
+  color: #066e22;
+  font-weight: bold;
+}
+.card-major-bullet
+{
+  color: #066e22;
+  text-align: left;
+}
+.card-minor-bullet
+{
+  text-align: left;
+}
+.card-minor-minor-bullet {
+	font-size: : small;
+  font-style:italic;
+  color: #7d6000;
+}
+
+.card-text
+{
+  text-align: left;
+}
+.card-subtext {
+	margin-left: 18px;
+	font: normal 90%;
+}
