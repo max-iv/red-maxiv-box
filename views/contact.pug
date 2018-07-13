@@ -15,4 +15,9 @@ block content
             input#subject.form-control(type='text', name='subject', placeholder='Subject', required='')
           .form-group
             textarea#message.form-control(type='textarea', rows='7', maxlength="141", name='message', placeholder='Message', required='')
-          button.btn.pull-right.index-page-card-button(type='submit', name='submit') Submit Form
+          //button.btn.pull-right.index-page-card-button(type='submit', name='submit') Submit Form
+          button.btn.pull-right.index-page-card-button(type='submit', onclick='myFunction()') Submit Form
+  script.
+    function myFunction() {
+    alert("Your request has been sent to Top Men");
+    }

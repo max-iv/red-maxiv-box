@@ -42,7 +42,7 @@ app.use('/readmore', readMoreRoute);
 var mailOptions = {
   from: 'blinkylite@gmail.com', // sender address
   to: 'blinkylite@gmail.com', // list of receivers
-  subject: 'Interest Query', // Subject line
+  subject: 'Blinky-Lite Interest Query', // Subject line
   html: '<p>Your html here</p>'// plain text body
 };
 
