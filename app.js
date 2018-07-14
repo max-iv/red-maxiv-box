@@ -15,6 +15,7 @@ var dotenv = require('dotenv').config();
 const indexRoute = require('./routes/index');
 const contactRoute = require('./routes/contact');
 const readMoreRoute = require('./routes/readmore');
+const tutorialRoute = require('./routes/tutorial');
 
 const app = express();
 
@@ -38,6 +39,7 @@ app.use(analytics);
 app.use('/', indexRoute);
 app.use('/contact', contactRoute);
 app.use('/readmore', readMoreRoute);
+app.use('/tutorial', tutorialRoute);
 
 var mailOptions = {
   from: 'blinkylite@gmail.com', // sender address
