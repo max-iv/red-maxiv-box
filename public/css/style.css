@@ -13,6 +13,11 @@ a {
   background-color:#066e22 !important;
   color:#ffffff
 }
+.jumbotron-button
+{
+  color: #066e22;
+  background-color: #fdc300
+}
 .card
 {
 /*  width: 18rem; */
