@@ -9,7 +9,7 @@ const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const nodemailer = require('nodemailer');
 var expressGoogleAnalytics = require('express-google-analytics');
-//var analytics = expressGoogleAnalytics('UA-121802688-1');
+var analytics = expressGoogleAnalytics('UA-122300334-1');
 var dotenv = require('dotenv').config();
 
 const indexRoute = require('./routes/index');
@@ -34,7 +34,7 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-//app.use(analytics);
+app.use(analytics);
 app.use('/', indexRoute);
 app.use('/contact', contactRoute);
 app.use('/readmore', readMoreRoute);
