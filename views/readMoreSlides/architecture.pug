@@ -1,25 +1,30 @@
 div.row.featurette
-  div.col-md-7
-    h2.featurette-heading Blinky-Lite Architecture
-    h5.card-major-bullet
-      | Inexpensive wireless linux computers (Raspberry Pi) 
-      span.card-minor-minor-bullet
-        | as message adapters and web servers
-    h5.card-major-bullet
-      | Inexpensive and versatile USB based microcontrollers (Arduino, Teensy, etc..) 
-      span.card-minor-minor-bullet
-        | as device controllers
-    h5.card-major-bullet
-      | Node-RED (node.js based)  
-      span.card-minor-minor-bullet
-        | as the graphical programing language
-    h5.card-major-bullet
-      | MQTT 
-      span.card-minor-minor-bullet
-        | as the asynchronous communication protocol
-  div.col-md-5
+  div.col-md-3
     a(data-toggle="modal", data-target="#exampleModal")
       img(src='/img/readmore/BlinkyLiteArchitecture.png',width='100%') 
+  div.col-md-9
+    h2.featurette-heading Blinky-Lite Architecture
+    ul
+      li
+        h5.card-major-bullet
+          | MQTT 
+          span.card-minor-minor-bullet
+            | as the asynchronous communication protocol
+      li
+        h5.card-major-bullet
+          | Node-RED (node.js based)  
+          span.card-minor-minor-bullet
+            | as the graphical programing language
+      li
+        h5.card-major-bullet
+          | Inexpensive wireless linux computers (Raspberry Pi) 
+          span.card-minor-minor-bullet
+            | as message adapters and web servers
+      li
+        h5.card-major-bullet
+          | Inexpensive and versatile USB based microcontrollers (Arduino, Teensy, etc..) 
+          span.card-minor-minor-bullet
+            | as device controllers
 
 // Modal
 #exampleModal.modal.fade(tabindex="-1", role="dialog", aria-labelledby="exampleModalLabel", aria-hidden="true")
