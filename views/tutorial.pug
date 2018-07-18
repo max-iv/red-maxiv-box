@@ -1,7 +1,13 @@
 extends layout
 block content
+  .jumbotron
+    h1.text-warning Blinky-Lite Tutorial
+    h2 In this tutorial we will show you how to make a light blink with the full Blinky-Lite stack
+    p.lead Althought the goal of the tutorial might sound trivial, once you can make a simple LED blink with 
+      | with the Blinky-Lite stack, you should be able to extend this knowledge to make anything "blink" - 
+      | from an LED to a nuclear power plant
   .row(align='center')
-    .col-md-3
+    .col-md-6
       .card
         p
         img(src='img/tutorial/RPi-Logo.png', height='200px')
@@ -12,3 +18,4 @@ block content
             | It can be used a device message controller, an MQTT broker, and a Node-RED web application
             | this section will show you how to setup a Raspberry Pi so it can function seamlessly in Blinky-Lite
           a.btn.card-button(href='/tutorial/setupRPi') Read More
+    .col-md-6
