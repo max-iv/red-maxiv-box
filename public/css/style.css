@@ -28,14 +28,14 @@ a {
 {
   background-color: #b3b3b3;
 }
-.index-page-card-button
+.card-button
 {
-  color: #ffffff;
+  color: #fdc300;
   background-color: #066e22
 }
 .card-title
 {
-  color: #066e22;
+  color: #fdc300;
   font-weight: bold;
 }
 .card-major-bullet

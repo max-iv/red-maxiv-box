@@ -26,8 +26,12 @@ html(lang='en')
             a.nav-link(href='/readmore') Read More
           li.nav-item
             a.nav-link(href='http://www.thequantumguys.com/controls/examples', target='_blank') Examples
-          li.nav-item
-            a.nav-link(href='/tutorial') Tutorial
+          li.nav-item.dropdown
+            a#navbarDropdownMenuLink.nav-link.dropdown-toggle(href='#' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false')
+              | Tutorial
+            .dropdown-menu(aria-labelledby='navbarDropdownMenuLink')
+              a.dropdown-item(href='/tutorial') Overview
+              a.dropdown-item(href='/tutorial/setupRPi') Setting Up a Raspberry-Pi for Blinky-Lite
           li.nav-item.dropdown
             a#navbarDropdownMenuLink.nav-link.dropdown-toggle(href='#' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false')
               | Sponsors

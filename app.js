@@ -16,6 +16,7 @@ const indexRoute = require('./routes/index');
 const contactRoute = require('./routes/contact');
 const readMoreRoute = require('./routes/readmore');
 const tutorialRoute = require('./routes/tutorial');
+const setupRPiRoute = require('./routes/setupRPi');
 
 const app = express();
 
@@ -40,6 +41,7 @@ app.use('/', indexRoute);
 app.use('/contact', contactRoute);
 app.use('/readmore', readMoreRoute);
 app.use('/tutorial', tutorialRoute);
+app.use('/tutorial/setupRPi', setupRPiRoute);
 
 var mailOptions = {
   from: 'blinkylite@gmail.com', // sender address

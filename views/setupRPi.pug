@@ -1,0 +1,299 @@
+extends layout
+block content
+  .jumbotron
+    h1.text-warning Setting Up a Raspberry-Pi for Blinky-Lite
+    h2 
+      a(NAME='contents') Table of Contents
+    p
+      ul
+        li
+          a(href='#diskImage').text-warning Setting up the Disk Image
+        li
+          a(href='#connecting').text-warning Connecting to the Raspberry-Pi
+        li
+          a(href='#node').text-warning Setting up node.js and npm
+        li 
+          a(href='#arduino').text-warning Installing a Arduino Programing Environment
+  h2 
+    a(NAME='diskImage') Setting up the Disk Image 
+    span(style='font-size: small;')
+      a(href='#contents') Table of contents
+  p On Linux desktop computer, download the latest Raspberry Pi image at: 
+    a(href='https://downloads.raspberrypi.org/raspbian_latest') https://downloads.raspberrypi.org/raspbian_latest
+    br
+    | The downloaded file will have a name like 
+    b YYYY-MM-DD-raspbian-stretch.zip
+    br 
+    | Where YYYY-MM-DD is the year, month, and date of the release. Change directory to the location of the downloaded file and unzip it:
+    br 
+    code unzip YYYY-MM-DD-raspbian-stretch.zip
+    br
+    | Before you insert an SD card into your computer identify the names of the drives on your computer by typing:
+    br
+    code  df -h
+    br
+    | You will see something similar to the screenshot below:
+    br
+    a(href='/img/tutorial/screenBeforeSD.png',target='_blank')
+      img(src='/img/tutorial/screenBeforeSD.png', height='200px')
+    br
+    | Now, insert an 8GB (or greater) SD card into your computer. Type:
+    br
+    code  df -h
+    br
+    | to determine the name of the SD card
+    br
+    a(href='/img/tutorial/screenAfterSD.png',target='_blank')
+      img(src='/img/tutorial/screenAfterSD.png', height='200px')
+    br
+    | In this example the name of the SD card is mmcblk0  (p1 is the partition).
+    | Copy the disk image 
+    b 2018-04-18-raspbian-stretch.img 
+    | to the SD card
+    br
+    code sudo dd if=YYYY-MM-DD-raspbian-stretch of=/dev/SD-CARD-NAME bs=1M
+    br
+    | Where in this example 
+    b SD-CARD-NAME 
+    | is mmcblk0. Once the disk copy is complete, eject the disk and re-insert the disk. 
+    | You should see two partitions show up on your linux desktop. 
+    | The RaspberryPi image now comes with SSH disabled. 
+    | To enable it, open the boot partition of the sd card and create a file named ssh. 
+    | From a linux terminal on your desktop computer enter:
+    br
+    code sudo nano /media/$USER/boot/ssh
+    br
+    | Type a couple of characters and save 
+    i (cntrl-x). 
+    | For the 
+    b Raspberry Pi Zero
+    | , there is no ethernet connection so you need to give 
+    | it the information to connect to your wireless network. Edit the 
+    b wpa_supplicant.conf
+    |  file  
+    | on the rootfs partition of the sd card. From a linux terminal on your desktop computer enter:
+    br
+    code sudo nano /media/$USER/rootfs/etc/wpa_supplicant/wpa_supplicant.conf
+    br
+    | Add the following lines to the file where 
+    i your-wireless-ssid
+    |  is your wireless ssid and 
+    i your-wireless-ssid-password
+    |  is your wireless ssid password
+    br
+    code network={
+      br
+      | &nbsp;&nbsp;&nbsp;&nbsp;ssid="your-wireless-ssid"
+      br 
+      | &nbsp;&nbsp;&nbsp;&nbsp;psk="your-wireless-ssid-password"
+      br
+      | &nbsp;&nbsp;&nbsp;&nbsp;key_mgmt=WPA-PSK
+      br
+      | }
+    br
+    | and save 
+    i (cntrl-x).
+  hr
+  h2 
+    a(NAME='connecting') Connecting to the Raspberry-Pi 
+    span(style='font-size: small;')
+      a(href='#contents') Table of contents
+  p Eject the sd card and place it into the Raspberry-Pi. 
+    | Connect the Raspberry Pi with an ethernet cable to your router and then power up the raspberry pi. 
+    | Open a linux terminal and ssh into the RaspberryPi:
+    br
+    code ssh pi@raspberrypi.local
+    br
+    | The default password for the Raspberry-Pi is 
+    b
+      i raspberry  
+    | . We will want to change this immediately. 
+    | Now configure the Raspberry-Pi by running the configuration program:
+    br
+    code sudo raspi-config
+    br
+    | The 
+    b raspi-config 
+    | program looks as below:
+    br
+    a(href='/img/tutorial/raspi_config.png',target='_blank')
+      img(src='/img/tutorial/raspi_config.png', height='200px')
+    ul
+      li First change the password - Menu Iterm 1
+      li Under Menu Item 2, change the hostname. Do not set up the wifi, we will do that later
+      li Under Item 5, Enable both SSH (P2) and VNC (P3). We will need VNC later
+      li Under Item 7, set the screen resolution (for the VNC server)  - Choice A5. I prefer
+        b
+          i  DMT Mode 35 1280x1024 60Hz 5:4
+      li Under Item 7, Expand the file system - Choice A1
+      li Under Item 5, Serial Port (P6) select 
+        b No 
+        | for 
+        i Would you like a login shell to be accessible over serial?
+        |  Select 
+        b Yes 
+        | for 
+        i Would you like the serial port hardware to be enabled?
+        br
+        | You should get an screen lookin as the following:
+        br
+        a(href='/img/tutorial/raspi-config-serial.png',target='_blank')
+          img(src='/img/tutorial/raspi-config-serial.png', height='200px')
+        br
+    | Using the arrow keys navigate to 
+    b Finish 
+    | to exit the configuration program and reboot the RaspberryPi
+  p On your linux Desktop, download the RealVNC Viewer at 
+    a(href='https://www.realvnc.com/en/connect/download/viewer/linux/') https://www.realvnc.com/en/connect/download/viewer/linux/
+    br
+    | We will now connect to the RaspberryPi desktop. 
+    | It is easy to finish the rest of the configuration from the RaspberryPi Desktop 
+    | and the VNC Viewer will allow you to run programs such as the Arduino 
+    | programing environment on the RaspberryPi. 
+    | Open the VNC viewer and make a New Connection under the File menu. Change the VNC server to: 
+    b
+      i hostname.local:5900 
+    | where hostname is what you entered in Item 2 of the raspi-config program. 
+    | Close the new connection dialog and double click on your new connection in the VNC Viewer window. 
+    | The VNC viewer should connect to the RaspberryPi. At first it will warn you of an identity check. 
+    | Just click continue. Next you will be asked for a username and password. 
+    | The username is pi. The password is the password you entered in Item 2 of the raspi-config program.
+    | You should see a window as below:
+    br
+    a(href='/img/tutorial/raspiDesktop.png',target='_blank')
+      img(src='/img/tutorial/raspiDesktop.png', height='200px')
+    br
+    | The wireless connection can be setup by clicking on the Up-Down arrow icon in the upper righthand corner of the desktop. 
+    | A nice GUI version of the configuration program can be found under the Preferences sub-menu of Raspberry menu.
+    br
+    a(href='/img/tutorial/raspiDesktopConfig.png',target='_blank')
+      img(src='/img/tutorial/raspiDesktopConfig.png', height='200px')
+    br
+    | Open the GUI raspi-config program and under the Localisation tab, set the Locale, Timezone, and Keyboard. 
+    | The RaspberryPi will have to be booted for these changes to take effect.
+  hr
+  h2 
+    a(NAME='node') Setting up node.js and npm 
+    span(style='font-size: small;')
+      a(href='#contents') Table of contents
+  p The RaspberryPi comes with very old versions of node.js and npm installed. 
+    | In this section we will update node.js and npm. From your linux desktop, ssh into the RaspberryPi
+    br
+    code ssh pi@hostname.local
+    br
+    | Where 
+    b
+      i hostname 
+    | is what you entered in Item 2 of the raspi-config program. Check the version of node:
+    br
+    code node -v
+    br
+    | As of 2018-04-18 release, the RaspberryPi ships with node.js at v4.8.2. 
+    | To upgrade, check the hardware on your RaspberryPi.
+    br
+    code uname -a
+    br
+    | A 
+    b RaspberryPi 3 
+    | runs an ARM7 processor while a 
+    b RaspberryPi 
+    | Zero runs  an ARM6 processor. For easier cleanup later, on the ssh session you are 
+    | running to connect to the RaspberryPi, change the directory to the Download directory:
+    br
+    code cd ~/Downloads
+    br
+    | In a browser go to the nodejs download page at: 
+    a(href='https://nodejs.org/en/download/') https://nodejs.org/en/download/
+    | The Node.js download page will look as below:
+    br
+    a(href='/img/tutorial/nodejsDownload.png',target='_blank')
+      img(src='/img/tutorial/nodejsDownload.png', height='300px')
+    br
+    | Find the linux binary  distribution that matches your RaspberryPi hardware (most likely ARMv7). 
+    | Copy the link location and in the ssh terminal type:
+    br
+    code wget https://nodejs.org/dist/vX.YY.Z/node-vX.YY.Z-linux-armv7l.tar.xz
+    br
+    | Where 
+    b
+      i vX.YY.Z 
+    | is current release of node.js. Then, unzip the file:
+    br
+    code tar -xf node-
+      b
+        i vX.YY.Z
+      | -linux-armv7l.tar.xz
+    br
+    | Navigate into the unzipped directory:
+    br
+    code  cd node-
+      b
+        i vX.YY.Z
+      | -linux-armv7l
+    br
+    | And copy the files to the 
+    b 
+      i /usr/ 
+    | directory by:
+    br
+    code sudo cp -R * /usr/
+    br
+    | Now check the version of node.js by:
+    br
+    code node -v
+    br
+    | and:
+    br
+    code  npm -v
+    br
+    | You should see a node version that matches 
+    b
+      i vX.YY.Z 
+    | and an npm version greater than 5.5.
+    | You can now delete all the items in the RaspberryPi download directory:
+    br
+    code rm -rf ~/Downloads/*
+    br
+  hr
+  h2 
+    a(NAME='arduino') Installing a Arduino Programing Environment
+    span(style='font-size: small;')
+      a(href='#contents')  Table of contents
+  p Open the VNC viewer to your Raspberry Pi and then open the web browser to the software download page: 
+    a(href='https://www.arduino.cc/en/Main/Software?') https://www.arduino.cc/en/Main/Software? 
+    ul
+      li Navigate to “Download the Arduino IDE” box and click on the Linux ARM version. 
+        | You will be taken to the donate page were you can donate and download the software. 
+      li Using the Raspberry Pi File Manager, create a new folder in the home director called Apps. 
+      li Copy the Arduino download from the Download folder to the Apps folders. 
+      li Right click on the tar file and choose the ‘Extract to Here’ menu item. The Arduino app will be extracted. 
+      li After extraction, delete the tar file. 
+      li Enter the Arduino folder and double click on the install.sh file. A dialog will be opened asking how you would like to run the script. 
+      li Choose ‘Execute in Terminal’. After the script has been executed, an icon for the 
+        | Arduino programing environment will be placed on the Raspberry Pi desktop and in the Programming menu item.
+  p To check to make sure everything is working, connect an Arduino (this tutorial will use an Arduino Uno) to the Raspberry Pi via a USB cable. 
+    ul
+      li Open the Arduino program.  
+      li Open the Blink sketch under Files->Examples->01.Basics. 
+      li Under the Tools menu, choose the correct port and correct board. 
+      li Upload the sketch to the Arduino and see that it behaves properly.
+    | You can learn more about programming the Arduino at: 
+    a(href='https://www.arduino.cc/en/Guide/HomePage') https://www.arduino.cc/en/Guide/HomePage
+  hr
+    
+
+    
+    
+    
+
+    
+    
+
+
+    
+    
+
+    
+
+    
+ 
