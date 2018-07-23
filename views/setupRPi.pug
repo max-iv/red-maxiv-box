@@ -14,6 +14,8 @@ block content
           a(href='#node').text-warning Setting up node.js and npm
         li 
           a(href='#arduino').text-warning Installing a Arduino Programing Environment
+        li 
+          a(href='#mqtt').text-warning Installing an MQTT Broker
   h2 
     a(NAME='diskImage') Setting up the Disk Image 
     span(style='font-size: small;')
@@ -280,6 +282,107 @@ block content
     | You can learn more about programming the Arduino at: 
     a(href='https://www.arduino.cc/en/Guide/HomePage') https://www.arduino.cc/en/Guide/HomePage
   hr
+  h2 
+    a(NAME='mqtt') Installing an MQTT Broker
+    span(style='font-size: small;')
+      a(href='#contents')  Table of contents
+  p 
+    i
+      | Note: it is not necessary to setup an MQTT broker on a Blinky-Lite Device Adapter or web application server. This section is for users who want to set-up their own MQTT broker. However, it does not hurt to have an MQTT broker running on any of your Raspberry-Pi’s so I usually install one as the base configuration of all my Raspberry Pi’s. 
+  p
+    | Their are many open source MQTT brokers 
+    a(href='https://diyprojects.io/mqtt-mosquitto-communicating-connected-objects-iot/') available 
+    | but Blinky-Lite will use Mosquitto supported by the 
+    a(href='http://iot.eclipse.org/') Eclipse Foundation. 
+    | Open a terminal session into your Raspberry-Pi either through an ssh session from your 
+    | Linux desktop RealVNC  Connection. Once you have a terminal session running on your 
+    | Raspberry-Pi, install Mosquitto by typing:
+    br
+    code sudo apt-get install mosquitto
+    br
+    | To run tests on your Raspberry, using  mosquitto_sub clients (to subscribe), 
+    | mosquitto_pub (to post messages) and mosquitto_passwd (to set up users and passwords) enter:
+    br
+    code sudo apt-get install mosquitto-clients
+    br
+    | Then edit the mosquitto configuration file
+    br
+    code sudo nano /etc/mosquitto/mosquitto.conf
+    br
+    | by addingto the bottom of the file:
+    br
+    code allow_anonymous false
+    br
+    code password_file /etc/mosquitto/pwfile
+    br
+    | and save and exit (
+    i Ctrl-x
+    | ). Now setup the password for the MQTT broker:
+    br
+    code sudo mosquitto_passwd -c /etc/mosquitto/pwfile 
+      i broker-name
+    br
+    | I usually choose the hostname of the Raspberry-Pi as the broker name. 
+    | The program will ask you for the a password for your broker. 
+    | After you have chosen the password, reboot your Raspberry-Pi:
+    br
+    code sudo reboot
+    br 
+    | The Mosquitto MQTT broker should start on boot. When the Raspberry-Pi comes back up, 
+    | login and check that the MQTT broker is running by typing at the terminal:
+    br
+    code ps -aux | grep mosquitto
+    br
+    | You should see an output looking something like:
+    br
+    code mosquit+ 302 0.3 1.0 8228 4500 ?     S  07:41 0:00 /usr/sbin/mosquitto -c /etc/mosquitto/mosquitto.conf
+    br
+    | But the process numbers will be different. Now test the MQTT broker by subscribing to a topic:
+    br
+    code mosquitto_sub -h 127.0.0.1  -t chit/chat -u 
+      i broker-name 
+      | -P 
+      i broker-password
+    br
+    | where:
+    ul
+      li 
+        b -h 
+        | is the IP address of the broker (which is 127.0.0.1 right now since we are testing the 
+        | example locally on the broker). 
+        | Note that if your Raspberry-Pi is behind a firewall and you want to access the broker 
+        | from outside the firewall (which you usually do):
+        ul
+          li you will need to setup up port forwarding on your home router. 
+          li You will need to consult the manual for your router to do that.
+          li The Port Number for the MQTT broker is the default 1883
+      li
+        b -t 
+        |  is the topic you wish to subscribe to (chit/chat in this example)
+      li
+        b -u 
+        | is the broker name you chose for the MQTT broker previously
+      li
+        b -P 
+        | is the password of the MQTT broker
+    | The program will now wait for messages. In another terminal window, login to the Raspberry-Pi and enter:
+    br
+    code mosquitto_pub -h 127.0.0.1 -t chit/chat -m "Hi There" -u 
+      i broker-name 
+      | -P 
+      i broker-password
+    br
+    | Where -m is the message you would like to send to the broker 
+    | (“Hi There” in this example). You should see in the terminal running mosquitto_sub the message echoed. 
+    | Congratulations! You now have a function MQTT broker. You can exit the mosquitto_sub program by typing 
+    i ctrl-c
+          
+          
+    
+    
+    
+    
+
     
 
     
