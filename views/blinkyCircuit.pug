@@ -91,7 +91,34 @@ block content
     a(NAME='firmata') Installing Firmata on the Arduino Uno 
     span(style='font-size: small;')
       a(href='#contents') Table of contents
-  p More to come... 
+  p In the 
+    a(href='/tutorial/setupRPi#arduino', target='_blank') previous tutorial
+    | , you learned how install the programming Integrated Development Environment (IDE) for the Arduino
+    | and tested making one of the on-board LEDs blink. The Arduino IDE is a very elegant and powerful 
+    | programming environment that is based on the C++ language. The C++ language can be a bit daunting 
+    | for beginners and is overkill for many applications. Instead of beginning with using the Arduino IDE, 
+    | we will in this tutorial install a software package called 
+    a(href='https://github.com/firmata/arduino', target='_blank') Firmata
+    | . This software package will allow us to communicate directly to the Arduino from Node-Red running 
+    | on the device message adapter through the serial port. Of course the trade-off will be speed and the 
+    | ability to use interrupts but this should not bother us for most applications and we revisit these 
+    | features in future tutorials. 
+    br
+    | To install Firmata on the Arduino Uno, connect the serial port of the Arduino Uno to one of the serial 
+    | ports of Raspberry Pi that you set up in the previous section. Open the Arduino IDE on the Raspberry Pi. 
+    | Make sure you select the correct board (Arduino Uno) under Tools->Board->Arduino/Genuino Uno menu item 
+    | and the correct port under Tools->Port->/dev/ttyACM0. Load the Firmata sketch into the Arduino IDE by 
+    | selecting File->Examples->Firmata->StandardFirmata
+    | Upload the sketch to the Arduino Uno using  upload button on the IDE.
+  p 
+    b That’s it! We are ready to start building the device message adapter!
+  .row
+    .col-md-6
+      a(href='/img/tutorial/Firmata1.png', target='_blank') 
+        img(src='/img/tutorial/Firmata1.png', width='100%')
+    .col-md-6
+      a(href='/img/tutorial/Firmata2.png', target='_blank') 
+        img(src='/img/tutorial/Firmata2.png', width='100%')
   
         
       
