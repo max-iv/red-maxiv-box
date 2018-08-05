@@ -61,3 +61,10 @@ a {
 	margin-left: 18px;
 	font: normal 90%;
 }
+.scrolling-wrapper {
+  width: 100%;
+  display: inline-block;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  white-space: nowrap;
+}
