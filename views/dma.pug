@@ -1,0 +1,30 @@
+extends layout
+block content
+  .jumbotron
+    h1.text-warning Building a Device Message Adapter
+    p This section will show you how to build a Device Message Adapter (DMA) in Node-Red on a Raspberry-Pi. 
+      | The DMA is the interface between the MQTT broker and the device you want to control.
+    h2 
+      a(NAME='contents') Table of Contents
+    p
+      ul
+        li
+          a(href='#startnodered').text-warning Starting Node-Red on a Raspberry-Pi
+  h2 
+    a(NAME='startnodered') Starting Node-Red on a Raspberry-Pi 
+    span(style='font-size: small;')
+      a(href='#contents') Table of contents
+  p The Raspberry-Pi distribution comes with Node-RED already installed. 
+    | However, we would like to be able to customize Node-RED for every application. 
+    | Thus we will run Node-RED locally out of a application directory. 
+    | Then using the Node-Package-Manager (
+    b
+      a(href='https://www.npmjs.com/', target='_blank') npm
+    | ) we can customize our application. In addition, Node-RED has a settings.js file 
+    | in which security settings are set that we would also like to customize. 
+    | At Blinky-Lite, we have come up with a 
+    a(href='/img/tutorial/empty-node-red.zip') blank template 
+    | to get us started.  
+    
+      
+      
