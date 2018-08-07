@@ -1,46 +1,63 @@
 body {
-  background-color: #d9d9d9;
+  background-color: #7395ae;
   padding-left:25px;
   padding-right:25px;
-
-/*  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif; */
 }
-
 a {
-  color: #066e22;
+  color: #444444;
+}
+img {
+  object-fit: contain;
+}
+code {
+  color: #cccccc;
+  background-color: #333344;
+  width: 100%;
+  display: inline-block;
+/*  overflow-x: scroll; */
+  overflow-y: hidden;
+  white-space: nowrap;
 }
 .jumbotron {
-  background-color:#066e22 !important;
+  background-color:#557a95 !important;
   color:#ffffff
+}
+.jumbotron-title
+{
+  color:#fdc300
 }
 .jumbotron-button
 {
-  color: #066e22;
-  background-color: #fdc300
+  color: #557a95;
+  background-color: #bbbbbb;
+}
+.featurette-heading
+{
+  color:#cccccc
 }
 .card
 {
-/*  width: 18rem; */
-  background-color: #066e22;
-
+  background-color: #557a95;
+  text-align: center;
+  padding: 10px;
 }
 .card-body
 {
-  background-color: #b3b3b3;
+  background-color: #bbbbbb;
 }
 .card-button
 {
-  color: #fdc300;
-  background-color: #066e22
+  color: #bbbbbb;
+  background-color: #557a95
 }
 .card-title
 {
-  color: #fdc300;
+  color: #ffbb33;
   font-weight: bold;
 }
 .card-major-bullet
 {
-  color: #066e22;
+  color: #000000;
   text-align: left;
 }
 .card-minor-bullet
@@ -50,7 +67,7 @@ a {
 .card-minor-minor-bullet {
 	font-size: : small;
   font-style:italic;
-  color: #7d6000;
+  color: #5d5d5d;
 }
 
 .card-text
@@ -67,4 +84,13 @@ a {
   overflow-x: scroll;
   overflow-y: hidden;
   white-space: nowrap;
+}
+.footer {
+/*   position: fixed; */
+   left: 0;
+   bottom: 0;
+   width: 100%;
+   color:#fdc300;
+   background-color: #7395ae;
+   text-align: center;
 }

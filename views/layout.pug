@@ -11,35 +11,10 @@ html(lang='en')
       link(rel='stylesheet', href='/css/style.css')
     block js
   body
-    nav.navbar.navbar-expand-lg.navbar-light(style='background-color: #d9d9d9;')
-      a.navbar-brand(href='/')
-        img(src="/img/BlinkyLogo-Text.png" ,height="50px")
-      button.navbar-toggler(type='button' data-toggle='collapse' data-target='#navbarNavDropdown' aria-controls='navbarNavDropdown' aria-expanded='false' aria-label='Toggle navigation')
-        span.navbar-toggler-icon
-      //#navbarNavDropdown.collapse.navbar-collapse
-      #navbarNavDropdown.navbar-expand
-        ul.navbar-nav
-          li.nav-item.active
-            a.nav-link(href='/')
-              | Home 
-              span.sr-only (current)
-          li.nav-item
-            a.nav-link(href='/readmore') Read More
-          li.nav-item
-            a.nav-link(href='/examples') Examples
-          li.nav-item.dropdown
-            a#navbarDropdownMenuLink.nav-link.dropdown-toggle(href='#' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false')
-              | Tutorial
-            .dropdown-menu(aria-labelledby='navbarDropdownMenuLink')
-              a.dropdown-item(href='/tutorial') Overview
-              a.dropdown-item(href='/tutorial/setupRPi') Setting Up a Raspberry-Pi for Blinky-Lite
-              a.dropdown-item(href='/tutorial/blinkyCircuit') Constructing a Blinky-Lite Circuit
-              a.dropdown-item(href='/tutorial/dma') Building a Device Message Adapter (DMA)
-          li.nav-item
-            a.nav-link(href='https://github.com/Blinky-Lite', target='_blank') GitHub
-          li.nav-item
-            a.nav-link(href='/contact') Contact
+    include menubar
     block content
+    div.footer
+      p Last updated 2018-Aug-07
     script(src="https://code.jquery.com/jquery-3.3.1.slim.min.js", integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo", crossorigin="anonymous")
     script(src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js", integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49", crossorigin="anonymous")
     script(src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js", integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T", crossorigin="anonymous")
