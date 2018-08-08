@@ -9,23 +9,14 @@ a {
 img {
   object-fit: contain;
 }
-code {
-  color: #cccccc;
-  background-color: #333344;
-  width: 100%;
-  display: inline-block;
-/*  overflow-x: scroll; */
-  overflow-y: hidden;
-  white-space: nowrap;
-}
-.col-md {
+.col {
   padding-bottom: 20px;
 }
-.jumbotron {
+.jumbotron1 {
   background-color:#557a95 !important;
   color:#ffffff
 }
-.jumbotron-title
+.jumbotron-title1
 {
   color:#fdc300
 }
@@ -34,52 +25,59 @@ code {
   color: #557a95;
   background-color: #bbbbbb;
 }
-.featurette-heading
+.featurette-heading1
 {
   color:#ffffff
 }
-.card
+.card1
 {
   background-color: #557a95;
   text-align: center;
   padding: 10px;
 }
-.card-body
+.card2
+{
+  padding: 5px;
+  color: #cccccc;
+  background-color: #333344;
+  width: 100%;
+  display: inline-block;
+/*  overflow-x: scroll; */
+  overflow-y: hidden;
+  white-space: nowrap;
+}
+.card1-body
 {
   background-color: #bbbbbb;
 }
-.card-button
+.card1-button
 {
   color: #bbbbbb;
   background-color: #557a95
 }
-.card-title
+.card1-title
 {
   color: #ffbb33;
   font-weight: bold;
 }
-.card-major-bullet
+.card1-major-bullet
 {
   color: #000000;
   text-align: left;
 }
-.card-minor-bullet
+.card1-minor-bullet
 {
   text-align: left;
 }
-.card-minor-minor-bullet {
+.card1-minor-minor-bullet {
 	font-size: : small;
   font-style:italic;
   color: #5d5d5d;
 }
 
-.card-text
+.card1-text
 {
   text-align: left;
-}
-.card-subtext {
-	margin-left: 18px;
-	font: normal 90%;
 }
 .scrolling-wrapper {
   width: 100%;
@@ -96,4 +94,11 @@ code {
    color:#fdc300;
    background-color: #7395ae;
    text-align: center;
+}
+.img-max {
+  width: 99%;
+}
+.bot-pad
+{
+  padding-bottom: 20px;
 }
