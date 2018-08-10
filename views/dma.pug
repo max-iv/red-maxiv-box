@@ -9,15 +9,17 @@ block content
     p
       ul
         li
-          a(href='#installnodered').text-warning Installing Node-Red on a Raspberry-Pi
+          a(href='#installnodered') Installing Node-Red on a Raspberry-Pi
         li
-          a(href='#runningnodered').text-warning Running Node-Red on a Raspberry-Pi
+          a(href='#runningnodered') Running Node-Red on a Raspberry-Pi
         li
-          a(href='#addingFlows').text-warning Adding Flows To Node-RED
+          a(href='#addingFlows') Adding Flows To Node-RED
         li
-          a(href='#specifyingMqtt').text-warning Specifying the MQTT Broker
+          a(href='#specifyingMqtt') Specifying the MQTT Broker
         li
-          a(href='#investigatingNodes').text-warning Investigating Node-RED Nodes
+          a(href='#investigatingNodes') Investigating Node-RED Nodes 
+        li
+          a(href='#bootstart') Starting the DMA on boot
   .container.bot-pad
     .card.card1
       h5.card-title.card1-title 
@@ -57,15 +59,15 @@ block content
           | You should see a directory called 
           b
             i blinky-lite-tutorial-empty-node-red
-          | . Let’s rename this to something more specific like 
+          | . Rename this to  
           b 
-            i blinky-lite-tutorial-dma 
+            i blinky-lite-dma 
           br
-          code.card.card2 mv blinky-lite-tutorial-empty-node-red blinky-lite-tutorial-dma
+          code.card.card2 mv blinky-lite-tutorial-empty-node-red blinky-lite-dma
           br
           | Enter the directory: 
           br
-          code.card.card2 cd blinky-lite-tutorial-dma
+          code.card.card2 cd blinky-lite-dma
           br
           | And install the node-red program by typing: 
           br
@@ -277,8 +279,100 @@ block content
         | that is often associated with mechanical switches.
       p.card1-text
         img.img-max(src='/img/tutorial/dmaButtonDebouncer.png', width='100%') 
+      p.card1-text
+        | Our next step is to write the web-application that interfaces with the user.
+  .container.bot-pad
+    .card.card1
+      h5.card-title.card1-title 
+        a(NAME='bootstart') Starting the DMA on boot 
+        span(style='font-size: small;')
+          a(href='#contents') Table of contents
+    .card-body.card1-body
+      p.card1-text 
+        | The Node-RED flow will only run as long as the terminal session you 
+        | started  previously is active. Now we would like to set it up so that 
+        | the Node-RED flow starts when the Raspberry-Pi is powered on (booted). 
+        | We will have to create three files In your home directory of your 
+        | Raspberry-Pi (/home/pi). Open another ssh login into your Raspberry-Pi. 
+        | In your home directory (/home/pi) create a new file called 
+        b
+          i runNodeRed.sh
         br
-  
+        code.card.card2 nano runNodeRed.sh
+        br
+        | Add the following lines:
+        br
+        code.card.card2 
+          | #!/bin/bash
+          br
+          | sleep 5
+          br
+          | cd /home/pi/blinky-lite-dma
+          br
+          | source runNodeRed.sh
+        br
+        | Exit the editor (
+        i Ctrl-x
+        | ). Make the file an executable by typing at the terminal:
+        br
+        code.card.card2 chmod +x runNodeRed.sh
+        br
+        | Now create another new file:
+        br
+        code.card.card2 nano .screenrc
+        br
+        | Add the following line:
+        br
+        code.card.card2 screen -t NODER /home/pi/runNodeRed.sh
+        br
+        | Exit the editor (
+        i Ctrl-x
+        | ) and create one last file:
+        br
+        code.card.card2 nano init-dma.sh
+        br
+        | and add the following lines:
+        code.card.card2 #!/bin/bash
+          br
+          | sudo -iu pi /usr/bin/screen -dm
+        br
+        | Exit the editor (
+        i Ctrl-x
+        | ). Make the file an executable by typing at the terminal:
+        br
+        code.card.card2 chmod +x init-dma.sh
+        br
+        | For the last step, edit the following file:
+        br
+        code.card.card2 sudo nano /etc/rc.local
+        br
+        | Right before the last line of the file (
+        b
+          i exit 0
+        | ), type:
+        br
+        code.card.card2 /home/pi/init-dma.sh
+        br
+        | Exit the editor (Ctrl-x) and either cycle the power on the Raspberry-Pi or type:
+        br
+        code.card.card2 sudo reboot
+        br
+        | In a few minutes the lights should start blinking on the test circuit 
+        | and you can open the Node-RED flow running on the Raspberry-Pi  by 
+        | opening up a browser and pointing the address as you did in the 
+        a(href='#runningnodered') above section.
+      p.card1-text
+        | You can also log back into the Raspberry-Pi and using screen commands 
+        | to see the console output of the Node-RED application. 
+        | To see the console output of the Node-RED application, enter:
+        br
+        code.card.card2 screen -r
+        br
+        | To detach from the screen again, type 
+        b Cntl-a 
+        | folowed by typing a 
+        b d 
+        | for "detach".
   script.
     function CopyToClipboard(containerid, messageText) {
     if (document.selection) { 

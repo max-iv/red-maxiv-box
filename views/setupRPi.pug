@@ -183,14 +183,16 @@ block content
   .container.bot-pad
     .card.card1
       h5.card-title.card1-title 
-        a(NAME='node') Setting up node.js and npm 
+        a(NAME='node') Setting up node.js, npm, and screen 
         br
         span(style='font-size: small;')
           a(href='#contents') Table of contents
       .card-body.card1-body
         p.card1-text
           | The RaspberryPi comes with very old versions of node.js and npm installed. 
-          | In this section we will update node.js and npm. From your linux desktop, ssh into the RaspberryPi
+          | In this section we will update node.js and npm. 
+          | The linux application screen  will be used starting the device message adapter on boot. 
+          | From your linux desktop, ssh into the RaspberryPi
           br
           code.card.card2 ssh pi@hostname.local
           br
@@ -265,6 +267,12 @@ block content
           | You can now delete all the items in the RaspberryPi download directory:
           br
           code.card.card2 rm -rf ~/Downloads/*
+          br
+          | To install 
+          b screen 
+          | enter:
+          br
+          code.card.card2  sudo apt-get install screen
           br
   .container.bot-pad
     .card.card1
