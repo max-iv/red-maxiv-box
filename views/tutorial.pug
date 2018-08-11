@@ -8,7 +8,7 @@ block content
       | from an LED to a nuclear power plant
   .container
     .row
-      .col-md
+      .col-md.bot-pad
         .card.card1
           img(src='img/tutorial/RPi-Logo.png', height='180px')
           p.card-title.card1-title Setting Up a Raspberry-Pi for Blinky-Lite
@@ -18,7 +18,7 @@ block content
               | It can be used a device message controller, an MQTT broker, and a Node-RED web application
               | This section will show you how to setup a Raspberry Pi so it can function seamlessly in Blinky-Lite
             a.btn.card-button.card1-button(href='/tutorial/setupRPi') Read More
-      .col-md
+      .col-md.bot-pad
         .card.card1
           img(src='img/tutorial/blinky-breadboard.png', height='180px')
           p.card-title.card1-title Constructing a Blinky-Lite Circuit
@@ -26,7 +26,8 @@ block content
             p.card1-text
               | This section will show the circuit diagram and parts list needed to build an example Blinky-Lite circuit
             a.btn.card-button.card1-button(href='/tutorial/blinkyCircuit') Read More
-      .col-md
+    .row
+      .col-md.bot-pad
         .card.card1
           img(src='img/tutorial/dmaRedFlowCrop.png', height='180px')
           p.card-title.card1-title Building a Device Message Adapter (DMA)
@@ -35,3 +36,12 @@ block content
               | This section will show you how to build a Device Message Adapter (DMA) in Node-Red on a Raspberry-Pi.
               | The DMA is the interface between the MQTT broker and the device you want to control.
             a.btn.card-button.card1-button(href='/tutorial/dma') Read More
+      .col-md.bot-pad
+        .card.card1
+          img(src='img/tutorial/gui.png', height='180px')
+          p.card-title.card1-title Building a User Interface
+          .card-body.card1-body
+            p.card1-text
+              | This section will show you how to build a User Interface using Node-Red. 
+              | The user interface communicates between the user and the MQTT broker.
+            a.btn.card-button.card1-button(href='/tutorial/gui') Read More
