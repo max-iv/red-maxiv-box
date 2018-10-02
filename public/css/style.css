@@ -23,7 +23,12 @@ img {
 .jumbotron-button
 {
   color: #557a95;
-  background-color: #bbbbbb;
+  background-color: #fdc300;
+  font-weight: bold;
+}
+.jumbotron-link
+{
+  color:#fdc300  
 }
 .featurette-heading1
 {
@@ -52,8 +57,9 @@ img {
 }
 .card1-button
 {
-  color: #bbbbbb;
-  background-color: #557a95
+  color: #fdc300;
+  background-color: #557a95;
+  font-weight: bold;
 }
 .card1-title
 {
