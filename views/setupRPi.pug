@@ -58,10 +58,17 @@ block content
           b 2018-04-18-raspbian-stretch.img 
           | to the SD card
           br
-          code.card.card2 sudo dd if=YYYY-MM-DD-raspbian-stretch of=/dev/SD-CARD-NAME bs=1M
+          code.card.card2 sudo dd if=
+            b
+              i YYYY-MM-DD
+            | -raspbian-stretch.img of=/dev/
+            b
+              i SD-CARD-NAME 
+            |  bs=1M
           br
           | Where in this example 
-          b SD-CARD-NAME 
+          b 
+            i SD-CARD-NAME 
           | is mmcblk0. Once the disk copy is complete, eject the disk and re-insert the disk. 
           | You should see two partitions show up on your linux desktop. 
           | The RaspberryPi image now comes with SSH disabled. 
@@ -83,16 +90,33 @@ block content
           code.card.card2 sudo nano /media/$USER/rootfs/etc/wpa_supplicant/wpa_supplicant.conf
           br
           | Add the following lines to the file where 
-          i your-wireless-ssid
+          b
+            i country-abbrev
+          |  is your contry abbreviation (for example in Sweden it is SE), 
+          b
+            i your-wireless-ssid
           |  is your wireless ssid and 
-          i your-wireless-ssid-password
+          b
+            i your-wireless-ssid-password
           |  is your wireless ssid password
           br
-          code.card.card2 network={
+          code.card.card2 
+            | country=
+            b
+              i country-abbrev
             br
-            | &nbsp;&nbsp;&nbsp;&nbsp;ssid="your-wireless-ssid"
+            br
+            | network={
+            br
+            | &nbsp;&nbsp;&nbsp;&nbsp;ssid="
+            b
+              i your-wireless-ssid
+            | "
             br 
-            | &nbsp;&nbsp;&nbsp;&nbsp;psk="your-wireless-ssid-password"
+            | &nbsp;&nbsp;&nbsp;&nbsp;psk="
+            b
+              i your-wireless-ssid-password
+            | "
             br
             | &nbsp;&nbsp;&nbsp;&nbsp;key_mgmt=WPA-PSK
             br
