@@ -64,7 +64,7 @@ module.exports = {
 
     // To enabled pretty-printing of the flow within the flow file, set the following
     //  property to true:
-    // flowFilePretty: true,
+    flowFilePretty: true,
 
     // By default, credentials are encrypted in storage using a generated key. To
     // specify your own secret, set the following property.
@@ -100,6 +100,7 @@ module.exports = {
     // When httpAdminRoot is used to move the UI to a different root path, the
     // following property can be used to identify a directory of static content
     // that should be served at http://localhost:1880/.
+    //httpStatic: '/home/pi/deviceViewer/blinky-lite/html-static/',
     httpStatic: 'html-static/',
 
     // The maximum size of HTTP request that will be accepted by the runtime api.
@@ -108,7 +109,7 @@ module.exports = {
 
     // If you installed the optional node-red-dashboard you can set it's path
     // relative to httpRoot
-   //ui: { path: "ui" },
+    //ui: { path: "ui" },
 
     // Securing Node-RED
     // -----------------
@@ -127,8 +128,8 @@ module.exports = {
     // the static content (httpStatic), the following properties can be used.
     // The pass field is a bcrypt hash of the password.
     // See http://nodered.org/docs/security.html#generating-the-password-hash
-//    httpNodeAuth: {user:"user",pass:"$2a$08$KaclKnSDZ7.pGtci1ZSOIep/Dqu582RURal12L7kbJ1bnv/SYPNFq"},
-//    httpStaticAuth: {user:"user",pass:"$2a$08$KaclKnSDZ7.pGtci1ZSOIep/Dqu582RURal12L7kbJ1bnv/SYPNFq"},
+    //httpNodeAuth: {user:"user",pass:"$2a$08$KaclKnSDZ7.pGtci1ZSOIep/Dqu582RURal12L7kbJ1bnv/SYPNFq"},
+    //httpStaticAuth: {user:"user",pass:"$2a$08$KaclKnSDZ7.pGtci1ZSOIep/Dqu582RURal12L7kbJ1bnv/SYPNFq"},
 
     // The following property can be used to enable HTTPS
     // See http://nodejs.org/api/https.html#https_https_createserver_options_requestlistener
