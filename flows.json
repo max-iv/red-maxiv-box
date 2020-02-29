@@ -5897,5 +5897,41 @@
                 "a95c88d2.0c24c8"
             ]
         ]
+    },
+    {
+        "id": "47892a91.a84984",
+        "type": "function",
+        "z": "e17f7487.2a78e8",
+        "name": "Update  ultra-ncab  Database entry with MQTT",
+        "func": "var device = \n{\n  \"name\": \"001\",\n  \"deviceType\": \"ultra-ncab\",\n  \"arcPeriod\": 60000,\n  \"timeStamp\": 1577192916202,\n  \"lastArchive\": 1577192892513,\n  \"maxAmp\": {\n    \"action\": \"reading\",\n    \"type\": \"scalar\",\n    \"value\": 58.26,\n    \"unit\": \"um\",\n    \"alarm\": {\n      \"value\": 0,\n      \"limits\": {\n        \"lolo\": 0,\n        \"low\": 10,\n        \"high\": 800,\n        \"hihi\": 1000\n      },\n      \"notify\": {\n        \"name\": \"\",\n        \"number\": \"\",\n        \"time\": 0\n      }\n    }\n  },\n  \"maxAmpMode\": {\n    \"action\": \"reading\",\n    \"type\": \"scalar\",\n    \"value\": 115.23,\n    \"unit\": \"Hz\",\n    \"alarm\": {\n      \"value\": 4,\n      \"limits\": {\n        \"lolo\": 0.3,\n        \"low\": 0.5,\n        \"high\": 85,\n        \"hihi\": 88\n      },\n      \"notify\": {\n        \"name\": \"\",\n        \"number\": \"\",\n        \"time\": 0\n      }\n    }\n  },\n  \"avgPower\": {\n    \"action\": \"reading\",\n    \"type\": \"scalar\",\n    \"value\": 856.68,\n    \"unit\": \"um\",\n    \"alarm\": {\n      \"value\": 4,\n      \"limits\": {\n        \"lolo\": 0,\n        \"low\": 10,\n        \"high\": 1000,\n        \"hihi\": 100\n      },\n      \"notify\": {\n        \"name\": \"\",\n        \"number\": \"\",\n        \"time\": 0\n      }\n    }\n  },\n  \"ultraAmp\": {\n    \"action\": \"reading\",\n    \"type\": \"scalar\",\n    \"value\": 2137,\n    \"unit\": \"unit\",\n    \"alarm\": {\n      \"value\": 0,\n      \"limits\": {\n        \"lolo\": 1870,\n        \"low\": 2000,\n        \"high\": 2500,\n        \"hihi\": 3000\n      },\n      \"notify\": {\n        \"name\": \"\",\n        \"number\": \"\",\n        \"time\": 0\n      }\n    }\n  },\n  \"freqOffsetReading\": {\n    \"action\": \"reading\",\n    \"type\": \"scalar\",\n    \"value\": -100,\n    \"unit\": \"Hz\",\n    \"alarm\": {\n      \"value\": 0,\n      \"limits\": {\n        \"lolo\": -2000,\n        \"low\": -1500,\n        \"high\": 1500,\n        \"hihi\": 2000\n      },\n      \"notify\": {\n        \"name\": \"\",\n        \"number\": \"\",\n        \"time\": 0\n      }\n    }\n  },\n  \"sampleIntervalReading\": {\n    \"action\": \"reading\",\n    \"type\": \"scalar\",\n    \"value\": 4000,\n    \"unit\": \"uS\",\n    \"alarm\": {\n      \"value\": 0,\n      \"limits\": {\n        \"lolo\": 1990,\n        \"low\": 1991,\n        \"high\": 40000,\n        \"hihi\": 50000\n      },\n      \"notify\": {\n        \"name\": \"\",\n        \"number\": \"\",\n        \"time\": 0\n      }\n    }\n  },\n  \"linkQuality\": {\n    \"action\": \"reading\",\n    \"type\": \"scalar\",\n    \"value\": 47,\n    \"unit\": \"/70\",\n    \"alarm\": {\n      \"value\": 0,\n      \"limits\": {\n        \"lolo\": 30,\n        \"low\": 40,\n        \"high\": 71,\n        \"hihi\": 80\n      },\n      \"notify\": {\n        \"name\": \"\",\n        \"number\": \"\",\n        \"time\": 0\n      }\n    }\n  },\n  \"signalLevel\": {\n    \"action\": \"reading\",\n    \"type\": \"scalar\",\n    \"value\": -63,\n    \"unit\": \"dBm\",\n    \"alarm\": {\n      \"value\": 1,\n      \"limits\": {\n        \"lolo\": -70,\n        \"low\": -60,\n        \"high\": 0,\n        \"hihi\": 30\n      },\n      \"notify\": {\n        \"name\": \"\",\n        \"number\": \"\",\n        \"time\": 0\n      }\n    }\n  },\n  \"spectrum\": {\n    \"action\": \"reading\",\n    \"type\": \"vector\",\n    \"value\": [[],[]]\n  },\n  \"minDisplayMode\": {\n    \"action\": \"setting\",\n    \"type\": \"scalar\",\n    \"value\": 0.5,\n    \"unit\": \"Hz\",\n    \"alarm\": {\n      \"value\": 1,\n      \"limits\": {\n        \"lolo\": 0.3,\n        \"low\": 0.6,\n        \"high\": 85,\n        \"hihi\": 88\n      },\n      \"notify\": {\n        \"name\": \"\",\n        \"number\": \"\",\n        \"time\": 0\n      }\n    }\n  },\n  \"maxDisplayMode\": {\n    \"action\": \"setting\",\n    \"type\": \"scalar\",\n    \"value\": 250,\n    \"unit\": \"Hz\",\n    \"alarm\": {\n      \"value\": 0,\n      \"limits\": {\n        \"lolo\": 0.3,\n        \"low\": 0.6,\n        \"high\": 250,\n        \"hihi\": 250\n      },\n      \"notify\": {\n        \"name\": \"\",\n        \"number\": \"\",\n        \"time\": 0\n      }\n    }\n  },\n  \"freqOffsetSetting\": {\n    \"action\": \"setting\",\n    \"type\": \"scalar\",\n    \"value\": -100,\n    \"unit\": \"Hz\",\n    \"alarm\": {\n      \"value\": 0,\n      \"limits\": {\n        \"lolo\": -2000,\n        \"low\": -1500,\n        \"high\": 1500,\n        \"hihi\": 2000\n      },\n      \"notify\": {\n        \"name\": \"\",\n        \"number\": \"\",\n        \"time\": 0\n      }\n    }\n  },\n  \"sampleIntervalSetting\": {\n    \"action\": \"setting\",\n    \"type\": \"scalar\",\n    \"value\": 3000,\n    \"unit\": \"uS\",\n    \"alarm\": {\n      \"value\": 0,\n      \"limits\": {\n        \"lolo\": 1990,\n        \"low\": 1991,\n        \"high\": 40000,\n        \"hihi\": 50000\n      },\n      \"notify\": {\n        \"name\": \"\",\n        \"number\": \"\",\n        \"time\": 0\n      }\n    }\n  },\n  \"averages\": {\n    \"action\": \"setting\",\n    \"type\": \"scalar\",\n    \"value\": 1,\n    \"unit\": \"unit\",\n    \"alarm\": {\n      \"value\": 0,\n      \"limits\": {\n        \"lolo\": 1,\n        \"low\": 1,\n        \"high\": 20,\n        \"hihi\": 100\n      },\n      \"notify\": {\n        \"name\": \"\",\n        \"number\": \"\",\n        \"time\": 0\n      }\n    }\n  },\n  \"restartDma\": {\n    \"action\": \"setting\",\n    \"type\": \"scalar\",\n    \"value\": 0,\n    \"unit\": \"unit\",\n    \"alarm\": {\n      \"value\": 0,\n      \"limits\": {\n        \"lolo\": -2,\n        \"low\": -1,\n        \"high\": 1,\n        \"hihi\": 2\n      },\n      \"notify\": {\n        \"name\": \"\",\n        \"number\": \"\",\n        \"time\": 0\n      }\n    }\n  }\n\n};\nreturn {topic:'blinky-lite/ultra-ncab/001/setting', payload:device};",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 390,
+        "y": 1240,
+        "wires": [
+            [
+                "f2a0c42e.7c1d68"
+            ]
+        ]
+    },
+    {
+        "id": "4420d4cc.98db9c",
+        "type": "inject",
+        "z": "e17f7487.2a78e8",
+        "name": "",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "x": 120,
+        "y": 1240,
+        "wires": [
+            [
+                "47892a91.a84984"
+            ]
+        ]
     }
 ]
