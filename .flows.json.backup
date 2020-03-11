@@ -1889,7 +1889,7 @@
         "fieldType": "msg",
         "format": "html",
         "syntax": "mustache",
-        "template": "<!-- navBar -->\n    <div class=\"jumbotron\" width=\"100%\">\n        <table width=\"100%\">\n            <tr>\n                <td style=\"text-align:left; vertical-align:middle;\" width=\"20%\">\n                    <a href='/'><img src=\"/img/home.png\" height=\"75px\"/></a>\n                </td>\n                <td width=\"60%\" style=\"text-align:center; vertical-align:middle;\">\n                    <h1 class=\"jumbotron-title big-text bold-text\">{{{payload.title}}}</h1>\n                </td>\n                <td style=\"text-align:right; vertical-align:middle;\"  width=\"20%\">\n                    <a href='https://www.blinky-lite.io/' target='_blank'>\n                        <img src=\"/img/BlinkyLogo.gif\" height=\"75px\"/>\n                    </a>                \n                </td>\n            </tr>\n        </table>\n    </div>\n",
+        "template": "<!-- navBar -->\n    <div class=\"jumbotron\" width=\"100%\">\n        <table width=\"100%\">\n            <tr>\n                <td style=\"text-align:left; vertical-align:middle;\" width=\"20%\">\n                    <a href='/'><img src=\"/img/home.png\" height=\"75px\"/></a>\n                </td>\n                <td width=\"60%\" style=\"text-align:center; vertical-align:middle;\">\n                    <h1 class=\"jumbotron-title big-text bold-text\">\n                        <img src=\"/img/{{{payload.navBarIcon}}}\" height=\"75px\"/  style=\"padding-right:20px;\">{{{payload.title}}}\n                    </h1>\n                </td>\n                <td style=\"text-align:right; vertical-align:middle;\"  width=\"20%\">\n                    <a href='https://www.blinky-lite.io/' target='_blank'>\n                        <img src=\"/img/BlinkyLogo.gif\" height=\"75px\"/>\n                    </a>                \n                </td>\n            </tr>\n        </table>\n    </div>\n",
         "output": "str",
         "x": 200,
         "y": 80,
@@ -2646,11 +2646,11 @@
         "syntax": "mustache",
         "template": "Blinky-Lite Basic {{{payload.script.name}}}",
         "output": "str",
-        "x": 450,
-        "y": 240,
+        "x": 270,
+        "y": 280,
         "wires": [
             [
-                "71c5a4f8.ce8eec"
+                "dba55e1f.2f3e1"
             ]
         ]
     },
@@ -3036,9 +3036,9 @@
         "fieldType": "msg",
         "format": "html",
         "syntax": "mustache",
-        "template": "<!-- Body HTML -->\n    <div class='container' width=\"100%\">\n        <div class='row vert-pad' >\n            <div class='col-md-12' align='center' >\n                <a class=\"btn jumbotron-button btn-block big-text bold-text\" width='80%' href=\"/basic?name=01\" >Basic 01</a>\n            </div>\n        </div>\n        <div class='row vert-pad' >\n            <div class='col-md-12' align='center' >\n                <a class=\"btn jumbotron-button btn-block big-text bold-text\" width='80%' href=\"/cosmic-interval?name=01\" >Cosmic Interval 01</a>\n            </div>\n        </div>\n        <div class='row vert-pad' >\n            <div class='col-md-12' align='center' >\n                <a class=\"btn jumbotron-button btn-block big-text bold-text\" width='80%' href=\"/shiverSim?name=001\" >Shiver Box 001</a>\n            </div>\n        </div>\n        <div class='row vert-pad' >\n            <div class='col-md-12' align='center' >\n                <a class=\"btn jumbotron-button btn-block big-text bold-text\" width='80%' href=\"/shimmy-spotter-index\" >Shimmy Spotters</a>\n            </div>\n        </div>\n       <div class='row vert-pad' >\n            <div class='col-md-12' align='center' >\n                <a class=\"btn jumbotron-button btn-block big-text bold-text\" width='80%' href=\"/core\" id=\"blinky-lite-core\">Core Apps</a> \n            </div>\n        </div>\n        <div class='row vert-pad' >\n            <div class='col-md-12' align='center' >\n                <a class=\"btn jumbotron-button btn-block big-text bold-text\" width='80%' href=\"/solar-regulator?name=01\" >Solar Regulator 01</a>\n            </div>\n        </div>\n       <div class='row vert-pad' >\n            <div class='col-md-12' align='center' >\n                <a class=\"btn jumbotron-button btn-block big-text bold-text\" width='80%' href=\"/info\" >More Info</a> \n            </div>\n        </div>\n         <div class='row vert-pad' >\n            <div class='col-md-12' align='center' >\n                <iframe src=\"https://shiftr.io/Blinky-Lite/blinky-lite/embed?zoom=1\" width=\"700\" height=\"500\" frameborder=\"0\" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>\n                <p>Blinky-Lite MQTT Broker</p>\n            </div>\n        </div>\n    </div>",
+        "template": "<!-- Body HTML -->\n    <div class='container' width=\"100%\">\n        <div class='row vert-pad' >\n            <div class='col-md-12'>\n                <a class=\"btn jumbotron-button btn-block big-text bold-text\" width='80%' href=\"/basic?name=01\" >\n                    <table width=\"100%\" alight=\"left\">\n                        <tr>\n                            <td width=\"30%\" align='center'> <img src=\"/img/basicYellow.png\" height=\"70px\"/></td>\n                            <td width=\"70%\" align=\"left\">Basic 01</td>\n                        </tr>\n                    </table>\n                </a>\n            </div>\n        </div>\n        <div class='row vert-pad' >\n            <div class='col-md-12'>\n                <a class=\"btn jumbotron-button btn-block big-text bold-text\" width='80%' href=\"/cosmic-interval?name=01\" >\n                    <table width=\"100%\" alight=\"left\">\n                        <tr>\n                            <td width=\"30%\" align='center'> <img src=\"/img/cosmicYellow.png\" height=\"70px\"/></td>\n                            <td width=\"70%\" align=\"left\">Cosmic Interval 01</td>\n                        </tr>\n                    </table>\n                </a>\n            </div>\n        </div>\n        <div class='row vert-pad' >\n            <div class='col-md-12' align='center' >\n                <a class=\"btn jumbotron-button btn-block big-text bold-text\" width='80%' href=\"/shiverSim?name=001\" >\n                    <table width=\"100%\" alight=\"left\">\n                        <tr>\n                            <td width=\"30%\" align='center'> <img src=\"/img/shakerYellow.png\" height=\"70px\"/></td>\n                            <td width=\"70%\" align=\"left\">Shiver Box 01</td>\n                        </tr>\n                    </table>\n                </a>\n            </div>\n        </div>\n        <div class='row vert-pad' >\n            <div class='col-md-12' align='center' >\n                <a class=\"btn jumbotron-button btn-block big-text bold-text\" width='80%' href=\"/shimmy-spotter-index\" >\n                    <table width=\"100%\" alight=\"left\">\n                        <tr>\n                            <td width=\"30%\" align='center'> <img src=\"/img/shimmyYellow.png\" height=\"70px\"/></td>\n                            <td width=\"70%\" align=\"left\">Shimmy Spotters</td>\n                        </tr>\n                    </table>\n                </a>\n            </div>\n        </div>\n        <div class='row vert-pad' >\n            <div class='col-md-12' align='center' >\n                <a class=\"btn jumbotron-button btn-block big-text bold-text\" width='80%' href=\"/solar-regulator?name=01\" >\n                    <table width=\"100%\" alight=\"left\">\n                        <tr>\n                            <td width=\"30%\" align='center'> <img src=\"/img/regulatorYellow.png\" height=\"70px\"/></td>\n                            <td width=\"70%\" align=\"left\">Solar Regulator 01</td>\n                        </tr>\n                    </table>\n               </a>\n            </div>\n        </div>\n        <div class='row vert-pad' >\n            <div class='col-md-12' align='center' >\n                <a class=\"btn jumbotron-button btn-block big-text bold-text\" width='80%' href=\"/core\" id=\"blinky-lite-core\">\n                    <table width=\"100%\" alight=\"left\">\n                        <tr>\n                            <td width=\"30%\" align='center'> <img src=\"/img/coreYellow.png\" height=\"70px\"/></td>\n                            <td width=\"70%\" align=\"left\">Core Apps</td>\n                        </tr>\n                    </table>\n                </a> \n            </div>\n        </div>\n       <div class='row vert-pad' >\n            <div class='col-md-12' align='center' >\n                <a class=\"btn jumbotron-button btn-block big-text bold-text\" width='80%' href=\"/info\" >\n                    <table width=\"100%\" alight=\"left\">\n                        <tr>\n                            <td width=\"30%\" align='center'> <img src=\"/img/infoYellow.png\" height=\"70px\"/></td>\n                            <td width=\"70%\" align=\"left\">More Info</td>\n                        </tr>\n                    </table>\n                </a> \n            </div>\n        </div>\n         <div class='row vert-pad' >\n            <div class='col-md-12' align='center' >\n                <iframe src=\"https://shiftr.io/Blinky-Lite/blinky-lite/embed?zoom=1\" width=\"700\" height=\"500\" frameborder=\"0\" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>\n                <p>Blinky-Lite MQTT Broker</p>\n            </div>\n        </div>\n    </div>",
         "output": "str",
-        "x": 610,
+        "x": 770,
         "y": 40,
         "wires": [
             [
@@ -3061,7 +3061,7 @@
         "y": 40,
         "wires": [
             [
-                "5cac58c2.05a888"
+                "7c17bfe0.78cd"
             ]
         ]
     },
@@ -3089,7 +3089,7 @@
         "type": "subflow:8341090a.df9758",
         "z": "8475ab9.3d26058",
         "name": "",
-        "x": 780,
+        "x": 940,
         "y": 40,
         "wires": []
     },
@@ -4182,7 +4182,7 @@
         "func": "var deviceType = 'basic';\nvar name = msg.payload.name;\nmsg.payload = {};\nmsg.payload['script'] = {};\nmsg.payload['script']['name'] = name;\nmsg.payload['script']['deviceType'] = 'basic';\nmsg.payload['script']['project'] = global.get('projectName');\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
-        "x": 310,
+        "x": 290,
         "y": 240,
         "wires": [
             [
@@ -5869,7 +5869,7 @@
         "y": 160,
         "wires": [
             [
-                "c49e374b.47ac28"
+                "2b60c729.6f7f48"
             ]
         ]
     },
@@ -5897,7 +5897,7 @@
         "type": "subflow:8341090a.df9758",
         "z": "8475ab9.3d26058",
         "name": "",
-        "x": 780,
+        "x": 940,
         "y": 160,
         "wires": []
     },
@@ -5912,7 +5912,7 @@
         "syntax": "mustache",
         "template": "<!-- Body HTML -->\n    <div align='center'>\n        <iframe src=\"https://docs.google.com/presentation/d/e/2PACX-1vR2vyqzXVdf_xuC4Ylq7hOJ4dmltmJfskOdLsC-6HzfqZxkfeD7iA5T68mZRb-VzEUcmPsNRJbqTd2H/embed?start=true&loop=false&delayms=8000\" frameborder=\"0\" width=\"925\" height=\"728\" allowfullscreen=\"true\" mozallowfullscreen=\"true\" webkitallowfullscreen=\"true\"></iframe>\n    </div>",
         "output": "str",
-        "x": 610,
+        "x": 770,
         "y": 160,
         "wires": [
             [
@@ -6142,9 +6142,9 @@
         "fieldType": "msg",
         "format": "html",
         "syntax": "mustache",
-        "template": "<!-- Body HTML -->\n    <div class='container' width=\"100%\">\n        <div class='row vert-pad' >\n            <div class='col-md-12' align='center' >\n                <a class=\"btn jumbotron-button btn-block big-text bold-text\" width='80%' href=\"/shimmy-spotter?name=001\" >Shimmy Spotter 001</a>\n            </div>\n        </div>\n        <div class='row vert-pad' >\n            <div class='col-md-12' align='center' >\n                <a class=\"btn jumbotron-button btn-block big-text bold-text\" width='80%' href=\"/shimmy-spotter?name=002\" >Shimmy Spotter 002</a>\n            </div>\n        </div>\n        <div class='row vert-pad' >\n            <div class='col-md-12' align='center' >\n                <a class=\"btn jumbotron-button btn-block big-text bold-text\" width='80%' href=\"/shimmy-spotter?name=003\" >Shimmy Spotter 003</a>\n            </div>\n        </div>\n        <div class='row vert-pad' >\n            <div class='col-md-12' align='center' >\n                <a class=\"btn jumbotron-button btn-block big-text bold-text\" width='80%' href=\"/shiverSim?name=001\" >Shiver Box 001</a>\n            </div>\n        </div>\n       <div class='row vert-pad' >\n            <div class='col-md-12' align='center' >\n                <a class=\"btn jumbotron-button btn-block big-text bold-text\" width='80%' href=\"/core\" id=\"blinky-lite-core\">Core Apps</a> \n            </div>\n        </div>\n         <div class='row vert-pad' >\n            <div class='col-md-12' align='center' >\n                <iframe src=\"https://shiftr.io/Blinky-Lite/blinky-lite/embed?zoom=1\" width=\"700\" height=\"500\" frameborder=\"0\" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>\n                <p>Blinky-Lite MQTT Broker</p>\n            </div>\n        </div>\n    </div>",
+        "template": "<!-- Body HTML -->\n    <div class='container' width=\"100%\">\n        <div class='row vert-pad' >\n            <div class='col-md-12' align='center' >\n                <a class=\"btn jumbotron-button btn-block big-text bold-text\" width='80%' href=\"/shimmy-spotter?name=001\" >\n                    <table width=\"100%\" alight=\"left\">\n                        <tr>\n                            <td width=\"30%\" align='center'> <img src=\"/img/shimmyYellow.png\" height=\"70px\"/></td>\n                            <td width=\"70%\" align=\"left\">Shimmy Spotter 001</td>\n                        </tr>\n                    </table>\n                </a>\n            </div>\n        </div>\n        <div class='row vert-pad' >\n            <div class='col-md-12' align='center' >\n                <a class=\"btn jumbotron-button btn-block big-text bold-text\" width='80%' href=\"/shimmy-spotter?name=002\" >\n                    <table width=\"100%\" alight=\"left\">\n                        <tr>\n                            <td width=\"30%\" align='center'> <img src=\"/img/shimmyYellow.png\" height=\"70px\"/></td>\n                            <td width=\"70%\" align=\"left\">Shimmy Spotter 002</td>\n                        </tr>\n                    </table>\n                </a>\n            </div>\n        </div>\n        <div class='row vert-pad' >\n            <div class='col-md-12' align='center' >\n                <a class=\"btn jumbotron-button btn-block big-text bold-text\" width='80%' href=\"/shimmy-spotter?name=003\" >\n                    <table width=\"100%\" alight=\"left\">\n                        <tr>\n                            <td width=\"30%\" align='center'> <img src=\"/img/shimmyYellow.png\" height=\"70px\"/></td>\n                            <td width=\"70%\" align=\"left\">Shimmy Spotter 003</td>\n                        </tr>\n                    </table>\n                </a>\n            </div>\n        </div>\n        <div class='row vert-pad' >\n            <div class='col-md-12' align='center' >\n                <a class=\"btn jumbotron-button btn-block big-text bold-text\" width='80%' href=\"/shiverSim?name=001\" >\n                    <table width=\"100%\" alight=\"left\">\n                        <tr>\n                            <td width=\"30%\" align='center'> <img src=\"/img/shakerYellow.png\" height=\"70px\"/></td>\n                            <td width=\"70%\" align=\"left\">Shiver Box 001</td>\n                        </tr>\n                    </table>\n                </a>\n            </div>\n        </div>\n       <div class='row vert-pad' >\n            <div class='col-md-12' align='center' >\n                <a class=\"btn jumbotron-button btn-block big-text bold-text\" width='80%' href=\"/core\" >\n                    <table width=\"100%\" alight=\"left\">\n                        <tr>\n                            <td width=\"30%\" align='center'> <img src=\"/img/coreYellow.png\" height=\"70px\"/></td>\n                            <td width=\"70%\" align=\"left\">Core Apps</td>\n                        </tr>\n                    </table>\n                </a>\n            </div>\n        </div>\n         <div class='row vert-pad' >\n            <div class='col-md-12' align='center' >\n                <iframe src=\"https://shiftr.io/Blinky-Lite/blinky-lite/embed?zoom=1\" width=\"700\" height=\"500\" frameborder=\"0\" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>\n                <p>Blinky-Lite MQTT Broker</p>\n            </div>\n        </div>\n    </div>",
         "output": "str",
-        "x": 610,
+        "x": 770,
         "y": 100,
         "wires": [
             [
@@ -6161,13 +6161,13 @@
         "fieldType": "msg",
         "format": "html",
         "syntax": "mustache",
-        "template": "Blinky-Lite Apps",
+        "template": "Shimmy Spotters",
         "output": "str",
         "x": 490,
         "y": 100,
         "wires": [
             [
-                "f6c266c1.e420a8"
+                "39fce651.64371a"
             ]
         ]
     },
@@ -6195,7 +6195,7 @@
         "type": "subflow:8341090a.df9758",
         "z": "8475ab9.3d26058",
         "name": "",
-        "x": 780,
+        "x": 940,
         "y": 100,
         "wires": []
     },
@@ -6354,7 +6354,7 @@
         "fieldType": "msg",
         "format": "html",
         "syntax": "mustache",
-        "template": "    <div width=\"100%\">\n        <div class='row' style='padding-bottom: 25px;'>\n            <div class='col-md-12' align='center'>\n{{{payload.html.dashboard}}}\n            </div>\n        </div>\n        <div class='row' style='padding-bottom: 25px;'>\n            <div class='col-md-12' align='center'>\n{{{payload.html.history}}}\n            </div>\n        </div>\n        <div class='row' style='padding-bottom: 25px;'>\n            <div class='col-md-12' align='center'>\n{{{payload.html.histogram}}}\n            </div>\n        </div>\n        <div class='row' style='padding-bottom: 25px;'>\n            <div class='col-md-12'>\n{{{payload.html.wifimon}}}\n            </div>\n        </div>\n        <div class='row' style='padding-bottom: 25px;'>\n            <div class='col-md-12'>\n{{{payload.html.dangerZone}}}\n            </div>\n        </div>\n    </div>",
+        "template": "    <div width=\"100%\">\n        <div class='row' style='padding-bottom: 25px;'>\n            <div class='col-md-12' align='center'>\n{{{payload.html.dashboard}}}\n            </div>\n        </div>\n        <div class='row' style='padding-bottom: 25px;'>\n            <div class='col-md-12' align='center'>\n{{{payload.html.histogram}}}\n            </div>\n        </div>\n        <div class='row' style='padding-bottom: 25px;'>\n            <div class='col-md-12' align='center'>\n{{{payload.html.history}}}\n            </div>\n        </div>\n        <div class='row' style='padding-bottom: 25px;'>\n            <div class='col-md-12'>\n{{{payload.html.wifimon}}}\n            </div>\n        </div>\n        <div class='row' style='padding-bottom: 25px;'>\n            <div class='col-md-12'>\n{{{payload.html.dangerZone}}}\n            </div>\n        </div>\n    </div>",
         "output": "str",
         "x": 1110,
         "y": 1460,
@@ -6627,5 +6627,81 @@
         "x": 895,
         "y": 2420,
         "wires": []
+    },
+    {
+        "id": "7c17bfe0.78cd",
+        "type": "template",
+        "z": "8475ab9.3d26058",
+        "name": "navBarIcon",
+        "field": "payload.navBarIcon",
+        "fieldType": "msg",
+        "format": "html",
+        "syntax": "mustache",
+        "template": "appsYellow.png",
+        "output": "str",
+        "x": 630,
+        "y": 40,
+        "wires": [
+            [
+                "5cac58c2.05a888"
+            ]
+        ]
+    },
+    {
+        "id": "39fce651.64371a",
+        "type": "template",
+        "z": "8475ab9.3d26058",
+        "name": "navBarIcon",
+        "field": "payload.navBarIcon",
+        "fieldType": "msg",
+        "format": "html",
+        "syntax": "mustache",
+        "template": "shimmyYellow.png",
+        "output": "str",
+        "x": 630,
+        "y": 100,
+        "wires": [
+            [
+                "f6c266c1.e420a8"
+            ]
+        ]
+    },
+    {
+        "id": "2b60c729.6f7f48",
+        "type": "template",
+        "z": "8475ab9.3d26058",
+        "name": "navBarIcon",
+        "field": "payload.navBarIcon",
+        "fieldType": "msg",
+        "format": "html",
+        "syntax": "mustache",
+        "template": "infoYellow.png",
+        "output": "str",
+        "x": 630,
+        "y": 160,
+        "wires": [
+            [
+                "c49e374b.47ac28"
+            ]
+        ]
+    },
+    {
+        "id": "dba55e1f.2f3e1",
+        "type": "template",
+        "z": "8475ab9.3d26058",
+        "name": "navBarIcon",
+        "field": "payload.navBarIcon",
+        "fieldType": "msg",
+        "format": "html",
+        "syntax": "mustache",
+        "template": "basicYellow.png",
+        "output": "str",
+        "x": 290,
+        "y": 320,
+        "wires": [
+            [
+                "71c5a4f8.ce8eec"
+            ]
+        ]
     }
 ]
