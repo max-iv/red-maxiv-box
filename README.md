@@ -1,9 +1,9 @@
-# blinky-lite-basic ui
+# blinky-lite-basic box
 ## need to add .env file with the following
 PROJECT=blinky-lite<br>
-ARCHIVETOPIC=blinky-lite\/+\/+\/reading<br>
+ARCHIVETOPIC=blinky-lite\/basic\/+\/reading<br>
 MONGODBIP=mongodb+srv://blinky-lite...<br>
-MQTTCLIENTID=blinky-lite-basic-core<br>
+MQTTCLIENTID=basic-box-01<br>
 MQTTSERVERIP=broker.shiftr.io<br>
 MQTTUSERNAME=xxx<br>
 MQTTPASSWORD=yyy<br>
