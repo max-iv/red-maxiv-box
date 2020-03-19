@@ -1253,15 +1253,13 @@
         "type": "function",
         "z": "e17f7487.2a78e8",
         "name": "Create basic 01 Database entry",
-        "func": "var device = \n{\n  \"deviceType\": \"basic\",\n  \"name\": \"01\",\n  \"arcPeriod\": 60000,\n  \"timeStamp\": 1579620007645,\n  \"lastArchive\": 1579619979487,\n  \"ledState\": {\n    \"action\": \"reading\",\n    \"type\": \"scalar\",\n    \"value\": 0,\n    \"unit\": \"unit\",\n    \"alarm\": {\n      \"value\": 0,\n      \"limits\": {\n        \"lolo\": -2,\n        \"low\": -1,\n        \"high\": 2,\n        \"hihi\": 3\n      },\n      \"notify\": {\n        \"name\": \"\",\n        \"number\": \"\",\n        \"time\": 0\n      }\n    }\n  },\n  \"linkQuality\": {\n    \"action\": \"reading\",\n    \"type\": \"scalar\",\n    \"value\": 67,\n    \"unit\": \"/70\",\n    \"alarm\": {\n      \"value\": 0,\n      \"limits\": {\n        \"lolo\": 30,\n        \"low\": 40,\n        \"high\": 71,\n        \"hihi\": 80\n      },\n      \"notify\": {\n        \"name\": \"\",\n        \"number\": \"\",\n        \"time\": 0\n      }\n    }\n  },\n  \"signalLevel\": {\n    \"action\": \"reading\",\n    \"type\": \"scalar\",\n    \"value\": -43,\n    \"unit\": \"dBm\",\n    \"alarm\": {\n      \"value\": 0,\n      \"limits\": {\n        \"lolo\": -70,\n        \"low\": -60,\n        \"high\": 0,\n        \"hihi\": 30\n      },\n      \"notify\": {\n        \"name\": \"\",\n        \"number\": \"\",\n        \"time\": 0\n      }\n    }\n  },\n  \"bt0RSSI\": {\n    \"action\": \"reading\",\n    \"type\": \"scalar\",\n    \"value\": 0,\n    \"unit\": \"dBm\",\n    \"alarm\": {\n      \"value\": 0,\n      \"limits\": {\n        \"lolo\": -70,\n        \"low\": -60,\n        \"high\": 0,\n        \"hihi\": 30\n      },\n      \"notify\": {\n        \"name\": \"\",\n        \"number\": \"\",\n        \"time\": 0\n      }\n    }\n  },\n  \"ledOn\": {\n    \"action\": \"setting\",\n    \"type\": \"scalar\",\n    \"value\": 0,\n    \"unit\": \"unit\",\n    \"alarm\": {\n      \"value\": 0,\n      \"limits\": {\n        \"lolo\": -2,\n        \"low\": -1,\n        \"high\": 2,\n        \"hihi\": 3\n      },\n      \"notify\": {\n        \"name\": \"\",\n        \"number\": \"\",\n        \"time\": 0\n      }\n    }\n  },\n  \"ledToggle\": {\n    \"action\": \"setting\",\n    \"type\": \"scalar\",\n    \"value\": 0,\n    \"unit\": \"unit\",\n    \"alarm\": {\n      \"value\": 0,\n      \"limits\": {\n        \"lolo\": -2,\n        \"low\": -1,\n        \"high\": 2,\n        \"hihi\": 3\n      },\n      \"notify\": {\n        \"name\": \"\",\n        \"number\": \"\",\n        \"time\": 0\n      }\n    }\n  },\n  \"loopDelay\": {\n    \"action\": \"setting\",\n    \"type\": \"scalar\",\n    \"value\": 1000,\n    \"unit\": \"unit\",\n    \"alarm\": {\n      \"value\": 0,\n      \"limits\": {\n        \"lolo\": 0,\n        \"low\":  0,\n        \"high\": 20000,\n        \"hihi\": 30000\n      },\n      \"notify\": {\n        \"name\": \"\",\n        \"number\": \"\",\n        \"time\": 0\n      }\n    }\n  }\n};\nreturn {topic:'basic01Entry',payload:device};",
+        "func": "var device = \n{\n  \"deviceType\": \"basic\",\n  \"name\": \"01\",\n  \"arcPeriod\": 60000,\n  \"timeStamp\": 1579620007645,\n  \"lastArchive\": 1579619979487,\n  \"ledState\": {\n    \"action\": \"reading\",\n    \"type\": \"scalar\",\n    \"value\": 0,\n    \"unit\": \"unit\",\n    \"alarm\": {\n      \"value\": 0,\n      \"limits\": {\n        \"lolo\": -2,\n        \"low\": -1,\n        \"high\": 2,\n        \"hihi\": 3\n      },\n      \"notify\": {\n        \"name\": \"\",\n        \"number\": \"\",\n        \"time\": 0\n      }\n    }\n  },\n  \"linkQuality\": {\n    \"action\": \"reading\",\n    \"type\": \"scalar\",\n    \"value\": 67,\n    \"unit\": \"/70\",\n    \"alarm\": {\n      \"value\": 0,\n      \"limits\": {\n        \"lolo\": 30,\n        \"low\": 40,\n        \"high\": 71,\n        \"hihi\": 80\n      },\n      \"notify\": {\n        \"name\": \"\",\n        \"number\": \"\",\n        \"time\": 0\n      }\n    }\n  },\n  \"signalLevel\": {\n    \"action\": \"reading\",\n    \"type\": \"scalar\",\n    \"value\": -43,\n    \"unit\": \"dBm\",\n    \"alarm\": {\n      \"value\": 0,\n      \"limits\": {\n        \"lolo\": -70,\n        \"low\": -60,\n        \"high\": 0,\n        \"hihi\": 30\n      },\n      \"notify\": {\n        \"name\": \"\",\n        \"number\": \"\",\n        \"time\": 0\n      }\n    }\n  },\n  \"ledOn\": {\n    \"action\": \"setting\",\n    \"type\": \"scalar\",\n    \"value\": 0,\n    \"unit\": \"unit\",\n    \"alarm\": {\n      \"value\": 0,\n      \"limits\": {\n        \"lolo\": -2,\n        \"low\": -1,\n        \"high\": 2,\n        \"hihi\": 3\n      },\n      \"notify\": {\n        \"name\": \"\",\n        \"number\": \"\",\n        \"time\": 0\n      }\n    }\n  },\n  \"ledToggle\": {\n    \"action\": \"setting\",\n    \"type\": \"scalar\",\n    \"value\": 0,\n    \"unit\": \"unit\",\n    \"alarm\": {\n      \"value\": 0,\n      \"limits\": {\n        \"lolo\": -2,\n        \"low\": -1,\n        \"high\": 2,\n        \"hihi\": 3\n      },\n      \"notify\": {\n        \"name\": \"\",\n        \"number\": \"\",\n        \"time\": 0\n      }\n    }\n  },\n  \"loopDelay\": {\n    \"action\": \"setting\",\n    \"type\": \"scalar\",\n    \"value\": 1000,\n    \"unit\": \"unit\",\n    \"alarm\": {\n      \"value\": 0,\n      \"limits\": {\n        \"lolo\": 0,\n        \"low\":  0,\n        \"high\": 20000,\n        \"hihi\": 30000\n      },\n      \"notify\": {\n        \"name\": \"\",\n        \"number\": \"\",\n        \"time\": 0\n      }\n    }\n  }\n};\nreturn {topic:'basic01Entry',payload:device};",
         "outputs": 1,
         "noerr": 0,
         "x": 350,
         "y": 900,
         "wires": [
-            [
-                "194e0a53.8d5cd6"
-            ]
+            []
         ]
     },
     {
@@ -1311,7 +1309,7 @@
         "y": 900,
         "wires": [
             [
-                "acb98a7f.ed2778"
+                "b80adbda.818ae8"
             ]
         ]
     },
@@ -2944,7 +2942,7 @@
         "fieldType": "msg",
         "format": "html",
         "syntax": "mustache",
-        "template": "<!-- Body HTML -->\n    <div class='container' width=\"100%\">\n        <div class='row vert-pad' >\n            <div class='col-md-12'>\n                <a class=\"btn jumbotron-button btn-block big-text bold-text\" width='80%' href=\"/basic?name=01\" >\n                    <table width=\"100%\" alight=\"left\">\n                        <tr>\n                            <td width=\"30%\" align='center'> <img src=\"/img/basicYellow.png\" height=\"70px\"/></td>\n                            <td width=\"70%\" align=\"left\">Basic 01</td>\n                        </tr>\n                    </table>\n                </a>\n            </div>\n        </div>\n        <div class='row vert-pad' >\n            <div class='col-md-12'>\n                <a class=\"btn jumbotron-button btn-block big-text bold-text\" width='80%' href=\"/cosmic-interval?name=01\" >\n                    <table width=\"100%\" alight=\"left\">\n                        <tr>\n                            <td width=\"30%\" align='center'> <img src=\"/img/cosmicYellow.png\" height=\"70px\"/></td>\n                            <td width=\"70%\" align=\"left\">Cosmic Interval 01</td>\n                        </tr>\n                    </table>\n                </a>\n            </div>\n        </div>\n        <div class='row vert-pad' >\n            <div class='col-md-12' align='center' >\n                <a class=\"btn jumbotron-button btn-block big-text bold-text\" width='80%' href=\"/shiverSim?name=001\" >\n                    <table width=\"100%\" alight=\"left\">\n                        <tr>\n                            <td width=\"30%\" align='center'> <img src=\"/img/shakerYellow.png\" height=\"70px\"/></td>\n                            <td width=\"70%\" align=\"left\">Shiver Box 01</td>\n                        </tr>\n                    </table>\n                </a>\n            </div>\n        </div>\n        <div class='row vert-pad' >\n            <div class='col-md-12' align='center' >\n                <a class=\"btn jumbotron-button btn-block big-text bold-text\" width='80%' href=\"/shimmy-spotter-index\" >\n                    <table width=\"100%\" alight=\"left\">\n                        <tr>\n                            <td width=\"30%\" align='center'> <img src=\"/img/shimmyYellow.png\" height=\"70px\"/></td>\n                            <td width=\"70%\" align=\"left\">Shimmy Spotters</td>\n                        </tr>\n                    </table>\n                </a>\n            </div>\n        </div>\n        <div class='row vert-pad' >\n            <div class='col-md-12' align='center' >\n                <a class=\"btn jumbotron-button btn-block big-text bold-text\" width='80%' href=\"/solar-regulator?name=01\" >\n                    <table width=\"100%\" alight=\"left\">\n                        <tr>\n                            <td width=\"30%\" align='center'> <img src=\"/img/regulatorYellow.png\" height=\"70px\"/></td>\n                            <td width=\"70%\" align=\"left\">Solar Regulator 01</td>\n                        </tr>\n                    </table>\n               </a>\n            </div>\n        </div>\n        <div class='row vert-pad' >\n            <div class='col-md-12' align='center' >\n                <a class=\"btn jumbotron-button btn-block big-text bold-text\" width='80%' href=\"/core\" id=\"blinky-lite-core\">\n                    <table width=\"100%\" alight=\"left\">\n                        <tr>\n                            <td width=\"30%\" align='center'> <img src=\"/img/coreYellow.png\" height=\"70px\"/></td>\n                            <td width=\"70%\" align=\"left\">Core Apps</td>\n                        </tr>\n                    </table>\n                </a> \n            </div>\n        </div>\n       <div class='row vert-pad' >\n            <div class='col-md-12' align='center' >\n                <a class=\"btn jumbotron-button btn-block big-text bold-text\" width='80%' href=\"/info\" >\n                    <table width=\"100%\" alight=\"left\">\n                        <tr>\n                            <td width=\"30%\" align='center'> <img src=\"/img/infoYellow.png\" height=\"70px\"/></td>\n                            <td width=\"70%\" align=\"left\">More Info</td>\n                        </tr>\n                    </table>\n                </a> \n            </div>\n        </div>\n         <div class='row vert-pad' >\n            <div class='col-md-12' align='center' >\n                <iframe src=\"https://shiftr.io/Blinky-Lite/blinky-lite/embed?zoom=1\" width=\"700\" height=\"500\" frameborder=\"0\" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>\n                <p>Blinky-Lite MQTT Broker</p>\n            </div>\n        </div>\n    </div>",
+        "template": "<!-- Body HTML -->\n    <div class='container' width=\"100%\">\n        <div class='row vert-pad' >\n            <div class='col-md-12'>\n                <a class=\"btn jumbotron-button btn-block big-text bold-text\" width='80%' href=\"/basic?name=01\" >\n                    <table width=\"100%\" alight=\"left\">\n                        <tr>\n                            <td width=\"30%\" align='center'> <img src=\"/img/basicYellow.png\" height=\"70px\"/></td>\n                            <td width=\"70%\" align=\"left\">Basic 01</td>\n                        </tr>\n                    </table>\n                </a>\n            </div>\n        </div>\n        <div class='row vert-pad' >\n            <div class='col-md-12' align='center' >\n                <a class=\"btn jumbotron-button btn-block big-text bold-text\" width='80%' href=\"/core\" id=\"blinky-lite-core\">\n                    <table width=\"100%\" alight=\"left\">\n                        <tr>\n                            <td width=\"30%\" align='center'> <img src=\"/img/coreYellow.png\" height=\"70px\"/></td>\n                            <td width=\"70%\" align=\"left\">Core Apps</td>\n                        </tr>\n                    </table>\n                </a> \n            </div>\n        </div>\n        <div class='row vert-pad' >\n            <div class='col-md-12' align='center' >\n                <iframe src=\"https://shiftr.io/Blinky-Lite/blinky-lite/embed?zoom=1\" width=\"700\" height=\"500\" frameborder=\"0\" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>\n                <p>Blinky-Lite MQTT Broker</p>\n            </div>\n        </div>\n    </div>",
         "output": "str",
         "x": 770,
         "y": 40,
@@ -4484,89 +4482,6 @@
         "wires": []
     },
     {
-        "id": "c701e5d1.d5aa68",
-        "type": "http in",
-        "z": "8475ab9.3d26058",
-        "name": "/info",
-        "url": "/info",
-        "method": "get",
-        "upload": false,
-        "swaggerDoc": "",
-        "x": 110,
-        "y": 160,
-        "wires": [
-            [
-                "c844aa0d.470fc8"
-            ]
-        ]
-    },
-    {
-        "id": "9c28283.4efe0d8",
-        "type": "template",
-        "z": "8475ab9.3d26058",
-        "name": "Title",
-        "field": "payload.title",
-        "fieldType": "msg",
-        "format": "html",
-        "syntax": "mustache",
-        "template": "Blinky-Lite Info",
-        "output": "str",
-        "x": 490,
-        "y": 160,
-        "wires": [
-            [
-                "2b60c729.6f7f48"
-            ]
-        ]
-    },
-    {
-        "id": "c844aa0d.470fc8",
-        "type": "template",
-        "z": "8475ab9.3d26058",
-        "name": "JavaScript",
-        "field": "payload.javascript",
-        "fieldType": "msg",
-        "format": "javascript",
-        "syntax": "mustache",
-        "template": "        useWebSockets(false);\n        function onDocumentReady()\n        {\n        }\n        function onWebSocketOpen()\n        {\n        }\n        function onWebSocketClose()\n        {\n            \n        }\n        function onWebSocketMessage(msg)\n        {\n        }\n\n",
-        "output": "str",
-        "x": 350,
-        "y": 160,
-        "wires": [
-            [
-                "9c28283.4efe0d8"
-            ]
-        ]
-    },
-    {
-        "id": "a95c88d2.0c24c8",
-        "type": "subflow:8341090a.df9758",
-        "z": "8475ab9.3d26058",
-        "name": "",
-        "x": 940,
-        "y": 160,
-        "wires": []
-    },
-    {
-        "id": "c49e374b.47ac28",
-        "type": "template",
-        "z": "8475ab9.3d26058",
-        "name": "Body",
-        "field": "payload.body",
-        "fieldType": "msg",
-        "format": "html",
-        "syntax": "mustache",
-        "template": "<!-- Body HTML -->\n    <div align='center'>\n        <iframe src=\"https://docs.google.com/presentation/d/e/2PACX-1vR2vyqzXVdf_xuC4Ylq7hOJ4dmltmJfskOdLsC-6HzfqZxkfeD7iA5T68mZRb-VzEUcmPsNRJbqTd2H/embed?start=true&loop=false&delayms=8000\" frameborder=\"0\" width=\"925\" height=\"728\" allowfullscreen=\"true\" mozallowfullscreen=\"true\" webkitallowfullscreen=\"true\"></iframe>\n    </div>",
-        "output": "str",
-        "x": 770,
-        "y": 160,
-        "wires": [
-            [
-                "a95c88d2.0c24c8"
-            ]
-        ]
-    },
-    {
         "id": "4420d4cc.98db9c",
         "type": "inject",
         "z": "e17f7487.2a78e8",
@@ -4671,89 +4586,6 @@
         "wires": []
     },
     {
-        "id": "7bd0b0c4.5c075",
-        "type": "http in",
-        "z": "8475ab9.3d26058",
-        "name": "/shimmy-spotter-index",
-        "url": "/shimmy-spotter-index",
-        "method": "get",
-        "upload": false,
-        "swaggerDoc": "",
-        "x": 160,
-        "y": 100,
-        "wires": [
-            [
-                "34140ec5.64caa2"
-            ]
-        ]
-    },
-    {
-        "id": "f6c266c1.e420a8",
-        "type": "template",
-        "z": "8475ab9.3d26058",
-        "name": "Body",
-        "field": "payload.body",
-        "fieldType": "msg",
-        "format": "html",
-        "syntax": "mustache",
-        "template": "<!-- Body HTML -->\n    <div class='container' width=\"100%\">\n        <div class='row vert-pad' >\n            <div class='col-md-12' align='center' >\n                <a class=\"btn jumbotron-button btn-block big-text bold-text\" width='80%' href=\"/shimmy-spotter?name=001\" >\n                    <table width=\"100%\" alight=\"left\">\n                        <tr>\n                            <td width=\"30%\" align='center'> <img src=\"/img/shimmyYellow.png\" height=\"70px\"/></td>\n                            <td width=\"70%\" align=\"left\">Shimmy Spotter 001</td>\n                        </tr>\n                    </table>\n                </a>\n            </div>\n        </div>\n        <div class='row vert-pad' >\n            <div class='col-md-12' align='center' >\n                <a class=\"btn jumbotron-button btn-block big-text bold-text\" width='80%' href=\"/shimmy-spotter?name=002\" >\n                    <table width=\"100%\" alight=\"left\">\n                        <tr>\n                            <td width=\"30%\" align='center'> <img src=\"/img/shimmyYellow.png\" height=\"70px\"/></td>\n                            <td width=\"70%\" align=\"left\">Shimmy Spotter 002</td>\n                        </tr>\n                    </table>\n                </a>\n            </div>\n        </div>\n        <div class='row vert-pad' >\n            <div class='col-md-12' align='center' >\n                <a class=\"btn jumbotron-button btn-block big-text bold-text\" width='80%' href=\"/shimmy-spotter?name=003\" >\n                    <table width=\"100%\" alight=\"left\">\n                        <tr>\n                            <td width=\"30%\" align='center'> <img src=\"/img/shimmyYellow.png\" height=\"70px\"/></td>\n                            <td width=\"70%\" align=\"left\">Shimmy Spotter 003</td>\n                        </tr>\n                    </table>\n                </a>\n            </div>\n        </div>\n        <div class='row vert-pad' >\n            <div class='col-md-12' align='center' >\n                <a class=\"btn jumbotron-button btn-block big-text bold-text\" width='80%' href=\"/shiverSim?name=001\" >\n                    <table width=\"100%\" alight=\"left\">\n                        <tr>\n                            <td width=\"30%\" align='center'> <img src=\"/img/shakerYellow.png\" height=\"70px\"/></td>\n                            <td width=\"70%\" align=\"left\">Shiver Box 001</td>\n                        </tr>\n                    </table>\n                </a>\n            </div>\n        </div>\n       <div class='row vert-pad' >\n            <div class='col-md-12' align='center' >\n                <a class=\"btn jumbotron-button btn-block big-text bold-text\" width='80%' href=\"/core\" >\n                    <table width=\"100%\" alight=\"left\">\n                        <tr>\n                            <td width=\"30%\" align='center'> <img src=\"/img/coreYellow.png\" height=\"70px\"/></td>\n                            <td width=\"70%\" align=\"left\">Core Apps</td>\n                        </tr>\n                    </table>\n                </a>\n            </div>\n        </div>\n         <div class='row vert-pad' >\n            <div class='col-md-12' align='center' >\n                <iframe src=\"https://shiftr.io/Blinky-Lite/blinky-lite/embed?zoom=1\" width=\"700\" height=\"500\" frameborder=\"0\" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>\n                <p>Blinky-Lite MQTT Broker</p>\n            </div>\n        </div>\n    </div>",
-        "output": "str",
-        "x": 770,
-        "y": 100,
-        "wires": [
-            [
-                "7ed28fd5.3afb7"
-            ]
-        ]
-    },
-    {
-        "id": "a09a2c5b.70dfa",
-        "type": "template",
-        "z": "8475ab9.3d26058",
-        "name": "Title",
-        "field": "payload.title",
-        "fieldType": "msg",
-        "format": "html",
-        "syntax": "mustache",
-        "template": "Shimmy Spotters",
-        "output": "str",
-        "x": 490,
-        "y": 100,
-        "wires": [
-            [
-                "39fce651.64371a"
-            ]
-        ]
-    },
-    {
-        "id": "34140ec5.64caa2",
-        "type": "template",
-        "z": "8475ab9.3d26058",
-        "name": "JavaScript",
-        "field": "payload.javascript",
-        "fieldType": "msg",
-        "format": "javascript",
-        "syntax": "mustache",
-        "template": "        useWebSockets(false);\n        function onDocumentReady()\n        {\n        }\n        function onWebSocketOpen()\n        {\n        }\n        function onWebSocketClose()\n        {\n            \n        }\n        function onWebSocketMessage(msg)\n        {\n        }\n\n",
-        "output": "str",
-        "x": 350,
-        "y": 100,
-        "wires": [
-            [
-                "a09a2c5b.70dfa"
-            ]
-        ]
-    },
-    {
-        "id": "7ed28fd5.3afb7",
-        "type": "subflow:8341090a.df9758",
-        "z": "8475ab9.3d26058",
-        "name": "",
-        "x": 940,
-        "y": 100,
-        "wires": []
-    },
-    {
         "id": "7c17bfe0.78cd",
         "type": "template",
         "z": "8475ab9.3d26058",
@@ -4769,44 +4601,6 @@
         "wires": [
             [
                 "5cac58c2.05a888"
-            ]
-        ]
-    },
-    {
-        "id": "39fce651.64371a",
-        "type": "template",
-        "z": "8475ab9.3d26058",
-        "name": "navBarIcon",
-        "field": "payload.navBarIcon",
-        "fieldType": "msg",
-        "format": "html",
-        "syntax": "mustache",
-        "template": "shimmyYellow.png",
-        "output": "str",
-        "x": 630,
-        "y": 100,
-        "wires": [
-            [
-                "f6c266c1.e420a8"
-            ]
-        ]
-    },
-    {
-        "id": "2b60c729.6f7f48",
-        "type": "template",
-        "z": "8475ab9.3d26058",
-        "name": "navBarIcon",
-        "field": "payload.navBarIcon",
-        "fieldType": "msg",
-        "format": "html",
-        "syntax": "mustache",
-        "template": "infoYellow.png",
-        "output": "str",
-        "x": 630,
-        "y": 160,
-        "wires": [
-            [
-                "c49e374b.47ac28"
             ]
         ]
     },
@@ -5121,7 +4915,7 @@
         "fieldType": "msg",
         "format": "javascript",
         "syntax": "mustache",
-        "template": "// Update Readings Javascript\n        function updateDmaReadings()\n        {\n            $('#linkQualityId').text(device.linkQuality.value);\n            $('#signalLevelId').text(device.signalLevel.value);\n            $('#bt0RSSIId').text(device.bt0RSSI.value);\n            historyStripChart.addTracePoints(device.ledState.value, device.loopDelay.value);\n            if (!loopDelayChanged)$('#loopDelayInputId').val(device.loopDelay.value);\n\n            if(device.ledState.value > 0)\n            {\n                $(\"#ledStateId\").attr(\"src\",\"/img/redLight.png\");\n            }\n            else\n            {\n                $(\"#ledStateId\").attr(\"src\",\"/img/yellowLight.png\");\n            }\n\n            var buttonColor = '#ff0000';\n            var buttonTextColor = '#000000';\n            var buttonText = \"Off\";\n            if (device.ledToggle.value > 0) \n            {\n                buttonColor = '#00ff00';\n                buttonText = 'On';\n            }\n            $('#ledToggleButtonId').css('color', buttonTextColor); \n            $('#ledToggleButtonId').css('background-color', buttonColor); \n            $('#ledToggleButtonId').text(buttonText); \n            \n            buttonColor = '#ff0000';\n            buttonTextColor = '#000000';\n            buttonText = \"Off\";\n            if (device.ledOn.value > 0) \n            {\n                buttonColor = '#00ff00';\n                buttonText = 'On';\n            }\n            $('#ledOnButtonId').css('color', buttonTextColor); \n            $('#ledOnButtonId').css('background-color', buttonColor); \n            $('#ledOnButtonId').text(buttonText); \n            if (device.ledToggle.value > 0) \n            {\n//                $('#ledOnButtonId').prop('disabled', true);\n                $('#ledOnButtonId').hide();\n            }\n            else\n            {\n//                $('#ledOnButtonId').prop('disabled', false);\n                $('#ledOnButtonId').show();\n            }\n        }\n",
+        "template": "// Update Readings Javascript\n        function updateDmaReadings()\n        {\n            $('#linkQualityId').text(device.linkQuality.value);\n            $('#signalLevelId').text(device.signalLevel.value);\n            historyStripChart.addTracePoints(device.ledState.value, device.loopDelay.value);\n            if (!loopDelayChanged)$('#loopDelayInputId').val(device.loopDelay.value);\n\n            if(device.ledState.value > 0)\n            {\n                $(\"#ledStateId\").attr(\"src\",\"/img/redLight.png\");\n            }\n            else\n            {\n                $(\"#ledStateId\").attr(\"src\",\"/img/yellowLight.png\");\n            }\n\n            var buttonColor = '#ff0000';\n            var buttonTextColor = '#000000';\n            var buttonText = \"Off\";\n            if (device.ledToggle.value > 0) \n            {\n                buttonColor = '#00ff00';\n                buttonText = 'On';\n            }\n            $('#ledToggleButtonId').css('color', buttonTextColor); \n            $('#ledToggleButtonId').css('background-color', buttonColor); \n            $('#ledToggleButtonId').text(buttonText); \n            \n            buttonColor = '#ff0000';\n            buttonTextColor = '#000000';\n            buttonText = \"Off\";\n            if (device.ledOn.value > 0) \n            {\n                buttonColor = '#00ff00';\n                buttonText = 'On';\n            }\n            $('#ledOnButtonId').css('color', buttonTextColor); \n            $('#ledOnButtonId').css('background-color', buttonColor); \n            $('#ledOnButtonId').text(buttonText); \n            if (device.ledToggle.value > 0) \n            {\n//                $('#ledOnButtonId').prop('disabled', true);\n                $('#ledOnButtonId').hide();\n            }\n            else\n            {\n//                $('#ledOnButtonId').prop('disabled', false);\n                $('#ledOnButtonId').show();\n            }\n        }\n",
         "output": "str",
         "x": 640,
         "y": 320,
@@ -5345,13 +5139,29 @@
         "type": "function",
         "z": "e17f7487.2a78e8",
         "name": "Update basic-01 Database entry with MQTT",
-        "func": "var device = \n{\n  \"deviceType\": \"basic\",\n  \"name\": \"01\",\n  \"arcPeriod\": 60000,\n  \"timeStamp\": 1579620007645,\n  \"lastArchive\": 1579619979487,\n  \"ledState\": {\n    \"action\": \"reading\",\n    \"type\": \"scalar\",\n    \"value\": 0,\n    \"unit\": \"unit\",\n    \"alarm\": {\n      \"value\": 0,\n      \"limits\": {\n        \"lolo\": -2,\n        \"low\": -1,\n        \"high\": 2,\n        \"hihi\": 3\n      },\n      \"notify\": {\n        \"name\": \"\",\n        \"number\": \"\",\n        \"time\": 0\n      }\n    }\n  },\n  \"linkQuality\": {\n    \"action\": \"reading\",\n    \"type\": \"scalar\",\n    \"value\": 67,\n    \"unit\": \"/70\",\n    \"alarm\": {\n      \"value\": 0,\n      \"limits\": {\n        \"lolo\": 30,\n        \"low\": 40,\n        \"high\": 71,\n        \"hihi\": 80\n      },\n      \"notify\": {\n        \"name\": \"\",\n        \"number\": \"\",\n        \"time\": 0\n      }\n    }\n  },\n  \"signalLevel\": {\n    \"action\": \"reading\",\n    \"type\": \"scalar\",\n    \"value\": -43,\n    \"unit\": \"dBm\",\n    \"alarm\": {\n      \"value\": 0,\n      \"limits\": {\n        \"lolo\": -70,\n        \"low\": -60,\n        \"high\": 0,\n        \"hihi\": 30\n      },\n      \"notify\": {\n        \"name\": \"\",\n        \"number\": \"\",\n        \"time\": 0\n      }\n    }\n  },\n  \"bt0RSSI\": {\n    \"action\": \"reading\",\n    \"type\": \"scalar\",\n    \"value\": 0,\n    \"unit\": \"dBm\",\n    \"alarm\": {\n      \"value\": 0,\n      \"limits\": {\n        \"lolo\": -70,\n        \"low\": -60,\n        \"high\": 0,\n        \"hihi\": 30\n      },\n      \"notify\": {\n        \"name\": \"\",\n        \"number\": \"\",\n        \"time\": 0\n      }\n    }\n  },\n  \"ledOn\": {\n    \"action\": \"setting\",\n    \"type\": \"scalar\",\n    \"value\": 0,\n    \"unit\": \"unit\",\n    \"alarm\": {\n      \"value\": 0,\n      \"limits\": {\n        \"lolo\": -2,\n        \"low\": -1,\n        \"high\": 2,\n        \"hihi\": 3\n      },\n      \"notify\": {\n        \"name\": \"\",\n        \"number\": \"\",\n        \"time\": 0\n      }\n    }\n  },\n  \"ledToggle\": {\n    \"action\": \"setting\",\n    \"type\": \"scalar\",\n    \"value\": 0,\n    \"unit\": \"unit\",\n    \"alarm\": {\n      \"value\": 0,\n      \"limits\": {\n        \"lolo\": -2,\n        \"low\": -1,\n        \"high\": 2,\n        \"hihi\": 3\n      },\n      \"notify\": {\n        \"name\": \"\",\n        \"number\": \"\",\n        \"time\": 0\n      }\n    }\n  },\n  \"loopDelay\": {\n    \"action\": \"setting\",\n    \"type\": \"scalar\",\n    \"value\": 1000,\n    \"unit\": \"unit\",\n    \"alarm\": {\n      \"value\": 0,\n      \"limits\": {\n        \"lolo\": 0,\n        \"low\":  0,\n        \"high\": 20000,\n        \"hihi\": 30000\n      },\n      \"notify\": {\n        \"name\": \"\",\n        \"number\": \"\",\n        \"time\": 0\n      }\n    }\n  }\n};\nreturn {topic:'blinky-lite/basic/01/setting', payload:device};",
+        "func": "var device = \n{\n  \"deviceType\": \"basic\",\n  \"name\": \"01\",\n  \"arcPeriod\": 60000,\n  \"timeStamp\": 1579620007645,\n  \"lastArchive\": 1579619979487,\n  \"ledState\": {\n    \"action\": \"reading\",\n    \"type\": \"scalar\",\n    \"value\": 0,\n    \"unit\": \"unit\",\n    \"alarm\": {\n      \"value\": 0,\n      \"limits\": {\n        \"lolo\": -2,\n        \"low\": -1,\n        \"high\": 2,\n        \"hihi\": 3\n      },\n      \"notify\": {\n        \"name\": \"\",\n        \"number\": \"\",\n        \"time\": 0\n      }\n    }\n  },\n  \"linkQuality\": {\n    \"action\": \"reading\",\n    \"type\": \"scalar\",\n    \"value\": 67,\n    \"unit\": \"/70\",\n    \"alarm\": {\n      \"value\": 0,\n      \"limits\": {\n        \"lolo\": 30,\n        \"low\": 40,\n        \"high\": 71,\n        \"hihi\": 80\n      },\n      \"notify\": {\n        \"name\": \"\",\n        \"number\": \"\",\n        \"time\": 0\n      }\n    }\n  },\n  \"signalLevel\": {\n    \"action\": \"reading\",\n    \"type\": \"scalar\",\n    \"value\": -43,\n    \"unit\": \"dBm\",\n    \"alarm\": {\n      \"value\": 0,\n      \"limits\": {\n        \"lolo\": -70,\n        \"low\": -60,\n        \"high\": 0,\n        \"hihi\": 30\n      },\n      \"notify\": {\n        \"name\": \"\",\n        \"number\": \"\",\n        \"time\": 0\n      }\n    }\n  },\n  \"ledOn\": {\n    \"action\": \"setting\",\n    \"type\": \"scalar\",\n    \"value\": 0,\n    \"unit\": \"unit\",\n    \"alarm\": {\n      \"value\": 0,\n      \"limits\": {\n        \"lolo\": -2,\n        \"low\": -1,\n        \"high\": 2,\n        \"hihi\": 3\n      },\n      \"notify\": {\n        \"name\": \"\",\n        \"number\": \"\",\n        \"time\": 0\n      }\n    }\n  },\n  \"ledToggle\": {\n    \"action\": \"setting\",\n    \"type\": \"scalar\",\n    \"value\": 0,\n    \"unit\": \"unit\",\n    \"alarm\": {\n      \"value\": 0,\n      \"limits\": {\n        \"lolo\": -2,\n        \"low\": -1,\n        \"high\": 2,\n        \"hihi\": 3\n      },\n      \"notify\": {\n        \"name\": \"\",\n        \"number\": \"\",\n        \"time\": 0\n      }\n    }\n  },\n  \"loopDelay\": {\n    \"action\": \"setting\",\n    \"type\": \"scalar\",\n    \"value\": 1000,\n    \"unit\": \"unit\",\n    \"alarm\": {\n      \"value\": 0,\n      \"limits\": {\n        \"lolo\": 0,\n        \"low\":  0,\n        \"high\": 20000,\n        \"hihi\": 30000\n      },\n      \"notify\": {\n        \"name\": \"\",\n        \"number\": \"\",\n        \"time\": 0\n      }\n    }\n  }\n};\nreturn {topic:'blinky-lite/basic/01/setting', payload:device};",
         "outputs": 1,
         "noerr": 0,
         "x": 390,
         "y": 1200,
         "wires": [
             []
+        ]
+    },
+    {
+        "id": "b80adbda.818ae8",
+        "type": "function",
+        "z": "e17f7487.2a78e8",
+        "name": "Create basic 02 Database entry",
+        "func": "var device = \n{\n  \"deviceType\": \"basic\",\n  \"name\": \"02\",\n  \"arcPeriod\": 60000,\n  \"timeStamp\": 1579620007645,\n  \"lastArchive\": 1579619979487,\n  \"ledState\": {\n    \"action\": \"reading\",\n    \"type\": \"scalar\",\n    \"value\": 0,\n    \"unit\": \"unit\",\n    \"alarm\": {\n      \"value\": 0,\n      \"limits\": {\n        \"lolo\": -2,\n        \"low\": -1,\n        \"high\": 2,\n        \"hihi\": 3\n      },\n      \"notify\": {\n        \"name\": \"\",\n        \"number\": \"\",\n        \"time\": 0\n      }\n    }\n  },\n  \"linkQuality\": {\n    \"action\": \"reading\",\n    \"type\": \"scalar\",\n    \"value\": 67,\n    \"unit\": \"/70\",\n    \"alarm\": {\n      \"value\": 0,\n      \"limits\": {\n        \"lolo\": 30,\n        \"low\": 40,\n        \"high\": 71,\n        \"hihi\": 80\n      },\n      \"notify\": {\n        \"name\": \"\",\n        \"number\": \"\",\n        \"time\": 0\n      }\n    }\n  },\n  \"signalLevel\": {\n    \"action\": \"reading\",\n    \"type\": \"scalar\",\n    \"value\": -43,\n    \"unit\": \"dBm\",\n    \"alarm\": {\n      \"value\": 0,\n      \"limits\": {\n        \"lolo\": -70,\n        \"low\": -60,\n        \"high\": 0,\n        \"hihi\": 30\n      },\n      \"notify\": {\n        \"name\": \"\",\n        \"number\": \"\",\n        \"time\": 0\n      }\n    }\n  },\n  \"ledOn\": {\n    \"action\": \"setting\",\n    \"type\": \"scalar\",\n    \"value\": 0,\n    \"unit\": \"unit\",\n    \"alarm\": {\n      \"value\": 0,\n      \"limits\": {\n        \"lolo\": -2,\n        \"low\": -1,\n        \"high\": 2,\n        \"hihi\": 3\n      },\n      \"notify\": {\n        \"name\": \"\",\n        \"number\": \"\",\n        \"time\": 0\n      }\n    }\n  },\n  \"ledToggle\": {\n    \"action\": \"setting\",\n    \"type\": \"scalar\",\n    \"value\": 0,\n    \"unit\": \"unit\",\n    \"alarm\": {\n      \"value\": 0,\n      \"limits\": {\n        \"lolo\": -2,\n        \"low\": -1,\n        \"high\": 2,\n        \"hihi\": 3\n      },\n      \"notify\": {\n        \"name\": \"\",\n        \"number\": \"\",\n        \"time\": 0\n      }\n    }\n  },\n  \"loopDelay\": {\n    \"action\": \"setting\",\n    \"type\": \"scalar\",\n    \"value\": 1000,\n    \"unit\": \"unit\",\n    \"alarm\": {\n      \"value\": 0,\n      \"limits\": {\n        \"lolo\": 0,\n        \"low\":  0,\n        \"high\": 20000,\n        \"hihi\": 30000\n      },\n      \"notify\": {\n        \"name\": \"\",\n        \"number\": \"\",\n        \"time\": 0\n      }\n    }\n  }\n};\nreturn {topic:'basic01Entry',payload:device};",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 350,
+        "y": 960,
+        "wires": [
+            [
+                "194e0a53.8d5cd6"
+            ]
         ]
     }
 ]
