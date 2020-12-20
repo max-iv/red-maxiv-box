@@ -16,5 +16,8 @@ node_modules
 .sessions.json
 .config.json
 *.backup
+.config.json.backup
+.flows.json.backup
+.sessions.json
 
 

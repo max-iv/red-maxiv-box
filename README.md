@@ -1,18 +1,17 @@
-# blinky-lite-basic box
+# sbirtem box
 ## need to add .env file with the following
-PROJECT=blinky-lite<br>
-ARCHIVETOPIC=blinky-lite\/basic\/+\/reading<br>
-MONGODBIP=mongodb+srv://blinky-lite...<br>
-MQTTCLIENTID=basic-box-01<br>
-MQTTSERVERIP=broker.shiftr.io<br>
-MQTTUSERNAME=xxx<br>
-MQTTPASSWORD=yyy<br>
-NEXMOAPIKEY=aaa<br>
-NEXMOAPISECRET=zzz<br>
-JWTKEYSECRET=bbb<br>
-SETTINGSPASSWORD=ccc<br>
-MAXDBSIZE=300000000<br>
-NODEREDCONFIGSECRET=ddd<br>
-<br/>
+PROJECT=sbirtem  
+ARCHIVETOPIC=sbirtem/+/+/reading  
+MONGODBIP=mongodb+srv://blinky-lite...  
+MQTTCLIENTID=sbirtem-box  
+MQTTSERVERIP=hhhh.cloudmqtt.com  
+MQTTUSERNAME=xxx  
+MQTTPASSWORD=yyy  
+NEXMOAPIKEY=aaa  
+NEXMOAPISECRET=zzz  
+JWTKEYSECRET=bbb  
+MAXDBSIZE=300000000  
+NODEREDCONFIGSECRET=ddd  
+  
 with no CR after the last line
 
