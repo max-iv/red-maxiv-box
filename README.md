@@ -1,9 +1,9 @@
-# sbirtem box
+# blinky-basic box
 ## need to add .env file with the following
-PROJECT=sbirtem  
-ARCHIVETOPIC=sbirtem/+/+/reading  
+PROJECT=blinky-lite-v2  
+ARCHIVETOPIC=blinky-lite-v2/+/+/reading  
 MONGODBIP=mongodb+srv://blinky-lite...  
-MQTTCLIENTID=sbirtem-box  
+MQTTCLIENTID=blinky-basic-box-local  
 MQTTSERVERIP=hhhh.cloudmqtt.com  
 MQTTUSERNAME=xxx  
 MQTTPASSWORD=yyy  
@@ -14,4 +14,5 @@ MAXDBSIZE=300000000
 NODEREDCONFIGSECRET=ddd  
   
 with no CR after the last line
+
 
