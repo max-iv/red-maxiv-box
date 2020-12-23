@@ -635,7 +635,7 @@
         "z": "dc20c6e0.0feb98",
         "name": "",
         "property": "payload",
-        "action": "",
+        "action": "obj",
         "pretty": false,
         "x": 310,
         "y": 380,
@@ -1886,7 +1886,7 @@
         "z": "b94899c9.b16088",
         "name": "",
         "property": "payload",
-        "action": "",
+        "action": "obj",
         "pretty": false,
         "x": 290,
         "y": 340,
@@ -2310,22 +2310,6 @@
         ]
     },
     {
-        "id": "45a7d04b.f97db",
-        "type": "json",
-        "z": "8475ab9.3d26058",
-        "name": "",
-        "property": "payload",
-        "action": "",
-        "pretty": false,
-        "x": 370,
-        "y": 660,
-        "wires": [
-            [
-                "908d7fde.10525"
-            ]
-        ]
-    },
-    {
         "id": "f62ae826.1bfb58",
         "type": "mqtt in",
         "z": "8475ab9.3d26058",
@@ -2335,43 +2319,10 @@
         "datatype": "auto",
         "broker": "84d80994.260508",
         "x": 110,
-        "y": 160,
+        "y": 80,
         "wires": [
             [
                 "7a299117.69d3"
-            ]
-        ]
-    },
-    {
-        "id": "908d7fde.10525",
-        "type": "switch",
-        "z": "8475ab9.3d26058",
-        "name": "",
-        "property": "payload.topic",
-        "propertyType": "msg",
-        "rules": [
-            {
-                "t": "eq",
-                "v": "getArchive",
-                "vt": "str"
-            },
-            {
-                "t": "eq",
-                "v": "sendSettingToMqtt",
-                "vt": "str"
-            }
-        ],
-        "checkall": "true",
-        "repair": false,
-        "outputs": 2,
-        "x": 490,
-        "y": 660,
-        "wires": [
-            [
-                "b6b8b063.9f62f"
-            ],
-            [
-                "d04273a3.1257f"
             ]
         ]
     },
@@ -2384,8 +2335,8 @@
         "qos": "0",
         "retain": "false",
         "broker": "84d80994.260508",
-        "x": 880,
-        "y": 720,
+        "x": 1300,
+        "y": 600,
         "wires": []
     },
     {
@@ -2460,8 +2411,8 @@
         "id": "ee0ee61b.770a18",
         "type": "subflow:e13648d6.d698c8",
         "z": "8475ab9.3d26058",
-        "x": 1070,
-        "y": 640,
+        "x": 1310,
+        "y": 480,
         "wires": []
     },
     {
@@ -2550,7 +2501,7 @@
         "fieldType": "msg",
         "format": "javascript",
         "syntax": "mustache",
-        "template": "        var ws;\n        var userID = -1;\n        var useWebSocketsFlag = true;\n        var project = '{{{payload.project}}}';\n        var heartBeatImage = false;\n        var wsUri = '';\n        var wsConnected = false;\n\n        function webSocketConnected()\n        {\n            return wsConnected;\n        }\n        function useWebSockets(webSocketsFlag)\n        {\n            useWebSocketsFlag = webSocketsFlag;\n        }\n        function wsConnectC()\n        {\n            if (!useWebSocketsFlag)\n            {\n                return;\n            }\n            if (wsUri.length < 1)\n            {\n                var uri = window.location.href.split('://');\n                var wslead = 'ws://';\n                if (uri[0] == 'https') wslead = 'wss://';\n                var questionLocation = uri[1].indexOf('?');\n                if (questionLocation >= 0)\n                {\n                    uri[1] = uri[1].substring(0,questionLocation);\n//                    console.log(uri[1]);\n                }\n                if (uri[1].indexOf('/') < (uri[1].length - 1))\n                {\n                    wsUri = wslead + uri[1] + '/websocket';\n                }\n                else\n                {\n                    wsUri = wslead + uri[1] + 'websocket';\n                }\n            }\n            ws = new WebSocket(wsUri);\n            ws.onmessage = function(event)\n            {\n                onWebSocketMessage(JSON.parse(event.data));\n        \n            };\n            ws.onopen = function()\n            {\n                console.log(\"Websocket connected\");\n                wsConnected = true;\n                $('#webSocketStatus').html('Open');\n                $('#reOpenWebSocketButton').hide();\n                $('#webSocketStatusRow').css('padding-bottom','0px');\n                $('#webSocketStatusCard').hide();\n                onWebSocketOpen();\n            };\n            ws.onclose = function()\n            {\n                console.log(\"Websocket closed\");\n                wsConnected = false;\n                $('#webSocketStatus').html('Closed');\n                $('#reOpenWebSocketButton').show();\n                $('#webSocketStatusCard').show();\n                $('#webSocketStatusRow').css('padding-bottom','25px');\n                onWebSocketClose();\n                wsConnectC();\n            };\n        }\n        function sendWebSocketMessageObject(message)\n        {\n            if (!webSocketConnected())\n            {\n                console.log(\"Reconnecting WebSocket\");\n                wsConnectC();\n                setTimeout(function(){ ws.send(JSON.stringify(message)); }, 2000);\n            }\n            else\n            {\n                ws.send(JSON.stringify(message));\n            }\n        }\n\n        function getRandomInt(max)\n        {\n          return Math.floor(Math.random() * Math.floor(max));\n        }\n        $( document ).ready(function()\n        {\n            userID  = {{{payload.userID}}};\n            if (!useWebSocketsFlag)\n            {\n                $('#webSocketStatusRow').css('padding-bottom','0px');\n                $('#webSocketStatusCard').hide();\n            }\n            wsConnectC();\n            onDocumentReady();\n       });\n        $( function() \n        {\n            $( \"#acknowledgeDialog\" ).dialog(\n                {\n                    width:    500,\n                    autoOpen: false,\n                    buttons:\n                    [\n                        {\n                            text: \"Ok\",\n                            click: function() { $( this ).dialog( \"close\" );},\n                            showText: false\n                        },\n                   ]\n                });\n            $( \"#messageDialog\" ).dialog(\n                {\n                    width:    500,\n                    autoOpen: false,\n                    buttons:[]\n                });\n        } );\n        function optionDialog(headerText, title, text, buttonTexts, buttonFunctions)\n        {\n            var buttonDefinitions = [];\n            for (var ii = 0; ii < buttonTexts.length; ++ii)\n            {\n                buttonDefinitions[ii] = \n                    {\n                        text: buttonTexts[ii],\n                        click: buttonFunctions[ii],\n                        showText: false\n                    };\n            }\n            $( \"#optionDialog\" ).dialog( \"option\", \"title\", headerText );   \n            $( \"#optionDialog\" ).dialog( \"option\", \"buttons\", buttonDefinitions);\n            $( \"#optionDialogTitle\" ).html(title);\n            $( \"#optionDialogText\" ).html(text);\n            $( \"#optionDialog\" ).dialog( \"open\" );\n        }\n        $( function() \n        {\n            $( \"#optionDialog\" ).dialog(\n                {\n                    width:    500,\n                    autoOpen: false,\n                    buttons:\n                    [\n                        {\n                            text: \"Ok\",\n                            click: function() {$( this ).dialog( \"close\" );},\n                            showText: false\n                        },\n                        {\n                            text: \"Cancel\",\n                            click: function() {$( this ).dialog( \"close\" );},\n                            showText: false\n                        },\n                   ]\n                });\n        } );\n        function acknowledgeDialog(headerText, title, text)\n        {\n            $( \"#acknowledgeDialog\" ).dialog( \"option\", \"title\", headerText );    \n            $( \"#acknowledgeDialogTitle\" ).html(title);\n            $( \"#acknowledgeDialogText\" ).html(text);\n            $( \"#acknowledgeDialog\" ).dialog( \"open\" );\n        }\n        function messageDialog(headerText, title, text)\n        {\n            $( \"#messageDialog\" ).dialog( \"option\", \"title\", headerText );    \n            $( \"#messageDialogTitle\" ).html(title);\n            $( \"#messageDialogText\" ).html(text);\n            $( \"#messageDialog\" ).dialog( \"open\" );\n        }\n       function sendSettingToMqtt(mqttMessage)\n        {\n            var socketMessage = \n            {\n                topic       : 'sendSettingToMqtt',\n                mqttMessage : mqttMessage,\n                userID      : userID\n            };\n            sendWebSocketMessageObject({topic : 'sendSettingToMqtt', mqttMessage : mqttMessage, userID : userID});\n        }\n        function heartbeat()\n        {\n            heartBeatImage = !heartBeatImage;\n            var heartBeatImageSrc = '/img/heartRed.png';\n            if (heartBeatImage) heartBeatImageSrc = '/img/heartPink.png';\n            $('#heartBeatID').attr('src',heartBeatImageSrc);\n        }\n",
+        "template": "        var ws;\n        var userID = -1;\n        var useWebSocketsFlag = true;\n        var project = '{{{payload.project}}}';\n        var heartBeatImage = false;\n        var wsUri = '';\n        var wsConnected = false;\n\n        function webSocketConnected()\n        {\n            return wsConnected;\n        }\n        function useWebSockets(webSocketsFlag)\n        {\n            useWebSocketsFlag = webSocketsFlag;\n        }\n        function wsConnectC()\n        {\n            if (!useWebSocketsFlag)\n            {\n                return;\n            }\n            if (wsUri.length < 1)\n            {\n                var uri = window.location.href.split('://');\n                var wslead = 'ws://';\n                if (uri[0] == 'https') wslead = 'wss://';\n                var questionLocation = uri[1].indexOf('?');\n                if (questionLocation >= 0)\n                {\n                    uri[1] = uri[1].substring(0,questionLocation);\n//                    console.log(uri[1]);\n                }\n                if (uri[1].indexOf('/') < (uri[1].length - 1))\n                {\n                    wsUri = wslead + uri[1] + '/websocket';\n                }\n                else\n                {\n                    wsUri = wslead + uri[1] + 'websocket';\n                }\n            }\n            ws = new WebSocket(wsUri);\n            ws.onmessage = function(event)\n            {\n                onWebSocketMessage(JSON.parse(event.data));\n        \n            };\n            ws.onopen = function()\n            {\n                console.log(\"Websocket connected\");\n                wsConnected = true;\n                $('#webSocketStatus').html('Open');\n                $('#reOpenWebSocketButton').hide();\n                $('#webSocketStatusRow').css('padding-bottom','0px');\n                $('#webSocketStatusCard').hide();\n                onWebSocketOpen();\n            };\n            ws.onclose = function()\n            {\n                console.log(\"Websocket closed\");\n                wsConnected = false;\n                $('#webSocketStatus').html('Closed');\n                $('#reOpenWebSocketButton').show();\n                $('#webSocketStatusCard').show();\n                $('#webSocketStatusRow').css('padding-bottom','25px');\n                onWebSocketClose();\n                wsConnectC();\n            };\n        }\n        function sendWebSocketMessageObject(message)\n        {\n            if (!webSocketConnected())\n            {\n                console.log(\"Reconnecting WebSocket\");\n                wsConnectC();\n                setTimeout(function(){ ws.send(JSON.stringify(message)); }, 2000);\n            }\n            else\n            {\n                ws.send(JSON.stringify(message));\n            }\n        }\n\n        function getRandomInt(max)\n        {\n          return Math.floor(Math.random() * Math.floor(max));\n        }\n        $( document ).ready(function()\n        {\n            userID  = {{{payload.userID}}};\n            if (!useWebSocketsFlag)\n            {\n                $('#webSocketStatusRow').css('padding-bottom','0px');\n                $('#webSocketStatusCard').hide();\n            }\n            wsConnectC();\n            onDocumentReady();\n       });\n        $( function() \n        {\n            $( \"#acknowledgeDialog\" ).dialog(\n                {\n                    width:    500,\n                    autoOpen: false,\n                    buttons:\n                    [\n                        {\n                            text: \"Ok\",\n                            click: function() { $( this ).dialog( \"close\" );},\n                            showText: false\n                        },\n                   ]\n                });\n            $( \"#messageDialog\" ).dialog(\n                {\n                    width:    500,\n                    autoOpen: false,\n                    buttons:[]\n                });\n        } );\n        function optionDialog(headerText, title, text, buttonTexts, buttonFunctions)\n        {\n            var buttonDefinitions = [];\n            for (var ii = 0; ii < buttonTexts.length; ++ii)\n            {\n                buttonDefinitions[ii] = \n                    {\n                        text: buttonTexts[ii],\n                        click: buttonFunctions[ii],\n                        showText: false\n                    };\n            }\n            $( \"#optionDialog\" ).dialog( \"option\", \"title\", headerText );   \n            $( \"#optionDialog\" ).dialog( \"option\", \"buttons\", buttonDefinitions);\n            $( \"#optionDialogTitle\" ).html(title);\n            $( \"#optionDialogText\" ).html(text);\n            $( \"#optionDialog\" ).dialog( \"open\" );\n        }\n        $( function() \n        {\n            $( \"#optionDialog\" ).dialog(\n                {\n                    width:    500,\n                    autoOpen: false,\n                    buttons:\n                    [\n                        {\n                            text: \"Ok\",\n                            click: function() {$( this ).dialog( \"close\" );},\n                            showText: false\n                        },\n                        {\n                            text: \"Cancel\",\n                            click: function() {$( this ).dialog( \"close\" );},\n                            showText: false\n                        },\n                   ]\n                });\n        } );\n        function acknowledgeDialog(headerText, title, text)\n        {\n            $( \"#acknowledgeDialog\" ).dialog( \"option\", \"title\", headerText );    \n            $( \"#acknowledgeDialogTitle\" ).html(title);\n            $( \"#acknowledgeDialogText\" ).html(text);\n            $( \"#acknowledgeDialog\" ).dialog( \"open\" );\n        }\n        function messageDialog(headerText, title, text)\n        {\n            $( \"#messageDialog\" ).dialog( \"option\", \"title\", headerText );    \n            $( \"#messageDialogTitle\" ).html(title);\n            $( \"#messageDialogText\" ).html(text);\n            $( \"#messageDialog\" ).dialog( \"open\" );\n        }\n        function heartbeat()\n        {\n            heartBeatImage = !heartBeatImage;\n            var heartBeatImageSrc = '/img/heartRed.png';\n            if (heartBeatImage) heartBeatImageSrc = '/img/heartPink.png';\n            $('#heartBeatID').attr('src',heartBeatImageSrc);\n        }\n",
         "output": "str",
         "x": 430,
         "y": 40,
@@ -2694,7 +2645,7 @@
         "y": 60,
         "wires": [
             [
-                "9d23d6da.506538"
+                "49150800.c088c8"
             ]
         ]
     },
@@ -2768,7 +2719,7 @@
         "y": 120,
         "wires": [
             [
-                "52f89484.3e06ac"
+                "1e9bf28b.344d8d"
             ]
         ]
     },
@@ -2933,7 +2884,7 @@
         "y": 280,
         "wires": [
             [
-                "13e19a9a.409655"
+                "b213f397.94307"
             ]
         ]
     },
@@ -3489,26 +3440,11 @@
         "name": "",
         "collection": "archiver",
         "operation": "find.toArray",
-        "x": 510,
-        "y": 440,
+        "x": 670,
+        "y": 820,
         "wires": [
             [
                 "28d7885b.29ba58"
-            ]
-        ]
-    },
-    {
-        "id": "e0b147d3.332368",
-        "type": "websocket in",
-        "z": "8475ab9.3d26058",
-        "name": "/blinky-basic/websocket",
-        "server": "e71c9288.03dd3",
-        "client": "",
-        "x": 160,
-        "y": 660,
-        "wires": [
-            [
-                "45a7d04b.f97db"
             ]
         ]
     },
@@ -3535,7 +3471,7 @@
         "z": "e17f7487.2a78e8",
         "name": "",
         "property": "payload",
-        "action": "",
+        "action": "obj",
         "pretty": false,
         "x": 310,
         "y": 80,
@@ -3836,7 +3772,7 @@
         "type": "function",
         "z": "2dba0745.a98d98",
         "name": "Check for Project Cookies",
-        "func": "var projectCookie = msg.req.cookies[global.get('project')];\nif(projectCookie == undefined)\n{\n    msg.cookies = { };\n    msg.cookies[global.get('project') + 'Url'] = msg.req.url;\n    return [msg,null];\n}\nmsg.token = projectCookie;\nreturn [null,msg];",
+        "func": "var projectCookie = msg.req.cookies[global.get('project')];\nif(projectCookie == undefined)\n{\n    msg.cookies = { };\n    msg.cookies[global.get('project') + 'Url'] = msg.req.url;\n    return [msg,null];\n}\nmsg.token = projectCookie;\nmsg.payload['roleToken'] = msg.token;\nreturn [null,msg];",
         "outputs": 2,
         "noerr": 0,
         "initialize": "",
@@ -3909,7 +3845,7 @@
         "type": "function",
         "z": "2dba0745.a98d98",
         "name": "Check permitted roles",
-        "func": "var permittedRole = false;\nfor (irole = 0; irole < msg.token.length; ++irole)\n{\n    if (msg.token[irole] == msg.payload.allowedRole) permittedRole = true;\n}\nif (permittedRole)\n{\n    return [msg,null];\n}\nmsg.payload.errorInfo = 'Error: App not accessible';\nmsg.cookies = { };\nmsg.cookies[global.get('project') + 'Url'] = msg.req.url;\n\nreturn [null,msg];",
+        "func": "var permittedRole = false;\nnode.warn(msg.payload.allowedRoles);\nnode.warn(msg.token);\nfor (irole = 0; irole < msg.payload.allowedRoles.length; ++irole)\n{\n    for (itoken = 0; itoken < msg.token.length; ++itoken)\n    {\n        if (msg.token[itoken] == msg.payload.allowedRoles[irole]) permittedRole = true;\n    }\n}\nif (permittedRole)\n{\n    return [msg,null];\n}\nmsg.payload.errorInfo = 'Error: App not accessible';\nmsg.cookies = { };\nmsg.cookies[global.get('project') + 'Url'] = msg.req.url;\n\nreturn [null,msg];",
         "outputs": 2,
         "noerr": 0,
         "initialize": "",
@@ -4615,24 +4551,6 @@
         ]
     },
     {
-        "id": "9d23d6da.506538",
-        "type": "function",
-        "z": "90f83725.6dae08",
-        "name": "Allowed Role",
-        "func": "msg.payload.allowedRole = 'expert';\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "x": 530,
-        "y": 60,
-        "wires": [
-            [
-                "781dbbc5.3a2e14"
-            ]
-        ]
-    },
-    {
         "id": "781dbbc5.3a2e14",
         "type": "subflow:495f0879.c831c8",
         "z": "90f83725.6dae08",
@@ -4646,24 +4564,6 @@
         ]
     },
     {
-        "id": "52f89484.3e06ac",
-        "type": "function",
-        "z": "90f83725.6dae08",
-        "name": "Allowed Role",
-        "func": "msg.payload.allowedRole = 'expert';\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "x": 530,
-        "y": 120,
-        "wires": [
-            [
-                "44733e49.ba7ec"
-            ]
-        ]
-    },
-    {
         "id": "44733e49.ba7ec",
         "type": "subflow:495f0879.c831c8",
         "z": "90f83725.6dae08",
@@ -4673,24 +4573,6 @@
         "wires": [
             [
                 "3836124.ae654ee"
-            ]
-        ]
-    },
-    {
-        "id": "13e19a9a.409655",
-        "type": "function",
-        "z": "90f83725.6dae08",
-        "name": "Allowed Role",
-        "func": "msg.payload.allowedRole = 'expert';\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "x": 530,
-        "y": 280,
-        "wires": [
-            [
-                "64665cab.c46c24"
             ]
         ]
     },
@@ -4713,7 +4595,7 @@
         "type": "function",
         "z": "dc20c6e0.0feb98",
         "name": "Allowed Role",
-        "func": "msg.payload.allowedRole = 'expert';\nreturn msg;",
+        "func": "msg.payload.allowedRoles = ['coreView'];\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -4744,7 +4626,7 @@
         "type": "function",
         "z": "dc20c6e0.0feb98",
         "name": "Allowed Role",
-        "func": "msg.payload.allowedRole = 'expert';\nreturn msg;",
+        "func": "msg.payload.allowedRoles = ['coreView'];\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -4775,7 +4657,7 @@
         "type": "function",
         "z": "dc20c6e0.0feb98",
         "name": "Allowed Role",
-        "func": "msg.payload.allowedRole = 'expert';\nreturn msg;",
+        "func": "msg.payload.allowedRoles = ['coreView'];\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -4806,7 +4688,7 @@
         "type": "function",
         "z": "dc20c6e0.0feb98",
         "name": "Allowed Role",
-        "func": "msg.payload.allowedRole = 'expert';\nreturn msg;",
+        "func": "msg.payload.allowedRoles = ['coreView'];\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -4837,7 +4719,7 @@
         "type": "function",
         "z": "b94899c9.b16088",
         "name": "Allowed Role",
-        "func": "msg.payload.allowedRole = 'expert';\nreturn msg;",
+        "func": "msg.payload.allowedRoles = ['coreView'];\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -4868,7 +4750,7 @@
         "type": "function",
         "z": "b94899c9.b16088",
         "name": "Allowed Role",
-        "func": "msg.payload.allowedRole = 'expert';\nreturn msg;",
+        "func": "msg.payload.allowedRoles = ['coreView'];\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -4898,13 +4780,13 @@
         "id": "13193347.eb277d",
         "type": "function",
         "z": "9c854ea3.68416",
-        "name": "Allowed Role",
-        "func": "msg.payload.allowedRole = 'expert';\nreturn msg;",
+        "name": "Allowed Roles",
+        "func": "msg.payload.allowedRoles = ['appView'];\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
-        "x": 110,
+        "x": 120,
         "y": 80,
         "wires": [
             [
@@ -4923,21 +4805,6 @@
                 "71ce0943.81bf18"
             ]
         ]
-    },
-    {
-        "id": "765e7bf5.14dea4",
-        "type": "debug",
-        "z": "8475ab9.3d26058",
-        "name": "",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "x": 1470,
-        "y": 80,
-        "wires": []
     },
     {
         "id": "1c73bc26.072f94",
@@ -5258,7 +5125,7 @@
         "type": "subflow:8341090a.df9758",
         "z": "a858ad3a.95706",
         "name": "",
-        "x": 1150,
+        "x": 1170,
         "y": 60,
         "wires": []
     },
@@ -5273,7 +5140,7 @@
         "syntax": "mustache",
         "template": "Blinky-Basic Apps",
         "output": "str",
-        "x": 720,
+        "x": 740,
         "y": 60,
         "wires": [
             [
@@ -5292,7 +5159,7 @@
         "syntax": "mustache",
         "template": "basicYellow.png",
         "output": "str",
-        "x": 570,
+        "x": 590,
         "y": 60,
         "wires": [
             [
@@ -5304,13 +5171,13 @@
         "id": "433db7b4.42d728",
         "type": "function",
         "z": "a858ad3a.95706",
-        "name": "Allowed Role",
-        "func": "msg.payload.allowedRole = 'expert';\nreturn msg;",
+        "name": "Allowed Roles",
+        "func": "msg.payload.allowedRoles = ['appView','coreView'];\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
-        "x": 230,
+        "x": 240,
         "y": 60,
         "wires": [
             [
@@ -5322,7 +5189,7 @@
         "id": "7413bfa1.a556d",
         "type": "subflow:2d027d69.1fdeb2",
         "z": "a858ad3a.95706",
-        "x": 400,
+        "x": 420,
         "y": 60,
         "wires": [
             [
@@ -5341,7 +5208,7 @@
         "syntax": "mustache",
         "template": "<!-- Body HTML -->\n    <div class='card'>\n        <p class='card-title'>Blinky-Basic Apps</p>\n        <div class='card-body' align=\"center\">\n            <div class='row' style='padding-bottom: 25px;'>\n                <div class=\"col-md-1\" align=\"center\">\n                </div>\n                <div class=\"col-md-5\" align=\"center\">\n                    <span class='card-text' >Application</span>\n                </div>\n                <div class=\"col-md-5\" align=\"center\">\n                    <select class=\"custom-select big-text\" id=\"application\">\n                        <option value=\"blinky-basic\">blinky-basic</option>\n                    </select>\n                </div>\n                <div class=\"col-md-1\" align=\"center\">\n                </div>\n            </div>\n            <div class='row' style='padding-bottom: 25px;'>\n                <div class=\"col-md-1\" align=\"center\">\n                </div>\n                <div class=\"col-md-5\" align=\"center\">\n                    <span class='card-text' >Trace A</span>\n                </div>\n                <div class=\"col-md-5\" align=\"center\">\n                    <select class=\"custom-select big-text\" id=\"traceA\">\n                        <option value=\"none\">none</option>\n                        <option value=\"01\">01</option>\n                        <option value=\"02\">02</option>\n                    </select>\n                </div>\n                <div class=\"col-md-1\" align=\"center\">\n                </div>\n            </div>\n            <div class='row' style='padding-bottom: 25px;'>\n                <div class=\"col-md-1\" align=\"center\">\n                </div>\n                <div class=\"col-md-5\" align=\"center\">\n                    <span class='card-text' >Trace B</span>\n                </div>\n                <div class=\"col-md-5\" align=\"center\">\n                    <select class=\"custom-select big-text\" id=\"traceB\">\n                        <option value=\"none\">none</option>\n                        <option value=\"Demo-01\">Demo-01</option>\n                        <option value=\"Demo-02\">Demo-02</option>\n                        <option value=\"BrainCool\">BrainCool</option>\n                        <option value=\"Connectitude\">Connectitude</option>\n                    </select>\n                </div>\n                <div class=\"col-md-1\" align=\"center\">\n                </div>\n            </div>\n            <div class='row' style='padding-bottom: 25px;'>\n                <div class=\"col-md-1\" align=\"center\">\n                </div>\n                <div class=\"col-md-5\" align=\"center\">\n                    <span class='card-text' >Trace C</span>\n                </div>\n                <div class=\"col-md-5\" align=\"center\">\n                    <select class=\"custom-select big-text\" id=\"traceC\">\n                        <option value=\"none\">none</option>\n                        <option value=\"Demo-01\">Demo-01</option>\n                        <option value=\"Demo-02\">Demo-02</option>\n                        <option value=\"BrainCool\">BrainCool</option>\n                        <option value=\"Connectitude\">Connectitude</option>\n                    </select>\n                </div>\n                <div class=\"col-md-1\" align=\"center\">\n                </div>\n            </div>\n            <div class='row' style='padding-bottom: 25px;'>\n                <div class=\"col-md-1\" align=\"center\">\n                </div>\n                <div class=\"col-md-5\" align=\"center\">\n                    <span class='card-text' >Trace D</span>\n                </div>\n                <div class=\"col-md-5\" align=\"center\">\n                    <select class=\"custom-select big-text\" id=\"traceD\">\n                        <option value=\"none\">none</option>\n                        <option value=\"Demo-01\">Demo-01</option>\n                        <option value=\"Demo-02\">Demo-02</option>\n                        <option value=\"BrainCool\">BrainCool</option>\n                        <option value=\"Connectitude\">Connectitude</option>\n                    </select>\n                </div>\n                <div class=\"col-md-1\" align=\"center\">\n                </div>\n            </div>\n            <div class='row' style='padding-bottom: 25px;'>\n                <div class=\"col-md-1\" align=\"center\">\n                </div>\n                <div class=\"col-md-5\" align=\"center\">\n                </div>\n                <div class=\"col-md-5\" align=\"center\">\n                    <button class='btn btn-block card-button big-text' id='launchAppButton' onclick=\"launchApp()\" >Launch</button>\n                </div>\n                <div class=\"col-md-1\" align=\"center\">\n                </div>\n            </div>\n        </div>\n    </div>\n    <div class='container' width=\"100%\">\n        <div class='row' style='padding-top: 25px;'>\n            <div class=\"col-md-3\" align=\"center\">\n            </div>\n            <div class=\"col-md-6\" align=\"center\">\n                <a class='btn btn-block card-button big-text' href='/core'>Utilites</a>\n            </div>\n            <div class=\"col-md-3\" align=\"center\">\n            </div>\n        </div>\n    </div>\n",
         "output": "str",
-        "x": 1010,
+        "x": 1030,
         "y": 60,
         "wires": [
             [
@@ -5360,7 +5227,7 @@
         "syntax": "mustache",
         "template": "        useWebSockets(false);\n        function onDocumentReady()\n        {\n        }\n        function onWebSocketOpen()\n        {\n        }\n        function onWebSocketClose()\n        {\n            \n        }\n        function onWebSocketMessage(msg)\n        {\n        }\n        function launchApp()\n        {\n            var application = $('#application').val();\n            var devices = [];\n            if ($('#traceA').val() != 'none') devices.push($('#traceA').val());\n            if ($('#traceB').val() != 'none') devices.push($('#traceB').val());\n            if ($('#traceC').val() != 'none') devices.push($('#traceC').val());\n            if ($('#traceD').val() != 'none') devices.push($('#traceD').val());\n            if (devices.length < 1)\n            {\n                acknowledgeDialog('Acknowledge', 'Error', 'At least one trace must have a valid device');\n                return;\n            }\n            var link = \"/\" + application + '?name=' + devices[0];\n            if (devices.length > 1)\n            for (var ii = 1; ii < devices.length; ++ii)\n            {\n                link = link + ',' + devices[ii];\n            }\n            window.location.href = link;\n        }\n",
         "output": "str",
-        "x": 870,
+        "x": 890,
         "y": 60,
         "wires": [
             [
@@ -5456,7 +5323,7 @@
         "z": "e17f7487.2a78e8",
         "name": "",
         "property": "payload",
-        "action": "",
+        "action": "obj",
         "pretty": false,
         "x": 550,
         "y": 80,
@@ -5499,7 +5366,7 @@
         "y": 120,
         "wires": [
             [
-                "4943dafd.596124"
+                "c98976c.3996888"
             ]
         ]
     },
@@ -5515,10 +5382,10 @@
         "template": "// StripChart Widget\n        class StripChart\n        {\n           constructor(plotConfig) \n            {\n                this.plotConfig = plotConfig;\n                this.plotStartTime = new Date().getTime();\n                this.layout =\n                {\n                    showlegend  : true,\n                    legend      : { x: 0, y: 1.15},\n                    height      : plotConfig.height,\n                    width       : plotConfig.width,\n                    xaxis       :\n                    {\n//                        title: 'Seconds since ' + new Date(this.plotStartTime).toLocaleString(),\n                        type: 'date'\n                    },\n                    yaxis:\n                    {\n                        title           : plotConfig.trace1Title,\n                        titlefont       : {color: plotConfig.trace1Color},\n                        tickfont        : {color:plotConfig.trace1Color},\n                        gridcolor       : plotConfig.trace1GridColor,\n                        zerolinecolor   : plotConfig.trace1GridColor,\n                        linecolor       : plotConfig.trace1GridColor,\n//                        range: [0, 2]\n        \n                    },\n                    yaxis2:\n                    {\n                        title           : plotConfig.trace2Title,\n                        titlefont       : {color: plotConfig.trace2Color},\n                        tickfont        : {color:plotConfig.trace2Color},\n                        gridcolor       : plotConfig.trace2GridColor,\n                        zerolinecolor   : plotConfig.trace2GridColor,\n                        linecolor       : plotConfig.trace2GridColor,\n                        overlaying: 'y',\n                        side: 'right',\n//                        range: [0, 2]\n                    },\n                    margin: \n                        {\n                            t: 30, //top margin\n        //                    l: 0, //left margin\n        //                    r: 0, //right margin\n        //                    b: 20 //bottom margin\n                        },\n                };\n                this.trace1 = \n                {\n                    x: [],\n                    y: [],\n                    name: plotConfig.trace1Title,\n                    yaxis: 'y1',\n                    type: 'scatter',\n                    mode: 'markers',\n                    marker: {\n                        color: this.plotConfig.trace1Color,\n                        size: 10,\n                        symbol: 'circle'\n                    }        \n            \n                };\n                this.trace2 = \n                {\n                    x: [],\n                    y: [],\n                    name: plotConfig.trace2Title,\n                    yaxis: 'y2',\n                    type: 'scatter',\n                    mode: 'markers',\n                    marker: {\n                        color: this.plotConfig.trace2Color,\n                        size: 10,\n                        symbol: 'square'\n                    }        \n            \n                };\n            }\n            addTracePoints(trace1Pt, trace2Pt)\n            {\n//                var now = (new Date().getTime() - this.plotStartTime) / 1000;\n                var now = new Date().getTime();\n                var plotBeginning = now - this.plotConfig.plotLength;\n                var removeDone = false;\n                while(!removeDone)\n                {\n                    if (this.trace1.x[0] < plotBeginning)\n                    {\n                        this.trace1.x.shift();\n                        this.trace1.y.shift();\n                        this.trace2.x.shift();\n                        this.trace2.y.shift();\n                    }\n                    else\n                    {\n                        removeDone = true;\n                    }\n                }\n        \n                this.trace1.x.push(now);\n                this.trace1.y.push(trace1Pt);\n                this.trace2.x.push(now);\n                this.trace2.y.push(trace2Pt);\n                Plotly.newPlot(this.plotConfig.htmlId, [this.trace1, this.trace2], this.layout);\n            }\n        }\n",
         "output": "str",
         "x": 720,
-        "y": 40,
+        "y": 80,
         "wires": [
             [
-                "c98976c.3996888"
+                "2b97e6dd.6d7b5a"
             ]
         ]
     },
@@ -5531,13 +5398,13 @@
         "fieldType": "msg",
         "format": "javascript",
         "syntax": "mustache",
-        "template": "// Global Javascript\n        var plotConfig = \n        {\n            trace1Title : 'Led State',\n            trace1Color : '#557a95',\n            trace1GridColor : '#beceda',\n            trace2Title : 'Loop Delay (mS)',\n            trace2Color : '#f2a31f',\n            plotLength  : 600000,\n            width   : '',\n            height  :   '500',\n            htmlId  :   'historyStripChart'\n        };\n        var restfulDevice = \n        {\n            deviceType  : '{{{payload.script.deviceType}}}',\n            name        : '{{{payload.script.name}}}',\n            project     : '{{{payload.script.project}}}'\n        };\n        var mqttDevice = null;\n        var device = null;\n        let historyStripChart = new StripChart(plotConfig);\n        var loopDelayChanged = false;\n \n        var archiveRequestList = [];\n        var archiveList = [];\n\n        var pingInterval = 5000;\n        var lastPing = 0;\n\n        useWebSockets(true);\n        function onDocumentReady()\n        {\n            $('#archiveCardId').hide();\n            $('#loopDelayButtonId').hide();\n            setInterval(function()\n            {\n                var now = new Date().getTime();\n                if ((now - lastPing) > pingInterval)\n                {\n                    lastPing = now;\n                    var mqttMessage = \n                    {\n                        topic   : restfulDevice.project + '/' +  restfulDevice.deviceType + '/' +  restfulDevice.name + '/ping',\n                        payload :  true\n                    };\n                    sendSettingToMqtt(mqttMessage);\n                }\n            }, 1000);\n        }\n        function onWebSocketOpen()\n        {\n            getArchive(24);\n        }\n        function onWebSocketClose()\n        {\n            \n        }\n        function onWebSocketMessage(msg)\n        {\n            switch(msg.topic)\n            {\n                case 'test':\n                    var restored = JSON.parse(pako.inflate(msg.payload, { to: 'string' }));\n                    console.log(restored);\n                    break;\n                case 'readings':\n                    if ((msg.mqttDevice.name == restfulDevice.name) && (msg.mqttDevice.deviceType == restfulDevice.deviceType)  && (msg.mqttDevice.project == restfulDevice.project) )\n                    {\n                        lastPing = new Date().getTime();\n                        heartbeat();\n                        device = JSON.parse(pako.inflate(msg.payload, { to: 'string' }));\n                        mqttDevice = msg.mqttDevice;\n                        updateDmaReadings();\n                    }\n                    break;\n                case 'getArchiveValues':\n                    if (msg.userID == userID)\n                    {\n                        if ((msg.payload.device.deviceType == restfulDevice.deviceType) && (msg.payload.device.name == restfulDevice.name) )\n                            putArchiveValues(msg.payload);\n                    }\n                    break;\n                default:\n                // code block\n            }\n        }\n        function setScalarValue(settingValue, attrName)\n        {\n            var settingAttr = device[attrName];\n            if ( (settingAttr.alarm.limits.lolo <= settingValue) && (settingValue <= settingAttr.alarm.limits.hihi) )\n            {\n                settingAttr.value = settingValue;\n                var mqttMessage = \n                {\n                    topic   : mqttDevice.project + '/' +  mqttDevice.deviceType + '/' +  mqttDevice.name + '/setting',\n                    payload : pako.deflate(JSON.stringify(device))\n                };\n                sendSettingToMqtt(mqttMessage);\n            } \n            else\n            {\n                acknowledgeDialog('Acknowledge', 'Error', 'Entry outside range! (' + settingAttr.alarm.limits.lolo.toString() + '-' + settingAttr.alarm.limits.hihi.toString() + ' ' + settingAttr.unit);\n            }\n        }\n        function loopDelayChange()\n        {\n            loopDelayChanged = true;\n            $('#loopDelayButtonId').show();\n        }\n        function loopDelay()\n        {\n            $('#loopDelayButtonId').hide();\n            if (isNaN($('#loopDelayInputId').val()))\n            {\n                loopDelayChanged = false;\n                return;\n            }\n            setScalarValue(Number($('#loopDelayInputId').val()), 'loopDelay');\n            loopDelayChanged = false;\n        }\n",
+        "template": "// Global Javascript\n        useWebSockets(true);\n        var mqttDevice = null;\n        var device = null;\n        var archiveRequestList = [];\n        var archiveList = [];\n        var pingInterval = 5000;\n        var lastPing = 0;\n\n        var restfulDevice = \n        {\n            deviceType  : '{{{payload.script.deviceType}}}',\n            name        : '{{{payload.script.name}}}',\n            project     : '{{{payload.script.project}}}'\n        };\n        var roleToken = '{{{payload.roleToken}}}';\n        console.log(roleToken.length);\n        \n        var plotConfig = \n        {\n            trace1Title : 'Led State',\n            trace1Color : '#557a95',\n            trace1GridColor : '#beceda',\n            trace2Title : 'Loop Delay (mS)',\n            trace2Color : '#f2a31f',\n            plotLength  : 600000,\n            width   : '',\n            height  :   '500',\n            htmlId  :   'historyStripChart'\n        };\n        let historyStripChart = new StripChart(plotConfig);\n        var loopDelayChanged = false;\n \n        function onDocumentReady()\n        {\n            $('#archiveCardId').hide();\n            $('#loopDelayButtonId').hide();\n            setInterval(function()\n            {\n                var now = new Date().getTime();\n                if ((now - lastPing) > pingInterval)\n                {\n                    lastPing = now;\n                    var webSocketMsg = \n                    {\n                        topic   : 'ping',\n                        payload :\n                            {\n                                topic   : restfulDevice.project + '/' +  restfulDevice.deviceType + '/' +  restfulDevice.name + '/ping',\n                                payload : true\n                            },\n                        userID    : userID,\n                        token     : roleToken\n                    };\n                    ws.send(JSON.stringify(webSocketMsg));\n                }\n            }, 1000);\n        }\n        function onWebSocketOpen()\n        {\n            getArchive(24);\n        }\n        function onWebSocketClose()\n        {\n            \n        }\n        function onWebSocketMessage(msg)\n        {\n            switch(msg.topic)\n            {\n                case 'readings':\n                    if ((msg.mqttDevice.name == restfulDevice.name) && (msg.mqttDevice.deviceType == restfulDevice.deviceType)  && (msg.mqttDevice.project == restfulDevice.project) )\n                    {\n                        lastPing = new Date().getTime();\n                        heartbeat();\n                        device = JSON.parse(pako.inflate(msg.payload, { to: 'string' }));\n                        mqttDevice = msg.mqttDevice;\n                        updateDmaReadings();\n                    }\n                    break;\n                case 'readDatabase':\n                    if (msg.userID == userID)\n                    {\n                        if ((msg.payload.device.deviceType == restfulDevice.deviceType) && (msg.payload.device.name == restfulDevice.name) )\n                            putArchiveValues(msg.payload);\n                    }\n                    break;\n                case 'actionError':\n                    if (msg.userID == userID)\n                    {\n                        acknowledgeDialog('Error', 'Action Error', msg.payload);\n                    }\n\n                    break;\n                default:\n                // code block\n            }\n        }\n        function setScalarValue(settingValue, attrName)\n        {\n            var settingAttr = device[attrName];\n            if ( (settingAttr.alarm.limits.lolo <= settingValue) && (settingValue <= settingAttr.alarm.limits.hihi) )\n            {\n                settingAttr.value = settingValue;\n                var webSocketMsg = \n                {\n                    topic   : 'setting',\n                    payload :\n                        {\n                            topic   : mqttDevice.project + '/' +  mqttDevice.deviceType + '/' +  mqttDevice.name + '/setting',\n                            payload : pako.deflate(JSON.stringify(device))\n                        },\n                    userID    : userID,\n                    token     : roleToken\n                };\n                ws.send(JSON.stringify(webSocketMsg));\n            } \n            else\n            {\n                acknowledgeDialog('Acknowledge', 'Error', 'Entry outside range! (' + settingAttr.alarm.limits.lolo.toString() + '-' + settingAttr.alarm.limits.hihi.toString() + ' ' + settingAttr.unit);\n            }\n        }\n        function loopDelayChange()\n        {\n            loopDelayChanged = true;\n            $('#loopDelayButtonId').show();\n        }\n        function loopDelay()\n        {\n            $('#loopDelayButtonId').hide();\n            if (isNaN($('#loopDelayInputId').val()))\n            {\n                loopDelayChanged = false;\n                return;\n            }\n            setScalarValue(Number($('#loopDelayInputId').val()), 'loopDelay');\n            loopDelayChanged = false;\n        }\n",
         "output": "str",
         "x": 690,
-        "y": 80,
+        "y": 40,
         "wires": [
             [
-                "2b97e6dd.6d7b5a"
+                "4943dafd.596124"
             ]
         ]
     },
@@ -5569,7 +5436,7 @@
         "fieldType": "msg",
         "format": "javascript",
         "syntax": "mustache",
-        "template": "// Edit Temp JavaScript\n       $( function() \n        {\n            $( \"#editDeviceDialog\" ).dialog(\n                {\n//                    closeOnEscape: false,\n//                    open: function(event, ui) {$(\".ui-dialog-titlebar-close\", ui.dialog | ui).hide();},\n                    width:    640,\n                    autoOpen: false,\n                    buttons:\n                    [\n                        {\n                            text: \"Set\",\n                            click: function() {setDevice(); $( this ).dialog( \"close\" );},\n                            showText: false\n                        },\n                        {\n                            text: \"Cancel\",\n                            click: function() \n                            {\n                                $( this ).dialog( \"close\" ); \n                            },\n                            showText: false\n                        }\n                    ]\n                });\n        } );\n        function editDevice(attrName)\n        {\n            $( \"#editDeviceDialog\" ).dialog( \"option\", \"title\", \"Edit\"); \n            editedAttribute = attrName;\n            $( \"#editDeviceDialogAttribute\").html(attrName);\n\n            var attr = device[attrName];\n            $( \"#loloAlarm\").val(attr.alarm.limits.lolo);\n            $( \"#lowAlarm\").val(attr.alarm.limits.low);\n            $( \"#highAlarm\").val(attr.alarm.limits.high);\n            $( \"#hihiAlarm\").val(attr.alarm.limits.hihi);\n            $( \"#notifyName\").val(attr.alarm.notify.name);\n            $( \"#notifyNumber\").val(attr.alarm.notify.number);\n\n            $( \"#editDeviceDialog\" ).dialog( \"open\" );\n        }\n        function setDevice()\n        {\n            var attr = device[editedAttribute];\n            if (isNaN($('#loloAlarm').val()) \n                || isNaN($('#lowAlarm').val()) \n                || isNaN($('#highAlarm').val()) \n                || isNaN($('#hihiAlarm').val()))\n            {\n                acknowledgeDialog('Error', 'Entry not a number!', editedAttribute);\n                editedAttribute = '';\n                return;\n            }\n            editedAttribute = '';\n\n            attr.alarm.limits.lolo = Number($( \"#loloAlarm\").val());\n            attr.alarm.limits.low = Number($( \"#lowAlarm\").val());\n            attr.alarm.limits.high = Number($( \"#highAlarm\").val());\n            attr.alarm.limits.hihi = Number($( \"#hihiAlarm\").val());\n            attr.alarm.notify.number =  $( \"#notifyNumber\").val();\n            attr.alarm.notify.name = $( \"#notifyName\").val();\n            var mqttMessage = \n            {\n                topic   : mqttDevice.project + '/' +  mqttDevice.deviceType + '/' +  mqttDevice.name + '/setting',\n                payload : pako.deflate(JSON.stringify(device))\n            };\n            sendSettingToMqtt(mqttMessage);\n        }\n",
+        "template": "// Edit Temp JavaScript\n       $( function() \n        {\n            $( \"#editDeviceDialog\" ).dialog(\n                {\n//                    closeOnEscape: false,\n//                    open: function(event, ui) {$(\".ui-dialog-titlebar-close\", ui.dialog | ui).hide();},\n                    width:    640,\n                    autoOpen: false,\n                    buttons:\n                    [\n                        {\n                            text: \"Set\",\n                            click: function() {setDevice(); $( this ).dialog( \"close\" );},\n                            showText: false\n                        },\n                        {\n                            text: \"Cancel\",\n                            click: function() \n                            {\n                                $( this ).dialog( \"close\" ); \n                            },\n                            showText: false\n                        }\n                    ]\n                });\n        } );\n        function editDevice(attrName)\n        {\n            $( \"#editDeviceDialog\" ).dialog( \"option\", \"title\", \"Edit\"); \n            editedAttribute = attrName;\n            $( \"#editDeviceDialogAttribute\").html(attrName);\n\n            var attr = device[attrName];\n            $( \"#loloAlarm\").val(attr.alarm.limits.lolo);\n            $( \"#lowAlarm\").val(attr.alarm.limits.low);\n            $( \"#highAlarm\").val(attr.alarm.limits.high);\n            $( \"#hihiAlarm\").val(attr.alarm.limits.hihi);\n            $( \"#notifyName\").val(attr.alarm.notify.name);\n            $( \"#notifyNumber\").val(attr.alarm.notify.number);\n\n            $( \"#editDeviceDialog\" ).dialog( \"open\" );\n        }\n        function setDevice()\n        {\n            var attr = device[editedAttribute];\n            if (isNaN($('#loloAlarm').val()) \n                || isNaN($('#lowAlarm').val()) \n                || isNaN($('#highAlarm').val()) \n                || isNaN($('#hihiAlarm').val()))\n            {\n                acknowledgeDialog('Error', 'Entry not a number!', editedAttribute);\n                editedAttribute = '';\n                return;\n            }\n            editedAttribute = '';\n\n            attr.alarm.limits.lolo = Number($( \"#loloAlarm\").val());\n            attr.alarm.limits.low = Number($( \"#lowAlarm\").val());\n            attr.alarm.limits.high = Number($( \"#highAlarm\").val());\n            attr.alarm.limits.hihi = Number($( \"#hihiAlarm\").val());\n            attr.alarm.notify.number =  $( \"#notifyNumber\").val();\n            attr.alarm.notify.name = $( \"#notifyName\").val();\n            sendWebSocketMessageObject(\n            {\n                roleToken   : roleToken,\n                userID      : userID,\n                action      : 'setting',\n                message     :\n                    {\n                        topic   : mqttDevice.project + '/' +  mqttDevice.deviceType + '/' +  mqttDevice.name + '/setting',\n                        payload : pako.deflate(JSON.stringify(device))\n                    }\n            });\n        }\n",
         "output": "str",
         "x": 700,
         "y": 240,
@@ -5702,7 +5569,7 @@
         "fieldType": "msg",
         "format": "javascript",
         "syntax": "mustache",
-        "template": "// Archive JavaScript\n        function getArchive(hours)\n        { \n            $('#archiveCardId').show();\n\n//            if (hours > 2) messageDialog('Info', 'Wait', 'Getting Archive Data');\n            $('#archive2hrButton').attr(\"disabled\", true); \n            $('#archive4hrButton').attr(\"disabled\", true); \n            $('#archive8hrButton').attr(\"disabled\", true); \n            $('#archive24hrButton').attr(\"disabled\", true); \n            $('#archive72hrButton').attr(\"disabled\", true); \n            $('#archive168hrButton').attr(\"disabled\", true); \n            $('#archive2hrButton').css('color', 'var(--color5)'); \n            $('#archive2hrButton').css('background-color', 'var(--color1)'); \n            $('#archive4hrButton').css('color', 'var(--color5)'); \n            $('#archive4hrButton').css('background-color', 'var(--color1)'); \n            $('#archive8hrButton').css('color', 'var(--color5)'); \n            $('#archive8hrButton').css('background-color', 'var(--color1)'); \n            $('#archive24hrButton').css('color', 'var(--color5)'); \n            $('#archive24hrButton').css('background-color', 'var(--color1)'); \n            $('#archive72hrButton').css('color', 'var(--color5)'); \n            $('#archive72hrButton').css('background-color', 'var(--color1)'); \n            $('#archive168hrButton').css('color', 'var(--color5)'); \n            $('#archive168hrButton').css('background-color', 'var(--color1)'); \n            switch(hours)\n            {\n                case 2:\n                    $('#archive2hrButton').css('color', 'var(--color1)'); \n                    $('#archive2hrButton').css('background-color', 'var(--color5)'); \n                    break;\n                case 4:\n                    $('#archive4hrButton').css('color', 'var(--color1)'); \n                    $('#archive4hrButton').css('background-color', 'var(--color5)'); \n                    break;\n                case 8:\n                    $('#archive8hrButton').css('color', 'var(--color1)'); \n                    $('#archive8hrButton').css('background-color', 'var(--color5)'); \n                    break;\n                case 24:\n                    $('#archive24hrButton').css('color', 'var(--color1)'); \n                    $('#archive24hrButton').css('background-color', 'var(--color5)'); \n                    break;\n                case 72:\n                    $('#archive72hrButton').css('color', 'var(--color1)'); \n                    $('#archive72hrButton').css('background-color', 'var(--color5)'); \n                    break;\n                case 168:\n                    $('#archive168hrButton').css('color', 'var(--color1)'); \n                    $('#archive168hrButton').css('background-color', 'var(--color5)'); \n                    break;\n                default:\n                // code block\n            }\n\n            archiveRequestList = [];\n            archiveList = [];\n            var stopDate = new Date().getTime();\n            var startDate = stopDate - hours * 3600000;\n            archiveRequestList[0] = \n            {\n                deviceType : restfulDevice.deviceType,\n                name : restfulDevice.name, \n                attr : ['ledState','loopDelay'],\n                startDate: startDate, \n                stopDate: stopDate,\n            };\n            getArchiveValues();\n        }\n        function getArchiveValues()\n        {\n            sendWebSocketMessageObject(\n                {\n                    topic       : 'getArchive',\n                    userID      : userID,\n                    device      : archiveRequestList[0],\n                 });\n            archiveRequestList.shift();\n            return;\n        }\n        function putArchiveValues(data)\n        {\n            archiveList.push(data);\n            if (archiveRequestList.length > 0)\n            {\n                getArchiveValues();\n            }\n            else\n            {\n                plotArchive();\n            }\n        }\n\n        function plotArchive()\n        {\n//            $( \"#messageDialog\" ).dialog( \"close\" );\n            var layout =\n            {\n                showlegend  : true,\n                legend      : { x: 0, y: 1.15},\n                height      : '500',\n                width       : '',\n                xaxis       :\n                {\n//                    title: 'Hours since ' + new Date(archiveList[0].device.stopDate).toLocaleString(),\n                    type: 'date'\n                },\n                yaxis:\n                {\n                    title           : plotConfig.trace1Title,\n                    titlefont       : {color: plotConfig.trace1Color},\n                    tickfont        : {color:plotConfig.trace1Color},\n                    gridcolor       : plotConfig.trace1GridColor,\n                    zerolinecolor   : plotConfig.trace1GridColor,\n                    linecolor       : plotConfig.trace1GridColor\n\n                },\n                yaxis2:\n                {\n                    title           : plotConfig.trace2Title,\n                    titlefont       : {color: plotConfig.trace2Color},\n                    tickfont        : {color:plotConfig.trace2Color},\n                    gridcolor       : plotConfig.trace2GridColor,\n                    zerolinecolor   : plotConfig.trace2GridColor,\n                    linecolor       : plotConfig.trace2GridColor,\n                    overlaying: 'y',\n                    side: 'right'\n                },\n                margin: \n                    {\n                        t: 30, //top margin\n    //                    l: 0, //left margin\n    //                    r: 0, //right margin\n    //                    b: 20 //bottom margin\n                    },\n            };\n            this.trace1 = \n            {\n                x: [],\n                y: [],\n                name: plotConfig.trace1Title,\n                yaxis: 'y1',\n                type: 'scatter',\n                mode: 'markers',\n                marker: {\n                    color: this.plotConfig.trace1Color,\n                    size: 10,\n                    symbol: 'circle'\n                }        \n    \n            };\n            this.trace2 = \n            {\n                x: [],\n                y: [],\n                name: plotConfig.trace2Title,\n                yaxis: 'y2',\n                type: 'scatter',\n                mode: 'markers',\n                marker: {\n                    color: this.plotConfig.trace2Color,\n                    size: 10,\n                    symbol: 'square'\n                }        \n         \n            };\n            for (var ii = 0; ii < archiveList[0].trace.length; ++ii)\n            {\n//                var x = (archiveList[0].trace[ii].timeStamp - archiveList[0].device.stopDate) / 3600000.0;\n                var x = archiveList[0].trace[ii].timeStamp;\n                trace1.x[ii] = x;\n                trace1.y[ii] = archiveList[0].trace[ii][archiveList[0].device.attr[0]] ;\n                trace2.x[ii] = x;\n                trace2.y[ii] = archiveList[0].trace[ii][archiveList[0].device.attr[1]];\n            }\n\n\n            Plotly.newPlot('archiveChart', [trace1,trace2], layout);\n            $('#archive2hrButton').attr(\"disabled\", false); \n            $('#archive4hrButton').attr(\"disabled\", false); \n            $('#archive8hrButton').attr(\"disabled\", false); \n            $('#archive24hrButton').attr(\"disabled\", false); \n            $('#archive72hrButton').attr(\"disabled\", false); \n            $('#archive168hrButton').attr(\"disabled\", false); \n        }\n",
+        "template": "// Archive JavaScript\n        function getArchive(hours)\n        { \n            $('#archiveCardId').show();\n\n//            if (hours > 2) messageDialog('Info', 'Wait', 'Getting Archive Data');\n            $('#archive2hrButton').attr(\"disabled\", true); \n            $('#archive4hrButton').attr(\"disabled\", true); \n            $('#archive8hrButton').attr(\"disabled\", true); \n            $('#archive24hrButton').attr(\"disabled\", true); \n            $('#archive72hrButton').attr(\"disabled\", true); \n            $('#archive168hrButton').attr(\"disabled\", true); \n            $('#archive2hrButton').css('color', 'var(--color5)'); \n            $('#archive2hrButton').css('background-color', 'var(--color1)'); \n            $('#archive4hrButton').css('color', 'var(--color5)'); \n            $('#archive4hrButton').css('background-color', 'var(--color1)'); \n            $('#archive8hrButton').css('color', 'var(--color5)'); \n            $('#archive8hrButton').css('background-color', 'var(--color1)'); \n            $('#archive24hrButton').css('color', 'var(--color5)'); \n            $('#archive24hrButton').css('background-color', 'var(--color1)'); \n            $('#archive72hrButton').css('color', 'var(--color5)'); \n            $('#archive72hrButton').css('background-color', 'var(--color1)'); \n            $('#archive168hrButton').css('color', 'var(--color5)'); \n            $('#archive168hrButton').css('background-color', 'var(--color1)'); \n            switch(hours)\n            {\n                case 2:\n                    $('#archive2hrButton').css('color', 'var(--color1)'); \n                    $('#archive2hrButton').css('background-color', 'var(--color5)'); \n                    break;\n                case 4:\n                    $('#archive4hrButton').css('color', 'var(--color1)'); \n                    $('#archive4hrButton').css('background-color', 'var(--color5)'); \n                    break;\n                case 8:\n                    $('#archive8hrButton').css('color', 'var(--color1)'); \n                    $('#archive8hrButton').css('background-color', 'var(--color5)'); \n                    break;\n                case 24:\n                    $('#archive24hrButton').css('color', 'var(--color1)'); \n                    $('#archive24hrButton').css('background-color', 'var(--color5)'); \n                    break;\n                case 72:\n                    $('#archive72hrButton').css('color', 'var(--color1)'); \n                    $('#archive72hrButton').css('background-color', 'var(--color5)'); \n                    break;\n                case 168:\n                    $('#archive168hrButton').css('color', 'var(--color1)'); \n                    $('#archive168hrButton').css('background-color', 'var(--color5)'); \n                    break;\n                default:\n                // code block\n            }\n\n            archiveRequestList = [];\n            archiveList = [];\n            var stopDate = new Date().getTime();\n            var startDate = stopDate - hours * 3600000;\n            archiveRequestList[0] = \n            {\n                deviceType : restfulDevice.deviceType,\n                name : restfulDevice.name, \n                attr : ['ledState','loopDelay'],\n                startDate: startDate, \n                stopDate: stopDate,\n            };\n            getArchiveValues();\n        }\n        function getArchiveValues()\n        {\n            var webSocketMsg = \n            {\n                topic   : 'readDatabase',\n                payload :\n                    {\n                        device      : archiveRequestList[0]\n                    },\n                userID    : userID,\n                token     : roleToken\n            };\n            ws.send(JSON.stringify(webSocketMsg));\n            archiveRequestList.shift();\n            return;\n        }\n        function putArchiveValues(data)\n        {\n            archiveList.push(data);\n            if (archiveRequestList.length > 0)\n            {\n                getArchiveValues();\n            }\n            else\n            {\n                plotArchive();\n            }\n        }\n\n        function plotArchive()\n        {\n//            $( \"#messageDialog\" ).dialog( \"close\" );\n            var layout =\n            {\n                showlegend  : true,\n                legend      : { x: 0, y: 1.15},\n                height      : '500',\n                width       : '',\n                xaxis       :\n                {\n//                    title: 'Hours since ' + new Date(archiveList[0].device.stopDate).toLocaleString(),\n                    type: 'date'\n                },\n                yaxis:\n                {\n                    title           : plotConfig.trace1Title,\n                    titlefont       : {color: plotConfig.trace1Color},\n                    tickfont        : {color:plotConfig.trace1Color},\n                    gridcolor       : plotConfig.trace1GridColor,\n                    zerolinecolor   : plotConfig.trace1GridColor,\n                    linecolor       : plotConfig.trace1GridColor\n\n                },\n                yaxis2:\n                {\n                    title           : plotConfig.trace2Title,\n                    titlefont       : {color: plotConfig.trace2Color},\n                    tickfont        : {color:plotConfig.trace2Color},\n                    gridcolor       : plotConfig.trace2GridColor,\n                    zerolinecolor   : plotConfig.trace2GridColor,\n                    linecolor       : plotConfig.trace2GridColor,\n                    overlaying: 'y',\n                    side: 'right'\n                },\n                margin: \n                    {\n                        t: 30, //top margin\n    //                    l: 0, //left margin\n    //                    r: 0, //right margin\n    //                    b: 20 //bottom margin\n                    },\n            };\n            this.trace1 = \n            {\n                x: [],\n                y: [],\n                name: plotConfig.trace1Title,\n                yaxis: 'y1',\n                type: 'scatter',\n                mode: 'markers',\n                marker: {\n                    color: this.plotConfig.trace1Color,\n                    size: 10,\n                    symbol: 'circle'\n                }        \n    \n            };\n            this.trace2 = \n            {\n                x: [],\n                y: [],\n                name: plotConfig.trace2Title,\n                yaxis: 'y2',\n                type: 'scatter',\n                mode: 'markers',\n                marker: {\n                    color: this.plotConfig.trace2Color,\n                    size: 10,\n                    symbol: 'square'\n                }        \n         \n            };\n            for (var ii = 0; ii < archiveList[0].trace.length; ++ii)\n            {\n//                var x = (archiveList[0].trace[ii].timeStamp - archiveList[0].device.stopDate) / 3600000.0;\n                var x = archiveList[0].trace[ii].timeStamp;\n                trace1.x[ii] = x;\n                trace1.y[ii] = archiveList[0].trace[ii][archiveList[0].device.attr[0]] ;\n                trace2.x[ii] = x;\n                trace2.y[ii] = archiveList[0].trace[ii][archiveList[0].device.attr[1]];\n            }\n\n\n            Plotly.newPlot('archiveChart', [trace1,trace2], layout);\n            $('#archive2hrButton').attr(\"disabled\", false); \n            $('#archive4hrButton').attr(\"disabled\", false); \n            $('#archive8hrButton').attr(\"disabled\", false); \n            $('#archive24hrButton').attr(\"disabled\", false); \n            $('#archive72hrButton').attr(\"disabled\", false); \n            $('#archive168hrButton').attr(\"disabled\", false); \n        }\n",
         "output": "str",
         "x": 690,
         "y": 200,
@@ -5721,7 +5588,7 @@
         "fieldType": "msg",
         "format": "javascript",
         "syntax": "mustache",
-        "template": "        function ledToggle()\n        {\n            if (device.ledToggle.value > 0)\n            {\n                device.ledToggle.value = 0;\n            }\n            else\n            {\n                device.ledToggle.value = 1;\n                \n            }\n            $('#ledToggleButtonId').css('color', 'black'); \n            $('#ledToggleButtonId').css('background-color', 'grey'); \n            $('#ledToggleButtonId').text('?'); \n            var mqttMessage = \n            {\n                topic   : mqttDevice.project + '/' +  mqttDevice.deviceType + '/' +  mqttDevice.name + '/setting',\n                payload : pako.deflate(JSON.stringify(device))\n            };\n            sendSettingToMqtt(mqttMessage);\n        }\n        function ledOn()\n        {\n            if (device.ledOn.value > 0)\n            {\n                device.ledOn.value = 0;\n            }\n            else\n            {\n                device.ledOn.value = 1;\n                \n            }\n            $('#ledOnButtonId').css('color', 'black'); \n            $('#ledOnButtonId').css('background-color', 'grey'); \n            $('#ledOnButtonId').text('?'); \n            var mqttMessage = \n            {\n                topic   : mqttDevice.project + '/' +  mqttDevice.deviceType + '/' +  mqttDevice.name + '/setting',\n                payload : pako.deflate(JSON.stringify(device))\n            };\n            sendSettingToMqtt(mqttMessage);\n        }\n",
+        "template": "        function ledToggle()\n        {\n            if (device.ledToggle.value > 0)\n            {\n                device.ledToggle.value = 0;\n            }\n            else\n            {\n                device.ledToggle.value = 1;\n                \n            }\n            $('#ledToggleButtonId').css('color', 'black'); \n            $('#ledToggleButtonId').css('background-color', 'grey'); \n            $('#ledToggleButtonId').text('?'); \n            var webSocketMsg = \n            {\n                topic   : 'setting',\n                payload :\n                    {\n                        topic   : mqttDevice.project + '/' +  mqttDevice.deviceType + '/' +  mqttDevice.name + '/setting',\n                        payload : pako.deflate(JSON.stringify(device))\n                    },\n                userID    : userID,\n                token     : roleToken\n            };\n            ws.send(JSON.stringify(webSocketMsg));\n        }\n        function ledOn()\n        {\n            if (device.ledOn.value > 0)\n            {\n                device.ledOn.value = 0;\n            }\n            else\n            {\n                device.ledOn.value = 1;\n                \n            }\n            $('#ledOnButtonId').css('color', 'black'); \n            $('#ledOnButtonId').css('background-color', 'grey'); \n            $('#ledOnButtonId').text('?'); \n            var webSocketMsg = \n            {\n                topic   : 'setting',\n                payload :\n                    {\n                        topic   : mqttDevice.project + '/' +  mqttDevice.deviceType + '/' +  mqttDevice.name + '/setting',\n                        payload : pako.deflate(JSON.stringify(device))\n                    },\n                userID    : userID,\n                token     : roleToken\n            };\n            ws.send(JSON.stringify(webSocketMsg));\n        }\n",
         "output": "str",
         "x": 710,
         "y": 160,
@@ -5756,10 +5623,10 @@
         "z": "8475ab9.3d26058",
         "name": "",
         "property": "payload",
-        "action": "",
+        "action": "obj",
         "pretty": false,
         "x": 270,
-        "y": 160,
+        "y": 80,
         "wires": [
             [
                 "764116fd.f6e648"
@@ -5784,7 +5651,7 @@
         "repair": false,
         "outputs": 1,
         "x": 610,
-        "y": 160,
+        "y": 80,
         "wires": [
             [
                 "5f767381.0ac26c"
@@ -5802,7 +5669,7 @@
         "initialize": "",
         "finalize": "",
         "x": 450,
-        "y": 160,
+        "y": 80,
         "wires": [
             [
                 "81c39fe.b208a6"
@@ -5818,7 +5685,7 @@
             "7e343bf8.8fec14"
         ],
         "x": 695,
-        "y": 160,
+        "y": 80,
         "wires": []
     },
     {
@@ -5829,45 +5696,25 @@
         "server": "e71c9288.03dd3",
         "client": "",
         "x": 1050,
-        "y": 160,
+        "y": 80,
         "wires": []
     },
     {
         "id": "7e343bf8.8fec14",
         "type": "link in",
         "z": "8475ab9.3d26058",
-        "name": "device socket",
+        "name": "blinky basic input socket",
         "links": [
             "5f767381.0ac26c",
-            "e1a8363e.6beae8"
+            "6b79628a.0393ec",
+            "e1a8363e.6beae8",
+            "1e710224.de723e"
         ],
         "x": 895,
-        "y": 160,
+        "y": 80,
         "wires": [
             [
                 "68378c41.1d2814"
-            ]
-        ]
-    },
-    {
-        "id": "d04273a3.1257f",
-        "type": "function",
-        "z": "8475ab9.3d26058",
-        "name": "Filter Websocket",
-        "func": "var mqttMessageSplit = msg.payload.mqttMessage.topic.split('/');\nvar newMsg = \n{\n    topic:msg.payload.mqttMessage.topic, \n    payload:msg.payload.mqttMessage.payload,\n    userID  : msg.payload.userID\n};\nif(mqttMessageSplit[3] == 'ping')\n{\n    return [null,newMsg];\n}\nif(mqttMessageSplit[3] == 'setting')\n{\n    return [newMsg,null];\n}\n\n",
-        "outputs": 2,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "x": 650,
-        "y": 680,
-        "wires": [
-            [
-                "1c2ceb85.01cf44",
-                "2132a017.ba23f"
-            ],
-            [
-                "2132a017.ba23f"
             ]
         ]
     },
@@ -5876,8 +5723,8 @@
         "type": "gzip",
         "z": "8475ab9.3d26058",
         "name": "",
-        "x": 810,
-        "y": 640,
+        "x": 1050,
+        "y": 480,
         "wires": [
             [
                 "d0fb8153.688bb"
@@ -5890,10 +5737,10 @@
         "z": "8475ab9.3d26058",
         "name": "",
         "property": "payload",
-        "action": "",
+        "action": "obj",
         "pretty": false,
-        "x": 930,
-        "y": 640,
+        "x": 1170,
+        "y": 480,
         "wires": [
             [
                 "ee0ee61b.770a18"
@@ -5936,11 +5783,13 @@
         "type": "function",
         "z": "8475ab9.3d26058",
         "name": "Setup Archive Query",
-        "func": "var projectionFilter =  \n{\n    projection:\n    {\n        _id                         :   0, \n        deviceType                  :   1,  \n        name                        :   1,  \n        timeStamp                   :   1 \n    } \n};\nfor (var ii = 0; ii < msg.payload.device.attr.length; ++ii)\n{\n    projectionFilter.projection[msg.payload.device.attr[ii]] = 1;\n}\nvar queryFilter = \n{\n    $and :\n    [\n        {\n            deviceType: msg.payload.device.deviceType\n        },\n        {\n            name: msg.payload.device.name\n        },\n        {\n            timeStamp :\n            {\n                $gte: msg.payload.device.startDate,\n                $lte: msg.payload.device.stopDate\n            }\n        }\n    ] \n    \n}\nvar newMsg = \n{\n    topic           : 'getArchiveValues',\n    userID          : msg.payload.userID,\n    payload         : [queryFilter, projectionFilter],\n    device          : msg.payload.device,\n};\nreturn newMsg;\n",
+        "func": "var projectionFilter =  \n{\n    projection:\n    {\n        _id                         :   0, \n        deviceType                  :   1,  \n        name                        :   1,  \n        timeStamp                   :   1 \n    } \n};\nfor (var ii = 0; ii < msg.payload.device.attr.length; ++ii)\n{\n    projectionFilter.projection[msg.payload.device.attr[ii]] = 1;\n}\nvar queryFilter = \n{\n    $and :\n    [\n        {\n            deviceType: msg.payload.device.deviceType\n        },\n        {\n            name: msg.payload.device.name\n        },\n        {\n            timeStamp :\n            {\n                $gte: msg.payload.device.startDate,\n                $lte: msg.payload.device.stopDate\n            }\n        }\n    ] \n    \n}\nvar newMsg = \n{\n    topic           : msg.topic,\n    userID          : msg.userID,\n    payload         : [queryFilter, projectionFilter],\n    device          : msg.payload.device,\n};\nreturn newMsg;\n",
         "outputs": 1,
         "noerr": 0,
-        "x": 540,
-        "y": 500,
+        "initialize": "",
+        "finalize": "",
+        "x": 400,
+        "y": 820,
         "wires": [
             [
                 "a3efdc0a.76eff"
@@ -5952,13 +5801,13 @@
         "type": "function",
         "z": "8475ab9.3d26058",
         "name": "Sort Archive Data",
-        "func": "function objectLength( object ) {\n    var length = 0;\n    for( var key in object ) {\n        if( object.hasOwnProperty(key) ) {\n            ++length;\n        }\n    }\n    return length;\n}\n\nfunction sortByKey(arr, key) \n{\n    return arr.sort( function(a, b) \n        {\n            var x = a[key]; \n            var y = b[key];\n            return ((x < y) ? -1 : ((x > y) ? 1 : 0));\n        } );\n}\n\nvar numRecords = objectLength(msg.payload);\nif (numRecords < 1)\n{\n    return {\n        topic : msg.device.deviceType,\n        payload:{\n            topic           : 'getArchiveValues',\n            payload         : {device: msg.device, trace:null},\n            userID          : msg.userID,\n        }\n    };\n}\nvar records = [];\nfor (var ii = 0; ii < numRecords; ++ii) records[ii] = msg.payload[ii]; \nsortByKey(records, 'timeStamp');\nvar trace = [];\nfor (var ii = 0; ii < numRecords; ++ii)\n{\n    trace[ii] = {timeStamp: records[ii].timeStamp};\n    for (var ij = 0; ij < msg.device.attr.length; ++ij)\n    {\n        trace[ii][msg.device.attr[ij]] = records[ii][msg.device.attr[ij]];\n    }\n}\n\nreturn {\n    topic : msg.device.deviceType,\n    payload:{\n        topic           : 'getArchiveValues',\n        payload         : {device: msg.device, trace: trace},\n        userID          : msg.userID,\n    }\n};\n",
+        "func": "function objectLength( object ) {\n    var length = 0;\n    for( var key in object ) {\n        if( object.hasOwnProperty(key) ) {\n            ++length;\n        }\n    }\n    return length;\n}\n\nfunction sortByKey(arr, key) \n{\n    return arr.sort( function(a, b) \n        {\n            var x = a[key]; \n            var y = b[key];\n            return ((x < y) ? -1 : ((x > y) ? 1 : 0));\n        } );\n}\n\nvar numRecords = objectLength(msg.payload);\nif (numRecords < 1)\n{\n    return {\n        topic : msg.device.deviceType,\n        payload:{\n            topic           : 'getArchiveValues',\n            payload         : {device: msg.device, trace:null},\n            userID          : msg.userID,\n        }\n    };\n}\nvar records = [];\nfor (var ii = 0; ii < numRecords; ++ii) records[ii] = msg.payload[ii]; \nsortByKey(records, 'timeStamp');\nvar trace = [];\nfor (var ii = 0; ii < numRecords; ++ii)\n{\n    trace[ii] = {timeStamp: records[ii].timeStamp};\n    for (var ij = 0; ij < msg.device.attr.length; ++ij)\n    {\n        trace[ii][msg.device.attr[ij]] = records[ii][msg.device.attr[ij]];\n    }\n}\n\nreturn {\n    topic : msg.device.deviceType,\n    payload:{\n        topic           : msg.topic,\n        payload         : {device: msg.device, trace: trace},\n        userID          : msg.userID,\n    }\n};\n",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
-        "x": 550,
-        "y": 380,
+        "x": 930,
+        "y": 820,
         "wires": [
             [
                 "36088082.3139d"
@@ -5982,8 +5831,8 @@
         "checkall": "true",
         "repair": false,
         "outputs": 1,
-        "x": 770,
-        "y": 380,
+        "x": 1110,
+        "y": 820,
         "wires": [
             [
                 "e1a8363e.6beae8"
@@ -5998,8 +5847,319 @@
         "links": [
             "7e343bf8.8fec14"
         ],
-        "x": 855,
-        "y": 380,
+        "x": 1215,
+        "y": 820,
         "wires": []
+    },
+    {
+        "id": "6a3353b.128b3ac",
+        "type": "websocket in",
+        "z": "8475ab9.3d26058",
+        "name": "/blinky-basic/websocket",
+        "server": "e71c9288.03dd3",
+        "client": "",
+        "x": 140,
+        "y": 620,
+        "wires": [
+            [
+                "54f691be.e6b47"
+            ]
+        ]
+    },
+    {
+        "id": "632b2f1c.15e43",
+        "type": "JsonWebToken",
+        "z": "8475ab9.3d26058",
+        "name": "roleToken",
+        "tokenconfig": "6acefdd9.69f124",
+        "x": 660,
+        "y": 620,
+        "wires": [
+            [
+                "92d40c38.2026a"
+            ]
+        ]
+    },
+    {
+        "id": "92d40c38.2026a",
+        "type": "function",
+        "z": "8475ab9.3d26058",
+        "name": "Check Role",
+        "func": "permittedRole = false;\nfor (itoken = 0; itoken < msg.token.length; ++itoken)\n{\n    if (msg.token[itoken] == msg.topic) permittedRole = true;\n}\nif (permittedRole) return [msg,null];\nreturn [null,msg];",
+        "outputs": 2,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 810,
+        "y": 620,
+        "wires": [
+            [
+                "4bda293b.6a4c38"
+            ],
+            [
+                "44555d6c.0fb7d4"
+            ]
+        ]
+    },
+    {
+        "id": "44555d6c.0fb7d4",
+        "type": "function",
+        "z": "8475ab9.3d26058",
+        "name": "error message",
+        "func": "return {\n    topic : msg.topic, \n    payload:\n    {\n        topic:'actionError', \n        payload: msg.topic + \" not permitted\",\n        userID : msg.userID\n    }\n};\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 680,
+        "y": 700,
+        "wires": [
+            [
+                "f1e48322.ae02f"
+            ]
+        ]
+    },
+    {
+        "id": "4bda293b.6a4c38",
+        "type": "switch",
+        "z": "8475ab9.3d26058",
+        "name": "",
+        "property": "topic",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "setting",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "ping",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "readDatabase",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 3,
+        "x": 970,
+        "y": 600,
+        "wires": [
+            [
+                "d6984859.a267c8"
+            ],
+            [
+                "a4b9417e.3c5d7"
+            ],
+            [
+                "cc1f29ab.67bb78"
+            ]
+        ]
+    },
+    {
+        "id": "1e710224.de723e",
+        "type": "link out",
+        "z": "8475ab9.3d26058",
+        "name": "Action Error Message Out",
+        "links": [
+            "7e343bf8.8fec14"
+        ],
+        "x": 915,
+        "y": 680,
+        "wires": []
+    },
+    {
+        "id": "7de7a240.cf57fc",
+        "type": "function",
+        "z": "8475ab9.3d26058",
+        "name": "Filter Websocket",
+        "func": "return msg.payload;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 490,
+        "y": 620,
+        "wires": [
+            [
+                "632b2f1c.15e43"
+            ]
+        ]
+    },
+    {
+        "id": "d6984859.a267c8",
+        "type": "function",
+        "z": "8475ab9.3d26058",
+        "name": "Prep MQTT",
+        "func": "var newMsg = msg.payload;\nnewMsg.userID = msg.userID\nreturn newMsg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 1110,
+        "y": 580,
+        "wires": [
+            [
+                "2132a017.ba23f",
+                "1c2ceb85.01cf44"
+            ]
+        ]
+    },
+    {
+        "id": "54f691be.e6b47",
+        "type": "json",
+        "z": "8475ab9.3d26058",
+        "name": "",
+        "property": "payload",
+        "action": "obj",
+        "pretty": false,
+        "x": 320,
+        "y": 620,
+        "wires": [
+            [
+                "7de7a240.cf57fc"
+            ]
+        ]
+    },
+    {
+        "id": "49150800.c088c8",
+        "type": "function",
+        "z": "90f83725.6dae08",
+        "name": "Allowed Roles",
+        "func": "msg.payload.allowedRoles = ['coreView'];\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 500,
+        "y": 60,
+        "wires": [
+            [
+                "781dbbc5.3a2e14"
+            ]
+        ]
+    },
+    {
+        "id": "1e9bf28b.344d8d",
+        "type": "function",
+        "z": "90f83725.6dae08",
+        "name": "Allowed Roles",
+        "func": "msg.payload.allowedRoles = ['coreView'];\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 500,
+        "y": 120,
+        "wires": [
+            [
+                "44733e49.ba7ec"
+            ]
+        ]
+    },
+    {
+        "id": "b213f397.94307",
+        "type": "function",
+        "z": "90f83725.6dae08",
+        "name": "Allowed Roles",
+        "func": "msg.payload.allowedRoles = ['coreView'];\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 500,
+        "y": 280,
+        "wires": [
+            [
+                "64665cab.c46c24"
+            ]
+        ]
+    },
+    {
+        "id": "a4b9417e.3c5d7",
+        "type": "function",
+        "z": "8475ab9.3d26058",
+        "name": "Prep MQTT",
+        "func": "var newMsg = msg.payload;\nnewMsg.userID = msg.userID\nreturn newMsg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 1110,
+        "y": 620,
+        "wires": [
+            [
+                "2132a017.ba23f"
+            ]
+        ]
+    },
+    {
+        "id": "f1e48322.ae02f",
+        "type": "switch",
+        "z": "8475ab9.3d26058",
+        "name": "",
+        "property": "topic",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "setting",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "ping",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "readDatabase",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 3,
+        "x": 830,
+        "y": 700,
+        "wires": [
+            [
+                "1e710224.de723e"
+            ],
+            [],
+            []
+        ]
+    },
+    {
+        "id": "cc1f29ab.67bb78",
+        "type": "link out",
+        "z": "8475ab9.3d26058",
+        "name": "readDatabase out",
+        "links": [
+            "c4595efc.a717b"
+        ],
+        "x": 1075,
+        "y": 660,
+        "wires": []
+    },
+    {
+        "id": "c4595efc.a717b",
+        "type": "link in",
+        "z": "8475ab9.3d26058",
+        "name": "Setup Archive in",
+        "links": [
+            "cc1f29ab.67bb78"
+        ],
+        "x": 255,
+        "y": 820,
+        "wires": [
+            [
+                "b6b8b063.9f62f"
+            ]
+        ]
     }
 ]
