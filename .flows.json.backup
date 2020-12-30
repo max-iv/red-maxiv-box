@@ -2534,7 +2534,7 @@
         "fieldType": "msg",
         "format": "javascript",
         "syntax": "mustache",
-        "template": "        var ws;\n        var userID = -1;\n        var useWebSocketsFlag = true;\n        var project = '{{{payload.project}}}';\n        var heartBeatImage = false;\n        var wsUri = '';\n        var wsConnected = false;\n\n        function webSocketConnected()\n        {\n            return wsConnected;\n        }\n        function useWebSockets(webSocketsFlag)\n        {\n            useWebSocketsFlag = webSocketsFlag;\n        }\n        function wsConnectC()\n        {\n            if (!useWebSocketsFlag)\n            {\n                return;\n            }\n            if (wsUri.length < 1)\n            {\n                var uri = window.location.href.split('://');\n                var wslead = 'ws://';\n                if (uri[0] == 'https') wslead = 'wss://';\n                var questionLocation = uri[1].indexOf('?');\n                if (questionLocation >= 0)\n                {\n                    uri[1] = uri[1].substring(0,questionLocation);\n//                    console.log(uri[1]);\n                }\n                if (uri[1].indexOf('/') < (uri[1].length - 1))\n                {\n                    wsUri = wslead + uri[1] + '/websocket';\n                }\n                else\n                {\n                    wsUri = wslead + uri[1] + 'websocket';\n                }\n            }\n            ws = new WebSocket(wsUri);\n            ws.onmessage = function(event)\n            {\n                onWebSocketMessage(JSON.parse(event.data));\n        \n            };\n            ws.onopen = function()\n            {\n                console.log(\"Websocket connected\");\n                wsConnected = true;\n                $('#webSocketStatus').html('Open');\n                $('#reOpenWebSocketButton').hide();\n                $('#webSocketStatusRow').css('padding-bottom','0px');\n                $('#webSocketStatusCard').hide();\n                onWebSocketOpen();\n            };\n            ws.onclose = function()\n            {\n                console.log(\"Websocket closed\");\n                wsConnected = false;\n                $('#webSocketStatus').html('Closed');\n                $('#reOpenWebSocketButton').show();\n                $('#webSocketStatusCard').show();\n                $('#webSocketStatusRow').css('padding-bottom','25px');\n                onWebSocketClose();\n                wsConnectC();\n            };\n        }\n\n        function getRandomInt(max)\n        {\n          return Math.floor(Math.random() * Math.floor(max));\n        }\n        $( document ).ready(function()\n        {\n            userID  = {{{payload.userID}}};\n            if (!useWebSocketsFlag)\n            {\n                $('#webSocketStatusRow').css('padding-bottom','0px');\n                $('#webSocketStatusCard').hide();\n            }\n            wsConnectC();\n            onDocumentReady();\n       });\n        $( function() \n        {\n            $( \"#acknowledgeDialog\" ).dialog(\n                {\n                    width:    500,\n                    autoOpen: false,\n                    buttons:\n                    [\n                        {\n                            text: \"Ok\",\n                            click: function() { $( this ).dialog( \"close\" );},\n                            showText: false\n                        },\n                   ]\n                });\n            $( \"#messageDialog\" ).dialog(\n                {\n                    width:    500,\n                    autoOpen: false,\n                    buttons:[]\n                });\n        } );\n        function optionDialog(headerText, title, text, buttonTexts, buttonFunctions)\n        {\n            var buttonDefinitions = [];\n            for (var ii = 0; ii < buttonTexts.length; ++ii)\n            {\n                buttonDefinitions[ii] = \n                    {\n                        text: buttonTexts[ii],\n                        click: buttonFunctions[ii],\n                        showText: false\n                    };\n            }\n            $( \"#optionDialog\" ).dialog( \"option\", \"title\", headerText );   \n            $( \"#optionDialog\" ).dialog( \"option\", \"buttons\", buttonDefinitions);\n            $( \"#optionDialogTitle\" ).html(title);\n            $( \"#optionDialogText\" ).html(text);\n            $( \"#optionDialog\" ).dialog( \"open\" );\n        }\n        $( function() \n        {\n            $( \"#optionDialog\" ).dialog(\n                {\n                    width:    500,\n                    autoOpen: false,\n                    buttons:\n                    [\n                        {\n                            text: \"Ok\",\n                            click: function() {$( this ).dialog( \"close\" );},\n                            showText: false\n                        },\n                        {\n                            text: \"Cancel\",\n                            click: function() {$( this ).dialog( \"close\" );},\n                            showText: false\n                        },\n                   ]\n                });\n        } );\n        function acknowledgeDialog(headerText, title, text)\n        {\n            $( \"#acknowledgeDialog\" ).dialog( \"option\", \"title\", headerText );    \n            $( \"#acknowledgeDialogTitle\" ).html(title);\n            $( \"#acknowledgeDialogText\" ).html(text);\n            $( \"#acknowledgeDialog\" ).dialog( \"open\" );\n        }\n        function messageDialog(headerText, title, text)\n        {\n            $( \"#messageDialog\" ).dialog( \"option\", \"title\", headerText );    \n            $( \"#messageDialogTitle\" ).html(title);\n            $( \"#messageDialogText\" ).html(text);\n            $( \"#messageDialog\" ).dialog( \"open\" );\n        }\n        function heartbeat()\n        {\n            heartBeatImage = !heartBeatImage;\n            var heartBeatImageSrc = '/img/heartRed.png';\n            if (heartBeatImage) heartBeatImageSrc = '/img/heartPink.png';\n            $('#heartBeatID').attr('src',heartBeatImageSrc);\n        }\n        function getCookie(extension)\n        {\n            var cookies = document.cookie.split(';');\n            var token = null;\n            var cookieName = project + extension + \"=\";\n            for (var icookie = 0; icookie < cookies.length; ++icookie)\n            {\n                var index = cookies[icookie].indexOf(cookieName);\n                if (index >= 0)\n                {\n                    token = cookies[icookie].substring(index + cookieName.length);\n                }\n            }\n            return token;\n        }\n        function sendActionMsg(topic,role,actionMsg)\n        {\n            var webSocketMsg = \n            {\n                topic     : topic,\n                payload   : actionMsg,\n                userID    : userID,\n                token     : getCookie('Role'),\n                role      : role\n            };\n            ws.send(JSON.stringify(webSocketMsg));\n        }\n",
+        "template": "        var ws;\n        var userID = -1;\n        var useWebSocketsFlag = true;\n        var project = '{{{payload.project}}}';\n        var heartBeatImage = false;\n        var wsUri = '';\n        var wsConnected = false;\n\n        function webSocketConnected()\n        {\n            return wsConnected;\n        }\n        function useWebSockets(webSocketsFlag)\n        {\n            useWebSocketsFlag = webSocketsFlag;\n        }\n        function wsConnectC()\n        {\n            if (!useWebSocketsFlag)\n            {\n                return;\n            }\n            if (wsUri.length < 1)\n            {\n                var uri = window.location.href.split('://');\n                var wslead = 'ws://';\n                if (uri[0] == 'https') wslead = 'wss://';\n                var questionLocation = uri[1].indexOf('?');\n                if (questionLocation >= 0)\n                {\n                    uri[1] = uri[1].substring(0,questionLocation);\n//                    console.log(uri[1]);\n                }\n                if (uri[1].indexOf('/') < (uri[1].length - 1))\n                {\n                    wsUri = wslead + uri[1] + '/websocket';\n                }\n                else\n                {\n                    wsUri = wslead + uri[1] + 'websocket';\n                }\n            }\n            ws = new WebSocket(wsUri);\n            ws.onmessage = function(event)\n            {\n                onWebSocketMessage(JSON.parse(event.data));\n        \n            };\n            ws.onopen = function()\n            {\n                console.log(\"Websocket connected\");\n                wsConnected = true;\n                $('#webSocketStatus').html('Open');\n                $('#reOpenWebSocketButton').hide();\n                $('#webSocketStatusRow').css('padding-bottom','0px');\n                $('#webSocketStatusCard').hide();\n                onWebSocketOpen();\n            };\n            ws.onclose = function()\n            {\n                console.log(\"Websocket closed\");\n                wsConnected = false;\n                $('#webSocketStatus').html('Closed');\n                $('#reOpenWebSocketButton').show();\n                $('#webSocketStatusCard').show();\n                $('#webSocketStatusRow').css('padding-bottom','25px');\n                onWebSocketClose();\n                wsConnectC();\n            };\n        }\n\n        function getRandomInt(max)\n        {\n          return Math.floor(Math.random() * Math.floor(max));\n        }\n        $( document ).ready(function()\n        {\n            userID  = {{{payload.userID}}};\n            if (!useWebSocketsFlag)\n            {\n                $('#webSocketStatusRow').css('padding-bottom','0px');\n                $('#webSocketStatusCard').hide();\n            }\n            wsConnectC();\n            onDocumentReady();\n       });\n        $( function() \n        {\n            $( \"#acknowledgeDialog\" ).dialog(\n                {\n                    width:    500,\n                    autoOpen: false,\n                    buttons:\n                    [\n                        {\n                            text: \"Ok\",\n                            click: function() { $( this ).dialog( \"close\" );},\n                            showText: false\n                        },\n                   ]\n                });\n            $( \"#messageDialog\" ).dialog(\n                {\n                    width:    500,\n                    autoOpen: false,\n                    buttons:[]\n                });\n        } );\n        function optionDialog(headerText, title, text, buttonTexts, buttonFunctions)\n        {\n            var buttonDefinitions = [];\n            for (var ii = 0; ii < buttonTexts.length; ++ii)\n            {\n                buttonDefinitions[ii] = \n                    {\n                        text: buttonTexts[ii],\n                        click: buttonFunctions[ii],\n                        showText: false\n                    };\n            }\n            $( \"#optionDialog\" ).dialog( \"option\", \"title\", headerText );   \n            $( \"#optionDialog\" ).dialog( \"option\", \"buttons\", buttonDefinitions);\n            $( \"#optionDialogTitle\" ).html(title);\n            $( \"#optionDialogText\" ).html(text);\n            $( \"#optionDialog\" ).dialog( \"open\" );\n        }\n        $( function() \n        {\n            $( \"#optionDialog\" ).dialog(\n                {\n                    width:    500,\n                    autoOpen: false,\n                    buttons:\n                    [\n                        {\n                            text: \"Ok\",\n                            click: function() {$( this ).dialog( \"close\" );},\n                            showText: false\n                        },\n                        {\n                            text: \"Cancel\",\n                            click: function() {$( this ).dialog( \"close\" );},\n                            showText: false\n                        },\n                   ]\n                });\n        } );\n        function acknowledgeDialog(headerText, title, text)\n        {\n            $( \"#acknowledgeDialog\" ).dialog( \"option\", \"title\", headerText );    \n            $( \"#acknowledgeDialogTitle\" ).html(title);\n            $( \"#acknowledgeDialogText\" ).html(text);\n            $( \"#acknowledgeDialog\" ).dialog( \"open\" );\n        }\n        function messageDialog(headerText, title, text)\n        {\n            $( \"#messageDialog\" ).dialog( \"option\", \"title\", headerText );    \n            $( \"#messageDialogTitle\" ).html(title);\n            $( \"#messageDialogText\" ).html(text);\n            $( \"#messageDialog\" ).dialog( \"open\" );\n        }\n        function heartbeat()\n        {\n            heartBeatImage = !heartBeatImage;\n            var heartBeatImageSrc = '/img/heartRed.png';\n            if (heartBeatImage) heartBeatImageSrc = '/img/heartPink.png';\n            $('#heartBeatID').attr('src',heartBeatImageSrc);\n        }\n        function getCookie(extension)\n        {\n            var cookies = document.cookie.split(';');\n            var token = null;\n            var cookieName = project + extension + \"=\";\n            for (var icookie = 0; icookie < cookies.length; ++icookie)\n            {\n                var index = cookies[icookie].indexOf(cookieName);\n                if (index >= 0)\n                {\n                    token = cookies[icookie].substring(index + cookieName.length);\n                }\n            }\n            return token;\n        }\n        function sendActionMsg(topic,role,actionMsg)\n        {\n            var roleToken  = getCookie('Role');\n            if (roleToken == null)\n            {\n                location.reload();\n                return;\n            }\n            var webSocketMsg = \n            {\n                topic     : topic,\n                payload   : actionMsg,\n                userID    : userID,\n                token     : getCookie('Role'),\n                role      : role\n            };\n            ws.send(JSON.stringify(webSocketMsg));\n        }\n",
         "output": "str",
         "x": 430,
         "y": 40,
@@ -3381,11 +3381,10 @@
         "upload": false,
         "swaggerDoc": "",
         "x": 130,
-        "y": 920,
+        "y": 960,
         "wires": [
             [
-                "7db15dac.050a44",
-                "af2a3692.efd898"
+                "96140e28.f0af"
             ]
         ]
     },
@@ -3398,12 +3397,11 @@
         "name": "",
         "collection": "devices",
         "operation": "findOne",
-        "x": 590,
-        "y": 920,
+        "x": 1070,
+        "y": 960,
         "wires": [
             [
-                "5610900e.5ca0b",
-                "af2a3692.efd898"
+                "5610900e.5ca0b"
             ]
         ]
     },
@@ -3414,8 +3412,8 @@
         "name": "",
         "statusCode": "",
         "headers": {},
-        "x": 770,
-        "y": 920,
+        "x": 1250,
+        "y": 960,
         "wires": []
     },
     {
@@ -3428,8 +3426,8 @@
         "noerr": 0,
         "initialize": "",
         "finalize": "",
-        "x": 380,
-        "y": 920,
+        "x": 870,
+        "y": 960,
         "wires": [
             [
                 "fe60c45b.b5b258"
@@ -3440,9 +3438,9 @@
         "id": "281ae8e3.adc998",
         "type": "comment",
         "z": "90f83725.6dae08",
-        "name": "curl \"http://localhost:60427/device?deviceType=blinky-basic&name=01\"",
+        "name": "curl \"http://localhost:60427/device?deviceType=blinky-basic&name=01&token=$(< blinky-lite-v2-token.txt)\"",
         "info": "",
-        "x": 310,
+        "x": 420,
         "y": 880,
         "wires": []
     },
@@ -3808,7 +3806,7 @@
         "type": "function",
         "z": "2dba0745.a98d98",
         "name": "Check permitted roles",
-        "func": "if (msg.token.expDate > 0)\n{\n    if (msg.token.expDate < new Date().getTime())\n    {\n        msg.payload.errorMsg = 'Login Expired. Please login again';\n        msg.cookies = { };\n        return [null,msg];\n    }\n}\nvar permittedRole = false;\nfor (irole = 0; irole < msg.payload.allowedRoles.length; ++irole)\n{\n    for (itoken = 0; itoken < msg.token.roles.length; ++itoken)\n    {\n        if (msg.token.roles[itoken] == msg.payload.allowedRoles[irole]) permittedRole = true;\n    }\n}\nif (!permittedRole)\n{\n    msg.payload.errorMsg = 'Credentials not valid for App';\n    msg.cookies = { };\n    return [null,msg];\n}\nmsg.payload['profile'] = JSON.stringify(msg.token);\nreturn [msg,null];\n",
+        "func": "var tokenError = msg.error;\nif (tokenError != undefined)\n{\n    msg.payload.errorMsg = tokenError;\n    msg.cookies = { };\n    return [null,msg];\n}\nif (msg.token.expDate > 0)\n{\n    if (msg.token.expDate < new Date().getTime())\n    {\n        msg.payload.errorMsg = 'Login Expired. Please login again';\n        msg.cookies = { };\n        return [null,msg];\n    }\n}\nvar permittedRole = false;\nfor (irole = 0; irole < msg.payload.allowedRoles.length; ++irole)\n{\n    for (itoken = 0; itoken < msg.token.roles.length; ++itoken)\n    {\n        if (msg.token.roles[itoken] == msg.payload.allowedRoles[irole]) permittedRole = true;\n    }\n}\nif (!permittedRole)\n{\n    msg.payload.errorMsg = 'Credentials not valid for App';\n    msg.cookies = { };\n    return [null,msg];\n}\nmsg.payload['profile'] = JSON.stringify(msg.token);\nreturn [msg,null];\n",
         "outputs": 2,
         "noerr": 0,
         "initialize": "",
@@ -4993,7 +4991,7 @@
         "fieldType": "msg",
         "format": "html",
         "syntax": "mustache",
-        "template": "<!-- Body HTML -->\n    <div class='container' width=\"100%\">\n        <div class='row' style='padding-top: 1px;'>\n            <div class=\"col-md-12\" align=\"center\">\n                <div class='card'>\n                <div class='card-body' align=\"center\">\n                    <table width=\"100%\">\n                        <tr>\n                            <td  align=\"left\">\n                                 <span class='card-text' style='color:black;'>User:</span>\n                            </td>\n                            <td  align=\"right\">\n                                 <span class='card-text' id='usernameId'></span>\n                            </td>\n                        </tr>\n                        <tr>\n                            <td  align=\"left\">\n                                <span class='card-text' style='color:black;'>Time left:</span>\n                            </td>\n                            <td  align=\"right\">\n                                 <span class='card-text' id='expTimeId'></span>\n                            </td>\n                        </tr>\n                    </table>\n                    <table width=\"100%\">\n                        <tr>\n                            <td width=\"30%\">\n                                <button class='btn btn-block card-button big-text' id='logoutButton' onclick=\"renew()\" >Renew</button>\n                            </td>\n                            <td width=\"5%\"></td>\n                            <td width=\"30%\">\n                                <button class='btn btn-block card-button big-text' id='logoutButton' onclick=\"logout()\" >Logout</button>\n                            </td>\n                            <td width=\"5%\"></td>\n                            <td width=\"30%\">\n                                <button class='btn btn-block card-button big-text' id='logoutButton' onclick=\"downloadToken()\" >Token</button>\n                            </td>\n                        </tr>\n                    </table>\n                </div>\n            </div>\n            </div>\n        </div>\n        <div class='row' style='padding-top: 25px;'>\n            <div class=\"col-md-12\" align=\"center\">\n                <div class='card'>\n                <div class='card-body' align=\"center\">\n                    <div class='row' style='padding-bottom: 25px;'>\n                        <div class=\"col-md-1\" align=\"center\">\n                        </div>\n                        <div class=\"col-md-5\" align=\"center\">\n                            <span class='card-text' >Application</span>\n                        </div>\n                        <div class=\"col-md-5\" align=\"center\">\n                            <select class=\"custom-select big-text\" id=\"application\">\n                                <option value=\"blinky-basic\">blinky-basic</option>\n                            </select>\n                        </div>\n                        <div class=\"col-md-1\" align=\"center\">\n                        </div>\n                    </div>\n                    <div class='row' style='padding-bottom: 25px;'>\n                        <div class=\"col-md-1\" align=\"center\">\n                        </div>\n                        <div class=\"col-md-5\" align=\"center\">\n                            <span class='card-text' >Trace A</span>\n                        </div>\n                        <div class=\"col-md-5\" align=\"center\">\n                            <select class=\"custom-select big-text\" id=\"traceA\">\n                                <option value=\"none\">none</option>\n                                <option value=\"01\">01</option>\n                                <option value=\"02\">02</option>\n                            </select>\n                        </div>\n                        <div class=\"col-md-1\" align=\"center\">\n                        </div>\n                    </div>\n                    <div class='row' style='padding-bottom: 25px;'>\n                        <div class=\"col-md-1\" align=\"center\">\n                        </div>\n                        <div class=\"col-md-5\" align=\"center\">\n                            <span class='card-text' >Trace B</span>\n                        </div>\n                        <div class=\"col-md-5\" align=\"center\">\n                            <select class=\"custom-select big-text\" id=\"traceB\">\n                                <option value=\"none\">none</option>\n                                <option value=\"Demo-01\">Demo-01</option>\n                                <option value=\"Demo-02\">Demo-02</option>\n                                <option value=\"BrainCool\">BrainCool</option>\n                                <option value=\"Connectitude\">Connectitude</option>\n                            </select>\n                        </div>\n                        <div class=\"col-md-1\" align=\"center\">\n                        </div>\n                    </div>\n                    <div class='row' style='padding-bottom: 25px;'>\n                        <div class=\"col-md-1\" align=\"center\">\n                        </div>\n                        <div class=\"col-md-5\" align=\"center\">\n                            <span class='card-text' >Trace C</span>\n                        </div>\n                        <div class=\"col-md-5\" align=\"center\">\n                            <select class=\"custom-select big-text\" id=\"traceC\">\n                                <option value=\"none\">none</option>\n                                <option value=\"Demo-01\">Demo-01</option>\n                                <option value=\"Demo-02\">Demo-02</option>\n                                <option value=\"BrainCool\">BrainCool</option>\n                                <option value=\"Connectitude\">Connectitude</option>\n                            </select>\n                        </div>\n                        <div class=\"col-md-1\" align=\"center\">\n                        </div>\n                    </div>\n                    <div class='row' style='padding-bottom: 25px;'>\n                        <div class=\"col-md-1\" align=\"center\">\n                        </div>\n                        <div class=\"col-md-5\" align=\"center\">\n                            <span class='card-text' >Trace D</span>\n                        </div>\n                        <div class=\"col-md-5\" align=\"center\">\n                            <select class=\"custom-select big-text\" id=\"traceD\">\n                                <option value=\"none\">none</option>\n                                <option value=\"Demo-01\">Demo-01</option>\n                                <option value=\"Demo-02\">Demo-02</option>\n                                <option value=\"BrainCool\">BrainCool</option>\n                                <option value=\"Connectitude\">Connectitude</option>\n                            </select>\n                        </div>\n                        <div class=\"col-md-1\" align=\"center\">\n                        </div>\n                    </div>\n                    <div class='row' style='padding-bottom: 25px;'>\n                        <div class=\"col-md-1\" align=\"center\">\n                        </div>\n                        <div class=\"col-md-5\" align=\"center\">\n                        </div>\n                        <div class=\"col-md-5\" align=\"center\">\n                            <button class='btn btn-block card-button big-text' id='launchAppButton' onclick=\"launchApp()\" >Launch</button>\n                        </div>\n                        <div class=\"col-md-1\" align=\"center\">\n                        </div>\n                    </div>\n                </div>\n            </div>\n            </div>\n        </div>\n        <div class='row' style='padding-top: 25px;'>\n            <div class=\"col-md-3\" align=\"center\">\n            </div>\n            <div class=\"col-md-6\" align=\"center\">\n                <a class='btn btn-block card-button big-text' href='/core' target='_blank'>Utilites</a>\n            </div>\n            <div class=\"col-md-3\" align=\"center\">\n            </div>\n        </div>\n    </div>\n",
+        "template": "<!-- Body HTML -->\n    <div class='container' width=\"100%\">\n        <div class='row' style='padding-top: 1px;'>\n            <div class=\"col-md-12\" align=\"center\">\n                <div class='card'>\n                <div class='card-body' align=\"center\">\n                    <table width=\"100%\">\n                        <tr>\n                            <td  align=\"left\">\n                                 <span class='card-text' style='color:black;'>User:</span>\n                            </td>\n                            <td  align=\"right\">\n                                 <span class='card-text' id='usernameId'></span>\n                            </td>\n                        </tr>\n                        <tr>\n                            <td  align=\"left\">\n                                <span class='card-text' style='color:black;'>Time left:</span>\n                            </td>\n                            <td  align=\"right\">\n                                 <span class='card-text' id='expTimeId'></span>\n                            </td>\n                        </tr>\n                    </table>\n                    <table width=\"100%\">\n                        <tr>\n                            <td width=\"30%\">\n                                <button class='btn btn-block card-button big-text' id='logoutButton' onclick=\"renew()\" >Renew</button>\n                            </td>\n                            <td width=\"5%\"></td>\n                            <td width=\"30%\">\n                                <button class='btn btn-block card-button big-text' id='logoutButton' onclick=\"logout()\" >Logout</button>\n                            </td>\n                            <td width=\"5%\"></td>\n                            <td width=\"30%\">\n                                <button class='btn btn-block card-button big-text' id='logoutButton' onclick=\"downloadToken()\" >Token</button>\n                            </td>\n                        </tr>\n                    </table>\n                </div>\n            </div>\n            </div>\n        </div>\n        <div class='row' style='padding-top: 25px;'>\n            <div class=\"col-md-12\" align=\"center\">\n                <div class='card'>\n                <div class='card-body' align=\"center\">\n                    <div class='row' style='padding-bottom: 25px;'>\n                        <div class=\"col-md-1\" align=\"center\">\n                        </div>\n                        <div class=\"col-md-5\" align=\"center\">\n                            <span class='card-text' >Application</span>\n                        </div>\n                        <div class=\"col-md-5\" align=\"center\">\n                            <select class=\"custom-select big-text\" id=\"application\">\n                                <option value=\"blinky-basic\">blinky-basic</option>\n                            </select>\n                        </div>\n                        <div class=\"col-md-1\" align=\"center\">\n                        </div>\n                    </div>\n                    <div class='row' style='padding-bottom: 25px;'>\n                        <div class=\"col-md-1\" align=\"center\">\n                        </div>\n                        <div class=\"col-md-5\" align=\"center\">\n                            <span class='card-text' >Device</span>\n                        </div>\n                        <div class=\"col-md-5\" align=\"center\">\n                            <select class=\"custom-select big-text\" id=\"traceA\">\n                                <option value=\"none\">none</option>\n                                <option value=\"01\">01</option>\n                                <option value=\"02\">02</option>\n                            </select>\n                        </div>\n                        <div class=\"col-md-1\" align=\"center\">\n                        </div>\n                    </div>\n                    <div class='row' style='padding-bottom: 25px;'>\n                        <div class=\"col-md-1\" align=\"center\">\n                        </div>\n                        <div class=\"col-md-5\" align=\"center\">\n                        </div>\n                        <div class=\"col-md-5\" align=\"center\">\n                            <button class='btn btn-block card-button big-text' id='launchAppButton' onclick=\"launchApp()\" >Launch</button>\n                        </div>\n                        <div class=\"col-md-1\" align=\"center\">\n                        </div>\n                    </div>\n                </div>\n            </div>\n            </div>\n        </div>\n        <div class='row' style='padding-top: 25px;'>\n            <div class=\"col-md-3\" align=\"center\">\n            </div>\n            <div class=\"col-md-6\" align=\"center\">\n                <a class='btn btn-block card-button big-text' href='/core' target='_blank'>Utilites</a>\n            </div>\n            <div class=\"col-md-3\" align=\"center\">\n            </div>\n        </div>\n    </div>\n",
         "output": "str",
         "x": 1030,
         "y": 60,
@@ -5012,7 +5010,7 @@
         "fieldType": "msg",
         "format": "javascript",
         "syntax": "mustache",
-        "template": "        useWebSockets(true);\n        function onDocumentReady()\n        {\n            getCreds();\n            setInterval(function(){getCreds();}, 1000);\n        }\n        function onWebSocketOpen()\n        {\n        }\n        function onWebSocketClose()\n        {\n            \n        }\n        function onWebSocketMessage(msg)\n        {\n            switch(msg.topic)\n            {\n                case 'renew':\n                    if (msg.userID == userID)\n                    {\n                        updateCookie(msg);\n                    }\n                    break;\n                case 'permissionError':\n                    if (msg.userID == userID)\n                    {\n                        acknowledgeDialog('Permission', 'Error', msg.payload);\n                    }\n                    break;\n                case 'loginExpired':\n                    if (msg.userID == userID)\n                    {\n                       location.reload();\n                    }\n                    break;\n                default:\n                    break;\n            }\n        }\n        function launchApp()\n        {\n            var application = $('#application').val();\n            var devices = [];\n            if ($('#traceA').val() != 'none') devices.push($('#traceA').val());\n            if ($('#traceB').val() != 'none') devices.push($('#traceB').val());\n            if ($('#traceC').val() != 'none') devices.push($('#traceC').val());\n            if ($('#traceD').val() != 'none') devices.push($('#traceD').val());\n            if (devices.length < 1)\n            {\n                acknowledgeDialog('Acknowledge', 'Error', 'At least one trace must have a valid device');\n                return;\n            }\n            var link = \"/\" + application + '?name=' + devices[0];\n            if (devices.length > 1)\n            for (var ii = 1; ii < devices.length; ++ii)\n            {\n                link = link + ',' + devices[ii];\n            }\n//            window.location.href = link;\n            window.open(link, '_blank');\n        }\n        function getCreds()\n        {\n            var now = new Date().getTime();\n            var expDate = Number(getCookie('ExpDate'));\n            if (expDate > 0)\n            {\n                expDate = expDate - now;\n                if(expDate < 0)\n                {\n                    logout();\n                }\n                else\n                {\n                    var hours = Math.floor(expDate / 3600000);\n                    var minutes = expDate - hours * 3600000;\n                    minutes = Math.floor(minutes / 60000);\n                    var seconds = expDate - (hours * 3600000) - (minutes * 60000);\n                    seconds = Math.floor(seconds / 1000);\n                    hours = hours.toString();\n                    if (hours.length == 1) hours = '0' + hours; \n                    minutes = minutes.toString();\n                    if (minutes.length == 1) minutes = '0' + minutes; \n                    seconds = seconds.toString();\n                    if (seconds.length == 1) seconds = '0' + seconds; \n                    var timeString = hours + ':' + minutes + ':' + seconds;\n                    $('#usernameId').text(getCookie('Username'));\n                    $('#expTimeId').text(timeString);\n                }\n            }\n            else\n            {\n                $('#usernameId').text(getCookie('Username'));\n                $('#expTimeId').text('Forever');\n            }\n        }\n        function logout()\n        {\n            document.cookie = project + \"Role= ; expires = Thu, 01 Jan 1970 00:00:00 GMT\";\n            document.cookie = project + \"ExpDate= ; expires = Thu, 01 Jan 1970 00:00:00 GMT\";\n            document.cookie = project + \"Username= ; expires = Thu, 01 Jan 1970 00:00:00 GMT\";\n            window.location.href = \"/\";\n        }\n        function renew()\n        {\n            var actionMsg = {};\n            sendActionMsg('renew', 'renew', actionMsg);\n        }\n        function updateCookie(msg)\n        {\n            document.cookie = project + \"Role=\" + msg.role;\n            document.cookie = project + \"ExpDate=\" + msg.expDate;\n            document.cookie = project + \"Username=\" + msg.username;\n        }\n        function downloadToken()\n        {\n            downloadString(\"a,b,c\\n1,2,3\", \"text/plain\", project + \"-token.txt\");\n        }\n        function downloadString(text, fileType, fileName) \n        {\n            var blob = new Blob([text], { type: fileType });\n            \n            var a = document.createElement('a');\n            a.download = fileName;\n            a.href = URL.createObjectURL(blob);\n            a.dataset.downloadurl = [fileType, a.download, a.href].join(':');\n            a.style.display = \"none\";\n            document.body.appendChild(a);\n            a.click();\n            document.body.removeChild(a);\n            setTimeout(function() { URL.revokeObjectURL(a.href); }, 1500);\n        }",
+        "template": "        useWebSockets(true);\n        function onDocumentReady()\n        {\n            getCreds();\n            setInterval(function(){getCreds();}, 1000);\n        }\n        function onWebSocketOpen()\n        {\n        }\n        function onWebSocketClose()\n        {\n            \n        }\n        function onWebSocketMessage(msg)\n        {\n            switch(msg.topic)\n            {\n                case 'renew':\n                    if (msg.userID == userID)\n                    {\n                        updateCookie(msg);\n                    }\n                    break;\n                case 'permissionError':\n                    if (msg.userID == userID)\n                    {\n                        acknowledgeDialog('Permission', 'Error', msg.payload);\n                    }\n                    break;\n                case 'loginExpired':\n                    if (msg.userID == userID)\n                    {\n                       location.reload();\n                    }\n                    break;\n                default:\n                    break;\n            }\n        }\n        function launchApp()\n        {\n            var application = $('#application').val();\n            var devices = [];\n            if ($('#traceA').val() != 'none') devices.push($('#traceA').val());\n            if (devices.length < 1)\n            {\n                acknowledgeDialog('Acknowledge', 'Error', 'At least one trace must have a valid device');\n                return;\n            }\n            var link = \"/\" + application + '?name=' + devices[0];\n            if (devices.length > 1)\n            for (var ii = 1; ii < devices.length; ++ii)\n            {\n                link = link + ',' + devices[ii];\n            }\n            window.location.href = link;\n//            window.open(link, '_blank');\n        }\n        function getCreds()\n        {\n            var now = new Date().getTime();\n            var expDate = Number(getCookie('ExpDate'));\n            if (expDate > 0)\n            {\n                expDate = expDate - now;\n                if(expDate < 0)\n                {\n                    logout();\n                }\n                else\n                {\n                    var hours = Math.floor(expDate / 3600000);\n                    var minutes = expDate - hours * 3600000;\n                    minutes = Math.floor(minutes / 60000);\n                    var seconds = expDate - (hours * 3600000) - (minutes * 60000);\n                    seconds = Math.floor(seconds / 1000);\n                    hours = hours.toString();\n                    if (hours.length == 1) hours = '0' + hours; \n                    minutes = minutes.toString();\n                    if (minutes.length == 1) minutes = '0' + minutes; \n                    seconds = seconds.toString();\n                    if (seconds.length == 1) seconds = '0' + seconds; \n                    var timeString = hours + ':' + minutes + ':' + seconds;\n                    $('#usernameId').text(getCookie('Username'));\n                    $('#expTimeId').text(timeString);\n                }\n            }\n            else\n            {\n                $('#usernameId').text(getCookie('Username'));\n                $('#expTimeId').text('Forever');\n            }\n        }\n        function logout()\n        {\n            document.cookie = project + \"Role= ; expires = Thu, 01 Jan 1970 00:00:00 GMT\";\n            document.cookie = project + \"ExpDate= ; expires = Thu, 01 Jan 1970 00:00:00 GMT\";\n            document.cookie = project + \"Username= ; expires = Thu, 01 Jan 1970 00:00:00 GMT\";\n            window.location.href = \"/\";\n        }\n        function renew()\n        {\n            var actionMsg = {};\n            sendActionMsg('renew', 'renew', actionMsg);\n        }\n        function updateCookie(msg)\n        {\n            document.cookie = project + \"Role=\" + msg.role;\n            document.cookie = project + \"ExpDate=\" + msg.expDate;\n            document.cookie = project + \"Username=\" + msg.username;\n        }\n        function downloadToken()\n        {\n            downloadString(getCookie(\"Role\"), \"text/plain\", project + \"-token.txt\");\n        }\n// from https://gist.github.com/danallison/3ec9d5314788b337b682\n        function downloadString(text, fileType, fileName) \n        {\n            var blob = new Blob([text], { type: fileType });\n            \n            var a = document.createElement('a');\n            a.download = fileName;\n            a.href = URL.createObjectURL(blob);\n            a.dataset.downloadurl = [fileType, a.download, a.href].join(':');\n            a.style.display = \"none\";\n            document.body.appendChild(a);\n            a.click();\n            document.body.removeChild(a);\n            setTimeout(function() { URL.revokeObjectURL(a.href); }, 1500);\n        }",
         "output": "str",
         "x": 890,
         "y": 60,
@@ -5878,7 +5876,7 @@
         "type": "function",
         "z": "fee416c.fb205e8",
         "name": "Check Role",
-        "func": "var errMsg = null;\nif (msg.token.expDate > 0)\n{\n    if (msg.token.expDate < new Date().getTime())\n    {\n        errMsg = \n        {\n            topic : msg.topic, \n            payload:\n            {\n                topic:'loginExpired', \n                payload: msg.topic + \" login expired\",\n                userID : msg.userID,\n                role   : msg.role\n            }\n        };\n        return [null,errMsg];\n    }\n}\npermittedRole = false;\nfor (itoken = 0; itoken < msg.token.roles.length; ++itoken)\n{\n    if (msg.token.roles[itoken] == msg.role) permittedRole = true;\n}\nif (permittedRole) return [msg,null];\n\nerrMsg = \n{\n    topic : msg.topic, \n    payload:\n    {\n        topic  : 'permissionError', \n        payload: msg.topic + \" not permitted\",\n        userID : msg.userID,\n        role   : msg.role\n    }\n};\n\nreturn [null,errMsg];",
+        "func": "var errMsg = null;\nvar tokenError = msg.error;\nif (tokenError != undefined)\n{\n    errMsg = \n    {\n        topic : msg.topic, \n        payload:\n        {\n            topic:'badToken', \n            payload: msg.topic + \" badToken\",\n            userID : msg.userID,\n            role   : msg.role\n        }\n    };\n    return [null,errMsg];\n}\nif (msg.token.expDate > 0)\n{\n    if (msg.token.expDate < new Date().getTime())\n    {\n        errMsg = \n        {\n            topic : msg.topic, \n            payload:\n            {\n                topic:'loginExpired', \n                payload: msg.topic + \" login expired\",\n                userID : msg.userID,\n                role   : msg.role\n            }\n        };\n        return [null,errMsg];\n    }\n}\npermittedRole = false;\nfor (itoken = 0; itoken < msg.token.roles.length; ++itoken)\n{\n    if (msg.token.roles[itoken] == msg.role) permittedRole = true;\n}\nif (permittedRole) return [msg,null];\n\nerrMsg = \n{\n    topic : msg.topic, \n    payload:\n    {\n        topic  : 'permissionError', \n        payload: msg.topic + \" not permitted\",\n        userID : msg.userID,\n        role   : msg.role\n    }\n};\n\nreturn [null,errMsg];",
         "outputs": 2,
         "noerr": 0,
         "initialize": "",
@@ -6233,7 +6231,163 @@
         "wires": []
     },
     {
-        "id": "af2a3692.efd898",
+        "id": "1b76d304.e576bd",
+        "type": "JsonWebToken",
+        "z": "90f83725.6dae08",
+        "name": "check token",
+        "tokenconfig": "6acefdd9.69f124",
+        "x": 490,
+        "y": 960,
+        "wires": [
+            [
+                "e57a1a0e.507818"
+            ]
+        ]
+    },
+    {
+        "id": "96140e28.f0af",
+        "type": "function",
+        "z": "90f83725.6dae08",
+        "name": "Set token and Role",
+        "func": "msg.token = msg.payload.token;\ndelete  msg.payload.token;\nmsg.payload.allowedRoles = [\"readDatabase\"];\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 310,
+        "y": 960,
+        "wires": [
+            [
+                "1b76d304.e576bd"
+            ]
+        ]
+    },
+    {
+        "id": "e57a1a0e.507818",
+        "type": "function",
+        "z": "90f83725.6dae08",
+        "name": "Check permitted roles",
+        "func": "var tokenError = msg.error;\nif (tokenError != undefined)\n{\n    msg.payload = tokenError;\n    return [null,msg];\n}\nif (msg.token.expDate > 0)\n{\n    if (msg.token.expDate < new Date().getTime())\n    {\n        msg.payload = 'Error: Login Expired.';\n        return [null,msg];\n    }\n}\nvar permittedRole = false;\nfor (irole = 0; irole < msg.payload.allowedRoles.length; ++irole)\n{\n    for (itoken = 0; itoken < msg.token.roles.length; ++itoken)\n    {\n        if (msg.token.roles[itoken] == msg.payload.allowedRoles[irole]) permittedRole = true;\n    }\n}\nif (!permittedRole)\n{\n    msg.payload = 'Error: Credentials not valid for App.';\n    return [null,msg];\n}\nreturn [msg,null];\n",
+        "outputs": 2,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 680,
+        "y": 960,
+        "wires": [
+            [
+                "7db15dac.050a44"
+            ],
+            [
+                "8cf93fbc.123f4"
+            ]
+        ]
+    },
+    {
+        "id": "8cf93fbc.123f4",
+        "type": "http response",
+        "z": "90f83725.6dae08",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 850,
+        "y": 1000,
+        "wires": []
+    },
+    {
+        "id": "544d2b75.abe264",
+        "type": "comment",
+        "z": "90f83725.6dae08",
+        "name": "curl \"http://localhost:60427/device?deviceType=blinky-basic&name=01&token=$(< blinky-lite-v2-token.txt)\" | json_pp > out.json",
+        "info": "",
+        "x": 480,
+        "y": 920,
+        "wires": []
+    },
+    {
+        "id": "9a2f9ea0.84376",
+        "type": "http in",
+        "z": "90f83725.6dae08",
+        "name": "",
+        "url": "/setDevice",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 140,
+        "y": 1120,
+        "wires": [
+            [
+                "aa38fdda.bad9d"
+            ]
+        ]
+    },
+    {
+        "id": "8fb8e5ba.bc08a8",
+        "type": "JsonWebToken",
+        "z": "90f83725.6dae08",
+        "name": "check token",
+        "tokenconfig": "6acefdd9.69f124",
+        "x": 510,
+        "y": 1120,
+        "wires": [
+            [
+                "39c11e39.486842"
+            ]
+        ]
+    },
+    {
+        "id": "aa38fdda.bad9d",
+        "type": "function",
+        "z": "90f83725.6dae08",
+        "name": "Set token and Role",
+        "func": "msg.token = msg.payload.token;\ndelete  msg.payload.token;\nmsg.payload.allowedRoles = [\"readDatabase\"];\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 330,
+        "y": 1120,
+        "wires": [
+            [
+                "8fb8e5ba.bc08a8"
+            ]
+        ]
+    },
+    {
+        "id": "39c11e39.486842",
+        "type": "function",
+        "z": "90f83725.6dae08",
+        "name": "Check permitted roles",
+        "func": "var tokenError = msg.error;\nif (tokenError != undefined)\n{\n    msg.payload = tokenError;\n    return [null,msg];\n}\nif (msg.token.expDate > 0)\n{\n    if (msg.token.expDate < new Date().getTime())\n    {\n        msg.payload = 'Error: Login Expired.';\n        return [null,msg];\n    }\n}\nvar permittedRole = false;\nfor (irole = 0; irole < msg.payload.allowedRoles.length; ++irole)\n{\n    for (itoken = 0; itoken < msg.token.roles.length; ++itoken)\n    {\n        if (msg.token.roles[itoken] == msg.payload.allowedRoles[irole]) permittedRole = true;\n    }\n}\nif (!permittedRole)\n{\n    msg.payload = 'Error: Credentials not valid for App.';\n    return [null,msg];\n}\nreturn [msg,null];\n",
+        "outputs": 2,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 700,
+        "y": 1120,
+        "wires": [
+            [
+                "59360b66.2efa24"
+            ],
+            [
+                "9f2b501a.06c8c",
+                "59360b66.2efa24"
+            ]
+        ]
+    },
+    {
+        "id": "9f2b501a.06c8c",
+        "type": "http response",
+        "z": "90f83725.6dae08",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 870,
+        "y": 1160,
+        "wires": []
+    },
+    {
+        "id": "59360b66.2efa24",
         "type": "debug",
         "z": "90f83725.6dae08",
         "name": "",
@@ -6241,11 +6395,12 @@
         "tosidebar": true,
         "console": false,
         "tostatus": false,
-        "complete": "false",
+        "complete": "true",
+        "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 830,
-        "y": 1000,
+        "x": 1020,
+        "y": 1080,
         "wires": []
     }
 ]
