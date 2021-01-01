@@ -441,6 +441,48 @@
         "color": "#DDAA99"
     },
     {
+        "id": "4be599c9.8ea2d8",
+        "type": "subflow",
+        "name": "IpInfo",
+        "info": "",
+        "category": "",
+        "in": [
+            {
+                "x": 60,
+                "y": 80,
+                "wires": [
+                    {
+                        "id": "7656907d.147d7"
+                    }
+                ]
+            }
+        ],
+        "out": [
+            {
+                "x": 480,
+                "y": 80,
+                "wires": [
+                    {
+                        "id": "7656907d.147d7",
+                        "port": 0
+                    }
+                ]
+            },
+            {
+                "x": 480,
+                "y": 220,
+                "wires": [
+                    {
+                        "id": "810b0dbf.add52",
+                        "port": 0
+                    }
+                ]
+            }
+        ],
+        "env": [],
+        "color": "#DDAA99"
+    },
+    {
         "id": "6ad7c930.1a06b8",
         "type": "ui_base",
         "theme": {
@@ -2563,77 +2605,6 @@
         ]
     },
     {
-        "id": "e87e796a.685178",
-        "type": "function",
-        "z": "ca529822.9112f8",
-        "name": "IP filter",
-        "func": "var ipfilter = [\n    \"127.0.0.16\"];\nvar ipAddress = ( msg.req.headers['x-forwarded-for'] || '').split(',').pop() || \n          msg.req.connection.remoteAddress || \n          msg.req.socket.remoteAddress || \n          msg.req.connection.socket.remoteAddress;\nif (ipAddress==undefined) return null;\nvar ipAddressSplit = ipAddress.split(\".\");\nfor (var ii =  0; ii < ipfilter.length; ++ii)\n{\n    var ipfilterSplit = ipfilter[ii].split(\".\");\n    if (ipAddress == ipfilter[ii])\n    { \n        return null;\n    }\n    if (ipfilterSplit[2] == '*')\n    {\n        if ((ipfilterSplit[0] == ipAddressSplit[0]) && (ipfilterSplit[1] == ipAddressSplit[1]))\n        {\n            return null;\n        }\n    }\n}\n\n\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "x": 1000,
-        "y": 40,
-        "wires": [
-            [
-                "b9df3f26.ab53f",
-                "fe4fcd1f.16e39"
-            ]
-        ]
-    },
-    {
-        "id": "fe4fcd1f.16e39",
-        "type": "function",
-        "z": "ca529822.9112f8",
-        "name": "ClientInfo",
-        "func": "var ipAddress = ( msg.req.headers['x-forwarded-for'] || '').split(',').pop() || \n          msg.req.connection.remoteAddress || \n          msg.req.socket.remoteAddress || \n          msg.req.connection.socket.remoteAddress;\nvar url = msg.req.url;\nreturn {\n    topic:'clientInfo', \n    payload:{\n        ipAddress   : ipAddress\n    },\n    extraInfo       : {url:url, userID:msg.payload.userID},\n};\n",
-        "outputs": 1,
-        "noerr": 0,
-        "x": 1120,
-        "y": 100,
-        "wires": [
-            [
-                "8382c3d.0aeea4"
-            ]
-        ]
-    },
-    {
-        "id": "8382c3d.0aeea4",
-        "type": "http request",
-        "z": "ca529822.9112f8",
-        "name": "",
-        "method": "GET",
-        "ret": "obj",
-        "paytoqs": false,
-        "url": "https://tools.keycdn.com/geo.json?host={{{payload.ipAddress}}}",
-        "tls": "",
-        "proxy": "",
-        "authType": "basic",
-        "x": 1130,
-        "y": 140,
-        "wires": [
-            [
-                "d0cd3f7.e986fc"
-            ]
-        ]
-    },
-    {
-        "id": "d0cd3f7.e986fc",
-        "type": "function",
-        "z": "ca529822.9112f8",
-        "name": "parseIpRequest",
-        "func": "var data = msg.payload.data.geo;\ndata['url'] = msg.extraInfo.url;\ndata['userID'] = msg.extraInfo.userID;\ndata['timeStamp'] = new Date().getTime();\nreturn {topic:'ipData', payload:data};\n",
-        "outputs": 1,
-        "noerr": 0,
-        "x": 1140,
-        "y": 180,
-        "wires": [
-            [
-                "b7f38426.fa6658"
-            ]
-        ]
-    },
-    {
         "id": "a9a62959.7c01e8",
         "type": "template",
         "z": "ca529822.9112f8",
@@ -2648,23 +2619,8 @@
         "y": 40,
         "wires": [
             [
-                "e87e796a.685178"
+                "35ffcf83.1547"
             ]
-        ]
-    },
-    {
-        "id": "b7f38426.fa6658",
-        "type": "mongodb3 in",
-        "z": "ca529822.9112f8",
-        "service": "_ext_",
-        "configNode": "9cd5ff5e.caf86",
-        "name": "",
-        "collection": "accessLog",
-        "operation": "insertOne",
-        "x": 1190,
-        "y": 220,
-        "wires": [
-            []
         ]
     },
     {
@@ -2767,7 +2723,7 @@
         "fieldType": "msg",
         "format": "html",
         "syntax": "mustache",
-        "template": "<!-- Body HTML -->\n    <div id='querySetup'>\n        <div class='row'>\n            <div class='col-md-12'>\n                <table id='plotSetupTable'>\n                    <tr>\n                        <td align=\"center\">\n                            <span>Start Date</span>\n                        </td>\n                        <td align=\"center\">\n                            <span>Stop Date</span>\n                        </td>\n                        <td align=\"center\">\n                        </td>\n                    </tr>\n                    <tr>\n                        <td align=\"center\">\n                            <input class=\"form-control\" id=\"startDate\" type=\"text\"/>\n                        </td>\n                        <td align=\"center\">\n                            <input class=\"form-control\" id=\"stopDate\" type=\"text\"/>\n                        </td>\n                        <td align=\"center\">\n                            <button width=100% class=\"btn jumbotron-button\" id=\"getDataButton\" type=\"button\" onclick=\"getData()\">Get Data</button>\n                        </td>\n                    </tr>\n                </table>\n                <table width='100%' id='accessLogTable'>\n                    <thead>\n                        <tr>\n                            <th width='10%'>url</th>\n                            <th width='10%'>ip</th>\n                            <th width='7%' >country</th>\n                            <th width='6%' >region</th>\n                            <th width='7%' >city</th>\n                            <th width='20%'>rdns</th>\n                            <th width='10%'>isp</th>\n                            <th width='10%'>timezone</th>\n                            <th width='10%'>datetime</th>\n                        </tr>\n                    </thead>\n                    <tbody id=\"accessLogTableBody\"></tbody>\n                </table>\n            </div>\n       </div>\n    </div>\n",
+        "template": "<!-- Body HTML -->\n    <div id='querySetup'>\n        <div class='row'>\n            <div class='col-md-12'>\n                <table id='plotSetupTable'>\n                    <tr>\n                        <td align=\"center\">\n                            <span>Start Date</span>\n                        </td>\n                        <td align=\"center\">\n                            <span>Stop Date</span>\n                        </td>\n                        <td align=\"center\">\n                        </td>\n                    </tr>\n                    <tr>\n                        <td align=\"center\">\n                            <input class=\"form-control\" id=\"startDate\" type=\"text\"/>\n                        </td>\n                        <td align=\"center\">\n                            <input class=\"form-control\" id=\"stopDate\" type=\"text\"/>\n                        </td>\n                        <td align=\"center\">\n                            <button width=100% class=\"btn jumbotron-button\" id=\"getDataButton\" type=\"button\" onclick=\"getData()\">Get Data</button>\n                        </td>\n                    </tr>\n                </table>\n                <table width='100%' id='accessLogTable'>\n                    <thead>\n                        <tr>\n                            <th width='10%'>url</th>\n                            <th width='10%'>ip</th>\n                            <th width='7%' >country</th>\n                            <th width='6%' >region</th>\n                            <th width='7%' >city</th>\n                            <th width='20%'>rdns</th>\n                            <th width='10%'>isp</th>\n                            <th width='10%'>Date</th>\n                            <th width='10%'>Time</th>\n                        </tr>\n                    </thead>\n                    <tbody id=\"accessLogTableBody\"></tbody>\n                </table>\n            </div>\n       </div>\n    </div>\n",
         "output": "str",
         "x": 1030,
         "y": 120,
@@ -2805,7 +2761,7 @@
         "fieldType": "msg",
         "format": "javascript",
         "syntax": "mustache",
-        "template": "        useWebSockets(true);\n        function onDocumentReady()\n        {\n            var now = new Date();\n            console.log(now.toLocaleString('en-US',{year: 'numeric', month: '2-digit', day : '2-digit', hour12:false, hour: '2-digit', minute: '2-digit'}).replace(',', ''));\n            var then = new Date(now.getTime() - 3600 * 24 * 1000);\n            $( \"#startDate\" ).val(then.toLocaleString('en-US',{year: 'numeric', month: '2-digit', day : '2-digit', hour12:false, hour: '2-digit', minute: '2-digit'}).replace(',', ''));\n            $( \"#stopDate\" ).val(now.toLocaleString('en-US',{year: 'numeric', month: '2-digit', day : '2-digit', hour12:false, hour: '2-digit', minute: '2-digit'}).replace(',', ''));\n            $( function()\n            {\n                $('#startDate').datetimepicker();\n            } );\n            $( function()\n            {\n                $('#stopDate').datetimepicker();\n            } );\n        }\n        function onWebSocketOpen()\n        {\n        }\n        function onWebSocketClose()\n        {\n            \n        }\n        function onWebSocketMessage(msg)\n        {\n            if (msg.userID == userID)\n            {\n                switch(msg.topic)\n                {\n                    case 'getAccessLog':\n                        displayData(msg);\n                        break;\n                    case 'permissionError':\n                        acknowledgeDialog('Permission', 'Error', msg.payload);\n                        break;\n                    case 'loginExpired':\n                        location.reload();\n                        break;\n                    default:\n                    // code block\n                }\n            }\n        }\n        function getData()\n        {\n            console.log(\"hi there\");\n            var startDate = new Date($( \"#startDate\" ).val()).getTime();\n            var stopDate = new Date($( \"#stopDate\" ).val()).getTime();\n            $(\"#accessLogTableBody\").remove();\n            var actionMsg = \n                {\n                    startDate   : startDate,\n                    stopDate    : stopDate,\n                };\n            sendActionMsg('getAccessLog', 'readDatabase', actionMsg);\n\n        }\n        function displayData(msg)\n        {\n            var markup = '<tbody id=\"accessLogTableBody\">';\n            for (var ii = 0; ii < msg.payload.length; ++ii)\n            {\n                markup = markup + addRow(msg.payload[ii]);\n            }\n            markup = markup + '</tbody>';\n            $(\"#accessLogTable\").append(markup);\n        }\n\n        function addRow(record)\n        {\n            var markup = '<tr>';\n            markup = markup + '<td>' + record.url + '</td>';\n            markup = markup + '<td>' + record.ip + '</td>';\n            markup = markup + '<td>' + record.country + '</td>';\n            markup = markup + '<td>' + record.region + '</td>';\n            markup = markup + '<td>' + record.city + '</td>';\n            markup = markup + '<td>' + record.rdns + '</td>';\n            markup = markup + '<td>' + record.isp + '</td>';\n            markup = markup + '<td>' + record.timezone + '</td>';\n            markup = markup + '<td>' + record.datetime + '</td>';\n            markup = markup + '</tr>';\n            return markup;\n            \n        }\n",
+        "template": "        useWebSockets(true);\n        function onDocumentReady()\n        {\n            var now = new Date();\n            console.log(now.toLocaleString('en-US',{year: 'numeric', month: '2-digit', day : '2-digit', hour12:false, hour: '2-digit', minute: '2-digit'}).replace(',', ''));\n            var then = new Date(now.getTime() - 3600 * 24 * 1000);\n            $( \"#startDate\" ).val(then.toLocaleString('en-US',{year: 'numeric', month: '2-digit', day : '2-digit', hour12:false, hour: '2-digit', minute: '2-digit'}).replace(',', ''));\n            $( \"#stopDate\" ).val(now.toLocaleString('en-US',{year: 'numeric', month: '2-digit', day : '2-digit', hour12:false, hour: '2-digit', minute: '2-digit'}).replace(',', ''));\n            $( function()\n            {\n                $('#startDate').datetimepicker();\n            } );\n            $( function()\n            {\n                $('#stopDate').datetimepicker();\n            } );\n        }\n        function onWebSocketOpen()\n        {\n        }\n        function onWebSocketClose()\n        {\n            \n        }\n        function onWebSocketMessage(msg)\n        {\n            if (msg.userID == userID)\n            {\n                switch(msg.topic)\n                {\n                    case 'getAccessLog':\n                        displayData(msg);\n                        break;\n                    case 'permissionError':\n                        acknowledgeDialog('Permission', 'Error', msg.payload);\n                        break;\n                    case 'loginExpired':\n                        location.reload();\n                        break;\n                    default:\n                    // code block\n                }\n            }\n        }\n        function getData()\n        {\n            var startDate = new Date($( \"#startDate\" ).val()).getTime();\n            var stopDate = new Date($( \"#stopDate\" ).val()).getTime();\n            $(\"#accessLogTableBody\").remove();\n            var actionMsg = \n                {\n                    startDate   : startDate,\n                    stopDate    : stopDate,\n                };\n            sendActionMsg('getAccessLog', 'readDatabase', actionMsg);\n\n        }\n        function displayData(msg)\n        {\n            console.log(msg)\n            var markup = '<tbody id=\"accessLogTableBody\">';\n            for (var ii = 0; ii < msg.payload.length; ++ii)\n            {\n                markup = markup + addRow(msg.payload[ii]);\n            }\n            markup = markup + '</tbody>';\n            $(\"#accessLogTable\").append(markup);\n        }\n\n        function addRow(record)\n        {\n            var markup = '<tr>';\n            markup = markup + '<td>' + record.url + '</td>';\n            markup = markup + '<td>' + record.ip + '</td>';\n            markup = markup + '<td>' + record.country + '</td>';\n            markup = markup + '<td>' + record.region + '</td>';\n            markup = markup + '<td>' + record.city + '</td>';\n            markup = markup + '<td>' + record.rdns + '</td>';\n            markup = markup + '<td>' + record.isp + '</td>';\n            markup = markup + '<td>' + new Date(record.timeStamp).toLocaleDateString() + '</td>';\n            markup = markup + '<td>' + new Date(record.timeStamp).toLocaleTimeString() + '</td>';\n            markup = markup + '</tr>';\n            return markup;\n            \n        }\n",
         "output": "str",
         "x": 890,
         "y": 120,
@@ -2873,6 +2829,8 @@
         "func": "function objectLength( object ) {\n    var length = 0;\n    for( var key in object ) {\n        if( object.hasOwnProperty(key) ) {\n            ++length;\n        }\n    }\n    return length;\n}\n\nfunction sortByKey(arr, key) \n{\n    return arr.sort( function(a, b) \n        {\n            var x = a[key]; \n            var y = b[key];\n            return ((x < y) ? 1 : ((x > y) ? -1 : 0));\n        } );\n}\n\nvar numRecords = objectLength(msg.payload);\nif (numRecords < 1)\n{\n    return {\n        topic : msg.device.name,\n        payload:{\n            topic           : 'getAccessLog',\n            payload         : null,\n            userID          : msg.userID,\n        }\n    };\n}\nvar records = [];\nfor (var ii = 0; ii < numRecords; ++ii) records[ii] = msg.payload[ii]; \nsortByKey(records, 'timeStamp');\n\nreturn {\n    payload:{\n        topic           : 'getAccessLog',\n        payload         : records,\n        userID          : msg.userID,\n    }\n};\n",
         "outputs": 1,
         "noerr": 0,
+        "initialize": "",
+        "finalize": "",
         "x": 1170,
         "y": 200,
         "wires": [
@@ -2918,7 +2876,7 @@
         "fieldType": "msg",
         "format": "html",
         "syntax": "mustache",
-        "template": "<!-- Body HTML -->\n    <div id='querySetup'>\n        <div class='row'>\n            <div class='col-md-12'>\n                <table id='plotSetupTable'>\n                    <tr>\n                        <td align=\"center\">\n                            <span>Start Date</span>\n                        </td>\n                        <td align=\"center\">\n                            <span>Stop Date</span>\n                        </td>\n                        <td align=\"center\">\n                        </td>\n                    </tr>\n                    <tr>\n                        <td align=\"center\">\n                            <input class=\"form-control\" id=\"startDate\" type=\"text\"/>\n                        </td>\n                        <td align=\"center\">\n                            <input class=\"form-control\" id=\"stopDate\" type=\"text\"/>\n                        </td>\n                        <td align=\"center\">\n                            <button width=100% class=\"btn jumbotron-button\" id=\"getDataButton\" type=\"button\" onclick=\"getData()\">Get Data</button>\n                        </td>\n                    </tr>\n                </table>\n                <table width='100%' id='settingsLogTable'>\n                    <thead>\n                        <tr>\n                            <th width='10%' >url</th>\n                            <th width='10%' >device</th>\n                            <th width='10%' >ip</th>\n                            <th width='7%'  >country</th>\n                            <th width='6%'  >region</th>\n                            <th width='7%'  >city</th>\n                            <th width='20%' >rdns</th>\n                            <th width='10%' >isp</th>\n                            <th width='10%' >timezone</th>\n                            <th width='10%' >datetime</th>\n                        </tr>\n                    </thead>\n                    <tbody id=\"settingsLogTableBody\"></tbody>\n                </table>\n            </div>\n       </div>\n   </div>\n    <div id=\"showDeviceDialog\" title=\"Device\" class='card'>\n        <p class='card-title' id='showDeviceDialogName'>Device</p>\n        <div class='card-body'>\n            <table id='showDeviceTable' width='100%'>\n                <thead>\n                    <tr>\n                        <th width='50%' >Attribute</th>\n                        <th width='50%' >Value</th>\n                    </tr>\n                </thead>\n                <tbody id=\"showDeviceTableBody\"></tbody>\n            </table>\n        </div>\n    </div>  ",
+        "template": "<!-- Body HTML -->\n    <div id='querySetup'>\n        <div class='row'>\n            <div class='col-md-12'>\n                <table id='plotSetupTable'>\n                    <tr>\n                        <td align=\"center\">\n                            <span>Start Date</span>\n                        </td>\n                        <td align=\"center\">\n                            <span>Stop Date</span>\n                        </td>\n                        <td align=\"center\">\n                        </td>\n                    </tr>\n                    <tr>\n                        <td align=\"center\">\n                            <input class=\"form-control\" id=\"startDate\" type=\"text\"/>\n                        </td>\n                        <td align=\"center\">\n                            <input class=\"form-control\" id=\"stopDate\" type=\"text\"/>\n                        </td>\n                        <td align=\"center\">\n                            <button width=100% class=\"btn jumbotron-button\" id=\"getDataButton\" type=\"button\" onclick=\"getData()\">Get Data</button>\n                        </td>\n                    </tr>\n                </table>\n                <table width='100%' id='settingsLogTable'>\n                    <thead>\n                        <tr>\n                            <th width='10%' >url</th>\n                            <th width='10%' >device</th>\n                            <th width='10%' >ip</th>\n                            <th width='7%'  >country</th>\n                            <th width='6%'  >region</th>\n                            <th width='7%'  >city</th>\n                            <th width='20%' >rdns</th>\n                            <th width='10%' >isp</th>\n                            <th width='10%' >Date</th>\n                            <th width='10%' >Time</th>\n                        </tr>\n                    </thead>\n                    <tbody id=\"settingsLogTableBody\"></tbody>\n                </table>\n            </div>\n       </div>\n   </div>\n    <div id=\"showDeviceDialog\" title=\"Device\" class='card'>\n        <p class='card-title' id='showDeviceDialogName'>Device</p>\n        <div class='card-body'>\n            <table id='showDeviceTable' width='100%'>\n                <thead>\n                    <tr>\n                        <th width='50%' >Attribute</th>\n                        <th width='50%' >Value</th>\n                    </tr>\n                </thead>\n                <tbody id=\"showDeviceTableBody\"></tbody>\n            </table>\n        </div>\n    </div>  ",
         "output": "str",
         "x": 1010,
         "y": 300,
@@ -3035,7 +2993,7 @@
         "fieldType": "msg",
         "format": "javascript",
         "syntax": "mustache",
-        "template": "        var settingsHistory = null;\n        useWebSockets(true);\n        function onDocumentReady()\n        {\n            var now = new Date();\n            console.log(now.toLocaleString('en-US',{year: 'numeric', month: '2-digit', day : '2-digit', hour12:false, hour: '2-digit', minute: '2-digit'}).replace(',', ''));\n            var then = new Date(now.getTime() - 3600 * 24 * 1000);\n            $( \"#startDate\" ).val(then.toLocaleString('en-US',{year: 'numeric', month: '2-digit', day : '2-digit', hour12:false, hour: '2-digit', minute: '2-digit'}).replace(',', ''));\n            $( \"#stopDate\" ).val(now.toLocaleString('en-US',{year: 'numeric', month: '2-digit', day : '2-digit', hour12:false, hour: '2-digit', minute: '2-digit'}).replace(',', ''));\n            $( function()\n            {\n                $('#startDate').datetimepicker();\n            } );\n            $( function()\n            {\n                $('#stopDate').datetimepicker();\n            } );\n        }\n        function onWebSocketOpen()\n        {\n        }\n        function onWebSocketClose()\n        {\n            \n        }\n        function onWebSocketMessage(msg)\n        {\n            if (msg.userID == userID)\n            {\n                switch(msg.topic)\n                {\n                    case 'getSettingsLog':\n                        settingsHistory = msg.payload;\n                        displayData();\n                        break;\n                    case 'permissionError':\n                        acknowledgeDialog('Permission', 'Error', msg.payload);\n                        break;\n                    case 'loginExpired':\n                        location.reload();\n                        break;\n                    default:\n                    // code block\n                }\n            }\n        }\n        function getData()\n        {\n            var startDate = new Date($( \"#startDate\" ).val()).getTime();\n            var stopDate = new Date($( \"#stopDate\" ).val()).getTime();\n            settingsHistory = null;\n            $(\"#settingsLogTableBody\").remove();\n            var actionMsg = \n                {\n                    startDate   : startDate,\n                    stopDate    : stopDate,\n                };\n            sendActionMsg('getSettingsLog', 'readDatabase', actionMsg);\n        }\n        function displayData()\n        {\n            var markup = '<tbody id=\"settingsLogTableBody\">';\n            for (var ii = 0; ii < settingsHistory.length; ++ii)\n            {\n                markup = markup + addRow(ii);\n            }\n            markup = markup + '</tbody>';\n            $(\"#settingsLogTable\").append(markup);\n        }\n\n        function addRow(ii)\n        {\n            var markup = '<tr>';\n            markup = markup + '<td>' + settingsHistory[ii].ipInfo.url + '</td>';\n            markup = markup + '<td>' \n                +  '<button onclick=\"displayDevice(' + ii.toString() + ')\">' + settingsHistory[ii].device.deviceType  + '-' + settingsHistory[ii].device.name + '</button>' \n                + '</td>';\n            markup = markup + '<td>' + settingsHistory[ii].ipInfo.ip + '</td>';\n            markup = markup + '<td>' + settingsHistory[ii].ipInfo.country + '</td>';\n            markup = markup + '<td>' + settingsHistory[ii].ipInfo.region + '</td>';\n            markup = markup + '<td>' + settingsHistory[ii].ipInfo.city + '</td>';\n            markup = markup + '<td>' + settingsHistory[ii].ipInfo.rdns + '</td>';\n            markup = markup + '<td>' + settingsHistory[ii].ipInfo.isp + '</td>';\n            markup = markup + '<td>' + settingsHistory[ii].ipInfo.timezone + '</td>';\n            markup = markup + '<td>' + settingsHistory[ii].ipInfo.datetime + '</td>';\n            markup = markup + '</tr>';\n            return markup;\n            \n        }\n        function displayDevice(index)\n        {\n            var actionArray = [];\n            var attrList = [];\n            var keys = Object.keys(settingsHistory[index].device);\n            for (var ii = 0; ii < keys.length; ++ii)\n            {\n                if (settingsHistory[index].device[keys[ii]].hasOwnProperty('type'))\n                {\n                    if (settingsHistory[index].device[keys[ii]].type == 'scalar')\n                    {\n                        if (settingsHistory[index].device[keys[ii]].action == 'setting')\n                        {\n                            actionArray.push(settingsHistory[index].device[keys[ii]]);\n                            attrList.push(keys[ii]);\n                        }\n                    }\n                }\n            }\n\n            var time = new Date(settingsHistory[index].timeStamp).toLocaleString('en-US',{year: 'numeric', month: '2-digit', day : '2-digit', hour12:false, hour: '2-digit', minute: '2-digit'}).replace(',', '');\n\n            $( \"#showDeviceDialogName\" ).html(settingsHistory[index].device.name + ' ' + time);\n            $( \"#showDeviceTableBody\" ).remove();\n            var markup = '<tbody id=\"showDeviceTableBody\">';\n\n            for (var ii = 0; ii < actionArray.length; ++ii)\n            {\n                markup = markup +'<tr>';\n                markup = markup + '<td align=\"left\">' + attrList[ii] + '</td>';\n                markup = markup + '<td>' + actionArray[ii].value.toString() + '</td>';\n                markup = markup + '</tr>';\n            }\n            markup = markup + '</tbody>';\n            $(\"#showDeviceTable\").append(markup);\n\n            $( \"#showDeviceDialog\" ).dialog( \"option\", \"title\", \"Device Setting\"); \n            $( \"#showDeviceDialog\" ).dialog( \"open\" );\n        }\n        $( function() \n        {\n            $( \"#showDeviceDialog\" ).dialog(\n                {\n//                    closeOnEscape: false,\n//                    open: function(event, ui) {$(\".ui-dialog-titlebar-close\", ui.dialog | ui).hide();},\n                    width:    640,\n                    autoOpen: false,\n                    buttons:\n                    [\n                        {\n                            text: \"Close\",\n                            click: function() {$( this ).dialog( \"close\" );},\n                            showText: false\n                        }\n                    ]\n                });\n        } );\n",
+        "template": "        var settingsHistory = null;\n        useWebSockets(true);\n        function onDocumentReady()\n        {\n            var now = new Date();\n            console.log(now.toLocaleString('en-US',{year: 'numeric', month: '2-digit', day : '2-digit', hour12:false, hour: '2-digit', minute: '2-digit'}).replace(',', ''));\n            var then = new Date(now.getTime() - 3600 * 24 * 1000);\n            $( \"#startDate\" ).val(then.toLocaleString('en-US',{year: 'numeric', month: '2-digit', day : '2-digit', hour12:false, hour: '2-digit', minute: '2-digit'}).replace(',', ''));\n            $( \"#stopDate\" ).val(now.toLocaleString('en-US',{year: 'numeric', month: '2-digit', day : '2-digit', hour12:false, hour: '2-digit', minute: '2-digit'}).replace(',', ''));\n            $( function()\n            {\n                $('#startDate').datetimepicker();\n            } );\n            $( function()\n            {\n                $('#stopDate').datetimepicker();\n            } );\n        }\n        function onWebSocketOpen()\n        {\n        }\n        function onWebSocketClose()\n        {\n            \n        }\n        function onWebSocketMessage(msg)\n        {\n            if (msg.userID == userID)\n            {\n                switch(msg.topic)\n                {\n                    case 'getSettingsLog':\n                        settingsHistory = msg.payload;\n                        displayData();\n                        break;\n                    case 'permissionError':\n                        acknowledgeDialog('Permission', 'Error', msg.payload);\n                        break;\n                    case 'loginExpired':\n                        location.reload();\n                        break;\n                    default:\n                    // code block\n                }\n            }\n        }\n        function getData()\n        {\n            var startDate = new Date($( \"#startDate\" ).val()).getTime();\n            var stopDate = new Date($( \"#stopDate\" ).val()).getTime();\n            settingsHistory = null;\n            $(\"#settingsLogTableBody\").remove();\n            var actionMsg = \n                {\n                    startDate   : startDate,\n                    stopDate    : stopDate,\n                };\n            sendActionMsg('getSettingsLog', 'readDatabase', actionMsg);\n        }\n        function displayData()\n        {\n            var markup = '<tbody id=\"settingsLogTableBody\">';\n            for (var ii = 0; ii < settingsHistory.length; ++ii)\n            {\n                markup = markup + addRow(ii);\n            }\n            markup = markup + '</tbody>';\n            $(\"#settingsLogTable\").append(markup);\n        }\n\n        function addRow(ii)\n        {\n            var markup = '<tr>';\n            markup = markup + '<td>' + settingsHistory[ii].ipInfo.url + '</td>';\n            markup = markup + '<td>' \n                +  '<button onclick=\"displayDevice(' + ii.toString() + ')\">' + settingsHistory[ii].device.deviceType  + '-' + settingsHistory[ii].device.name + '</button>' \n                + '</td>';\n            markup = markup + '<td>' + settingsHistory[ii].ipInfo.ip + '</td>';\n            markup = markup + '<td>' + settingsHistory[ii].ipInfo.country + '</td>';\n            markup = markup + '<td>' + settingsHistory[ii].ipInfo.region + '</td>';\n            markup = markup + '<td>' + settingsHistory[ii].ipInfo.city + '</td>';\n            markup = markup + '<td>' + settingsHistory[ii].ipInfo.rdns + '</td>';\n            markup = markup + '<td>' + settingsHistory[ii].ipInfo.isp + '</td>';\n            markup = markup + '<td>' + new Date(settingsHistory[ii].timeStamp).toLocaleDateString() + '</td>';\n            markup = markup + '<td>' + new Date(settingsHistory[ii].timeStamp).toLocaleTimeString() + '</td>';\n            markup = markup + '</tr>';\n            return markup;\n            \n        }\n        function displayDevice(index)\n        {\n            var actionArray = [];\n            var attrList = [];\n            var keys = Object.keys(settingsHistory[index].device);\n            for (var ii = 0; ii < keys.length; ++ii)\n            {\n                if (settingsHistory[index].device[keys[ii]].hasOwnProperty('type'))\n                {\n                    if (settingsHistory[index].device[keys[ii]].type == 'scalar')\n                    {\n                        if (settingsHistory[index].device[keys[ii]].action == 'setting')\n                        {\n                            actionArray.push(settingsHistory[index].device[keys[ii]]);\n                            attrList.push(keys[ii]);\n                        }\n                    }\n                }\n            }\n\n            var time = new Date(settingsHistory[index].timeStamp).toLocaleString('en-US',{year: 'numeric', month: '2-digit', day : '2-digit', hour12:false, hour: '2-digit', minute: '2-digit'}).replace(',', '');\n\n            $( \"#showDeviceDialogName\" ).html(settingsHistory[index].device.name + ' ' + time);\n            $( \"#showDeviceTableBody\" ).remove();\n            var markup = '<tbody id=\"showDeviceTableBody\">';\n\n            for (var ii = 0; ii < actionArray.length; ++ii)\n            {\n                markup = markup +'<tr>';\n                markup = markup + '<td align=\"left\">' + attrList[ii] + '</td>';\n                markup = markup + '<td>' + actionArray[ii].value.toString() + '</td>';\n                markup = markup + '</tr>';\n            }\n            markup = markup + '</tbody>';\n            $(\"#showDeviceTable\").append(markup);\n\n            $( \"#showDeviceDialog\" ).dialog( \"option\", \"title\", \"Device Setting\"); \n            $( \"#showDeviceDialog\" ).dialog( \"open\" );\n        }\n        $( function() \n        {\n            $( \"#showDeviceDialog\" ).dialog(\n                {\n//                    closeOnEscape: false,\n//                    open: function(event, ui) {$(\".ui-dialog-titlebar-close\", ui.dialog | ui).hide();},\n                    width:    640,\n                    autoOpen: false,\n                    buttons:\n                    [\n                        {\n                            text: \"Close\",\n                            click: function() {$( this ).dialog( \"close\" );},\n                            showText: false\n                        }\n                    ]\n                });\n        } );\n",
         "output": "str",
         "x": 870,
         "y": 300,
@@ -3091,8 +3049,8 @@
         "configNode": "9cd5ff5e.caf86",
         "name": "",
         "collection": "settingsLog",
-        "operation": "findAndRemove",
-        "x": 710,
+        "operation": "removeMany",
+        "x": 700,
         "y": 700,
         "wires": [
             [
@@ -3143,6 +3101,8 @@
         "func": "var queryFilter = \n{\n    'ip' : '127.0.0.1'\n}\nvar newMsg = \n{\n    topic           : 'remove127',\n    payload         : [queryFilter, null],\n};\nreturn newMsg;\n",
         "outputs": 1,
         "noerr": 0,
+        "initialize": "",
+        "finalize": "",
         "x": 380,
         "y": 780,
         "wires": [
@@ -3159,8 +3119,8 @@
         "configNode": "9cd5ff5e.caf86",
         "name": "",
         "collection": "accessLog",
-        "operation": "findAndRemove",
-        "x": 710,
+        "operation": "removeMany",
+        "x": 700,
         "y": 780,
         "wires": [
             [
@@ -3876,7 +3836,7 @@
         "upload": false,
         "swaggerDoc": "",
         "x": 150,
-        "y": 1380,
+        "y": 1580,
         "wires": [
             [
                 "2623a5b9.60e51a"
@@ -3893,7 +3853,7 @@
         "collection": "users",
         "operation": "findOne",
         "x": 510,
-        "y": 1380,
+        "y": 1580,
         "wires": [
             [
                 "d0b46e62.c61f3"
@@ -3911,7 +3871,7 @@
         "initialize": "",
         "finalize": "",
         "x": 310,
-        "y": 1380,
+        "y": 1580,
         "wires": [
             [
                 "c7dcd2fd.f38ec"
@@ -3929,7 +3889,7 @@
         "initialize": "",
         "finalize": "",
         "x": 730,
-        "y": 1380,
+        "y": 1580,
         "wires": [
             [
                 "d1cf61fb.35fc1"
@@ -3949,7 +3909,7 @@
         "hash": "payload.hash",
         "rounds": 10,
         "x": 930,
-        "y": 1420,
+        "y": 1620,
         "wires": [
             [
                 "25cbcda4.aaf522"
@@ -3967,7 +3927,7 @@
         "initialize": "",
         "finalize": "",
         "x": 1160,
-        "y": 1420,
+        "y": 1620,
         "wires": [
             [
                 "abf9b132.7c298"
@@ -3984,7 +3944,7 @@
         "name": "get Token",
         "tokenconfig": "6acefdd9.69f124",
         "x": 940,
-        "y": 1500,
+        "y": 1700,
         "wires": [
             [
                 "26477e37.472222"
@@ -4002,8 +3962,8 @@
         "syntax": "mustache",
         "template": "<!-- Body HTML -->\n    <h1 style=\"text-align:center;color:#415c71;\">{{{payload.errorMsg}}}</h1>\n    <form action=\"/process-login\" method=\"POST\">\n        <table align='center'>\n            <tr>\n                <td>\n                    <label for=\"username\" class=\"big-text\">User</label>\n                </td>\n                <td>\n                    <input name=\"username\" type=\"text\" class=\"big-text\"/>\n                </td>\n            </tr>\n            <tr>\n                <td>\n                    <label for=\"password\" class=\"big-text\">Password</label>\n                </td>\n                <td>\n                    <input name=\"password\" type=\"password\" class=\"big-text\"/>\n                </td>\n            </tr>\n            <tr>\n                <td>\n                </td>\n                <td>\n                    <input type=\"submit\" class=\"btn jumbotron-button btn-block big-text bold-text\"/>\n                </td>\n            </tr>\n        </table>    \n        <input type=\"hidden\" name=\"url\" value=\"{{{userData.url}}}\" />\n    </form>  ",
         "output": "str",
-        "x": 670,
-        "y": 1280,
+        "x": 630,
+        "y": 1480,
         "wires": [
             [
                 "67f4ab6d.c1fd04"
@@ -4021,8 +3981,8 @@
         "syntax": "mustache",
         "template": "Blinky-Lite",
         "output": "str",
-        "x": 390,
-        "y": 1280,
+        "x": 350,
+        "y": 1480,
         "wires": [
             [
                 "5a857f25.a6af6"
@@ -4040,8 +4000,8 @@
         "syntax": "mustache",
         "template": "        useWebSockets(false);\n        function onDocumentReady()\n        {\n        }\n        function onWebSocketOpen()\n        {\n        }\n        function onWebSocketClose()\n        {\n            \n        }\n        function onWebSocketMessage(msg)\n        {\n        }\n\n",
         "output": "str",
-        "x": 250,
-        "y": 1280,
+        "x": 210,
+        "y": 1480,
         "wires": [
             [
                 "7e91110a.c2165"
@@ -4053,8 +4013,8 @@
         "type": "subflow:8341090a.df9758",
         "z": "90f83725.6dae08",
         "name": "",
-        "x": 810,
-        "y": 1280,
+        "x": 770,
+        "y": 1480,
         "wires": []
     },
     {
@@ -4068,8 +4028,8 @@
         "syntax": "mustache",
         "template": "basicYellow.png",
         "output": "str",
-        "x": 530,
-        "y": 1280,
+        "x": 490,
+        "y": 1480,
         "wires": [
             [
                 "c10f4686.4bfa58"
@@ -4087,7 +4047,7 @@
         "initialize": "",
         "finalize": "",
         "x": 1110,
-        "y": 1500,
+        "y": 1700,
         "wires": [
             [
                 "fee60e7.48d0cf"
@@ -4102,7 +4062,7 @@
         "statusCode": "",
         "headers": {},
         "x": 1270,
-        "y": 1500,
+        "y": 1700,
         "wires": []
     },
     {
@@ -4114,8 +4074,8 @@
             "d1cf61fb.35fc1",
             "abf9b132.7c298"
         ],
-        "x": 115,
-        "y": 1280,
+        "x": 75,
+        "y": 1480,
         "wires": [
             [
                 "aff12a21.2e53c8"
@@ -4131,7 +4091,7 @@
             "e322d811.8b4178"
         ],
         "x": 855,
-        "y": 1360,
+        "y": 1560,
         "wires": []
     },
     {
@@ -4143,7 +4103,7 @@
             "e322d811.8b4178"
         ],
         "x": 1315,
-        "y": 1380,
+        "y": 1580,
         "wires": []
     },
     {
@@ -4156,7 +4116,7 @@
         "collection": "users",
         "operation": "insertOne",
         "x": 570,
-        "y": 1600,
+        "y": 1800,
         "wires": [
             [
                 "1965db8f.5178e4"
@@ -4174,7 +4134,7 @@
         "tostatus": false,
         "complete": "false",
         "x": 830,
-        "y": 1600,
+        "y": 1800,
         "wires": []
     },
     {
@@ -4188,7 +4148,7 @@
         "initialize": "",
         "finalize": "",
         "x": 360,
-        "y": 1600,
+        "y": 1800,
         "wires": [
             [
                 "ab328d8b.b827a"
@@ -4208,7 +4168,7 @@
         "payload": "",
         "payloadType": "date",
         "x": 160,
-        "y": 1600,
+        "y": 1800,
         "wires": [
             [
                 "ba337c11.0eb2f"
@@ -4225,7 +4185,7 @@
         "hash": "payload",
         "rounds": 10,
         "x": 310,
-        "y": 1660,
+        "y": 1860,
         "wires": [
             [
                 "b3869c42.e862d"
@@ -4254,7 +4214,7 @@
         "payload": "blinky-lite",
         "payloadType": "str",
         "x": 170,
-        "y": 1660,
+        "y": 1860,
         "wires": [
             [
                 "ea16c2f2.cc51f"
@@ -4272,7 +4232,7 @@
         "tostatus": false,
         "complete": "true",
         "x": 430,
-        "y": 1660,
+        "y": 1860,
         "wires": []
     },
     {
@@ -4297,7 +4257,7 @@
         "payload": "{\"txt\":\"zebograf\",\"hash\":\"$2a$10$NO0QftMJiHQPA8z7BmlFWOW0uajRSg3gP4Nq1IdwjEndxHRRihjkW\"}",
         "payloadType": "json",
         "x": 160,
-        "y": 1720,
+        "y": 1920,
         "wires": [
             [
                 "3a224a45.c10eb6"
@@ -4315,7 +4275,7 @@
         "tostatus": false,
         "complete": "true",
         "x": 430,
-        "y": 1720,
+        "y": 1920,
         "wires": []
     },
     {
@@ -4328,7 +4288,7 @@
         "hash": "payload.hash",
         "rounds": 10,
         "x": 310,
-        "y": 1720,
+        "y": 1920,
         "wires": [
             [
                 "f1f8d58.a302028"
@@ -4991,7 +4951,7 @@
         "fieldType": "msg",
         "format": "html",
         "syntax": "mustache",
-        "template": "<!-- Body HTML -->\n    <div class='container' width=\"100%\">\n        <div class='row' style='padding-top: 1px;'>\n            <div class=\"col-md-12\" align=\"center\">\n                <div class='card'>\n                <div class='card-body' align=\"center\">\n                    <table width=\"100%\">\n                        <tr>\n                            <td  align=\"left\">\n                                 <span class='card-text' style='color:black;'>User:</span>\n                            </td>\n                            <td  align=\"right\">\n                                 <span class='card-text' id='usernameId'></span>\n                            </td>\n                        </tr>\n                        <tr>\n                            <td  align=\"left\">\n                                <span class='card-text' style='color:black;'>Time left:</span>\n                            </td>\n                            <td  align=\"right\">\n                                 <span class='card-text' id='expTimeId'></span>\n                            </td>\n                        </tr>\n                    </table>\n                    <table width=\"100%\">\n                        <tr>\n                            <td width=\"30%\">\n                                <button class='btn btn-block card-button big-text' id='logoutButton' onclick=\"renew()\" >Renew</button>\n                            </td>\n                            <td width=\"5%\"></td>\n                            <td width=\"30%\">\n                                <button class='btn btn-block card-button big-text' id='logoutButton' onclick=\"logout()\" >Logout</button>\n                            </td>\n                            <td width=\"5%\"></td>\n                            <td width=\"30%\">\n                                <button class='btn btn-block card-button big-text' id='logoutButton' onclick=\"downloadToken()\" >Token</button>\n                            </td>\n                        </tr>\n                    </table>\n                </div>\n            </div>\n            </div>\n        </div>\n        <div class='row' style='padding-top: 25px;'>\n            <div class=\"col-md-12\" align=\"center\">\n                <div class='card'>\n                <div class='card-body' align=\"center\">\n                    <div class='row' style='padding-bottom: 25px;'>\n                        <div class=\"col-md-1\" align=\"center\">\n                        </div>\n                        <div class=\"col-md-5\" align=\"center\">\n                            <span class='card-text' >Application</span>\n                        </div>\n                        <div class=\"col-md-5\" align=\"center\">\n                            <select class=\"custom-select big-text\" id=\"application\">\n                                <option value=\"blinky-basic\">blinky-basic</option>\n                            </select>\n                        </div>\n                        <div class=\"col-md-1\" align=\"center\">\n                        </div>\n                    </div>\n                    <div class='row' style='padding-bottom: 25px;'>\n                        <div class=\"col-md-1\" align=\"center\">\n                        </div>\n                        <div class=\"col-md-5\" align=\"center\">\n                            <span class='card-text' >Device</span>\n                        </div>\n                        <div class=\"col-md-5\" align=\"center\">\n                            <select class=\"custom-select big-text\" id=\"traceA\">\n                                <option value=\"none\">none</option>\n                                <option value=\"01\">01</option>\n                                <option value=\"02\">02</option>\n                            </select>\n                        </div>\n                        <div class=\"col-md-1\" align=\"center\">\n                        </div>\n                    </div>\n                    <div class='row' style='padding-bottom: 25px;'>\n                        <div class=\"col-md-1\" align=\"center\">\n                        </div>\n                        <div class=\"col-md-5\" align=\"center\">\n                        </div>\n                        <div class=\"col-md-5\" align=\"center\">\n                            <button class='btn btn-block card-button big-text' id='launchAppButton' onclick=\"launchApp()\" >Launch</button>\n                        </div>\n                        <div class=\"col-md-1\" align=\"center\">\n                        </div>\n                    </div>\n                </div>\n            </div>\n            </div>\n        </div>\n        <div class='row' style='padding-top: 25px;'>\n            <div class=\"col-md-3\" align=\"center\">\n            </div>\n            <div class=\"col-md-6\" align=\"center\">\n                <a class='btn btn-block card-button big-text' href='/core' target='_blank'>Utilites</a>\n            </div>\n            <div class=\"col-md-3\" align=\"center\">\n            </div>\n        </div>\n    </div>\n",
+        "template": "<!-- Body HTML -->\n    <div class='container' width=\"100%\">\n        <div class='row' style='padding-top: 1px;'>\n            <div class=\"col-md-12\" align=\"center\">\n                <div class='card'>\n                <div class='card-body' align=\"center\">\n                    <table width=\"100%\">\n                        <tr>\n                            <td  align=\"left\">\n                                 <span class='card-text' style='color:black;'>User:</span>\n                            </td>\n                            <td  align=\"right\">\n                                 <span class='card-text' id='usernameId'></span>\n                            </td>\n                        </tr>\n                        <tr>\n                            <td  align=\"left\">\n                                <span class='card-text' style='color:black;'>Time left:</span>\n                            </td>\n                            <td  align=\"right\">\n                                 <span class='card-text' id='expTimeId'></span>\n                            </td>\n                        </tr>\n                    </table>\n                    <table width=\"100%\">\n                        <tr>\n                            <td width=\"30%\">\n                                <button class='btn btn-block card-button big-text' id='logoutButton' onclick=\"renew()\" >Renew</button>\n                            </td>\n                            <td width=\"5%\"></td>\n                            <td width=\"30%\">\n                                <button class='btn btn-block card-button big-text' id='logoutButton' onclick=\"logout()\" >Logout</button>\n                            </td>\n                            <td width=\"5%\"></td>\n                            <td width=\"30%\">\n                                <button class='btn btn-block card-button big-text' id='logoutButton' onclick=\"downloadToken()\" >Token</button>\n                            </td>\n                        </tr>\n                    </table>\n                </div>\n            </div>\n            </div>\n        </div>\n        <div class='row' style='padding-top: 25px;'>\n            <div class=\"col-md-12\" align=\"center\">\n                <div class='card'>\n                <div class='card-body' align=\"center\">\n                    <div class='row' style='padding-bottom: 25px;'>\n                        <div class=\"col-md-1\" align=\"center\">\n                        </div>\n                        <div class=\"col-md-5\" align=\"center\">\n                            <span class='card-text' >Application</span>\n                        </div>\n                        <div class=\"col-md-5\" align=\"center\">\n                            <select class=\"custom-select big-text\" id=\"application\">\n                                <option value=\"blinky-basic\">blinky-basic</option>\n                            </select>\n                        </div>\n                        <div class=\"col-md-1\" align=\"center\">\n                        </div>\n                    </div>\n                    <div class='row' style='padding-bottom: 25px;'>\n                        <div class=\"col-md-1\" align=\"center\">\n                        </div>\n                        <div class=\"col-md-5\" align=\"center\">\n                            <span class='card-text' >Device</span>\n                        </div>\n                        <div class=\"col-md-5\" align=\"center\">\n                            <select class=\"custom-select big-text\" id=\"traceA\">\n                                <option value=\"none\">none</option>\n                                <option value=\"01\">01</option>\n                                <option value=\"02\">02</option>\n                            </select>\n                        </div>\n                        <div class=\"col-md-1\" align=\"center\">\n                        </div>\n                    </div>\n                    <div class='row' style='padding-bottom: 25px;'>\n                        <div class=\"col-md-1\" align=\"center\">\n                        </div>\n                        <div class=\"col-md-5\" align=\"center\">\n                        </div>\n                        <div class=\"col-md-5\" align=\"center\">\n                            <button class='btn btn-block card-button big-text' id='launchAppButton' onclick=\"launchApp()\" >Launch</button>\n                        </div>\n                        <div class=\"col-md-1\" align=\"center\">\n                        </div>\n                    </div>\n                </div>\n            </div>\n            </div>\n        </div>\n        <div class='row' style='padding-top: 25px;'>\n            <div class=\"col-md-3\" align=\"center\">\n            </div>\n            <div class=\"col-md-6\" align=\"center\">\n                <a class='btn btn-block card-button big-text' href='/core' >Utilites</a>\n            </div>\n            <div class=\"col-md-3\" align=\"center\">\n            </div>\n        </div>\n    </div>\n",
         "output": "str",
         "x": 1030,
         "y": 60,
@@ -5030,7 +4990,7 @@
         "collection": "devices",
         "operation": "insertOne",
         "x": 580,
-        "y": 1800,
+        "y": 2000,
         "wires": [
             [
                 "389f1443.3ce90c"
@@ -5048,7 +5008,7 @@
         "tostatus": false,
         "complete": "false",
         "x": 830,
-        "y": 1800,
+        "y": 2000,
         "wires": []
     },
     {
@@ -5062,7 +5022,7 @@
         "initialize": "",
         "finalize": "",
         "x": 370,
-        "y": 1800,
+        "y": 2000,
         "wires": [
             [
                 "78a482dc.b332ac"
@@ -5082,7 +5042,7 @@
         "payload": "",
         "payloadType": "date",
         "x": 160,
-        "y": 1800,
+        "y": 2000,
         "wires": [
             [
                 "31c358e4.c01978"
@@ -6340,7 +6300,7 @@
         "type": "function",
         "z": "90f83725.6dae08",
         "name": "Set token and Role",
-        "func": "msg.token = msg.payload.token;\ndelete  msg.payload.token;\nmsg.payload.allowedRoles = [\"readDatabase\"];\nreturn msg;",
+        "func": "msg.token = msg.payload.token;\ndelete  msg.payload.token;\nmsg.payload.allowedRoles = [\"setting\"];\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -6367,11 +6327,10 @@
         "y": 1120,
         "wires": [
             [
-                "59360b66.2efa24"
+                "ac020639.dbe368"
             ],
             [
-                "9f2b501a.06c8c",
-                "59360b66.2efa24"
+                "9f2b501a.06c8c"
             ]
         ]
     },
@@ -6382,14 +6341,104 @@
         "name": "",
         "statusCode": "",
         "headers": {},
-        "x": 870,
-        "y": 1160,
+        "x": 1050,
+        "y": 1180,
         "wires": []
     },
     {
-        "id": "59360b66.2efa24",
-        "type": "debug",
+        "id": "ac020639.dbe368",
+        "type": "function",
         "z": "90f83725.6dae08",
+        "name": "Prep query",
+        "func": "msg['userData'] = [];\nvar ikey = 0;\nfor( var key in msg.payload ) \n{\n    if ((key != 'deviceType') && (key != 'name') )\n    {\n        msg['userData'][ikey] = {attr : key, value: Number(msg.payload[key])};\n        ++ikey\n    }\n}\nif (msg['userData'] < 1)\n{\n    msg.payload = 'Error:No Attributes found';\n    return [null,msg];\n}\nvar queryMsg = \n[\n    {\n        $and    :\n        [\n            {\n                deviceType  :   msg.payload.deviceType\n            },\n            {\n                name        :   msg.payload.name\n            }\n        ]\n    },\n    {\n        projection: \n        {\n            _id :   0\n        }\n    }\n];\nmsg.payload = queryMsg;\nreturn [msg,null];",
+        "outputs": 2,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 890,
+        "y": 1120,
+        "wires": [
+            [
+                "4a7b7cdd.65e2a4"
+            ],
+            [
+                "9f2b501a.06c8c"
+            ]
+        ]
+    },
+    {
+        "id": "4a7b7cdd.65e2a4",
+        "type": "mongodb3 in",
+        "z": "90f83725.6dae08",
+        "service": "_ext_",
+        "configNode": "9cd5ff5e.caf86",
+        "name": "",
+        "collection": "devices",
+        "operation": "findOne",
+        "x": 1090,
+        "y": 1120,
+        "wires": [
+            [
+                "50d24d87.ef19d4"
+            ]
+        ]
+    },
+    {
+        "id": "50d24d87.ef19d4",
+        "type": "function",
+        "z": "90f83725.6dae08",
+        "name": "Setup MQTT",
+        "func": "function isEmpty(obj) \n{\n    for(var prop in obj) {\n        if(obj.hasOwnProperty(prop))\n            return false;\n    }\n    return true;\n}\nif (isEmpty(msg.payload))\n{\n    msg.payload = 'Error: Device not found';\n    return [null,null,msg];\n}\nfor (var ii = 0; ii < msg.userData.length; ++ii)\n{\n    try\n    {\n        msg.payload[msg.userData[ii]['attr']].value = msg.userData[ii]['value'];\n    }\n    catch (e)\n    {\n        msg.payload = 'Error: ' + msg.userData[ii]['attr'] + ' not found';\n        return [null,null,msg];\n    }\n}\nvar newMsg = \n{\n    topic : global.get('project') + '/' + msg.payload.deviceType + '/' + msg.payload.name + '/setting',\n    payload : JSON.stringify(msg.payload)\n}\nmsg.payload = 'Success';\nflow.set('setDeviceMqtt',{mqttTopic:newMsg.topic, mqttDevice: JSON.parse(newMsg.payload)})\nreturn [newMsg,msg,msg];",
+        "outputs": 3,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 1290,
+        "y": 1120,
+        "wires": [
+            [
+                "56debf6b.c8177"
+            ],
+            [
+                "624fda40.949a64"
+            ],
+            [
+                "1448fbc5.6b29b4"
+            ]
+        ]
+    },
+    {
+        "id": "1448fbc5.6b29b4",
+        "type": "http response",
+        "z": "90f83725.6dae08",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 1390,
+        "y": 1180,
+        "wires": []
+    },
+    {
+        "id": "2de6f9e5.5eb736",
+        "type": "http in",
+        "z": "a858ad3a.95706",
+        "name": "/booger",
+        "url": "/booger",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 110,
+        "y": 580,
+        "wires": [
+            [
+                "d3ac9306.654c1"
+            ]
+        ]
+    },
+    {
+        "id": "d3ac9306.654c1",
+        "type": "debug",
+        "z": "a858ad3a.95706",
         "name": "",
         "active": true,
         "tosidebar": true,
@@ -6399,8 +6448,298 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
+        "x": 250,
+        "y": 580,
+        "wires": []
+    },
+    {
+        "id": "56debf6b.c8177",
+        "type": "gzip",
+        "z": "90f83725.6dae08",
+        "name": "",
+        "x": 1450,
+        "y": 1100,
+        "wires": [
+            [
+                "6c992b47.a19184"
+            ]
+        ]
+    },
+    {
+        "id": "6c992b47.a19184",
+        "type": "mqtt out",
+        "z": "90f83725.6dae08",
+        "name": "Publish Setting",
+        "topic": "",
+        "qos": "0",
+        "retain": "false",
+        "broker": "84d80994.260508",
+        "x": 1620,
+        "y": 1100,
+        "wires": []
+    },
+    {
+        "id": "7656907d.147d7",
+        "type": "function",
+        "z": "4be599c9.8ea2d8",
+        "name": "IP filter",
+        "func": "var ipfilter = [\n    \"127.0.0.16\"];\nvar ipAddress = ( msg.req.headers['x-forwarded-for'] || '').split(',').pop() || \n          msg.req.connection.remoteAddress || \n          msg.req.socket.remoteAddress || \n          msg.req.connection.socket.remoteAddress;\nif (ipAddress==undefined) return null;\nvar ipAddressSplit = ipAddress.split(\".\");\nfor (var ii =  0; ii < ipfilter.length; ++ii)\n{\n    var ipfilterSplit = ipfilter[ii].split(\".\");\n    if (ipAddress == ipfilter[ii])\n    { \n        return null;\n    }\n    if (ipfilterSplit[2] == '*')\n    {\n        if ((ipfilterSplit[0] == ipAddressSplit[0]) && (ipfilterSplit[1] == ipAddressSplit[1]))\n        {\n            return null;\n        }\n    }\n}\n\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 190,
+        "y": 80,
+        "wires": [
+            [
+                "7357357e.f4145c"
+            ]
+        ]
+    },
+    {
+        "id": "7357357e.f4145c",
+        "type": "function",
+        "z": "4be599c9.8ea2d8",
+        "name": "ClientInfo",
+        "func": "var ipAddress = ( msg.req.headers['x-forwarded-for'] || '').split(',').pop() || \n          msg.req.connection.remoteAddress || \n          msg.req.socket.remoteAddress || \n          msg.req.connection.socket.remoteAddress;\nvar url = msg.req.url;\nreturn {\n    topic:'clientInfo', \n    payload:{\n        ipAddress   : ipAddress\n    },\n    extraInfo       : {url:url, userID:msg.payload.userID},\n};\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 310,
+        "y": 140,
+        "wires": [
+            [
+                "a62eb946.b80ef8"
+            ]
+        ]
+    },
+    {
+        "id": "a62eb946.b80ef8",
+        "type": "http request",
+        "z": "4be599c9.8ea2d8",
+        "name": "",
+        "method": "GET",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "https://tools.keycdn.com/geo.json?host={{{payload.ipAddress}}}",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "authType": "basic",
+        "x": 320,
+        "y": 180,
+        "wires": [
+            [
+                "810b0dbf.add52"
+            ]
+        ]
+    },
+    {
+        "id": "810b0dbf.add52",
+        "type": "function",
+        "z": "4be599c9.8ea2d8",
+        "name": "parseIpRequest",
+        "func": "var data = msg.payload.data.geo;\ndata['url'] = msg.extraInfo.url;\ndata['userID'] = msg.extraInfo.userID;\ndata['timeStamp'] = new Date().getTime();\nreturn {topic:'ipData', payload:data};\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 330,
+        "y": 220,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "f46a4c46.e6b3a",
+        "type": "mongodb3 in",
+        "z": "ca529822.9112f8",
+        "service": "_ext_",
+        "configNode": "9cd5ff5e.caf86",
+        "name": "",
+        "collection": "accessLog",
+        "operation": "insertOne",
+        "x": 1090,
+        "y": 220,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "624fda40.949a64",
+        "type": "function",
+        "z": "90f83725.6dae08",
+        "name": "IP filter",
+        "func": "var ipfilter = [\n    \"127.0.0.16\"];\nvar ipAddress = ( msg.req.headers['x-forwarded-for'] || '').split(',').pop() || \n          msg.req.connection.remoteAddress || \n          msg.req.socket.remoteAddress || \n          msg.req.connection.socket.remoteAddress;\nif (ipAddress==undefined) return null;\nvar ipAddressSplit = ipAddress.split(\".\");\nfor (var ii =  0; ii < ipfilter.length; ++ii)\n{\n    var ipfilterSplit = ipfilter[ii].split(\".\");\n    if (ipAddress == ipfilter[ii])\n    { \n        return null;\n    }\n    if (ipfilterSplit[2] == '*')\n    {\n        if ((ipfilterSplit[0] == ipAddressSplit[0]) && (ipfilterSplit[1] == ipAddressSplit[1]))\n        {\n            return null;\n        }\n    }\n}\n\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 1570,
+        "y": 1160,
+        "wires": [
+            [
+                "32e0be49.2d3482"
+            ]
+        ]
+    },
+    {
+        "id": "32e0be49.2d3482",
+        "type": "function",
+        "z": "90f83725.6dae08",
+        "name": "ClientInfo",
+        "func": "var ipAddress = ( msg.req.headers['x-forwarded-for'] || '').split(',').pop() || \n          msg.req.connection.remoteAddress || \n          msg.req.socket.remoteAddress || \n          msg.req.connection.socket.remoteAddress;\nreturn {\n    topic:'clientInfo', \n    payload:{\n        ipAddress   : ipAddress\n    },\n    extraInfo       : {},\n};\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 1580,
+        "y": 1200,
+        "wires": [
+            [
+                "f2042f45.64c2a"
+            ]
+        ]
+    },
+    {
+        "id": "f2042f45.64c2a",
+        "type": "http request",
+        "z": "90f83725.6dae08",
+        "name": "",
+        "method": "GET",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "https://tools.keycdn.com/geo.json?host={{{payload.ipAddress}}}",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "authType": "basic",
+        "x": 1590,
+        "y": 1240,
+        "wires": [
+            [
+                "b7dcd98.26fbd28"
+            ]
+        ]
+    },
+    {
+        "id": "b7dcd98.26fbd28",
+        "type": "function",
+        "z": "90f83725.6dae08",
+        "name": "parseIpRequest",
+        "func": "var data = msg.payload.data.geo;\ndata['url'] = '/setDevice';\ndata['userID'] = -1;\ndata['timeStamp'] = new Date().getTime();\nvar setDeviceMqtt = flow.get('setDeviceMqtt');\nvar newMsg = \n{\n    topic:'settingLogEntry',\n    payload:\n    {\n        topic     : setDeviceMqtt.mqttTopic,\n        userID    : -1,\n        device    : setDeviceMqtt.mqttDevice,\n        timeStamp : data['timeStamp'],\n        ipInfo    : data\n    }\n}\nreturn newMsg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 1600,
+        "y": 1280,
+        "wires": [
+            [
+                "54b525ac.6a602c"
+            ]
+        ]
+    },
+    {
+        "id": "54b525ac.6a602c",
+        "type": "mongodb3 in",
+        "z": "90f83725.6dae08",
+        "service": "_ext_",
+        "configNode": "9cd5ff5e.caf86",
+        "name": "",
+        "collection": "settingsLog",
+        "operation": "insertOne",
+        "x": 1650,
+        "y": 1320,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "35ffcf83.1547",
+        "type": "function",
+        "z": "ca529822.9112f8",
+        "name": "IP filter",
+        "func": "var ipfilter = [\n    \"127.0.0.16\"];\nvar ipAddress = ( msg.req.headers['x-forwarded-for'] || '').split(',').pop() || \n          msg.req.connection.remoteAddress || \n          msg.req.socket.remoteAddress || \n          msg.req.connection.socket.remoteAddress;\nif (ipAddress==undefined) return null;\nvar ipAddressSplit = ipAddress.split(\".\");\nfor (var ii =  0; ii < ipfilter.length; ++ii)\n{\n    var ipfilterSplit = ipfilter[ii].split(\".\");\n    if (ipAddress == ipfilter[ii])\n    { \n        return null;\n    }\n    if (ipfilterSplit[2] == '*')\n    {\n        if ((ipfilterSplit[0] == ipAddressSplit[0]) && (ipfilterSplit[1] == ipAddressSplit[1]))\n        {\n            return null;\n        }\n    }\n}\n\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 990,
+        "y": 40,
+        "wires": [
+            [
+                "41efb541.ee2eec",
+                "b9df3f26.ab53f"
+            ]
+        ]
+    },
+    {
+        "id": "41efb541.ee2eec",
+        "type": "function",
+        "z": "ca529822.9112f8",
+        "name": "ClientInfo",
+        "func": "var ipAddress = ( msg.req.headers['x-forwarded-for'] || '').split(',').pop() || \n          msg.req.connection.remoteAddress || \n          msg.req.socket.remoteAddress || \n          msg.req.connection.socket.remoteAddress;\nvar url = msg.req.url;\nreturn {\n    topic:'clientInfo', \n    payload:{\n        ipAddress   : ipAddress\n    },\n    extraInfo       : {url:url, userID:msg.payload.userID},\n};\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
         "x": 1020,
-        "y": 1080,
+        "y": 100,
+        "wires": [
+            [
+                "36456c85.741344"
+            ]
+        ]
+    },
+    {
+        "id": "36456c85.741344",
+        "type": "http request",
+        "z": "ca529822.9112f8",
+        "name": "",
+        "method": "GET",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "https://tools.keycdn.com/geo.json?host={{{payload.ipAddress}}}",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "authType": "basic",
+        "x": 1030,
+        "y": 140,
+        "wires": [
+            [
+                "9ac12bdb.3cd258"
+            ]
+        ]
+    },
+    {
+        "id": "9ac12bdb.3cd258",
+        "type": "function",
+        "z": "ca529822.9112f8",
+        "name": "parseIpRequest",
+        "func": "var data = msg.payload.data.geo;\ndata['url'] = msg.extraInfo.url;\ndata['userID'] = msg.extraInfo.userID;\ndata['timeStamp'] = new Date().getTime();\nreturn {topic:'ipData', payload:data};\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 1040,
+        "y": 180,
+        "wires": [
+            [
+                "f46a4c46.e6b3a"
+            ]
+        ]
+    },
+    {
+        "id": "80520db7.bb9d6",
+        "type": "comment",
+        "z": "90f83725.6dae08",
+        "name": "curl \"http://localhost:60427/setDevice?deviceType=blinky-basic&name=02&ledOn=0&token=$(< blinky-lite-v2-token.txt)\"",
+        "info": "",
+        "x": 460,
+        "y": 1060,
         "wires": []
     }
 ]
