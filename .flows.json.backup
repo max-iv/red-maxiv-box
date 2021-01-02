@@ -3836,7 +3836,7 @@
         "upload": false,
         "swaggerDoc": "",
         "x": 150,
-        "y": 1580,
+        "y": 1640,
         "wires": [
             [
                 "2623a5b9.60e51a"
@@ -3853,7 +3853,7 @@
         "collection": "users",
         "operation": "findOne",
         "x": 510,
-        "y": 1580,
+        "y": 1640,
         "wires": [
             [
                 "d0b46e62.c61f3"
@@ -3871,7 +3871,7 @@
         "initialize": "",
         "finalize": "",
         "x": 310,
-        "y": 1580,
+        "y": 1640,
         "wires": [
             [
                 "c7dcd2fd.f38ec"
@@ -3889,7 +3889,7 @@
         "initialize": "",
         "finalize": "",
         "x": 730,
-        "y": 1580,
+        "y": 1640,
         "wires": [
             [
                 "d1cf61fb.35fc1"
@@ -3909,7 +3909,7 @@
         "hash": "payload.hash",
         "rounds": 10,
         "x": 930,
-        "y": 1620,
+        "y": 1680,
         "wires": [
             [
                 "25cbcda4.aaf522"
@@ -3920,14 +3920,14 @@
         "id": "25cbcda4.aaf522",
         "type": "function",
         "z": "90f83725.6dae08",
-        "name": "Check password and roles",
+        "name": "Check password",
         "func": "if (msg.match == false)  \n{\n    delete msg.userData['cred'];\n    msg.payload.errorMsg = 'Error: Invalid password';\n    return [msg, null];\n\n}\nmsg.payload = msg.userData.cred.profile;\ndelete msg.userData['cred'];\ndelete msg['match'];\nreturn [null, msg];",
         "outputs": 2,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
-        "x": 1160,
-        "y": 1620,
+        "x": 1130,
+        "y": 1680,
         "wires": [
             [
                 "abf9b132.7c298"
@@ -3944,7 +3944,7 @@
         "name": "get Token",
         "tokenconfig": "6acefdd9.69f124",
         "x": 940,
-        "y": 1700,
+        "y": 1760,
         "wires": [
             [
                 "26477e37.472222"
@@ -3963,7 +3963,7 @@
         "template": "<!-- Body HTML -->\n    <h1 style=\"text-align:center;color:#415c71;\">{{{payload.errorMsg}}}</h1>\n    <form action=\"/process-login\" method=\"POST\">\n        <table align='center'>\n            <tr>\n                <td>\n                    <label for=\"username\" class=\"big-text\">User</label>\n                </td>\n                <td>\n                    <input name=\"username\" type=\"text\" class=\"big-text\"/>\n                </td>\n            </tr>\n            <tr>\n                <td>\n                    <label for=\"password\" class=\"big-text\">Password</label>\n                </td>\n                <td>\n                    <input name=\"password\" type=\"password\" class=\"big-text\"/>\n                </td>\n            </tr>\n            <tr>\n                <td>\n                </td>\n                <td>\n                    <input type=\"submit\" class=\"btn jumbotron-button btn-block big-text bold-text\"/>\n                </td>\n            </tr>\n        </table>    \n        <input type=\"hidden\" name=\"url\" value=\"{{{userData.url}}}\" />\n    </form>  ",
         "output": "str",
         "x": 630,
-        "y": 1480,
+        "y": 1540,
         "wires": [
             [
                 "67f4ab6d.c1fd04"
@@ -3982,7 +3982,7 @@
         "template": "Blinky-Lite",
         "output": "str",
         "x": 350,
-        "y": 1480,
+        "y": 1540,
         "wires": [
             [
                 "5a857f25.a6af6"
@@ -4001,7 +4001,7 @@
         "template": "        useWebSockets(false);\n        function onDocumentReady()\n        {\n        }\n        function onWebSocketOpen()\n        {\n        }\n        function onWebSocketClose()\n        {\n            \n        }\n        function onWebSocketMessage(msg)\n        {\n        }\n\n",
         "output": "str",
         "x": 210,
-        "y": 1480,
+        "y": 1540,
         "wires": [
             [
                 "7e91110a.c2165"
@@ -4014,7 +4014,7 @@
         "z": "90f83725.6dae08",
         "name": "",
         "x": 770,
-        "y": 1480,
+        "y": 1540,
         "wires": []
     },
     {
@@ -4029,7 +4029,7 @@
         "template": "basicYellow.png",
         "output": "str",
         "x": 490,
-        "y": 1480,
+        "y": 1540,
         "wires": [
             [
                 "c10f4686.4bfa58"
@@ -4047,7 +4047,7 @@
         "initialize": "",
         "finalize": "",
         "x": 1110,
-        "y": 1700,
+        "y": 1760,
         "wires": [
             [
                 "fee60e7.48d0cf"
@@ -4062,7 +4062,7 @@
         "statusCode": "",
         "headers": {},
         "x": 1270,
-        "y": 1700,
+        "y": 1760,
         "wires": []
     },
     {
@@ -4075,7 +4075,7 @@
             "abf9b132.7c298"
         ],
         "x": 75,
-        "y": 1480,
+        "y": 1540,
         "wires": [
             [
                 "aff12a21.2e53c8"
@@ -4091,7 +4091,7 @@
             "e322d811.8b4178"
         ],
         "x": 855,
-        "y": 1560,
+        "y": 1620,
         "wires": []
     },
     {
@@ -4103,7 +4103,7 @@
             "e322d811.8b4178"
         ],
         "x": 1315,
-        "y": 1580,
+        "y": 1640,
         "wires": []
     },
     {
@@ -4116,7 +4116,7 @@
         "collection": "users",
         "operation": "insertOne",
         "x": 570,
-        "y": 1800,
+        "y": 1860,
         "wires": [
             [
                 "1965db8f.5178e4"
@@ -4134,7 +4134,7 @@
         "tostatus": false,
         "complete": "false",
         "x": 830,
-        "y": 1800,
+        "y": 1860,
         "wires": []
     },
     {
@@ -4148,7 +4148,7 @@
         "initialize": "",
         "finalize": "",
         "x": 360,
-        "y": 1800,
+        "y": 1860,
         "wires": [
             [
                 "ab328d8b.b827a"
@@ -4168,7 +4168,7 @@
         "payload": "",
         "payloadType": "date",
         "x": 160,
-        "y": 1800,
+        "y": 1860,
         "wires": [
             [
                 "ba337c11.0eb2f"
@@ -4185,7 +4185,7 @@
         "hash": "payload",
         "rounds": 10,
         "x": 310,
-        "y": 1860,
+        "y": 1920,
         "wires": [
             [
                 "b3869c42.e862d"
@@ -4214,7 +4214,7 @@
         "payload": "blinky-lite",
         "payloadType": "str",
         "x": 170,
-        "y": 1860,
+        "y": 1920,
         "wires": [
             [
                 "ea16c2f2.cc51f"
@@ -4232,7 +4232,7 @@
         "tostatus": false,
         "complete": "true",
         "x": 430,
-        "y": 1860,
+        "y": 1920,
         "wires": []
     },
     {
@@ -4257,7 +4257,7 @@
         "payload": "{\"txt\":\"zebograf\",\"hash\":\"$2a$10$NO0QftMJiHQPA8z7BmlFWOW0uajRSg3gP4Nq1IdwjEndxHRRihjkW\"}",
         "payloadType": "json",
         "x": 160,
-        "y": 1920,
+        "y": 1980,
         "wires": [
             [
                 "3a224a45.c10eb6"
@@ -4275,7 +4275,7 @@
         "tostatus": false,
         "complete": "true",
         "x": 430,
-        "y": 1920,
+        "y": 1980,
         "wires": []
     },
     {
@@ -4288,7 +4288,7 @@
         "hash": "payload.hash",
         "rounds": 10,
         "x": 310,
-        "y": 1920,
+        "y": 1980,
         "wires": [
             [
                 "f1f8d58.a302028"
@@ -4563,7 +4563,7 @@
         "template": "<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n{{{payload.head}}}\n  </head>\n  <body>\n{{{payload.body}}}\n{{{payload.foot}}}\n  </body>\n</html>",
         "output": "str",
         "x": 970,
-        "y": 320,
+        "y": 460,
         "wires": [
             [
                 "627b4bcd.e1d584"
@@ -4582,7 +4582,7 @@
         "template": "    <script src=\"/scripts/popper.js\"></script>\n    <script src=\"/scripts/bootstrap.js\"></script>",
         "output": "str",
         "x": 690,
-        "y": 320,
+        "y": 460,
         "wires": [
             [
                 "338cefc2.cf33d"
@@ -4601,7 +4601,7 @@
         "template": "    <meta charset=\"UTF-8\">\n    <link rel=\"icon\" href=\"/img/favicon.ico?v=4\" type=\"image/x-icon\"/>\n    <title>{{payload.title}}</title>\n    <link rel=\"stylesheet\" href=\"/css/bootstrap.css\"/>\n    <link rel=\"stylesheet\" href=\"/jquery/jquery-ui.css\"/>\n    <link rel=\"stylesheet\" href=\"/jquery/jquery-ui-timepicker-addon.css\"/>\n    <script src=\"/jquery/jquery.js\"></script>\n    <script src=\"/jquery/jquery-ui.js\"></script>\n    <script src=\"/jquery/jquery-ui-timepicker-addon.js\"></script>\n    <script src=\"/scripts/plotly-latest.min.js\"></script>\n    <style>\n{{{payload.css}}}\n    </style>\n",
         "output": "str",
         "x": 570,
-        "y": 320,
+        "y": 460,
         "wires": [
             [
                 "342f8cd3.e509a4"
@@ -4616,7 +4616,7 @@
         "statusCode": "",
         "headers": {},
         "x": 1090,
-        "y": 320,
+        "y": 460,
         "wires": []
     },
     {
@@ -4630,7 +4630,7 @@
         "initialize": "",
         "finalize": "",
         "x": 820,
-        "y": 320,
+        "y": 460,
         "wires": [
             [
                 "1c73bc26.072f94",
@@ -4647,7 +4647,7 @@
         "outputs": 1,
         "noerr": 0,
         "x": 940,
-        "y": 380,
+        "y": 520,
         "wires": [
             [
                 "545f0d7b.fc83b4"
@@ -4667,7 +4667,7 @@
         "proxy": "",
         "authType": "basic",
         "x": 950,
-        "y": 420,
+        "y": 560,
         "wires": [
             [
                 "cb35cc8a.578df"
@@ -4683,7 +4683,7 @@
         "outputs": 1,
         "noerr": 0,
         "x": 960,
-        "y": 460,
+        "y": 600,
         "wires": [
             [
                 "f2997adb.f54fd8"
@@ -4700,7 +4700,7 @@
         "collection": "accessLog",
         "operation": "insertOne",
         "x": 1010,
-        "y": 500,
+        "y": 640,
         "wires": [
             []
         ]
@@ -4717,7 +4717,7 @@
         "template": "        :root \n        {\n          --color1: #415c71;\n          --color2: #547792;\n          --color3: #9eb5c7;\n          --color4: #c6c2bb;\n          --color5: #fdc300;\n          --big-text-size :300%;\n          --bold-text :900;\n          --vert-pad : 25px;\n          --horz-pad : 25px;\n        }\n        body \n        {\n          background-color: white !important;\n          padding-left:25px;\n          padding-right:25px;\n        }\n        \n        img \n        {\n          object-fit: contain;\n        }\n        a\n        {\n            color: white;\n        }\n        a:visited \n        { \n            color: var(--white);\n        }\n        a:hover \n        { \n            color: var(--color5);\n        }\n        .jumbotron-button\n        {\n          color: white;\n          background-color: var(--color1);\n        }\n        .card\n        {\n          background-color: var(--color2) !important;\n          text-align: center;\n          padding-left:5px;\n          padding-right:5px;\n          padding-bottom:5px;\n\n        }\n        .card-body\n        {\n          background-color: white;\n          text-align: center;\n        }\n        .card-button\n        {\n          color: var(--color5) !important;\n          background-color: var(--color1) !important;\n          font-weight: bold;\n        }\n        .card-title\n        {\n          color: white;\n          font-size: 200%;\n          font-style:oblique;\n          font-weight: var(--bold-text);\n         }\n        .card-text\n        {\n          color: var(--color2);\n          font-size: 150%;\n        }\n       .vert-pad\n        {\n            padding-top:var(--vert-pad);;\n            padding-bottom:var(--vert-pad);;\n        }\n        .horz-pad\n        {\n            padding-left:var(--horz-pad);;\n            padding-right:var(--horz-pad);;\n        }\n        .big-text\n        {\n            font-size: var(--big-text-size);\n        }\n        .bold-text\n        {\n            font-weight: var(--bold-text);\n        }\n",
         "output": "str",
         "x": 450,
-        "y": 320,
+        "y": 460,
         "wires": [
             [
                 "b0f6ad31.a41d1"
@@ -4736,7 +4736,7 @@
         "template": "    <div class=\"jumbotron\" style=\"background-color:white;color: #547792;padding-top:10px; padding-bottom:10px;\" width=\"100%\">\n        <div class='row'>\n            <div class='col-md-2' align='left'>\n                <a href='https://www.blinky-lite.io/' target='_blank'>\n                    <img src=\"/img/BlinkyLogo.gif\" height=\"75px\"/>\n                </a>                \n            </div>\n            <div class='col-md-8' align='center'>\n                <span class=\"jumbotron-title bold-text\" style=\"font-size: 400%;\">Blinky-Lite</span>\n            </div>\n            <div class='col-md-2' align='right'>\n                <a href='/apps'>\n                    <img src=\"/img/appsBlue.png\" height=\"75px\"/>\n                </a>                \n            </div>\n        </div>\n        <div class='row no-gutters'>\n            <div class='col-md-12' align='center'>\n                <span style=\"font-size:180%\">The Blinky-Lite Project</span>\n            </div>\n        </div>\n    </div>\n    <div width=\"100%\">\n        <hr/>\n        <div class='row'>\n            <div class='col-md-12' align='center'>\n                <span class=\"card-text\">Contact: blinky-lite@blinky-lite.io</span>\n            </div>\n        </div>\n    </div>\n",
         "output": "str",
         "x": 330,
-        "y": 320,
+        "y": 460,
         "wires": [
             [
                 "956fe62.eb52b18"
@@ -4753,7 +4753,7 @@
         "upload": false,
         "swaggerDoc": "",
         "x": 90,
-        "y": 320,
+        "y": 460,
         "wires": [
             [
                 "7cc37811.6433f8"
@@ -4772,7 +4772,7 @@
         "template": "Blinky-Lite",
         "output": "str",
         "x": 210,
-        "y": 320,
+        "y": 460,
         "wires": [
             [
                 "7ea9110b.4f279"
@@ -4870,8 +4870,8 @@
         "type": "subflow:8341090a.df9758",
         "z": "a858ad3a.95706",
         "name": "",
-        "x": 1170,
-        "y": 60,
+        "x": 1210,
+        "y": 140,
         "wires": []
     },
     {
@@ -4885,11 +4885,11 @@
         "syntax": "mustache",
         "template": "Blinky-Lite Apps",
         "output": "str",
-        "x": 740,
-        "y": 60,
+        "x": 320,
+        "y": 100,
         "wires": [
             [
-                "c207bc73.737ed"
+                "fa2e8992.31b268"
             ]
         ]
     },
@@ -4904,7 +4904,7 @@
         "syntax": "mustache",
         "template": "appsYellow.png",
         "output": "str",
-        "x": 590,
+        "x": 330,
         "y": 60,
         "wires": [
             [
@@ -4922,8 +4922,8 @@
         "noerr": 0,
         "initialize": "",
         "finalize": "",
-        "x": 240,
-        "y": 60,
+        "x": 120,
+        "y": 100,
         "wires": [
             [
                 "7413bfa1.a556d"
@@ -4934,8 +4934,8 @@
         "id": "7413bfa1.a556d",
         "type": "subflow:2d027d69.1fdeb2",
         "z": "a858ad3a.95706",
-        "x": 420,
-        "y": 60,
+        "x": 120,
+        "y": 140,
         "wires": [
             [
                 "e7a2ef05.36c48"
@@ -4946,15 +4946,15 @@
         "id": "8f8ebd71.b1cf1",
         "type": "template",
         "z": "a858ad3a.95706",
-        "name": "Body",
+        "name": "body",
         "field": "payload.body",
         "fieldType": "msg",
         "format": "html",
         "syntax": "mustache",
-        "template": "<!-- Body HTML -->\n    <div class='container' width=\"100%\">\n        <div class='row' style='padding-top: 1px;'>\n            <div class=\"col-md-12\" align=\"center\">\n                <div class='card'>\n                <div class='card-body' align=\"center\">\n                    <table width=\"100%\">\n                        <tr>\n                            <td  align=\"left\">\n                                 <span class='card-text' style='color:black;'>User:</span>\n                            </td>\n                            <td  align=\"right\">\n                                 <span class='card-text' id='usernameId'></span>\n                            </td>\n                        </tr>\n                        <tr>\n                            <td  align=\"left\">\n                                <span class='card-text' style='color:black;'>Time left:</span>\n                            </td>\n                            <td  align=\"right\">\n                                 <span class='card-text' id='expTimeId'></span>\n                            </td>\n                        </tr>\n                    </table>\n                    <table width=\"100%\">\n                        <tr>\n                            <td width=\"30%\">\n                                <button class='btn btn-block card-button big-text' id='logoutButton' onclick=\"renew()\" >Renew</button>\n                            </td>\n                            <td width=\"5%\"></td>\n                            <td width=\"30%\">\n                                <button class='btn btn-block card-button big-text' id='logoutButton' onclick=\"logout()\" >Logout</button>\n                            </td>\n                            <td width=\"5%\"></td>\n                            <td width=\"30%\">\n                                <button class='btn btn-block card-button big-text' id='logoutButton' onclick=\"downloadToken()\" >Token</button>\n                            </td>\n                        </tr>\n                    </table>\n                </div>\n            </div>\n            </div>\n        </div>\n        <div class='row' style='padding-top: 25px;'>\n            <div class=\"col-md-12\" align=\"center\">\n                <div class='card'>\n                <div class='card-body' align=\"center\">\n                    <div class='row' style='padding-bottom: 25px;'>\n                        <div class=\"col-md-1\" align=\"center\">\n                        </div>\n                        <div class=\"col-md-5\" align=\"center\">\n                            <span class='card-text' >Application</span>\n                        </div>\n                        <div class=\"col-md-5\" align=\"center\">\n                            <select class=\"custom-select big-text\" id=\"application\">\n                                <option value=\"blinky-basic\">blinky-basic</option>\n                            </select>\n                        </div>\n                        <div class=\"col-md-1\" align=\"center\">\n                        </div>\n                    </div>\n                    <div class='row' style='padding-bottom: 25px;'>\n                        <div class=\"col-md-1\" align=\"center\">\n                        </div>\n                        <div class=\"col-md-5\" align=\"center\">\n                            <span class='card-text' >Device</span>\n                        </div>\n                        <div class=\"col-md-5\" align=\"center\">\n                            <select class=\"custom-select big-text\" id=\"traceA\">\n                                <option value=\"none\">none</option>\n                                <option value=\"01\">01</option>\n                                <option value=\"02\">02</option>\n                            </select>\n                        </div>\n                        <div class=\"col-md-1\" align=\"center\">\n                        </div>\n                    </div>\n                    <div class='row' style='padding-bottom: 25px;'>\n                        <div class=\"col-md-1\" align=\"center\">\n                        </div>\n                        <div class=\"col-md-5\" align=\"center\">\n                        </div>\n                        <div class=\"col-md-5\" align=\"center\">\n                            <button class='btn btn-block card-button big-text' id='launchAppButton' onclick=\"launchApp()\" >Launch</button>\n                        </div>\n                        <div class=\"col-md-1\" align=\"center\">\n                        </div>\n                    </div>\n                </div>\n            </div>\n            </div>\n        </div>\n        <div class='row' style='padding-top: 25px;'>\n            <div class=\"col-md-3\" align=\"center\">\n            </div>\n            <div class=\"col-md-6\" align=\"center\">\n                <a class='btn btn-block card-button big-text' href='/core' >Utilites</a>\n            </div>\n            <div class=\"col-md-3\" align=\"center\">\n            </div>\n        </div>\n    </div>\n",
+        "template": "<!-- Body HTML -->\n    <div class='container' width=\"100%\">\n        <div class='row' style='padding-top: 1px;'>\n            <div class=\"col-md-12\" align=\"center\">\n{{{payload.html.launcher}}}\n            </div>\n        </div>\n        <div class='row' style='padding-top: 25px;'>\n            <div class=\"col-md-3\" align=\"center\">\n            </div>\n            <div class=\"col-md-6\" align=\"center\">\n                <a class='btn btn-block card-button big-text' href='/core' >Utilites</a>\n            </div>\n            <div class=\"col-md-3\" align=\"center\">\n            </div>\n        </div>\n        <div class='row' style='padding-top: 25px;'>\n            <div class=\"col-md-12\" align=\"center\">\n{{{payload.html.user}}}\n            </div>\n        </div>\n    </div>\n",
         "output": "str",
-        "x": 1030,
-        "y": 60,
+        "x": 890,
+        "y": 140,
         "wires": [
             [
                 "1871f1b7.8fa49e"
@@ -4965,18 +4965,18 @@
         "id": "c207bc73.737ed",
         "type": "template",
         "z": "a858ad3a.95706",
-        "name": "JavaScript",
+        "name": "javascript",
         "field": "payload.javascript",
         "fieldType": "msg",
         "format": "javascript",
         "syntax": "mustache",
-        "template": "        useWebSockets(true);\n        function onDocumentReady()\n        {\n            getCreds();\n            setInterval(function(){getCreds();}, 1000);\n        }\n        function onWebSocketOpen()\n        {\n        }\n        function onWebSocketClose()\n        {\n            \n        }\n        function onWebSocketMessage(msg)\n        {\n            switch(msg.topic)\n            {\n                case 'renew':\n                    if (msg.userID == userID)\n                    {\n                        updateCookie(msg);\n                    }\n                    break;\n                case 'permissionError':\n                    if (msg.userID == userID)\n                    {\n                        acknowledgeDialog('Permission', 'Error', msg.payload);\n                    }\n                    break;\n                case 'loginExpired':\n                    if (msg.userID == userID)\n                    {\n                       location.reload();\n                    }\n                    break;\n                default:\n                    break;\n            }\n        }\n        function launchApp()\n        {\n            var application = $('#application').val();\n            var devices = [];\n            if ($('#traceA').val() != 'none') devices.push($('#traceA').val());\n            if (devices.length < 1)\n            {\n                acknowledgeDialog('Acknowledge', 'Error', 'At least one trace must have a valid device');\n                return;\n            }\n            var link = \"/\" + application + '?name=' + devices[0];\n            if (devices.length > 1)\n            for (var ii = 1; ii < devices.length; ++ii)\n            {\n                link = link + ',' + devices[ii];\n            }\n            window.location.href = link;\n//            window.open(link, '_blank');\n        }\n        function getCreds()\n        {\n            var now = new Date().getTime();\n            var expDate = Number(getCookie('ExpDate'));\n            if (expDate > 0)\n            {\n                expDate = expDate - now;\n                if(expDate < 0)\n                {\n                    logout();\n                }\n                else\n                {\n                    var hours = Math.floor(expDate / 3600000);\n                    var minutes = expDate - hours * 3600000;\n                    minutes = Math.floor(minutes / 60000);\n                    var seconds = expDate - (hours * 3600000) - (minutes * 60000);\n                    seconds = Math.floor(seconds / 1000);\n                    hours = hours.toString();\n                    if (hours.length == 1) hours = '0' + hours; \n                    minutes = minutes.toString();\n                    if (minutes.length == 1) minutes = '0' + minutes; \n                    seconds = seconds.toString();\n                    if (seconds.length == 1) seconds = '0' + seconds; \n                    var timeString = hours + ':' + minutes + ':' + seconds;\n                    $('#usernameId').text(getCookie('Username'));\n                    $('#expTimeId').text(timeString);\n                }\n            }\n            else\n            {\n                $('#usernameId').text(getCookie('Username'));\n                $('#expTimeId').text('Forever');\n            }\n        }\n        function logout()\n        {\n            document.cookie = project + \"Role= ; expires = Thu, 01 Jan 1970 00:00:00 GMT\";\n            document.cookie = project + \"ExpDate= ; expires = Thu, 01 Jan 1970 00:00:00 GMT\";\n            document.cookie = project + \"Username= ; expires = Thu, 01 Jan 1970 00:00:00 GMT\";\n            window.location.href = \"/\";\n        }\n        function renew()\n        {\n            var actionMsg = {};\n            sendActionMsg('renew', 'renew', actionMsg);\n        }\n        function updateCookie(msg)\n        {\n            document.cookie = project + \"Role=\" + msg.role;\n            document.cookie = project + \"ExpDate=\" + msg.expDate;\n            document.cookie = project + \"Username=\" + msg.username;\n        }\n        function downloadToken()\n        {\n            downloadString(getCookie(\"Role\"), \"text/plain\", project + \"-token.txt\");\n        }\n// from https://gist.github.com/danallison/3ec9d5314788b337b682\n        function downloadString(text, fileType, fileName) \n        {\n            var blob = new Blob([text], { type: fileType });\n            \n            var a = document.createElement('a');\n            a.download = fileName;\n            a.href = URL.createObjectURL(blob);\n            a.dataset.downloadurl = [fileType, a.download, a.href].join(':');\n            a.style.display = \"none\";\n            document.body.appendChild(a);\n            a.click();\n            document.body.removeChild(a);\n            setTimeout(function() { URL.revokeObjectURL(a.href); }, 1500);\n        }",
+        "template": "{{{payload.script.global}}}\n{{{payload.script.launcher}}}\n{{{payload.script.user}}}\n",
         "output": "str",
-        "x": 890,
-        "y": 60,
+        "x": 540,
+        "y": 180,
         "wires": [
             [
-                "8f8ebd71.b1cf1"
+                "9e3fb71e.5349e8"
             ]
         ]
     },
@@ -4990,7 +4990,7 @@
         "collection": "devices",
         "operation": "insertOne",
         "x": 580,
-        "y": 2000,
+        "y": 2060,
         "wires": [
             [
                 "389f1443.3ce90c"
@@ -5008,7 +5008,7 @@
         "tostatus": false,
         "complete": "false",
         "x": 830,
-        "y": 2000,
+        "y": 2060,
         "wires": []
     },
     {
@@ -5022,7 +5022,7 @@
         "initialize": "",
         "finalize": "",
         "x": 370,
-        "y": 2000,
+        "y": 2060,
         "wires": [
             [
                 "78a482dc.b332ac"
@@ -5042,7 +5042,7 @@
         "payload": "",
         "payloadType": "date",
         "x": 160,
-        "y": 2000,
+        "y": 2060,
         "wires": [
             [
                 "31c358e4.c01978"
@@ -5187,7 +5187,7 @@
         "y": 240,
         "wires": [
             [
-                "c1034be9.37f0a8"
+                "2f9f8abf.a80656"
             ]
         ]
     },
@@ -5200,10 +5200,10 @@
         "fieldType": "msg",
         "format": "javascript",
         "syntax": "mustache",
-        "template": "{{{payload.script.stripChartWidget}}}\n{{{payload.script.global}}}\n{{{payload.script.updateReadings}}}\n{{{payload.script.toggleButtons}}}\n{{{payload.script.archive}}}\n{{{payload.script.editDevice}}}\n",
+        "template": "{{{payload.script.stripChartWidget}}}\n{{{payload.script.global}}}\n{{{payload.script.updateReadings}}}\n{{{payload.script.toggleButtons}}}\n{{{payload.script.archive}}}\n{{{payload.script.editDevice}}}\n{{{payload.script.user}}}\n",
         "output": "str",
         "x": 680,
-        "y": 280,
+        "y": 320,
         "wires": [
             [
                 "7fef0c19.4ed014"
@@ -5219,10 +5219,10 @@
         "fieldType": "msg",
         "format": "html",
         "syntax": "mustache",
-        "template": "    <div width=\"100%\">\n        <div class='row' style='padding-bottom: 25px;'>\n            <div class='col-md-12' align='center'>\n{{{payload.html.dashboard}}}\n            </div>\n        </div>\n        <div class='row' style='padding-bottom: 25px;'>\n            <div class='col-md-12' align='center'>\n{{{payload.html.history}}}\n            </div>\n        </div>\n        <div class='row' style='padding-bottom: 25px;'>\n            <div class='col-md-12' align='center'>\n{{{payload.html.archive}}}\n            </div>\n        </div>\n        <div class='row' style='padding-bottom: 25px;'>\n            <div class='col-md-12'>\n{{{payload.html.wifimon}}}\n            </div>\n        </div>\n    </div>",
+        "template": "    <div width=\"100%\">\n        <div class='row' style='padding-bottom: 25px;'>\n            <div class='col-md-12' align='center'>\n{{{payload.html.dashboard}}}\n            </div>\n        </div>\n        <div class='row' style='padding-bottom: 25px;'>\n            <div class='col-md-12' align='center'>\n{{{payload.html.history}}}\n            </div>\n        </div>\n        <div class='row' style='padding-bottom: 25px;'>\n            <div class='col-md-12' align='center'>\n{{{payload.html.archive}}}\n            </div>\n        </div>\n        <div class='row' style='padding-bottom: 25px;'>\n            <div class='col-md-12'>\n{{{payload.html.user}}}\n            </div>\n        </div>\n        <div class='row' style='padding-bottom: 25px;'>\n            <div class='col-md-12'>\n{{{payload.html.wifimon}}}\n            </div>\n        </div>\n    </div>",
         "output": "str",
         "x": 990,
-        "y": 200,
+        "y": 240,
         "wires": [
             [
                 "c6d4dfc7.827cb"
@@ -5241,7 +5241,7 @@
         "template": "<!-- Dashboard HTML -->\n                <div class='card'>\n                    <p class='card-title'>WiFi Connection</p>\n                    <div class='card-body' align=\"center\">\n                        <div class='row'  style='padding-top: 0px;'>\n                            <table width='100%'>\n                                <tr>\n                                    <td width='60%' >\n                                        <span class='card-text' >Device Update</span>\n                                    </td>\n                                    <td width='20%' align='center'></td>\n                                    <td width='20%' align='center'>\n                                        <img src='/img/heartRed.png' id='heartBeatID' width='100px' height='100px'/>\n                                    </td>\n                                </tr>\n                                <tr>\n                                    <td width='60%' >\n                                        <span class='card-text' >Signal Level (dBm)</span>\n                                    </td>\n                                    <td width='20%' align='center'></td>\n                                    <td width='20%' align='center'>\n                                        <span class='card-text' id='signalLevelId' >-100</span>\n                                    </td>\n                                </tr>\n                                <tr>\n                                    <td width='60%' >\n                                        <span class='card-text' >Link Quality (/70)</span>\n                                    </td>\n                                    <td width='20%' align='center'></td>\n                                    <td width='20%' align='center'>\n                                        <span class='card-text' id='linkQualityId' >-1</span>\n                                    </td>\n                                </tr>\n                            </table>\n                        </div>\n                    </div>\n                </div>\n",
         "output": "str",
         "x": 1010,
-        "y": 160,
+        "y": 200,
         "wires": [
             [
                 "450b0136.7ccbd"
@@ -5263,7 +5263,7 @@
         "y": 120,
         "wires": [
             [
-                "b6fcc866.328488"
+                "28cd98f1.2a1518"
             ]
         ]
     },
@@ -6106,7 +6106,7 @@
         "server": "9375a6d1.3e14e8",
         "client": "",
         "x": 120,
-        "y": 160,
+        "y": 340,
         "wires": [
             [
                 "56e9df4a.f6e63"
@@ -6119,7 +6119,7 @@
         "z": "a858ad3a.95706",
         "name": "",
         "x": 330,
-        "y": 160,
+        "y": 340,
         "wires": [
             [
                 "c60da0b.fd1f96"
@@ -6140,7 +6140,7 @@
         "initialize": "",
         "finalize": "",
         "x": 540,
-        "y": 120,
+        "y": 300,
         "wires": [
             [
                 "503fb1fa.e2bb1"
@@ -6154,7 +6154,7 @@
         "name": "encrypt token",
         "tokenconfig": "6acefdd9.69f124",
         "x": 720,
-        "y": 120,
+        "y": 300,
         "wires": [
             [
                 "271627bb.951278"
@@ -6172,7 +6172,7 @@
         "initialize": "",
         "finalize": "",
         "x": 900,
-        "y": 120,
+        "y": 300,
         "wires": [
             [
                 "6458b16b.42fe9"
@@ -6187,7 +6187,7 @@
         "server": "9375a6d1.3e14e8",
         "client": "",
         "x": 1090,
-        "y": 120,
+        "y": 300,
         "wires": []
     },
     {
@@ -6227,7 +6227,7 @@
         "type": "function",
         "z": "90f83725.6dae08",
         "name": "Check permitted roles",
-        "func": "var tokenError = msg.error;\nif (tokenError != undefined)\n{\n    msg.payload = tokenError;\n    return [null,msg];\n}\nif (msg.token.expDate > 0)\n{\n    if (msg.token.expDate < new Date().getTime())\n    {\n        msg.payload = 'Error: Login Expired.';\n        return [null,msg];\n    }\n}\nvar permittedRole = false;\nfor (irole = 0; irole < msg.payload.allowedRoles.length; ++irole)\n{\n    for (itoken = 0; itoken < msg.token.roles.length; ++itoken)\n    {\n        if (msg.token.roles[itoken] == msg.payload.allowedRoles[irole]) permittedRole = true;\n    }\n}\nif (!permittedRole)\n{\n    msg.payload = 'Error: Credentials not valid for App.';\n    return [null,msg];\n}\ndelete msg.token;\ndelete msg.payload.allowedRoles;\nreturn [msg,null];\n",
+        "func": "var tokenError = msg.error;\nif (tokenError != undefined)\n{\n    msg.payload = 'Error-BadToken';\n    return [null,msg];\n}\nif (msg.token.expDate > 0)\n{\n    if (msg.token.expDate < new Date().getTime())\n    {\n        msg.payload = 'Error-LoginExpired';\n        return [null,msg];\n    }\n}\nvar permittedRole = false;\nfor (irole = 0; irole < msg.payload.allowedRoles.length; ++irole)\n{\n    for (itoken = 0; itoken < msg.token.roles.length; ++itoken)\n    {\n        if (msg.token.roles[itoken] == msg.payload.allowedRoles[irole]) permittedRole = true;\n    }\n}\nif (!permittedRole)\n{\n    msg.payload = 'Error-CredentialsNotValidForApp';\n    return [null,msg];\n}\ndelete msg.token;\ndelete msg.payload.allowedRoles;\nreturn [msg,null];\n",
         "outputs": 2,
         "noerr": 0,
         "initialize": "",
@@ -6300,7 +6300,7 @@
         "type": "function",
         "z": "90f83725.6dae08",
         "name": "Set token and Role",
-        "func": "msg.token = msg.payload.token;\ndelete  msg.payload.token;\nmsg.payload.allowedRoles = [\"setting\"];\nreturn msg;",
+        "func": "msg.token = msg.payload.token;\ndelete  msg.payload.token;\nmsg.payload.allowedRoles = [\"rsetting\"];\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -6318,7 +6318,7 @@
         "type": "function",
         "z": "90f83725.6dae08",
         "name": "Check permitted roles",
-        "func": "var tokenError = msg.error;\nif (tokenError != undefined)\n{\n    msg.payload = tokenError;\n    return [null,msg];\n}\nif (msg.token.expDate > 0)\n{\n    if (msg.token.expDate < new Date().getTime())\n    {\n        msg.payload = 'Error: Login Expired.';\n        return [null,msg];\n    }\n}\nvar permittedRole = false;\nfor (irole = 0; irole < msg.payload.allowedRoles.length; ++irole)\n{\n    for (itoken = 0; itoken < msg.token.roles.length; ++itoken)\n    {\n        if (msg.token.roles[itoken] == msg.payload.allowedRoles[irole]) permittedRole = true;\n    }\n}\nif (!permittedRole)\n{\n    msg.payload = 'Error: Credentials not valid for App.';\n    return [null,msg];\n}\ndelete msg.token;\ndelete msg.payload.allowedRoles;\nreturn [msg,null];\n",
+        "func": "var tokenError = msg.error;\nif (tokenError != undefined)\n{\n    msg.payload = 'Error-BadToken';\n    return [null,msg];\n}\nif (msg.token.expDate > 0)\n{\n    if (msg.token.expDate < new Date().getTime())\n    {\n        msg.payload = 'Error-LoginExpired';\n        return [null,msg];\n    }\n}\nvar permittedRole = false;\nfor (irole = 0; irole < msg.payload.allowedRoles.length; ++irole)\n{\n    for (itoken = 0; itoken < msg.token.roles.length; ++itoken)\n    {\n        if (msg.token.roles[itoken] == msg.payload.allowedRoles[irole]) permittedRole = true;\n    }\n}\nif (!permittedRole)\n{\n    msg.payload = 'Error-CredentialsNotValidFoApp';\n    return [null,msg];\n}\ndelete msg.token;\ndelete msg.payload.allowedRoles;\nreturn [msg,null];\n",
         "outputs": 2,
         "noerr": 0,
         "initialize": "",
@@ -6350,7 +6350,7 @@
         "type": "function",
         "z": "90f83725.6dae08",
         "name": "Prep query",
-        "func": "msg['userData'] = [];\nvar ikey = 0;\nfor( var key in msg.payload ) \n{\n    if ((key != 'deviceType') && (key != 'name') )\n    {\n        msg['userData'][ikey] = {attr : key, value: Number(msg.payload[key])};\n        ++ikey\n    }\n}\nif (msg['userData'] < 1)\n{\n    msg.payload = 'Error:No Attributes found';\n    return [null,msg];\n}\nvar queryMsg = \n[\n    {\n        $and    :\n        [\n            {\n                deviceType  :   msg.payload.deviceType\n            },\n            {\n                name        :   msg.payload.name\n            }\n        ]\n    },\n    {\n        projection: \n        {\n            _id :   0\n        }\n    }\n];\nmsg.payload = queryMsg;\nreturn [msg,null];",
+        "func": "msg['userData'] = [];\nvar ikey = 0;\nfor( var key in msg.payload ) \n{\n    if ((key != 'deviceType') && (key != 'name') )\n    {\n        msg['userData'][ikey] = {attr : key, value: Number(msg.payload[key])};\n        ++ikey\n    }\n}\nif (msg['userData'] < 1)\n{\n    msg.payload = 'Error-NoAttributesFound';\n    return [null,msg];\n}\nvar queryMsg = \n[\n    {\n        $and    :\n        [\n            {\n                deviceType  :   msg.payload.deviceType\n            },\n            {\n                name        :   msg.payload.name\n            }\n        ]\n    },\n    {\n        projection: \n        {\n            _id :   0\n        }\n    }\n];\nmsg.payload = queryMsg;\nreturn [msg,null];",
         "outputs": 2,
         "noerr": 0,
         "initialize": "",
@@ -6388,7 +6388,7 @@
         "type": "function",
         "z": "90f83725.6dae08",
         "name": "Setup MQTT",
-        "func": "function isEmpty(obj) \n{\n    for(var prop in obj) {\n        if(obj.hasOwnProperty(prop))\n            return false;\n    }\n    return true;\n}\nif (isEmpty(msg.payload))\n{\n    msg.payload = 'Error: Device not found';\n    return [null,null,msg];\n}\nfor (var ii = 0; ii < msg.userData.length; ++ii)\n{\n    try\n    {\n        msg.payload[msg.userData[ii]['attr']].value = msg.userData[ii]['value'];\n    }\n    catch (e)\n    {\n        msg.payload = 'Error: ' + msg.userData[ii]['attr'] + ' not found';\n        return [null,null,msg];\n    }\n}\nvar newMsg = \n{\n    topic : global.get('project') + '/' + msg.payload.deviceType + '/' + msg.payload.name + '/setting',\n    payload : JSON.stringify(msg.payload)\n}\nmsg.payload = 'Success';\nflow.set('setDeviceMqtt',{mqttTopic:newMsg.topic, mqttDevice: JSON.parse(newMsg.payload)})\nreturn [newMsg,msg,msg];",
+        "func": "function isEmpty(obj) \n{\n    for(var prop in obj) {\n        if(obj.hasOwnProperty(prop))\n            return false;\n    }\n    return true;\n}\nif (isEmpty(msg.payload))\n{\n    msg.payload = 'Error-DeviceNotFound';\n    return [null,null,msg];\n}\nfor (var ii = 0; ii < msg.userData.length; ++ii)\n{\n    try\n    {\n        msg.payload[msg.userData[ii]['attr']].value = msg.userData[ii]['value'];\n    }\n    catch (e)\n    {\n        msg.payload = 'Error-' + msg.userData[ii]['attr'] + 'NotFound';\n        return [null,null,msg];\n    }\n}\nvar newMsg = \n{\n    topic : global.get('project') + '/' + msg.payload.deviceType + '/' + msg.payload.name + '/setting',\n    payload : JSON.stringify(msg.payload)\n}\nmsg.payload = 'Success';\nflow.set('setDeviceMqtt',{mqttTopic:newMsg.topic, mqttDevice: JSON.parse(newMsg.payload)})\nreturn [newMsg,msg,msg];",
         "outputs": 3,
         "noerr": 0,
         "initialize": "",
@@ -6416,40 +6416,6 @@
         "headers": {},
         "x": 1390,
         "y": 1180,
-        "wires": []
-    },
-    {
-        "id": "2de6f9e5.5eb736",
-        "type": "http in",
-        "z": "a858ad3a.95706",
-        "name": "/booger",
-        "url": "/booger",
-        "method": "get",
-        "upload": false,
-        "swaggerDoc": "",
-        "x": 110,
-        "y": 580,
-        "wires": [
-            [
-                "d3ac9306.654c1"
-            ]
-        ]
-    },
-    {
-        "id": "d3ac9306.654c1",
-        "type": "debug",
-        "z": "a858ad3a.95706",
-        "name": "",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 250,
-        "y": 580,
         "wires": []
     },
     {
@@ -6729,6 +6695,324 @@
         "wires": [
             [
                 "f46a4c46.e6b3a"
+            ]
+        ]
+    },
+    {
+        "id": "80520db7.bb9d6",
+        "type": "comment",
+        "z": "90f83725.6dae08",
+        "name": "curl \"http://localhost:60427/setDevice?deviceType=blinky-basic&name=02&ledOn=0&token=$(< blinky-lite-v2-token.txt)\"",
+        "info": "",
+        "x": 460,
+        "y": 1060,
+        "wires": []
+    },
+    {
+        "id": "95559ed1.ef85a",
+        "type": "http in",
+        "z": "90f83725.6dae08",
+        "name": "",
+        "url": "/rlogin",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 120,
+        "y": 1400,
+        "wires": [
+            [
+                "167b94d7.2438fb"
+            ]
+        ]
+    },
+    {
+        "id": "7ec14c90.e05b84",
+        "type": "mongodb3 in",
+        "z": "90f83725.6dae08",
+        "service": "_ext_",
+        "configNode": "9cd5ff5e.caf86",
+        "name": "",
+        "collection": "users",
+        "operation": "findOne",
+        "x": 470,
+        "y": 1400,
+        "wires": [
+            [
+                "e8388d01.1c89a"
+            ]
+        ]
+    },
+    {
+        "id": "167b94d7.2438fb",
+        "type": "function",
+        "z": "90f83725.6dae08",
+        "name": "user query",
+        "func": "msg.userData = {cred : {}, url : msg.payload.url};\nmsg.userData.cred = \n{\n    username : msg.payload.username, \n    password : msg.payload.password,\n};\nmsg.payload =  [{username : msg.userData.cred.username },  {projection  :{_id :   0}}]\nreturn msg;\n\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 270,
+        "y": 1400,
+        "wires": [
+            [
+                "7ec14c90.e05b84"
+            ]
+        ]
+    },
+    {
+        "id": "e8388d01.1c89a",
+        "type": "function",
+        "z": "90f83725.6dae08",
+        "name": "Check username",
+        "func": "function isEmpty(obj) {\n    for(var key in obj) {\n        if(obj.hasOwnProperty(key))\n            return false;\n    }\n    return true;\n}\nif (isEmpty(msg.payload))\n{\n    delete msg.userData['cred'];\n    msg.payload = 'Error-UserNotFound';\n    return [msg, null];\n}\nvar pwcheck = \n{\n    \"topic\"     : \"checkPassword\",\n    \"txt\"       : msg.userData.cred.password,\n    \"hash\"      : msg.payload.password\n}\nmsg.payload.profile['expDate'] = -1;\nif ( msg.payload.profile.timeoutMin > 0)\n{\n    msg.payload.profile['expDate'] = new Date().getTime() + msg.payload.profile.timeoutMin * 60000;\n}\nmsg.payload.profile['username'] = msg.payload.username;\nmsg.userData.cred.profile = msg.payload.profile;\nmsg.payload = pwcheck;\nreturn [null,msg];",
+        "outputs": 2,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 690,
+        "y": 1400,
+        "wires": [
+            [
+                "25881126.cb17ae"
+            ],
+            [
+                "c8f33f39.e1014"
+            ]
+        ]
+    },
+    {
+        "id": "25881126.cb17ae",
+        "type": "http response",
+        "z": "90f83725.6dae08",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 850,
+        "y": 1340,
+        "wires": []
+    },
+    {
+        "id": "c8f33f39.e1014",
+        "type": "bcrypt",
+        "z": "90f83725.6dae08",
+        "name": "decrypt password",
+        "action": "verify",
+        "field": "payload.txt",
+        "hash": "payload.hash",
+        "rounds": 10,
+        "x": 890,
+        "y": 1400,
+        "wires": [
+            [
+                "50b2e9d4.8c3558"
+            ]
+        ]
+    },
+    {
+        "id": "50b2e9d4.8c3558",
+        "type": "function",
+        "z": "90f83725.6dae08",
+        "name": "Check password",
+        "func": "if (msg.match == false)  \n{\n    delete msg.userData['cred'];\n    msg.payload = 'Error-InvalidPassword';\n    return [msg, null];\n\n}\nmsg.payload = msg.userData.cred.profile;\ndelete msg.userData['cred'];\ndelete msg['match'];\nreturn [null, msg];",
+        "outputs": 2,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 1090,
+        "y": 1400,
+        "wires": [
+            [
+                "25881126.cb17ae"
+            ],
+            [
+                "2585d0a4.d3cd9"
+            ]
+        ]
+    },
+    {
+        "id": "2585d0a4.d3cd9",
+        "type": "JsonWebToken",
+        "z": "90f83725.6dae08",
+        "name": "get Token",
+        "tokenconfig": "6acefdd9.69f124",
+        "x": 1300,
+        "y": 1400,
+        "wires": [
+            [
+                "9f2410e6.14e8"
+            ]
+        ]
+    },
+    {
+        "id": "9f2410e6.14e8",
+        "type": "function",
+        "z": "90f83725.6dae08",
+        "name": "Set token",
+        "func": "msg.payload = msg.token;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 1440,
+        "y": 1400,
+        "wires": [
+            [
+                "9f444dd0.9583"
+            ]
+        ]
+    },
+    {
+        "id": "9f444dd0.9583",
+        "type": "http response",
+        "z": "90f83725.6dae08",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 1570,
+        "y": 1400,
+        "wires": []
+    },
+    {
+        "id": "8e76fa92.a3ca88",
+        "type": "comment",
+        "z": "90f83725.6dae08",
+        "name": "curl \"http://localhost:60427/rlogin?username=user&password=blinky-lite\" > blinky-lite-v2-token.txt",
+        "info": "",
+        "x": 400,
+        "y": 1300,
+        "wires": []
+    },
+    {
+        "id": "9e3fb71e.5349e8",
+        "type": "template",
+        "z": "a858ad3a.95706",
+        "name": "html.user",
+        "field": "payload.html.user",
+        "fieldType": "msg",
+        "format": "html",
+        "syntax": "mustache",
+        "template": "                <div class='card'>\n                    <div class='card-body' align=\"center\">\n                        <table width=\"100%\">\n                            <tr>\n                                <td  align=\"left\">\n                                     <span class='card-text' style='color:black;'>User:</span>\n                                </td>\n                                <td  align=\"right\">\n                                     <span class='card-text' id='usernameId'></span>\n                                </td>\n                            </tr>\n                            <tr>\n                                <td  align=\"left\">\n                                    <span class='card-text' style='color:black;'>Time left:</span>\n                                </td>\n                                <td  align=\"right\">\n                                     <span class='card-text' id='expTimeId'></span>\n                                </td>\n                            </tr>\n                        </table>\n                        <table width=\"100%\">\n                            <tr>\n                                <td width=\"40%\">\n                                    <button class='btn btn-block card-button big-text' id='logoutButton' onclick=\"renew()\" >Renew</button>\n                                </td>\n                                <td width=\"10%\"></td>\n                                <td width=\"40%\">\n                                    <button class='btn btn-block card-button big-text' id='logoutButton' onclick=\"logout()\" >Logout</button>\n                                </td>\n                            </tr>\n                        </table>\n                    </div>\n                </div>\n",
+        "output": "str",
+        "x": 900,
+        "y": 60,
+        "wires": [
+            [
+                "d9f475e3.2ebe68"
+            ]
+        ]
+    },
+    {
+        "id": "d9f475e3.2ebe68",
+        "type": "template",
+        "z": "a858ad3a.95706",
+        "name": "html.launcher",
+        "field": "payload.html.launcher",
+        "fieldType": "msg",
+        "format": "html",
+        "syntax": "mustache",
+        "template": "                <div class='card'>\n                    <div class='card-body' align=\"center\">\n                        <div class='row' style='padding-bottom: 25px;'>\n                            <div class=\"col-md-1\" align=\"center\">\n                            </div>\n                            <div class=\"col-md-5\" align=\"center\">\n                                <span class='card-text' >Application</span>\n                            </div>\n                            <div class=\"col-md-5\" align=\"center\">\n                                <select class=\"custom-select big-text\" id=\"application\">\n                                    <option value=\"blinky-basic\">blinky-basic</option>\n                                </select>\n                            </div>\n                            <div class=\"col-md-1\" align=\"center\">\n                            </div>\n                        </div>\n                        <div class='row' style='padding-bottom: 25px;'>\n                            <div class=\"col-md-1\" align=\"center\">\n                            </div>\n                            <div class=\"col-md-5\" align=\"center\">\n                                <span class='card-text' >Device</span>\n                            </div>\n                            <div class=\"col-md-5\" align=\"center\">\n                                <select class=\"custom-select big-text\" id=\"traceA\">\n                                    <option value=\"none\">none</option>\n                                    <option value=\"01\">01</option>\n                                    <option value=\"02\">02</option>\n                                </select>\n                            </div>\n                            <div class=\"col-md-1\" align=\"center\">\n                            </div>\n                        </div>\n                        <div class='row' style='padding-bottom: 25px;'>\n                            <div class=\"col-md-1\" align=\"center\">\n                            </div>\n                            <div class=\"col-md-5\" align=\"center\">\n                            </div>\n                            <div class=\"col-md-5\" align=\"center\">\n                                <button class='btn btn-block card-button big-text' id='launchAppButton' onclick=\"launchApp()\" >Launch</button>\n                            </div>\n                            <div class=\"col-md-1\" align=\"center\">\n                            </div>\n                        </div>\n                    </div>\n                </div>",
+        "output": "str",
+        "x": 920,
+        "y": 100,
+        "wires": [
+            [
+                "8f8ebd71.b1cf1"
+            ]
+        ]
+    },
+    {
+        "id": "fa2e8992.31b268",
+        "type": "template",
+        "z": "a858ad3a.95706",
+        "name": "script.global",
+        "field": "payload.script.global",
+        "fieldType": "msg",
+        "format": "javascript",
+        "syntax": "mustache",
+        "template": "        useWebSockets(true);\n        function onDocumentReady()\n        {\n            getCreds();\n            setInterval(function(){getCreds();}, 1000);\n        }\n        function onWebSocketOpen()\n        {\n        }\n        function onWebSocketClose()\n        {\n            \n        }\n        function onWebSocketMessage(msg)\n        {\n            switch(msg.topic)\n            {\n                case 'renew':\n                    if (msg.userID == userID)\n                    {\n                        updateCookie(msg);\n                    }\n                    break;\n                case 'permissionError':\n                    if (msg.userID == userID)\n                    {\n                        acknowledgeDialog('Permission', 'Error', msg.payload);\n                    }\n                    break;\n                case 'loginExpired':\n                    if (msg.userID == userID)\n                    {\n                       location.reload();\n                    }\n                    break;\n                default:\n                    break;\n            }\n        }\n",
+        "output": "str",
+        "x": 550,
+        "y": 60,
+        "wires": [
+            [
+                "583ab8.267ae548"
+            ]
+        ]
+    },
+    {
+        "id": "583ab8.267ae548",
+        "type": "template",
+        "z": "a858ad3a.95706",
+        "name": "script.launcher",
+        "field": "payload.script.launcher",
+        "fieldType": "msg",
+        "format": "javascript",
+        "syntax": "mustache",
+        "template": "        function launchApp()\n        {\n            var application = $('#application').val();\n            var devices = [];\n            if ($('#traceA').val() != 'none') devices.push($('#traceA').val());\n            if (devices.length < 1)\n            {\n                acknowledgeDialog('Acknowledge', 'Error', 'At least one trace must have a valid device');\n                return;\n            }\n            var link = \"/\" + application + '?name=' + devices[0];\n            if (devices.length > 1)\n            for (var ii = 1; ii < devices.length; ++ii)\n            {\n                link = link + ',' + devices[ii];\n            }\n            window.location.href = link;\n//            window.open(link, '_blank');\n        }\n",
+        "output": "str",
+        "x": 560,
+        "y": 100,
+        "wires": [
+            [
+                "1b12d27c.5827be"
+            ]
+        ]
+    },
+    {
+        "id": "1b12d27c.5827be",
+        "type": "template",
+        "z": "a858ad3a.95706",
+        "name": "script.user",
+        "field": "payload.script.user",
+        "fieldType": "msg",
+        "format": "javascript",
+        "syntax": "mustache",
+        "template": "        function getCreds()\n        {\n            var now = new Date().getTime();\n            var expDate = Number(getCookie('ExpDate'));\n            if (expDate > 0)\n            {\n                expDate = expDate - now;\n                if(expDate < 0)\n                {\n                    logout();\n                }\n                else\n                {\n                    var hours = Math.floor(expDate / 3600000);\n                    var minutes = expDate - hours * 3600000;\n                    minutes = Math.floor(minutes / 60000);\n                    var seconds = expDate - (hours * 3600000) - (minutes * 60000);\n                    seconds = Math.floor(seconds / 1000);\n                    hours = hours.toString();\n                    if (hours.length == 1) hours = '0' + hours; \n                    minutes = minutes.toString();\n                    if (minutes.length == 1) minutes = '0' + minutes; \n                    seconds = seconds.toString();\n                    if (seconds.length == 1) seconds = '0' + seconds; \n                    var timeString = hours + ':' + minutes + ':' + seconds;\n                    $('#usernameId').text(getCookie('Username'));\n                    $('#expTimeId').text(timeString);\n                }\n            }\n            else\n            {\n                $('#usernameId').text(getCookie('Username'));\n                $('#expTimeId').text('Forever');\n            }\n        }\n        function logout()\n        {\n            document.cookie = project + \"Role= ; expires = Thu, 01 Jan 1970 00:00:00 GMT\";\n            document.cookie = project + \"ExpDate= ; expires = Thu, 01 Jan 1970 00:00:00 GMT\";\n            document.cookie = project + \"Username= ; expires = Thu, 01 Jan 1970 00:00:00 GMT\";\n            window.location.href = \"/\";\n        }\n        function renew()\n        {\n            var actionMsg = {};\n            sendActionMsg('renew', 'renew', actionMsg);\n        }\n        function updateCookie(msg)\n        {\n            document.cookie = project + \"Role=\" + msg.role;\n            document.cookie = project + \"ExpDate=\" + msg.expDate;\n            document.cookie = project + \"Username=\" + msg.username;\n        }\n        function downloadToken()\n        {\n            downloadString(getCookie(\"Role\"), \"text/plain\", project + \"-token.txt\");\n        }\n// from https://gist.github.com/danallison/3ec9d5314788b337b682\n        function downloadString(text, fileType, fileName) \n        {\n            var blob = new Blob([text], { type: fileType });\n            \n            var a = document.createElement('a');\n            a.download = fileName;\n            a.href = URL.createObjectURL(blob);\n            a.dataset.downloadurl = [fileType, a.download, a.href].join(':');\n            a.style.display = \"none\";\n            document.body.appendChild(a);\n            a.click();\n            document.body.removeChild(a);\n            setTimeout(function() { URL.revokeObjectURL(a.href); }, 1500);\n        }",
+        "output": "str",
+        "x": 550,
+        "y": 140,
+        "wires": [
+            [
+                "c207bc73.737ed"
+            ]
+        ]
+    },
+    {
+        "id": "28cd98f1.2a1518",
+        "type": "template",
+        "z": "9c854ea3.68416",
+        "name": "html.user",
+        "field": "payload.html.user",
+        "fieldType": "msg",
+        "format": "html",
+        "syntax": "mustache",
+        "template": "                <div class='card'>\n                    <div class='card-body' align=\"center\">\n                        <table width=\"100%\">\n                            <tr>\n                                <td  align=\"left\">\n                                     <span class='card-text' style='color:black;'>User:</span>\n                                </td>\n                                <td  align=\"right\">\n                                     <span class='card-text' id='usernameId'></span>\n                                </td>\n                            </tr>\n                            <tr>\n                                <td  align=\"left\">\n                                    <span class='card-text' style='color:black;'>Time left:</span>\n                                </td>\n                                <td  align=\"right\">\n                                     <span class='card-text' id='expTimeId'></span>\n                                </td>\n                            </tr>\n                        </table>\n                        <table width=\"100%\">\n                            <tr>\n                                <td width=\"40%\">\n                                    <button class='btn btn-block card-button big-text' id='logoutButton' onclick=\"renew()\" >Renew</button>\n                                </td>\n                                <td width=\"10%\"></td>\n                                <td width=\"40%\">\n                                    <button class='btn btn-block card-button big-text' id='logoutButton' onclick=\"logout()\" >Logout</button>\n                                </td>\n                            </tr>\n                        </table>\n                    </div>\n                </div>\n",
+        "output": "str",
+        "x": 1000,
+        "y": 160,
+        "wires": [
+            [
+                "b6fcc866.328488"
+            ]
+        ]
+    },
+    {
+        "id": "2f9f8abf.a80656",
+        "type": "template",
+        "z": "9c854ea3.68416",
+        "name": "script.user",
+        "field": "payload.script.user",
+        "fieldType": "msg",
+        "format": "javascript",
+        "syntax": "mustache",
+        "template": "        function getCreds()\n        {\n            var now = new Date().getTime();\n            var expDate = Number(getCookie('ExpDate'));\n            if (expDate > 0)\n            {\n                expDate = expDate - now;\n                if(expDate < 0)\n                {\n                    logout();\n                }\n                else\n                {\n                    var hours = Math.floor(expDate / 3600000);\n                    var minutes = expDate - hours * 3600000;\n                    minutes = Math.floor(minutes / 60000);\n                    var seconds = expDate - (hours * 3600000) - (minutes * 60000);\n                    seconds = Math.floor(seconds / 1000);\n                    hours = hours.toString();\n                    if (hours.length == 1) hours = '0' + hours; \n                    minutes = minutes.toString();\n                    if (minutes.length == 1) minutes = '0' + minutes; \n                    seconds = seconds.toString();\n                    if (seconds.length == 1) seconds = '0' + seconds; \n                    var timeString = hours + ':' + minutes + ':' + seconds;\n                    $('#usernameId').text(getCookie('Username'));\n                    $('#expTimeId').text(timeString);\n                }\n            }\n            else\n            {\n                $('#usernameId').text(getCookie('Username'));\n                $('#expTimeId').text('Forever');\n            }\n        }\n        function logout()\n        {\n            document.cookie = project + \"Role= ; expires = Thu, 01 Jan 1970 00:00:00 GMT\";\n            document.cookie = project + \"ExpDate= ; expires = Thu, 01 Jan 1970 00:00:00 GMT\";\n            document.cookie = project + \"Username= ; expires = Thu, 01 Jan 1970 00:00:00 GMT\";\n            window.location.href = \"/\";\n        }\n        function renew()\n        {\n            var actionMsg = {};\n            sendActionMsg('renew', 'renew', actionMsg);\n        }\n        function updateCookie(msg)\n        {\n            document.cookie = project + \"Role=\" + msg.role;\n            document.cookie = project + \"ExpDate=\" + msg.expDate;\n            document.cookie = project + \"Username=\" + msg.username;\n        }\n        function downloadToken()\n        {\n            downloadString(getCookie(\"Role\"), \"text/plain\", project + \"-token.txt\");\n        }\n// from https://gist.github.com/danallison/3ec9d5314788b337b682\n        function downloadString(text, fileType, fileName) \n        {\n            var blob = new Blob([text], { type: fileType });\n            \n            var a = document.createElement('a');\n            a.download = fileName;\n            a.href = URL.createObjectURL(blob);\n            a.dataset.downloadurl = [fileType, a.download, a.href].join(':');\n            a.style.display = \"none\";\n            document.body.appendChild(a);\n            a.click();\n            document.body.removeChild(a);\n            setTimeout(function() { URL.revokeObjectURL(a.href); }, 1500);\n        }",
+        "output": "str",
+        "x": 690,
+        "y": 280,
+        "wires": [
+            [
+                "c1034be9.37f0a8"
             ]
         ]
     }
