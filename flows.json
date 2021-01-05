@@ -4142,7 +4142,7 @@
         "type": "function",
         "z": "90f83725.6dae08",
         "name": "Add User",
-        "func": "var user = {\n  \"username\"        : \"user\",\n  \"password\"    : \"$2a$10$HfdzrRlUqZEQ9sm8KvIZNOT9.uOHfuM1X.etzlya1grxk.w8fPFzO\",\n  \"roles\"       : [\"expert\"]\n}\nreturn {topic:'user',payload:user};",
+        "func": "var user = {\n    \"username\"  :   \"dmcginnis427\",\n    \"password\"  :   \"$2a$10$A0..ostRUI2TSke4/c.g8.B4afXgy.J1tCX0g7zOP07YBG1ntInm2\",\n    \"profile\"   :   \n    {\n        \"timeoutMin\"    :   15,\n        \"roles\"         :   [\"reading\",\"setting\",\"rsetting\",\"ping\",\"readDatabase\",\"renew\",\"appView\",\"coreView\"]\n        \n    }\n}\nreturn {topic:'user',payload:user};",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
