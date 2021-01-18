@@ -2558,7 +2558,7 @@
         "fieldType": "msg",
         "format": "html",
         "syntax": "mustache",
-        "template": "    <meta charset=\"UTF-8\">\n    <link rel=\"icon\" href=\"/img/favicon.ico?v=4\" type=\"image/x-icon\"/>\n    <title>{{payload.title}}</title>\n    <link rel=\"stylesheet\" href=\"/css/bootstrap.css\"/>\n    <link rel=\"stylesheet\" href=\"/jquery/jquery-ui.css\"/>\n    <link rel=\"stylesheet\" href=\"/jquery/jquery-ui-timepicker-addon.css\"/>\n    <script src=\"/jquery/jquery.js\"></script>\n    <script src=\"/jquery/jquery-ui.js\"></script>\n    <script src=\"/jquery/jquery-ui-timepicker-addon.js\"></script>\n    <script src=\"/scripts/plotly-latest.min.js\"></script>\n    <script src=\"/scripts/pako.min.js\"></script>\n    <style>\n{{{payload.css}}}\n    </style>\n    <script>\n{{{payload.utilityScripts}}}\n    </script>\n    <script>\n{{{payload.javascript}}}\n    </script>",
+        "template": "    <meta charset=\"UTF-8\">\n    <link rel=\"icon\" href=\"/img/favicon.ico?v=4\" type=\"image/x-icon\"/>\n    <title>{{payload.title}}</title>\n    <link rel=\"stylesheet\" href=\"/css/bootstrap.css\"/>\n    <link rel=\"stylesheet\" href=\"/jquery/jquery-ui.css\"/>\n    <link rel=\"stylesheet\" href=\"/jquery/jquery-ui-timepicker-addon.css\"/>\n    <script src=\"/jquery/jquery.js\"></script>\n    <script src=\"/jquery/jquery-ui.js\"></script>\n    <script src=\"/jquery/jquery-ui-timepicker-addon.js\"></script>\n    <script src=\"/scripts/plotly-latest.min.js\"></script>\n    <script src=\"/scripts/pako.min.js\"></script>\n{{{payload.extraScripts}}}\n    <style>\n{{{payload.css}}}\n    </style>\n    <style>\n{{{payload.extraCss}}}\n    </style>\n    <script>\n{{{payload.utilityScripts}}}\n    </script>\n    <script>\n{{{payload.javascript}}}\n    </script>",
         "output": "str",
         "x": 570,
         "y": 40,
@@ -5234,7 +5234,7 @@
         "y": 320,
         "wires": [
             [
-                "7fef0c19.4ed014"
+                "7a83f84a.d12268"
             ]
         ]
     },
@@ -8034,5 +8034,63 @@
                 "e6d1a4ad.2186e8"
             ]
         ]
+    },
+    {
+        "id": "7a83f84a.d12268",
+        "type": "template",
+        "z": "9c854ea3.68416",
+        "name": "extraScripts",
+        "field": "payload.extraScripts",
+        "fieldType": "msg",
+        "format": "html",
+        "syntax": "mustache",
+        "template": "    <script src=\"/scripts/visDist/vis.js\"></script>\n",
+        "output": "str",
+        "x": 690,
+        "y": 360,
+        "wires": [
+            [
+                "9c04948e.356768"
+            ]
+        ]
+    },
+    {
+        "id": "9c04948e.356768",
+        "type": "template",
+        "z": "9c854ea3.68416",
+        "name": "extraCss",
+        "field": "payload.extraCss",
+        "fieldType": "msg",
+        "format": "css",
+        "syntax": "mustache",
+        "template": "",
+        "output": "str",
+        "x": 680,
+        "y": 400,
+        "wires": [
+            [
+                "7fef0c19.4ed014"
+            ]
+        ]
+    },
+    {
+        "id": "be82d379.fd146",
+        "type": "comment",
+        "z": "9c854ea3.68416",
+        "name": "Example extraScripts",
+        "info": "    <script src=\"/scripts/visDist/vis.js\"></script>\n",
+        "x": 1040,
+        "y": 360,
+        "wires": []
+    },
+    {
+        "id": "4edfe160.96fb8",
+        "type": "comment",
+        "z": "9c854ea3.68416",
+        "name": "Example extraCss",
+        "info": "        .card\n        {\n          background-color: var(--color2) !important;\n          text-align: center;\n        }\n",
+        "x": 1030,
+        "y": 400,
+        "wires": []
     }
 ]
