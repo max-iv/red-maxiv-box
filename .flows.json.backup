@@ -3564,7 +3564,7 @@
         "z": "9c854ea3.68416",
         "name": "",
         "x": 1270,
-        "y": 240,
+        "y": 280,
         "wires": []
     },
     {
@@ -5234,7 +5234,7 @@
         "y": 320,
         "wires": [
             [
-                "7fef0c19.4ed014"
+                "7a83f84a.d12268"
             ]
         ]
     },
@@ -5247,10 +5247,10 @@
         "fieldType": "msg",
         "format": "html",
         "syntax": "mustache",
-        "template": "    <div width=\"100%\">\n        <div class='row' style='padding-bottom: 25px;'>\n            <div class='col-md-12' align='center'>\n{{{payload.html.dashboard}}}\n            </div>\n        </div>\n        <div class='row' style='padding-bottom: 25px;'>\n            <div class='col-md-12' align='center'>\n{{{payload.html.history}}}\n            </div>\n        </div>\n        <div class='row' style='padding-bottom: 25px;'>\n            <div class='col-md-12' align='center'>\n{{{payload.html.archive}}}\n            </div>\n        </div>\n        <div class='row' style='padding-bottom: 25px;'>\n            <div class='col-md-12'>\n{{{payload.html.user}}}\n            </div>\n        </div>\n        <div class='row' style='padding-bottom: 25px;'>\n            <div class='col-md-12'>\n{{{payload.html.wifimon}}}\n            </div>\n        </div>\n    </div>",
+        "template": "    <div width=\"100%\">\n        <div class='row' style='padding-bottom: 25px;'>\n            <div class='col-md-12' align='center'>\n{{{payload.html.dashboard}}}\n            </div>\n        </div>\n        <div class='row' style='padding-bottom: 25px;'>\n            <div class='col-md-12' align='center'>\n{{{payload.html.history}}}\n            </div>\n        </div>\n        <div class='row' style='padding-bottom: 25px;'>\n            <div class='col-md-12' align='center'>\n{{{payload.html.archive}}}\n            </div>\n        </div>\n        <div class='row' style='padding-bottom: 25px;'>\n            <div class='col-md-12'>\n{{{payload.html.user}}}\n            </div>\n        </div>\n        <div class='row' style='padding-bottom: 25px;'>\n            <div class='col-md-12'>\n{{{payload.html.wifimon}}}\n            </div>\n        </div>\n        <div class='row' style='padding-bottom: 25px;'>\n            <div class='col-md-12'>\n{{{payload.html.reset}}}\n            </div>\n        </div>\n    </div>",
         "output": "str",
         "x": 990,
-        "y": 240,
+        "y": 280,
         "wires": [
             [
                 "c6d4dfc7.827cb"
@@ -5272,7 +5272,7 @@
         "y": 200,
         "wires": [
             [
-                "450b0136.7ccbd"
+                "c273ba2f.eae8a8"
             ]
         ]
     },
@@ -7256,10 +7256,10 @@
         "fieldType": "msg",
         "format": "html",
         "syntax": "mustache",
-        "template": "    <div width=\"100%\">\n        <div class='row' style='padding-top:50px;padding-bottom:80px;'>\n            <div class='col-md-12' align='center'>\n                <table  width='100%'>\n                   <tr>\n                        <td width='20%' align='left'> </td>\n                        <td width='60%' align='center'>\n                            <button class='btn btn-block card-button big-text' id=\"moveMotorButton\" onclick=\"moveMotor()\" >Move</button>\n                        </td>\n                        <td width='20%' align='left'> </td>\n                    </tr>\n                </table>\n            </div>\n        </div>\n        <div class='row' style='padding-bottom: 10px;'>\n            <div class='col-md-12' align='center'>\n{{{payload.html.controls}}}\n            </div>\n        </div>\n        <div class='row' style='padding-bottom: 25px;'>\n            <div class='col-md-12' align='center'>\n{{{payload.html.history}}}\n            </div>\n        </div>\n        <div class='row' style='padding-bottom: 25px;'>\n            <div class='col-md-12' align='center'>\n{{{payload.html.archive}}}\n            </div>\n        </div>\n        <div class='row' style='padding-bottom: 25px;'>\n            <div class='col-md-12'>\n{{{payload.html.user}}}\n            </div>\n        </div>\n        <div class='row' style='padding-bottom: 25px;'>\n            <div class='col-md-12'>\n{{{payload.html.wifimon}}}\n            </div>\n        </div>\n    </div>\n",
+        "template": "    <div width=\"100%\">\n        <div class='row' style='padding-top:50px;padding-bottom:80px;'>\n            <div class='col-md-12' align='center'>\n                <table  width='100%'>\n                   <tr>\n                        <td width='20%' align='left'> </td>\n                        <td width='60%' align='center'>\n                            <button class='btn btn-block card-button big-text' id=\"moveMotorButton\" onclick=\"moveMotor()\" >Move</button>\n                        </td>\n                        <td width='20%' align='left'> </td>\n                    </tr>\n                </table>\n            </div>\n        </div>\n        <div class='row' style='padding-bottom: 10px;'>\n            <div class='col-md-12' align='center'>\n{{{payload.html.controls}}}\n            </div>\n        </div>\n        <div class='row' style='padding-bottom: 25px;'>\n            <div class='col-md-12' align='center'>\n{{{payload.html.history}}}\n            </div>\n        </div>\n        <div class='row' style='padding-bottom: 25px;'>\n            <div class='col-md-12' align='center'>\n{{{payload.html.archive}}}\n            </div>\n        </div>\n        <div class='row' style='padding-bottom: 25px;'>\n            <div class='col-md-12'>\n{{{payload.html.user}}}\n            </div>\n        </div>\n        <div class='row' style='padding-bottom: 25px;'>\n            <div class='col-md-12'>\n{{{payload.html.wifimon}}}\n            </div>\n        </div>\n        <div class='row' style='padding-bottom: 25px;'>\n            <div class='col-md-12'>\n{{{payload.html.reset}}}\n            </div>\n        </div>\n    </div>\n",
         "output": "str",
         "x": 970,
-        "y": 680,
+        "y": 720,
         "wires": [
             [
                 "8217f93a.fb2308"
@@ -7452,7 +7452,7 @@
         "y": 640,
         "wires": [
             [
-                "5c2b74eb.f53eec"
+                "8f6482a5.43f4a"
             ]
         ]
     },
@@ -7481,7 +7481,7 @@
         "z": "9c854ea3.68416",
         "name": "",
         "x": 1270,
-        "y": 680,
+        "y": 720,
         "wires": []
     },
     {
@@ -7783,10 +7783,10 @@
         "fieldType": "msg",
         "format": "html",
         "syntax": "mustache",
-        "template": "    <div width=\"100%\">\n        <div class='row' style='padding-bottom: 25px;'>\n            <div class='col-md-12' align='center'>\n{{{payload.html.dashboard}}}\n            </div>\n        </div>\n        <div class='row' style='padding-bottom: 25px;'>\n            <div class='col-md-12' align='center'>\n{{{payload.html.history}}}\n            </div>\n        </div>\n        <div class='row' style='padding-bottom: 25px;'>\n            <div class='col-md-12' align='center'>\n{{{payload.html.archive}}}\n            </div>\n        </div>\n        <div class='row' style='padding-bottom: 25px;'>\n            <div class='col-md-12'>\n{{{payload.html.user}}}\n            </div>\n        </div>\n        <div class='row' style='padding-bottom: 25px;'>\n            <div class='col-md-12'>\n{{{payload.html.wifimon}}}\n            </div>\n        </div>\n    </div>",
+        "template": "    <div width=\"100%\">\n        <div class='row' style='padding-bottom: 25px;'>\n            <div class='col-md-12' align='center'>\n{{{payload.html.dashboard}}}\n            </div>\n        </div>\n        <div class='row' style='padding-bottom: 25px;'>\n            <div class='col-md-12' align='center'>\n{{{payload.html.history}}}\n            </div>\n        </div>\n        <div class='row' style='padding-bottom: 25px;'>\n            <div class='col-md-12' align='center'>\n{{{payload.html.archive}}}\n            </div>\n        </div>\n        <div class='row' style='padding-bottom: 25px;'>\n            <div class='col-md-12'>\n{{{payload.html.user}}}\n            </div>\n        </div>\n        <div class='row' style='padding-bottom: 25px;'>\n            <div class='col-md-12'>\n{{{payload.html.wifimon}}}\n            </div>\n        </div>\n        <div class='row' style='padding-bottom: 25px;'>\n            <div class='col-md-12'>\n{{{payload.html.reset}}}\n            </div>\n        </div>\n    </div>",
         "output": "str",
         "x": 990,
-        "y": 1040,
+        "y": 1080,
         "wires": [
             [
                 "bb919909.77ccc8"
@@ -7808,7 +7808,7 @@
         "y": 1000,
         "wires": [
             [
-                "a9372311.c8e76"
+                "c9ac94fa.ab9fe8"
             ]
         ]
     },
@@ -7970,7 +7970,7 @@
         "z": "9c854ea3.68416",
         "name": "",
         "x": 1270,
-        "y": 1040,
+        "y": 1080,
         "wires": []
     },
     {
@@ -8032,6 +8032,121 @@
         "wires": [
             [
                 "e6d1a4ad.2186e8"
+            ]
+        ]
+    },
+    {
+        "id": "7a83f84a.d12268",
+        "type": "template",
+        "z": "9c854ea3.68416",
+        "name": "extraScripts",
+        "field": "payload.extraScripts",
+        "fieldType": "msg",
+        "format": "html",
+        "syntax": "mustache",
+        "template": "    <script src=\"/scripts/visDist/vis.js\"></script>\n",
+        "output": "str",
+        "x": 690,
+        "y": 360,
+        "wires": [
+            [
+                "9c04948e.356768"
+            ]
+        ]
+    },
+    {
+        "id": "9c04948e.356768",
+        "type": "template",
+        "z": "9c854ea3.68416",
+        "name": "extraCss",
+        "field": "payload.extraCss",
+        "fieldType": "msg",
+        "format": "css",
+        "syntax": "mustache",
+        "template": "",
+        "output": "str",
+        "x": 680,
+        "y": 400,
+        "wires": [
+            [
+                "7fef0c19.4ed014"
+            ]
+        ]
+    },
+    {
+        "id": "be82d379.fd146",
+        "type": "comment",
+        "z": "9c854ea3.68416",
+        "name": "Example extraScripts",
+        "info": "    <script src=\"/scripts/visDist/vis.js\"></script>\n",
+        "x": 1040,
+        "y": 360,
+        "wires": []
+    },
+    {
+        "id": "4edfe160.96fb8",
+        "type": "comment",
+        "z": "9c854ea3.68416",
+        "name": "Example extraCss",
+        "info": "        .card\n        {\n          background-color: var(--color2) !important;\n          text-align: center;\n        }\n",
+        "x": 1030,
+        "y": 400,
+        "wires": []
+    },
+    {
+        "id": "c273ba2f.eae8a8",
+        "type": "template",
+        "z": "9c854ea3.68416",
+        "name": "html.reset",
+        "field": "payload.html.reset",
+        "fieldType": "msg",
+        "format": "html",
+        "syntax": "mustache",
+        "template": "                <div class='card' id='reset'>\n                    <div class='card-body' align=\"center\">\n                         <table width=\"100%\">\n                            <tr>\n                                <td width=\"40%\">\n                                    <button class='btn btn-block card-button big-text' onclick=\"reset(1)\" >Reset</button>\n                                </td>\n                                <td width=\"10%\"></td>\n                                <td width=\"40%\">\n                                    <button class='btn btn-block card-button big-text' onclick=\"reset(2)\" >Reboot</button>\n                                </td>\n                            </tr>\n                        </table>\n                    </div>\n                </div>\n",
+        "output": "str",
+        "x": 1000,
+        "y": 240,
+        "wires": [
+            [
+                "450b0136.7ccbd"
+            ]
+        ]
+    },
+    {
+        "id": "8f6482a5.43f4a",
+        "type": "template",
+        "z": "9c854ea3.68416",
+        "name": "html.reset",
+        "field": "payload.html.reset",
+        "fieldType": "msg",
+        "format": "html",
+        "syntax": "mustache",
+        "template": "                <div class='card' id='reset'>\n                    <div class='card-body' align=\"center\">\n                         <table width=\"100%\">\n                            <tr>\n                                <td width=\"40%\">\n                                    <button class='btn btn-block card-button big-text' onclick=\"reset(1)\" >Reset</button>\n                                </td>\n                                <td width=\"10%\"></td>\n                                <td width=\"40%\">\n                                    <button class='btn btn-block card-button big-text' onclick=\"reset(2)\" >Reboot</button>\n                                </td>\n                            </tr>\n                        </table>\n                    </div>\n                </div>\n",
+        "output": "str",
+        "x": 980,
+        "y": 680,
+        "wires": [
+            [
+                "5c2b74eb.f53eec"
+            ]
+        ]
+    },
+    {
+        "id": "c9ac94fa.ab9fe8",
+        "type": "template",
+        "z": "9c854ea3.68416",
+        "name": "html.reset",
+        "field": "payload.html.reset",
+        "fieldType": "msg",
+        "format": "html",
+        "syntax": "mustache",
+        "template": "                <div class='card' id='reset'>\n                    <div class='card-body' align=\"center\">\n                         <table width=\"100%\">\n                            <tr>\n                                <td width=\"40%\">\n                                    <button class='btn btn-block card-button big-text' onclick=\"reset(1)\" >Reset</button>\n                                </td>\n                                <td width=\"10%\"></td>\n                                <td width=\"40%\">\n                                    <button class='btn btn-block card-button big-text' onclick=\"reset(2)\" >Reboot</button>\n                                </td>\n                            </tr>\n                        </table>\n                    </div>\n                </div>\n",
+        "output": "str",
+        "x": 1000,
+        "y": 1040,
+        "wires": [
+            [
+                "a9372311.c8e76"
             ]
         ]
     }
