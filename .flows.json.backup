@@ -701,6 +701,12 @@
         "wholemsg": "false"
     },
     {
+        "id": "11409eb4.88d3c1",
+        "type": "websocket-listener",
+        "path": "/blinky-shaker/websocket",
+        "wholemsg": "false"
+    },
+    {
         "id": "d8aea031.7f89d",
         "type": "http in",
         "z": "dc20c6e0.0feb98",
@@ -2418,7 +2424,7 @@
         "datatype": "auto",
         "broker": "84d80994.260508",
         "x": 110,
-        "y": 140,
+        "y": 180,
         "wires": [
             [
                 "7a299117.69d3"
@@ -3438,7 +3444,7 @@
         "collection": "archiver",
         "operation": "find.toArray",
         "x": 670,
-        "y": 820,
+        "y": 940,
         "wires": [
             [
                 "28d7885b.29ba58"
@@ -3539,14 +3545,22 @@
                 "t": "eq",
                 "v": "blinky-shiver",
                 "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "blinky-shaker",
+                "vt": "str"
             }
         ],
         "checkall": "true",
         "repair": false,
-        "outputs": 4,
+        "outputs": 5,
         "x": 730,
         "y": 160,
         "wires": [
+            [
+                "72c58cab.a3c494"
+            ],
             [
                 "72c58cab.a3c494"
             ],
@@ -5419,7 +5433,7 @@
         "action": "obj",
         "pretty": false,
         "x": 270,
-        "y": 140,
+        "y": 180,
         "wires": [
             [
                 "764116fd.f6e648"
@@ -5453,13 +5467,18 @@
                 "t": "eq",
                 "v": "blinky-shiver",
                 "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "blinky-shaker",
+                "vt": "str"
             }
         ],
         "checkall": "true",
         "repair": false,
-        "outputs": 4,
+        "outputs": 5,
         "x": 610,
-        "y": 140,
+        "y": 180,
         "wires": [
             [
                 "5f767381.0ac26c"
@@ -5472,6 +5491,9 @@
             ],
             [
                 "772958de.6fce18"
+            ],
+            [
+                "66486726.3947a8"
             ]
         ]
     },
@@ -5486,7 +5508,7 @@
         "initialize": "",
         "finalize": "",
         "x": 450,
-        "y": 140,
+        "y": 180,
         "wires": [
             [
                 "81c39fe.b208a6"
@@ -5607,7 +5629,7 @@
         "initialize": "",
         "finalize": "",
         "x": 400,
-        "y": 820,
+        "y": 940,
         "wires": [
             [
                 "a3efdc0a.76eff"
@@ -5625,7 +5647,7 @@
         "initialize": "",
         "finalize": "",
         "x": 930,
-        "y": 820,
+        "y": 940,
         "wires": [
             [
                 "36088082.3139d"
@@ -5665,7 +5687,7 @@
         "repair": false,
         "outputs": 4,
         "x": 1110,
-        "y": 820,
+        "y": 940,
         "wires": [
             [
                 "e1a8363e.6beae8"
@@ -5690,7 +5712,7 @@
             "7e343bf8.8fec14"
         ],
         "x": 1215,
-        "y": 760,
+        "y": 880,
         "wires": []
     },
     {
@@ -5701,7 +5723,7 @@
         "server": "e71c9288.03dd3",
         "client": "",
         "x": 140,
-        "y": 500,
+        "y": 480,
         "wires": [
             [
                 "e6d1a4ad.2186e8"
@@ -5767,7 +5789,8 @@
             "80b48a2e.fb2228",
             "d0705889.a79d18",
             "a8a88b3.a878478",
-            "4d17b368.0e74ac"
+            "4d17b368.0e74ac",
+            "3b3f00c.e1f7e"
         ],
         "x": 775,
         "y": 720,
@@ -5885,7 +5908,7 @@
             "cc1f29ab.67bb78"
         ],
         "x": 255,
-        "y": 820,
+        "y": 940,
         "wires": [
             [
                 "b6b8b063.9f62f"
@@ -7175,7 +7198,7 @@
         "server": "c4d6389f.42aca8",
         "client": "",
         "x": 150,
-        "y": 560,
+        "y": 540,
         "wires": [
             [
                 "e6d1a4ad.2186e8"
@@ -7531,7 +7554,7 @@
             "d0705889.a79d18"
         ],
         "x": 1215,
-        "y": 800,
+        "y": 920,
         "wires": []
     },
     {
@@ -7545,7 +7568,7 @@
         "initialize": "",
         "finalize": "",
         "x": 380,
-        "y": 940,
+        "y": 1020,
         "wires": [
             [
                 "5b671f90.f02c1"
@@ -7559,7 +7582,7 @@
         "name": "encrypt token",
         "tokenconfig": "6acefdd9.69f124",
         "x": 560,
-        "y": 940,
+        "y": 1020,
         "wires": [
             [
                 "7569e60e.54a608"
@@ -7577,7 +7600,7 @@
         "initialize": "",
         "finalize": "",
         "x": 740,
-        "y": 940,
+        "y": 1020,
         "wires": [
             [
                 "224d9b05.f92104"
@@ -7593,7 +7616,7 @@
             "14b7f9da.2d7c86"
         ],
         "x": 255,
-        "y": 940,
+        "y": 1020,
         "wires": [
             [
                 "28ebc7b7.46b498"
@@ -7622,10 +7645,11 @@
             "80b48a2e.fb2228",
             "d0705889.a79d18",
             "a8a88b3.a878478",
-            "4d17b368.0e74ac"
+            "4d17b368.0e74ac",
+            "3b3f00c.e1f7e"
         ],
         "x": 855,
-        "y": 940,
+        "y": 1020,
         "wires": []
     },
     {
@@ -7679,7 +7703,7 @@
             "80b48a2e.fb2228"
         ],
         "x": 1215,
-        "y": 840,
+        "y": 960,
         "wires": []
     },
     {
@@ -8068,7 +8092,7 @@
         "server": "3c0c4adc.e7b956",
         "client": "",
         "x": 160,
-        "y": 620,
+        "y": 600,
         "wires": [
             [
                 "e6d1a4ad.2186e8"
@@ -8726,7 +8750,7 @@
         "server": "557f40b4.fc262",
         "client": "",
         "x": 170,
-        "y": 680,
+        "y": 660,
         "wires": [
             [
                 "e6d1a4ad.2186e8"
@@ -8743,7 +8767,7 @@
             "a8a88b3.a878478"
         ],
         "x": 1215,
-        "y": 880,
+        "y": 1000,
         "wires": []
     },
     {
@@ -8754,7 +8778,7 @@
         "server": "19f426d.ba145d9",
         "client": "",
         "x": 170,
-        "y": 740,
+        "y": 720,
         "wires": [
             [
                 "e6d1a4ad.2186e8"
@@ -8883,7 +8907,7 @@
         "fieldType": "msg",
         "format": "javascript",
         "syntax": "mustache",
-        "template": "// Global Javascript\n        useWebSockets(true);\n        var mqttDevice = null;\n        var device = null;\n        var archiveRequestList = [];\n        var archiveList = [];\n        var pingInterval = 5000;\n        var lastPing = 0;\n\n        var restfulDevice = \n        {\n            deviceType  : '{{{payload.script.deviceType}}}',\n            name        : '{{{payload.script.name}}}',\n            project     : '{{{payload.script.project}}}'\n        };\n\n        var editDeviceProperty = '';\n\n        function onDocumentReady()\n        {\n            setRemoteApp(true);\n            if (remoteApp)\n            {\n                getCreds();\n                setInterval(function(){getCreds();}, 1000);\n            }\n            else\n            {\n                $('#userCardId').hide();\n            }\n            $('#archiveCardId').hide();\n            $('#loopDelayButtonId').hide();\n            setInterval(function()\n            {\n                var now = new Date().getTime();\n                if ((now - lastPing) > pingInterval)\n                {\n                    lastPing = now;\n                    var actionMsg = \n                        {\n                            topic   : restfulDevice.project + '/' +  restfulDevice.deviceType + '/' +  restfulDevice.name + '/ping',\n                            payload : true\n                        };\n                    sendActionMsg('ping', 'ping', actionMsg);\n               }\n            }, 1000);\n        }\n        function onWebSocketOpen()\n        {\n//            if (remoteApp) getArchive(24);\n        }\n        function onWebSocketClose()\n        {\n            \n        }\n        function onWebSocketMessage(msg)\n        {\n            switch(msg.topic)\n            {\n                case 'readings':\n                    if ((msg.mqttDevice.name == restfulDevice.name) && (msg.mqttDevice.deviceType == restfulDevice.deviceType)  && (msg.mqttDevice.project == restfulDevice.project) )\n                    {\n                        lastPing = new Date().getTime();\n                        heartbeat();\n                        device = JSON.parse(pako.inflate(msg.payload, { to: 'string' }));\n                        mqttDevice = msg.mqttDevice;\n                        updateDmaReadings();\n                        updateMaxAmpBarChart();\n                        updateMaxAmpModeGaugeChart();\n                        updateAvgPowerBarChart();\n                        updateUltraAmpBarChart();\n                    }\n                    break;\n                case 'readDatabase':\n                    if (msg.userID == userID)\n                    {\n                        if ((msg.payload.device.deviceType == restfulDevice.deviceType) && (msg.payload.device.name == restfulDevice.name) )\n                            putArchiveValues(msg.payload);\n                    }\n                    break;\n                case 'renew':\n                    if (msg.userID == userID)\n                    {\n                        updateCookie(msg);\n                    }\n                    break;\n                case 'permissionError':\n                    if (msg.userID == userID)\n                    {\n                        acknowledgeDialog('Permission', 'Error', msg.payload);\n                    }\n                    break;\n                case 'loginExpired':\n                    if (msg.userID == userID)\n                    {\n                       location.reload();\n                    }\n                    break;\n                default:\n                    break;\n            }\n        }\n        function sendSetting()\n        {\n            var actionMsg = \n                {\n                    topic   : mqttDevice.project + '/' +  mqttDevice.deviceType + '/' +  mqttDevice.name + '/setting',\n                    payload : pako.deflate(JSON.stringify(device))\n                };\n            sendActionMsg('setting','setting',actionMsg);\n       }\n        function setScalarValue(settingValue, attrName)\n        {\n            var settingAttr = device[attrName];\n            if ( (settingAttr.alarm.limits.lolo <= settingValue) && (settingValue <= settingAttr.alarm.limits.hihi) )\n            {\n                settingAttr.value = settingValue;\n                sendSetting();\n            } \n            else\n            {\n                acknowledgeDialog('Acknowledge', 'Error', 'Entry outside range! (' + settingAttr.alarm.limits.lolo.toString() + '-' + settingAttr.alarm.limits.hihi.toString() + ' ' + settingAttr.unit);\n            }\n        }\n        function reset(actionFlag)\n        {\n            var headerText = 'Warning';\n            var title = 'Resetting Tray';\n            var text = 'I hope you know what you are doing.';\n            var buttonTexts = ['Reset', 'Cancel'];\n            var buttonFunctions = \n            [\n                function()\n                {\n                    $( this ).dialog( \"close\" );\n                    setScalarValue(actionFlag, 'reset');\n                 }, \n                function()\n                {\n                    $( this ).dialog( \"close\" );\n                }\n            ];\n            if (actionFlag == 2)\n            {\n                title = 'Rebooting Tray';\n                buttonTexts[0] = 'Reboot';\n            }\n            optionDialog(headerText, title, text, buttonTexts, buttonFunctions);\n            \n        }\n        function updateMaxAmpBarChart()\n        {\n            var maxAmpBarConfig = \n                {\n                    lolo            : device.maxAmp.alarm.limits.lolo, \n                    low             : device.maxAmp.alarm.limits.low, \n                    high            : device.maxAmp.alarm.limits.high, \n                    hihi            : device.maxAmp.alarm.limits.hihi, \n                    value           : device.maxAmp.value, \n                    unit            : device.maxAmp.unit, \n                    textsize        : 38,\n                    label           : 'ultraAmp', \n                    lowColor        : '#00ff00', \n                    mediumColor     : '#ffff00',\n                    highColor       : 'ff0000', \n                    backgroundColor : '#9eb5c7', \n                    labelColor      : '#000000', \n                    gridColor       : '#ffffff',\n                    height          : 300, \n                    htmlId          : 'maxAmpBarPlot'\n                };\n            setHorzBarWidget(maxAmpBarConfig);\n        }\n        function updateMaxAmpModeGaugeChart()\n        {\n            var maxAmpModeGaugeConfig = \n                {\n                    lolo            : device.maxAmpMode.alarm.limits.lolo, \n                    low             : device.maxAmpMode.alarm.limits.low, \n                    high            : device.maxAmpMode.alarm.limits.high, \n                    hihi            : device.maxAmpMode.alarm.limits.hihi, \n                    value           : device.maxAmpMode.value, \n                    unit            : device.maxAmpMode.unit, \n                    textsize        : 38,\n                    label           : 'Freq.', \n                    lowColor        : '#ff0000', \n                    mediumColor     : '#00ff00',\n                    highColor       : '#ffff00', \n                    backgroundColor : '#9eb5c7', \n                    labelColor      : '#000000', \n                    size            : 800, \n                    htmlId          : 'maxAmpModeGaugePlot'\n                };\n            setGaugeWidget(maxAmpModeGaugeConfig);\n        }\n        function updateAvgPowerBarChart()\n        {\n            var avgPowerBarConfig = \n                {\n                    lolo            : device.avgPower.alarm.limits.lolo, \n                    low             : device.avgPower.alarm.limits.low, \n                    high            : device.avgPower.alarm.limits.high, \n                    hihi            : device.avgPower.alarm.limits.hihi, \n                    value           : device.avgPower.value, \n                    unit            : device.avgPower.unit, \n                    textsize        : 38,\n                    label           : 'ultraAmp', \n                    lowColor        : '#00ff00', \n                    mediumColor     : '#ffff00',\n                    highColor       : 'ff0000', \n                    backgroundColor : '#9eb5c7', \n                    labelColor      : '#000000', \n                    gridColor       : '#ffffff',\n                    height          : 300, \n                    htmlId          : 'avgPowerBarPlot'\n                };\n            setHorzBarWidget(avgPowerBarConfig);\n        }\n        function updateUltraAmpBarChart()\n        {\n            var ultraAmpBarConfig = \n                {\n                    lolo            : device.ultraAmp.alarm.limits.lolo, \n                    low             : device.ultraAmp.alarm.limits.low, \n                    high            : device.ultraAmp.alarm.limits.high, \n                    hihi            : device.ultraAmp.alarm.limits.hihi, \n                    value           : device.ultraAmp.value, \n                    unit            : device.ultraAmp.unit, \n                    textsize        : 38,\n                    label           : 'ultraAmp', \n                    lowColor        : '#ff0000', \n                    mediumColor     : '#ffff00',\n                    highColor       : '#00ff00', \n                    backgroundColor : '#9eb5c7', \n                    labelColor      : '#000000', \n                    gridColor       : '#ffffff',\n                    height          : 300, \n                    htmlId          : 'ultraAmpBarPlot'\n                };\n            setHorzBarWidget(ultraAmpBarConfig);\n        }\n        function updateDmaReadings()\n        {\n/*            var minFreq = device.minDisplayMode.value;\n            var maxFreq = device.maxDisplayMode.value;\n            if (device.spectrum.value[0][255] < maxFreq) maxFreq = device.spectrum.value[0][255];\n            var maxAmp = device.maxAmp.value;\n            var maxAmpMode = device.maxAmpMode.value;\n            var avgPower = device.avgPower.value;\n*/\n            $('#linkQualityId').text(device.linkQuality.value);\n            $('#signalLevelId').text(device.signalLevel.value);\n\n        }\n",
+        "template": "// Global Javascript\n        useWebSockets(true);\n        var mqttDevice = null;\n        var device = null;\n        var archiveRequestList = [];\n        var archiveList = [];\n        var pingInterval = 5000;\n        var lastPing = 0;\n\n        var restfulDevice = \n        {\n            deviceType  : '{{{payload.script.deviceType}}}',\n            name        : '{{{payload.script.name}}}',\n            project     : '{{{payload.script.project}}}'\n        };\n\n        var editDeviceProperty = '';\n        var plotConfig = \n        {\n            trace1Title : 'Mode Amp(um)',\n            trace1Color : '#557a95',\n            trace1GridColor : '#beceda',\n            trace2Title : 'Mode',\n            trace2Color : '#f2a31f',\n            plotLength  : 600000,\n            width   : '',\n            height  :   '500',\n            htmlId  :   'historyStripChart'\n        };\n        let historyStripChart = new StripChart(plotConfig);\n\n        function onDocumentReady()\n        {\n            setRemoteApp(true);\n            if (remoteApp)\n            {\n                getCreds();\n                setInterval(function(){getCreds();}, 1000);\n            }\n            else\n            {\n                $('#userCardId').hide();\n            }\n            $('#archiveCardId').hide();\n            $('#loopDelayButtonId').hide();\n            setInterval(function()\n            {\n                var now = new Date().getTime();\n                if ((now - lastPing) > pingInterval)\n                {\n                    lastPing = now;\n                    var actionMsg = \n                        {\n                            topic   : restfulDevice.project + '/' +  restfulDevice.deviceType + '/' +  restfulDevice.name + '/ping',\n                            payload : true\n                        };\n                    sendActionMsg('ping', 'ping', actionMsg);\n               }\n            }, 1000);\n        }\n        function onWebSocketOpen()\n        {\n            if (remoteApp) getArchive(24);\n        }\n        function onWebSocketClose()\n        {\n            \n        }\n        function onWebSocketMessage(msg)\n        {\n            switch(msg.topic)\n            {\n                case 'readings':\n                    if ((msg.mqttDevice.name == restfulDevice.name) && (msg.mqttDevice.deviceType == restfulDevice.deviceType)  && (msg.mqttDevice.project == restfulDevice.project) )\n                    {\n                        lastPing = new Date().getTime();\n                        heartbeat();\n                        device = JSON.parse(pako.inflate(msg.payload, { to: 'string' }));\n                        mqttDevice = msg.mqttDevice;\n                        updateDmaReadings();\n                        updateMaxAmpBarChart();\n                        updateMaxAmpModeGaugeChart();\n                        updateAvgPowerBarChart();\n                        updateUltraAmpBarChart();\n                    }\n                    break;\n                case 'readDatabase':\n                    if (msg.userID == userID)\n                    {\n                        if ((msg.payload.device.deviceType == restfulDevice.deviceType) && (msg.payload.device.name == restfulDevice.name) )\n                            putArchiveValues(msg.payload);\n                    }\n                    break;\n                case 'renew':\n                    if (msg.userID == userID)\n                    {\n                        updateCookie(msg);\n                    }\n                    break;\n                case 'permissionError':\n                    if (msg.userID == userID)\n                    {\n                        acknowledgeDialog('Permission', 'Error', msg.payload);\n                    }\n                    break;\n                case 'loginExpired':\n                    if (msg.userID == userID)\n                    {\n                       location.reload();\n                    }\n                    break;\n                default:\n                    break;\n            }\n        }\n        function sendSetting()\n        {\n            var actionMsg = \n                {\n                    topic   : mqttDevice.project + '/' +  mqttDevice.deviceType + '/' +  mqttDevice.name + '/setting',\n                    payload : pako.deflate(JSON.stringify(device))\n                };\n            sendActionMsg('setting','setting',actionMsg);\n       }\n        function setScalarValue(settingValue, attrName)\n        {\n            var settingAttr = device[attrName];\n            if ( (settingAttr.alarm.limits.lolo <= settingValue) && (settingValue <= settingAttr.alarm.limits.hihi) )\n            {\n                settingAttr.value = settingValue;\n                sendSetting();\n            } \n            else\n            {\n                acknowledgeDialog('Acknowledge', 'Error', 'Entry outside range! (' + settingAttr.alarm.limits.lolo.toString() + '-' + settingAttr.alarm.limits.hihi.toString() + ' ' + settingAttr.unit);\n            }\n        }\n        function reset(actionFlag)\n        {\n            var headerText = 'Warning';\n            var title = 'Resetting Tray';\n            var text = 'I hope you know what you are doing.';\n            var buttonTexts = ['Reset', 'Cancel'];\n            var buttonFunctions = \n            [\n                function()\n                {\n                    $( this ).dialog( \"close\" );\n                    setScalarValue(actionFlag, 'reset');\n                 }, \n                function()\n                {\n                    $( this ).dialog( \"close\" );\n                }\n            ];\n            if (actionFlag == 2)\n            {\n                title = 'Rebooting Tray';\n                buttonTexts[0] = 'Reboot';\n            }\n            optionDialog(headerText, title, text, buttonTexts, buttonFunctions);\n            \n        }\n        function updateMaxAmpBarChart()\n        {\n            var maxAmpBarConfig = \n                {\n                    lolo            : device.maxAmp.alarm.limits.lolo, \n                    low             : device.maxAmp.alarm.limits.low, \n                    high            : device.maxAmp.alarm.limits.high, \n                    hihi            : device.maxAmp.alarm.limits.hihi, \n                    value           : device.maxAmp.value, \n                    unit            : device.maxAmp.unit, \n                    textsize        : 38,\n                    label           : 'ultraAmp', \n                    lowColor        : '#00ff00', \n                    mediumColor     : '#ffff00',\n                    highColor       : 'ff0000', \n                    backgroundColor : '#9eb5c7', \n                    labelColor      : '#000000', \n                    gridColor       : '#ffffff',\n                    height          : 300, \n                    htmlId          : 'maxAmpBarPlot'\n                };\n            setHorzBarWidget(maxAmpBarConfig);\n        }\n        function updateMaxAmpModeGaugeChart()\n        {\n            var maxAmpModeGaugeConfig = \n                {\n                    lolo            : device.maxAmpMode.alarm.limits.lolo, \n                    low             : device.maxAmpMode.alarm.limits.low, \n                    high            : device.maxAmpMode.alarm.limits.high, \n                    hihi            : device.maxAmpMode.alarm.limits.hihi, \n                    value           : device.maxAmpMode.value, \n                    unit            : device.maxAmpMode.unit, \n                    textsize        : 38,\n                    label           : 'Freq.', \n                    lowColor        : '#ff0000', \n                    mediumColor     : '#00ff00',\n                    highColor       : '#ffff00', \n                    backgroundColor : '#9eb5c7', \n                    labelColor      : '#000000', \n                    size            : 800, \n                    htmlId          : 'maxAmpModeGaugePlot'\n                };\n            setGaugeWidget(maxAmpModeGaugeConfig);\n        }\n        function updateAvgPowerBarChart()\n        {\n            var avgPowerBarConfig = \n                {\n                    lolo            : device.avgPower.alarm.limits.lolo, \n                    low             : device.avgPower.alarm.limits.low, \n                    high            : device.avgPower.alarm.limits.high, \n                    hihi            : device.avgPower.alarm.limits.hihi, \n                    value           : device.avgPower.value, \n                    unit            : device.avgPower.unit, \n                    textsize        : 38,\n                    label           : 'ultraAmp', \n                    lowColor        : '#00ff00', \n                    mediumColor     : '#ffff00',\n                    highColor       : 'ff0000', \n                    backgroundColor : '#9eb5c7', \n                    labelColor      : '#000000', \n                    gridColor       : '#ffffff',\n                    height          : 300, \n                    htmlId          : 'avgPowerBarPlot'\n                };\n            setHorzBarWidget(avgPowerBarConfig);\n        }\n        function updateUltraAmpBarChart()\n        {\n            var ultraAmpBarConfig = \n                {\n                    lolo            : device.ultraAmp.alarm.limits.lolo, \n                    low             : device.ultraAmp.alarm.limits.low, \n                    high            : device.ultraAmp.alarm.limits.high, \n                    hihi            : device.ultraAmp.alarm.limits.hihi, \n                    value           : device.ultraAmp.value, \n                    unit            : device.ultraAmp.unit, \n                    textsize        : 38,\n                    label           : 'ultraAmp', \n                    lowColor        : '#ff0000', \n                    mediumColor     : '#ffff00',\n                    highColor       : '#00ff00', \n                    backgroundColor : '#9eb5c7', \n                    labelColor      : '#000000', \n                    gridColor       : '#ffffff',\n                    height          : 300, \n                    htmlId          : 'ultraAmpBarPlot'\n                };\n            setHorzBarWidget(ultraAmpBarConfig);\n        }\n        function updateDmaReadings()\n        {\n/*            var minFreq = device.minDisplayMode.value;\n            var maxFreq = device.maxDisplayMode.value;\n            if (device.spectrum.value[0][255] < maxFreq) maxFreq = device.spectrum.value[0][255];\n            var maxAmp = device.maxAmp.value;\n            var maxAmpMode = device.maxAmpMode.value;\n            var avgPower = device.avgPower.value;\n*/\n            $('#linkQualityId').text(device.linkQuality.value);\n            $('#signalLevelId').text(device.signalLevel.value);\n            historyStripChart.addTracePoints(device.maxAmp.value, device.maxAmpMode.value);\n\n        }\n",
         "output": "str",
         "x": 690,
         "y": 1800,
@@ -8997,7 +9021,7 @@
         "fieldType": "msg",
         "format": "javascript",
         "syntax": "mustache",
-        "template": "// Archive JavaScript\n        function getArchive(hours)\n        { \n            $('#archiveCardId').show();\n\n//            if (hours > 2) messageDialog('Info', 'Wait', 'Getting Archive Data');\n            $('#archive2hrButton').attr(\"disabled\", true); \n            $('#archive4hrButton').attr(\"disabled\", true); \n            $('#archive8hrButton').attr(\"disabled\", true); \n            $('#archive24hrButton').attr(\"disabled\", true); \n            $('#archive72hrButton').attr(\"disabled\", true); \n            $('#archive168hrButton').attr(\"disabled\", true); \n            $('#archive2hrButton').css('color', 'var(--color5)'); \n            $('#archive2hrButton').css('background-color', 'var(--color1)'); \n            $('#archive4hrButton').css('color', 'var(--color5)'); \n            $('#archive4hrButton').css('background-color', 'var(--color1)'); \n            $('#archive8hrButton').css('color', 'var(--color5)'); \n            $('#archive8hrButton').css('background-color', 'var(--color1)'); \n            $('#archive24hrButton').css('color', 'var(--color5)'); \n            $('#archive24hrButton').css('background-color', 'var(--color1)'); \n            $('#archive72hrButton').css('color', 'var(--color5)'); \n            $('#archive72hrButton').css('background-color', 'var(--color1)'); \n            $('#archive168hrButton').css('color', 'var(--color5)'); \n            $('#archive168hrButton').css('background-color', 'var(--color1)'); \n            switch(hours)\n            {\n                case 2:\n                    $('#archive2hrButton').css('color', 'var(--color1)'); \n                    $('#archive2hrButton').css('background-color', 'var(--color5)'); \n                    break;\n                case 4:\n                    $('#archive4hrButton').css('color', 'var(--color1)'); \n                    $('#archive4hrButton').css('background-color', 'var(--color5)'); \n                    break;\n                case 8:\n                    $('#archive8hrButton').css('color', 'var(--color1)'); \n                    $('#archive8hrButton').css('background-color', 'var(--color5)'); \n                    break;\n                case 24:\n                    $('#archive24hrButton').css('color', 'var(--color1)'); \n                    $('#archive24hrButton').css('background-color', 'var(--color5)'); \n                    break;\n                case 72:\n                    $('#archive72hrButton').css('color', 'var(--color1)'); \n                    $('#archive72hrButton').css('background-color', 'var(--color5)'); \n                    break;\n                case 168:\n                    $('#archive168hrButton').css('color', 'var(--color1)'); \n                    $('#archive168hrButton').css('background-color', 'var(--color5)'); \n                    break;\n                default:\n                // code block\n            }\n\n            archiveRequestList = [];\n            archiveList = [];\n            var stopDate = new Date().getTime();\n            var startDate = stopDate - hours * 3600000;\n            archiveRequestList[0] = \n            {\n                deviceType : restfulDevice.deviceType,\n                name : restfulDevice.name, \n                attr : ['ledState','loopDelay'],\n                startDate: startDate, \n                stopDate: stopDate,\n            };\n            getArchiveValues();\n        }\n        function getArchiveValues()\n        {\n            var actionMsg = \n                {\n                    device      : archiveRequestList[0]\n                };\n            sendActionMsg('readDatabase','readDatabase', actionMsg);\n            archiveRequestList.shift();\n            return;\n        }\n        function putArchiveValues(data)\n        {\n            archiveList.push(data);\n            if (archiveRequestList.length > 0)\n            {\n                getArchiveValues();\n            }\n            else\n            {\n                plotArchive();\n            }\n        }\n\n        function plotArchive()\n        {\n//            $( \"#messageDialog\" ).dialog( \"close\" );\n            var layout =\n            {\n                showlegend  : true,\n                legend      : { x: 0, y: 1.15},\n                height      : '500',\n                width       : '',\n                xaxis       :\n                {\n//                    title: 'Hours since ' + new Date(archiveList[0].device.stopDate).toLocaleString(),\n                    type: 'date'\n                },\n                yaxis:\n                {\n                    title           : plotConfig.trace1Title,\n                    titlefont       : {color: plotConfig.trace1Color},\n                    tickfont        : {color:plotConfig.trace1Color},\n                    gridcolor       : plotConfig.trace1GridColor,\n                    zerolinecolor   : plotConfig.trace1GridColor,\n                    linecolor       : plotConfig.trace1GridColor\n\n                },\n                yaxis2:\n                {\n                    title           : plotConfig.trace2Title,\n                    titlefont       : {color: plotConfig.trace2Color},\n                    tickfont        : {color:plotConfig.trace2Color},\n                    gridcolor       : plotConfig.trace2GridColor,\n                    zerolinecolor   : plotConfig.trace2GridColor,\n                    linecolor       : plotConfig.trace2GridColor,\n                    overlaying: 'y',\n                    side: 'right'\n                },\n                margin: \n                    {\n                        t: 30, //top margin\n    //                    l: 0, //left margin\n    //                    r: 0, //right margin\n    //                    b: 20 //bottom margin\n                    },\n            };\n            this.trace1 = \n            {\n                x: [],\n                y: [],\n                name: plotConfig.trace1Title,\n                yaxis: 'y1',\n                type: 'scatter',\n                mode: 'markers',\n                marker: {\n                    color: this.plotConfig.trace1Color,\n                    size: 10,\n                    symbol: 'circle'\n                }        \n    \n            };\n            this.trace2 = \n            {\n                x: [],\n                y: [],\n                name: plotConfig.trace2Title,\n                yaxis: 'y2',\n                type: 'scatter',\n                mode: 'markers',\n                marker: {\n                    color: this.plotConfig.trace2Color,\n                    size: 10,\n                    symbol: 'square'\n                }        \n         \n            };\n            for (var ii = 0; ii < archiveList[0].trace.length; ++ii)\n            {\n//                var x = (archiveList[0].trace[ii].timeStamp - archiveList[0].device.stopDate) / 3600000.0;\n                var x = archiveList[0].trace[ii].timeStamp;\n                trace1.x[ii] = x;\n                trace1.y[ii] = archiveList[0].trace[ii][archiveList[0].device.attr[0]] ;\n                trace2.x[ii] = x;\n                trace2.y[ii] = archiveList[0].trace[ii][archiveList[0].device.attr[1]];\n            }\n\n\n            Plotly.newPlot('archiveChart', [trace1,trace2], layout);\n            $('#archive2hrButton').attr(\"disabled\", false); \n            $('#archive4hrButton').attr(\"disabled\", false); \n            $('#archive8hrButton').attr(\"disabled\", false); \n            $('#archive24hrButton').attr(\"disabled\", false); \n            $('#archive72hrButton').attr(\"disabled\", false); \n            $('#archive168hrButton').attr(\"disabled\", false); \n        }\n",
+        "template": "// Archive JavaScript\n        function getArchive(hours)\n        { \n            $('#archiveCardId').show();\n\n//            if (hours > 2) messageDialog('Info', 'Wait', 'Getting Archive Data');\n            $('#archive2hrButton').attr(\"disabled\", true); \n            $('#archive4hrButton').attr(\"disabled\", true); \n            $('#archive8hrButton').attr(\"disabled\", true); \n            $('#archive24hrButton').attr(\"disabled\", true); \n            $('#archive72hrButton').attr(\"disabled\", true); \n            $('#archive168hrButton').attr(\"disabled\", true); \n            $('#archive2hrButton').css('color', 'var(--color5)'); \n            $('#archive2hrButton').css('background-color', 'var(--color1)'); \n            $('#archive4hrButton').css('color', 'var(--color5)'); \n            $('#archive4hrButton').css('background-color', 'var(--color1)'); \n            $('#archive8hrButton').css('color', 'var(--color5)'); \n            $('#archive8hrButton').css('background-color', 'var(--color1)'); \n            $('#archive24hrButton').css('color', 'var(--color5)'); \n            $('#archive24hrButton').css('background-color', 'var(--color1)'); \n            $('#archive72hrButton').css('color', 'var(--color5)'); \n            $('#archive72hrButton').css('background-color', 'var(--color1)'); \n            $('#archive168hrButton').css('color', 'var(--color5)'); \n            $('#archive168hrButton').css('background-color', 'var(--color1)'); \n            switch(hours)\n            {\n                case 2:\n                    $('#archive2hrButton').css('color', 'var(--color1)'); \n                    $('#archive2hrButton').css('background-color', 'var(--color5)'); \n                    break;\n                case 4:\n                    $('#archive4hrButton').css('color', 'var(--color1)'); \n                    $('#archive4hrButton').css('background-color', 'var(--color5)'); \n                    break;\n                case 8:\n                    $('#archive8hrButton').css('color', 'var(--color1)'); \n                    $('#archive8hrButton').css('background-color', 'var(--color5)'); \n                    break;\n                case 24:\n                    $('#archive24hrButton').css('color', 'var(--color1)'); \n                    $('#archive24hrButton').css('background-color', 'var(--color5)'); \n                    break;\n                case 72:\n                    $('#archive72hrButton').css('color', 'var(--color1)'); \n                    $('#archive72hrButton').css('background-color', 'var(--color5)'); \n                    break;\n                case 168:\n                    $('#archive168hrButton').css('color', 'var(--color1)'); \n                    $('#archive168hrButton').css('background-color', 'var(--color5)'); \n                    break;\n                default:\n                // code block\n            }\n\n            archiveRequestList = [];\n            archiveList = [];\n            var stopDate = new Date().getTime();\n            var startDate = stopDate - hours * 3600000;\n            archiveRequestList[0] = \n            {\n                deviceType : restfulDevice.deviceType,\n                name : restfulDevice.name, \n                attr : ['maxAmp','maxAmpMode'],\n                startDate: startDate, \n                stopDate: stopDate,\n            };\n            getArchiveValues();\n        }\n        function getArchiveValues()\n        {\n            var actionMsg = \n                {\n                    device      : archiveRequestList[0]\n                };\n            sendActionMsg('readDatabase','readDatabase', actionMsg);\n            archiveRequestList.shift();\n            return;\n        }\n        function putArchiveValues(data)\n        {\n            archiveList.push(data);\n            if (archiveRequestList.length > 0)\n            {\n                getArchiveValues();\n            }\n            else\n            {\n                plotArchive();\n            }\n        }\n\n        function plotArchive()\n        {\n//            $( \"#messageDialog\" ).dialog( \"close\" );\n            var layout =\n            {\n                showlegend  : true,\n                legend      : { x: 0, y: 1.15},\n                height      : '500',\n                width       : '',\n                xaxis       :\n                {\n//                    title: 'Hours since ' + new Date(archiveList[0].device.stopDate).toLocaleString(),\n                    type: 'date'\n                },\n                yaxis:\n                {\n                    title           : plotConfig.trace1Title,\n                    titlefont       : {color: plotConfig.trace1Color},\n                    tickfont        : {color:plotConfig.trace1Color},\n                    gridcolor       : plotConfig.trace1GridColor,\n                    zerolinecolor   : plotConfig.trace1GridColor,\n                    linecolor       : plotConfig.trace1GridColor\n\n                },\n                yaxis2:\n                {\n                    title           : plotConfig.trace2Title,\n                    titlefont       : {color: plotConfig.trace2Color},\n                    tickfont        : {color:plotConfig.trace2Color},\n                    gridcolor       : plotConfig.trace2GridColor,\n                    zerolinecolor   : plotConfig.trace2GridColor,\n                    linecolor       : plotConfig.trace2GridColor,\n                    overlaying: 'y',\n                    side: 'right'\n                },\n                margin: \n                    {\n                        t: 30, //top margin\n    //                    l: 0, //left margin\n    //                    r: 0, //right margin\n    //                    b: 20 //bottom margin\n                    },\n            };\n            this.trace1 = \n            {\n                x: [],\n                y: [],\n                name: plotConfig.trace1Title,\n                yaxis: 'y1',\n                type: 'scatter',\n                mode: 'markers',\n                marker: {\n                    color: this.plotConfig.trace1Color,\n                    size: 10,\n                    symbol: 'circle'\n                }        \n    \n            };\n            this.trace2 = \n            {\n                x: [],\n                y: [],\n                name: plotConfig.trace2Title,\n                yaxis: 'y2',\n                type: 'scatter',\n                mode: 'markers',\n                marker: {\n                    color: this.plotConfig.trace2Color,\n                    size: 10,\n                    symbol: 'square'\n                }        \n         \n            };\n            for (var ii = 0; ii < archiveList[0].trace.length; ++ii)\n            {\n//                var x = (archiveList[0].trace[ii].timeStamp - archiveList[0].device.stopDate) / 3600000.0;\n                var x = archiveList[0].trace[ii].timeStamp;\n                trace1.x[ii] = x;\n                trace1.y[ii] = archiveList[0].trace[ii][archiveList[0].device.attr[0]] ;\n                trace2.x[ii] = x;\n                trace2.y[ii] = archiveList[0].trace[ii][archiveList[0].device.attr[1]];\n            }\n\n\n            Plotly.newPlot('archiveChart', [trace1,trace2], layout);\n            $('#archive2hrButton').attr(\"disabled\", false); \n            $('#archive4hrButton').attr(\"disabled\", false); \n            $('#archive8hrButton').attr(\"disabled\", false); \n            $('#archive24hrButton').attr(\"disabled\", false); \n            $('#archive72hrButton').attr(\"disabled\", false); \n            $('#archive168hrButton').attr(\"disabled\", false); \n        }\n",
         "output": "str",
         "x": 690,
         "y": 1960,
@@ -9326,6 +9350,364 @@
         "wires": [
             [
                 "531a866f.f51ee8"
+            ]
+        ]
+    },
+    {
+        "id": "66486726.3947a8",
+        "type": "link out",
+        "z": "8475ab9.3d26058",
+        "name": "blinky-shaker mqtt",
+        "links": [
+            "3b3f00c.e1f7e"
+        ],
+        "x": 695,
+        "y": 300,
+        "wires": []
+    },
+    {
+        "id": "5293984d.80ce18",
+        "type": "websocket out",
+        "z": "8475ab9.3d26058",
+        "name": "/blinky-shaker/websocket",
+        "server": "11409eb4.88d3c1",
+        "client": "",
+        "x": 1050,
+        "y": 360,
+        "wires": []
+    },
+    {
+        "id": "3b3f00c.e1f7e",
+        "type": "link in",
+        "z": "8475ab9.3d26058",
+        "name": "blinky shiver-simple input socket",
+        "links": [
+            "1e710224.de723e",
+            "224d9b05.f92104",
+            "66486726.3947a8"
+        ],
+        "x": 895,
+        "y": 360,
+        "wires": [
+            [
+                "5293984d.80ce18"
+            ]
+        ]
+    },
+    {
+        "id": "78685123.95a21",
+        "type": "websocket in",
+        "z": "8475ab9.3d26058",
+        "name": "/blinky-shaker/websocket",
+        "server": "11409eb4.88d3c1",
+        "client": "",
+        "x": 150,
+        "y": 780,
+        "wires": [
+            [
+                "e6d1a4ad.2186e8"
+            ]
+        ]
+    },
+    {
+        "id": "ef2d1708.d21768",
+        "type": "function",
+        "z": "9c854ea3.68416",
+        "name": "Set Name And Device Type",
+        "func": "msg.payload['script'] = {};\nmsg.payload['script']['name'] = msg.payload.name\nmsg.payload['script']['deviceType'] = 'blinky-shaker';\nmsg.payload['script']['project'] = global.get('project');\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 440,
+        "y": 2280,
+        "wires": [
+            [
+                "38293b.5f2f56c6"
+            ]
+        ]
+    },
+    {
+        "id": "6c47061e.8e5638",
+        "type": "template",
+        "z": "9c854ea3.68416",
+        "name": "Set Title",
+        "field": "payload.title",
+        "fieldType": "msg",
+        "format": "html",
+        "syntax": "mustache",
+        "template": "Blinky Shaker {{{payload.script.name}}}",
+        "output": "str",
+        "x": 380,
+        "y": 2360,
+        "wires": [
+            [
+                "ad50f25c.c7f4d"
+            ]
+        ]
+    },
+    {
+        "id": "ad50f25c.c7f4d",
+        "type": "template",
+        "z": "9c854ea3.68416",
+        "name": "script.global",
+        "field": "payload.script.global",
+        "fieldType": "msg",
+        "format": "javascript",
+        "syntax": "mustache",
+        "template": "// Global Javascript\n        useWebSockets(true);\n        var mqttDevice = null;\n        var device = null;\n        var archiveRequestList = [];\n        var archiveList = [];\n        var pingInterval = 5000;\n        var lastPing = 0;\n\n        var restfulDevice = \n        {\n            deviceType  : '{{{payload.script.deviceType}}}',\n            name        : '{{{payload.script.name}}}',\n            project     : '{{{payload.script.project}}}'\n        };\n        var motorSpeedSliderMoved = false;\n\n        function onDocumentReady()\n        {\n            setRemoteApp(true);\n            if (remoteApp)\n            {\n                getCreds();\n                setInterval(function(){getCreds();}, 1000);\n            }\n            else\n            {\n                $('#userCardId').hide();\n            }\n            $('#loopDelayButtonId').hide();\n            setInterval(function()\n            {\n                var now = new Date().getTime();\n                if ((now - lastPing) > pingInterval)\n                {\n                    lastPing = now;\n                    var actionMsg = \n                        {\n                            topic   : restfulDevice.project + '/' +  restfulDevice.deviceType + '/' +  restfulDevice.name + '/ping',\n                            payload : true\n                        };\n                    sendActionMsg('ping', 'ping', actionMsg);\n               }\n            }, 1000);\n            $( function() \n            {\n                $( \"#motorSpeedSlider\" ).slider(\n                    {\n                        stop    :   function( event, ui ) \n                                    {\n                                        if (mqttDevice == null) return;\n                                        $('#motorSpeed').hide();\n                                        var motorSpeedValue = Math.round(2.0 * ui.value) + 100;\n                                        var motorSpeedSetting = device['motor-speed'];\n                                        motorSpeedSetting.value = motorSpeedValue;\n                                        \n                                        sendSetting();\n                            \n                                        setTimeout(function()\n                                        {\n                                            motorSpeedSliderMoved = false; \n                                            $('#motorSpeed').show();\n                                        }, 1500);\n                                        \n                                    },\n                        start   :   function( event, ui ){motorSpeedSliderMoved = true},\n                    });\n            } );\n            $(\"#motorSpeedSlider\").children(\"div\").css(\"background\",\"red\");\n\n        }\n        function onWebSocketOpen()\n        {\n        }\n        function onWebSocketClose()\n        {\n            \n        }\n        function onWebSocketMessage(msg)\n        {\n            switch(msg.topic)\n            {\n                case 'readings':\n                    if ((msg.mqttDevice.name == restfulDevice.name) && (msg.mqttDevice.deviceType == restfulDevice.deviceType)  && (msg.mqttDevice.project == restfulDevice.project) )\n                    {\n                        lastPing = new Date().getTime();\n                        heartbeat();\n                        device = JSON.parse(pako.inflate(msg.payload, { to: 'string' }));\n                        mqttDevice = msg.mqttDevice;\n                        updateDmaReadings();\n                    }\n                    break;\n                case 'renew':\n                    if (msg.userID == userID)\n                    {\n                        updateCookie(msg);\n                    }\n                    break;\n                case 'permissionError':\n                    if (msg.userID == userID)\n                    {\n                        acknowledgeDialog('Permission', 'Error', msg.payload);\n                    }\n                    break;\n                case 'loginExpired':\n                    if (msg.userID == userID)\n                    {\n                       location.reload();\n                    }\n                    break;\n                default:\n                    break;\n            }\n        }\n        function sendSetting()\n        {\n            var actionMsg = \n                {\n                    topic   : mqttDevice.project + '/' +  mqttDevice.deviceType + '/' +  mqttDevice.name + '/setting',\n                    payload : pako.deflate(JSON.stringify(device))\n                };\n            sendActionMsg('setting','setting',actionMsg);\n       }\n        function setScalarValue(settingValue, attrName)\n        {\n            var settingAttr = device[attrName];\n            if ( (settingAttr.alarm.limits.lolo <= settingValue) && (settingValue <= settingAttr.alarm.limits.hihi) )\n            {\n                settingAttr.value = settingValue;\n                sendSetting();\n            } \n            else\n            {\n                acknowledgeDialog('Acknowledge', 'Error', 'Entry outside range! (' + settingAttr.alarm.limits.lolo.toString() + '-' + settingAttr.alarm.limits.hihi.toString() + ' ' + settingAttr.unit);\n            }\n        }\n        function reset(actionFlag)\n        {\n            var headerText = 'Warning';\n            var title = 'Resetting Tray';\n            var text = 'I hope you know what you are doing.';\n            var buttonTexts = ['Reset', 'Cancel'];\n            var buttonFunctions = \n            [\n                function()\n                {\n                    $( this ).dialog( \"close\" );\n                    setScalarValue(actionFlag, 'reset');\n                 }, \n                function()\n                {\n                    $( this ).dialog( \"close\" );\n                }\n            ];\n            if (actionFlag == 2)\n            {\n                title = 'Rebooting Tray';\n                buttonTexts[0] = 'Reboot';\n            }\n            optionDialog(headerText, title, text, buttonTexts, buttonFunctions);\n        }\n\n        function updateDmaReadings()\n        {\n            $('#linkQualityId').text(device.linkQuality.value);\n            $('#signalLevelId').text(device.signalLevel.value);\n            if (!motorSpeedSliderMoved)\n            {   \n                var motorSpeed = device['motor-speed'].value;\n//                            $('#motorSpeed').text(Math.round(motorSpeed * 0.1638 - 6) + ' Hz');\n                $('#motorSpeed').text(Math.round(motorSpeed * 0.75 - 100.0) + ' Hz');\n                $('#motorSpeedSlider' ).slider( \"value\", Math.round((motorSpeed - 100) / 2.0) );\n            }\n            var motorOn = device['motor-on'].value;\n            if (motorOn == 0)\n            {\n                $('#motorOffButton').css('color', 'var(--color1)'); \n                $('#motorOffButton').css('background-color', 'var(--color5)'); \n                $('#motorOnButton').css('color', 'var(--color5)'); \n                $('#motorOnButton').css('background-color', 'var(--color1)'); \n            }\n            else\n            {\n                $('#motorOffButton').css('color', 'var(--color5)'); \n                $('#motorOffButton').css('background-color', 'var(--color1)'); \n                $('#motorOnButton').css('color', 'var(--color1)'); \n                $('#motorOnButton').css('background-color', 'var(--color5)'); \n            }\n            var motorDirection = device['motor-direction'].value;\n            if (motorDirection == 0)\n            {\n                $('#motorDirectionCCWButton').css('color', 'var(--color1)'); \n                $('#motorDirectionCCWButton').css('background-color', 'var(--color5)'); \n                $('#motorDirectionCWButton').css('color', 'var(--color5)'); \n                $('#motorDirectionCWButton').css('background-color', 'var(--color1)'); \n            }\n            else\n            {\n                $('#motorDirectionCCWButton').css('color', 'var(--color5)'); \n                $('#motorDirectionCCWButton').css('background-color', 'var(--color1)'); \n                $('#motorDirectionCWButton').css('color', 'var(--color1)'); \n                $('#motorDirectionCWButton').css('background-color', 'var(--color5)'); \n            }\n        }\n        function setMotorOn(motorOn)\n        {\n            if (mqttDevice == null) return;\n            var motorOnSetting = device['motor-on'];\n            motorOnSetting.value = motorOn;\n            sendSetting();\n        }\n        function setMotorDirection(motorDirection)\n        {\n            if (mqttDevice == null) return;\n            var motorDirectionSetting = device['motor-direction'];\n            motorDirectionSetting.value = motorDirection;\n            sendSetting();\n        }\n        ",
+        "output": "str",
+        "x": 690,
+        "y": 2280,
+        "wires": [
+            [
+                "96ba9eaf.c359f"
+            ]
+        ]
+    },
+    {
+        "id": "96ba9eaf.c359f",
+        "type": "template",
+        "z": "9c854ea3.68416",
+        "name": "script.editDevice",
+        "field": "payload.script.editDevice",
+        "fieldType": "msg",
+        "format": "javascript",
+        "syntax": "mustache",
+        "template": "// Edit Temp JavaScript\n       $( function() \n        {\n            $( \"#editDeviceDialog\" ).dialog(\n                {\n//                    closeOnEscape: false,\n//                    open: function(event, ui) {$(\".ui-dialog-titlebar-close\", ui.dialog | ui).hide();},\n                    width:    640,\n                    autoOpen: false,\n                    buttons:\n                    [\n                        {\n                            text: \"Set\",\n                            click: function() {setDevice(); $( this ).dialog( \"close\" );},\n                            showText: false\n                        },\n                        {\n                            text: \"Cancel\",\n                            click: function() \n                            {\n                                $( this ).dialog( \"close\" ); \n                            },\n                            showText: false\n                        }\n                    ]\n                });\n        } );\n        function editDevice(attrName)\n        {\n            $( \"#editDeviceDialog\" ).dialog( \"option\", \"title\", \"Edit\"); \n            editedAttribute = attrName;\n            $( \"#editDeviceDialogAttribute\").html(attrName);\n\n            var attr = device[attrName];\n            $( \"#loloAlarm\").val(attr.alarm.limits.lolo);\n            $( \"#lowAlarm\").val(attr.alarm.limits.low);\n            $( \"#highAlarm\").val(attr.alarm.limits.high);\n            $( \"#hihiAlarm\").val(attr.alarm.limits.hihi);\n            $( \"#notifyName\").val(attr.alarm.notify.name);\n            $( \"#notifyNumber\").val(attr.alarm.notify.number);\n\n            $( \"#editDeviceDialog\" ).dialog( \"open\" );\n        }\n        function setDevice()\n        {\n            var attr = device[editedAttribute];\n            if (isNaN($('#loloAlarm').val()) \n                || isNaN($('#lowAlarm').val()) \n                || isNaN($('#highAlarm').val()) \n                || isNaN($('#hihiAlarm').val()))\n            {\n                acknowledgeDialog('Error', 'Entry not a number!', editedAttribute);\n                editedAttribute = '';\n                return;\n            }\n            editedAttribute = '';\n\n            attr.alarm.limits.lolo = Number($( \"#loloAlarm\").val());\n            attr.alarm.limits.low = Number($( \"#lowAlarm\").val());\n            attr.alarm.limits.high = Number($( \"#highAlarm\").val());\n            attr.alarm.limits.hihi = Number($( \"#hihiAlarm\").val());\n            attr.alarm.notify.number =  $( \"#notifyNumber\").val();\n            attr.alarm.notify.name = $( \"#notifyName\").val();\n            sendSetting();\n        }\n",
+        "output": "str",
+        "x": 700,
+        "y": 2320,
+        "wires": [
+            [
+                "8a4b1366.6efb"
+            ]
+        ]
+    },
+    {
+        "id": "6371c2b1.d3f55c",
+        "type": "template",
+        "z": "9c854ea3.68416",
+        "name": "javascript",
+        "field": "payload.javascript",
+        "fieldType": "msg",
+        "format": "javascript",
+        "syntax": "mustache",
+        "template": "{{{payload.script.global}}}\n{{{payload.script.editDevice}}}\n{{{payload.script.user}}}\n",
+        "output": "str",
+        "x": 680,
+        "y": 2400,
+        "wires": [
+            [
+                "46e17d79.def6c4"
+            ]
+        ]
+    },
+    {
+        "id": "2565dfa2.388ca",
+        "type": "template",
+        "z": "9c854ea3.68416",
+        "name": "body",
+        "field": "payload.body",
+        "fieldType": "msg",
+        "format": "html",
+        "syntax": "mustache",
+        "template": "    <div width=\"100%\">\n        <div class='row' style='padding-bottom: 25px;'>\n            <div class='col-md-12' align='center'>\n{{{payload.html.control}}}\n            </div>\n        </div>\n        <div class='row' style='padding-bottom: 25px;'>\n            <div class='col-md-12'>\n{{{payload.html.user}}}\n            </div>\n        </div>\n        <div class='row' style='padding-bottom: 25px;'>\n            <div class='col-md-12'>\n{{{payload.html.wifimon}}}\n            </div>\n        </div>\n        <div class='row' style='padding-bottom: 25px;'>\n            <div class='col-md-12'>\n{{{payload.html.reset}}}\n            </div>\n        </div>\n    </div>",
+        "output": "str",
+        "x": 990,
+        "y": 2440,
+        "wires": [
+            [
+                "40df03da.f6335c"
+            ]
+        ]
+    },
+    {
+        "id": "b8720bfd.13f9c8",
+        "type": "template",
+        "z": "9c854ea3.68416",
+        "name": "html.wifimon",
+        "field": "payload.html.wifimon",
+        "fieldType": "msg",
+        "format": "html",
+        "syntax": "mustache",
+        "template": "<!-- Dashboard HTML -->\n                <div class='card'>\n                    <p class='card-title'>WiFi Connection</p>\n                    <div class='card-body' align=\"center\">\n                        <div class='row'  style='padding-top: 0px;'>\n                            <table width='100%'>\n                                <tr>\n                                    <td width='60%' >\n                                        <span class='card-text' >Device Update</span>\n                                    </td>\n                                    <td width='20%' align='center'></td>\n                                    <td width='20%' align='center'>\n                                        <img src='/img/heartRed.png' id='heartBeatID' width='100px' height='100px'/>\n                                    </td>\n                                </tr>\n                                <tr>\n                                    <td width='60%' >\n                                        <span class='card-text' >Signal Level (dBm)</span>\n                                    </td>\n                                    <td width='20%' align='center'></td>\n                                    <td width='20%' align='center'>\n                                        <span class='card-text' id='signalLevelId' >-100</span>\n                                    </td>\n                                </tr>\n                                <tr>\n                                    <td width='60%' >\n                                        <span class='card-text' >Link Quality (/70)</span>\n                                    </td>\n                                    <td width='20%' align='center'></td>\n                                    <td width='20%' align='center'>\n                                        <span class='card-text' id='linkQualityId' >-1</span>\n                                    </td>\n                                </tr>\n                            </table>\n                        </div>\n                    </div>\n                </div>\n",
+        "output": "str",
+        "x": 1010,
+        "y": 2360,
+        "wires": [
+            [
+                "f2dbbc80.4c0b8"
+            ]
+        ]
+    },
+    {
+        "id": "38293b.5f2f56c6",
+        "type": "template",
+        "z": "9c854ea3.68416",
+        "name": "navBarIcon",
+        "field": "payload.navBarIcon",
+        "fieldType": "msg",
+        "format": "html",
+        "syntax": "mustache",
+        "template": "shakerYellow.png",
+        "output": "str",
+        "x": 390,
+        "y": 2320,
+        "wires": [
+            [
+                "6c47061e.8e5638"
+            ]
+        ]
+    },
+    {
+        "id": "388f8502.53683a",
+        "type": "template",
+        "z": "9c854ea3.68416",
+        "name": "html.user",
+        "field": "payload.html.user",
+        "fieldType": "msg",
+        "format": "html",
+        "syntax": "mustache",
+        "template": "                <div class='card' id='userCardId'>\n                    <div class='card-body' align=\"center\">\n                        <table width=\"100%\">\n                            <tr>\n                                <td  align=\"left\">\n                                     <span class='card-text' style='color:black;'>User:</span>\n                                </td>\n                                <td  align=\"right\">\n                                     <span class='card-text' id='usernameId'></span>\n                                </td>\n                            </tr>\n                            <tr>\n                                <td  align=\"left\">\n                                    <span class='card-text' style='color:black;'>Time left:</span>\n                                </td>\n                                <td  align=\"right\">\n                                     <span class='card-text' id='expTimeId'></span>\n                                </td>\n                            </tr>\n                        </table>\n                        <table width=\"100%\">\n                            <tr>\n                                <td width=\"40%\">\n                                    <button class='btn btn-block card-button big-text' id='logoutButton' onclick=\"renew()\" >Renew</button>\n                                </td>\n                                <td width=\"10%\"></td>\n                                <td width=\"40%\">\n                                    <button class='btn btn-block card-button big-text' id='logoutButton' onclick=\"logout()\" >Logout</button>\n                                </td>\n                            </tr>\n                        </table>\n                    </div>\n                </div>\n",
+        "output": "str",
+        "x": 1000,
+        "y": 2320,
+        "wires": [
+            [
+                "b8720bfd.13f9c8"
+            ]
+        ]
+    },
+    {
+        "id": "8a4b1366.6efb",
+        "type": "template",
+        "z": "9c854ea3.68416",
+        "name": "script.user",
+        "field": "payload.script.user",
+        "fieldType": "msg",
+        "format": "javascript",
+        "syntax": "mustache",
+        "template": "        function getCreds()\n        {\n            var now = new Date().getTime();\n            var expDate = Number(getCookie('ExpDate'));\n            if (expDate > 0)\n            {\n                expDate = expDate - now;\n                if(expDate < 0)\n                {\n                    logout();\n                }\n                else\n                {\n                    var hours = Math.floor(expDate / 3600000);\n                    var minutes = expDate - hours * 3600000;\n                    minutes = Math.floor(minutes / 60000);\n                    var seconds = expDate - (hours * 3600000) - (minutes * 60000);\n                    seconds = Math.floor(seconds / 1000);\n                    hours = hours.toString();\n                    if (hours.length == 1) hours = '0' + hours; \n                    minutes = minutes.toString();\n                    if (minutes.length == 1) minutes = '0' + minutes; \n                    seconds = seconds.toString();\n                    if (seconds.length == 1) seconds = '0' + seconds; \n                    var timeString = hours + ':' + minutes + ':' + seconds;\n                    $('#usernameId').text(getCookie('Username'));\n                    $('#expTimeId').text(timeString);\n                }\n            }\n            else\n            {\n                $('#usernameId').text(getCookie('Username'));\n                $('#expTimeId').text('Forever');\n            }\n        }\n        function logout()\n        {\n            document.cookie = project + \"Role= ; expires = Thu, 01 Jan 1970 00:00:00 GMT\";\n            document.cookie = project + \"ExpDate= ; expires = Thu, 01 Jan 1970 00:00:00 GMT\";\n            document.cookie = project + \"Username= ; expires = Thu, 01 Jan 1970 00:00:00 GMT\";\n            window.location.href = \"/\";\n        }\n        function renew()\n        {\n            var actionMsg = {};\n            sendActionMsg('renew', 'renew', actionMsg);\n        }\n        function updateCookie(msg)\n        {\n            document.cookie = project + \"Role=\" + msg.role;\n            document.cookie = project + \"ExpDate=\" + msg.expDate;\n            document.cookie = project + \"Username=\" + msg.username;\n        }\n        function downloadToken()\n        {\n            downloadString(getCookie(\"Role\"), \"text/plain\", project + \"-token.txt\");\n        }\n// from https://gist.github.com/danallison/3ec9d5314788b337b682\n        function downloadString(text, fileType, fileName) \n        {\n            var blob = new Blob([text], { type: fileType });\n            \n            var a = document.createElement('a');\n            a.download = fileName;\n            a.href = URL.createObjectURL(blob);\n            a.dataset.downloadurl = [fileType, a.download, a.href].join(':');\n            a.style.display = \"none\";\n            document.body.appendChild(a);\n            a.click();\n            document.body.removeChild(a);\n            setTimeout(function() { URL.revokeObjectURL(a.href); }, 1500);\n        }",
+        "output": "str",
+        "x": 690,
+        "y": 2360,
+        "wires": [
+            [
+                "6371c2b1.d3f55c"
+            ]
+        ]
+    },
+    {
+        "id": "f2dbbc80.4c0b8",
+        "type": "template",
+        "z": "9c854ea3.68416",
+        "name": "html.reset",
+        "field": "payload.html.reset",
+        "fieldType": "msg",
+        "format": "html",
+        "syntax": "mustache",
+        "template": "                <div class='card' id='reset'>\n                    <div class='card-body' align=\"center\">\n                         <table width=\"100%\">\n                            <tr>\n                                <td width=\"40%\">\n                                    <button class='btn btn-block card-button big-text' onclick=\"reset(1)\" >Reset</button>\n                                </td>\n                                <td width=\"10%\"></td>\n                                <td width=\"40%\">\n                                    <button class='btn btn-block card-button big-text' onclick=\"reset(2)\" >Reboot</button>\n                                </td>\n                            </tr>\n                        </table>\n                    </div>\n                </div>\n",
+        "output": "str",
+        "x": 1000,
+        "y": 2400,
+        "wires": [
+            [
+                "2565dfa2.388ca"
+            ]
+        ]
+    },
+    {
+        "id": "8a850e1.68de8f",
+        "type": "template",
+        "z": "9c854ea3.68416",
+        "name": "html.control",
+        "field": "payload.html.control",
+        "fieldType": "msg",
+        "format": "html",
+        "syntax": "mustache",
+        "template": "<!-- Control HTML -->\n                <div class='card'>\n                    <p class='card-title'>Control</p>\n                    <div class='card-body' align=\"center\">\n                        <div class='row' >\n                            <table width='100%'>\n                                <tr>\n                                    <td width='30%'>\n                                        <span class='big-text'>Motor State</span>\n                                    </td>\n                                    <td width='25%'>\n                                        <button class='btn btn-block big-text' style='background-color:var(--color1);color:var(--color5)' id=\"motorOffButton\" onclick=\"setMotorOn(0)\">Off</button>\n                                    </td>\n                                    <td width='20%' align='center'>\n                                    </td>\n                                    <td width='25%'>\n                                        <button class='btn btn-block big-text' style='background-color:var(--color1);color:var(--color5)' id=\"motorOnButton\" onclick=\"setMotorOn(1)\">On</button>\n                                    </td>\n                                </tr>\n                            </table>\n                        </div>\n                        <div class='row' >\n                            <table width='100%'>\n                                <tr>\n                                    <td width='30%'>\n                                        <span class='big-text'>Motor Direction</span>\n                                    </td>\n                                    <td width='25%'>\n                                        <button class='btn btn-block big-text' style='background-color:var(--color1);color:var(--color5)' id=\"motorDirectionCCWButton\" onclick=\"setMotorDirection(0)\">&#8634;</button>\n                                    </td>\n                                    <td width='20%' align='center'>\n                                    </td>\n                                    <td width='25%'>\n                                        <button class='btn btn-block big-text' style='background-color:var(--color1);color:var(--color5)' id=\"motorDirectionCWButton\" onclick=\"setMotorDirection(1)\">&#8635;</button>\n                                    </td>\n                                </tr>\n                            </table>\n                        </div>\n                        <div class='row' style='padding-top: 35px;'>\n                            <table width='100%'>\n                                <tr>\n                                    <td width='75%'>\n                                        <span class='big-text'>Motor Speed</span>\n                                    </td>\n                                    <td width='25%'  align='right'>\n                                        <span class='big-text bold-text' id='motorSpeed'>0</span>\n                                    </td>\n                                </tr>\n                            </table>\n                        </div>\n                        <div class='row'>\n                            <table width='100%'>\n                                <tr>\n                                    <td width='10%'></td>\n                                    <td width='80%' align='center'><div id=\"motorSpeedSlider\"></div></td>\n                                    <td width='10%'></td>\n                                </tr>\n                            </table>\n                        </div>\n                    </div>\n                </div>\n",
+        "output": "str",
+        "x": 1010,
+        "y": 2280,
+        "wires": [
+            [
+                "388f8502.53683a"
+            ]
+        ]
+    },
+    {
+        "id": "46e17d79.def6c4",
+        "type": "template",
+        "z": "9c854ea3.68416",
+        "name": "extraCss",
+        "field": "payload.extraCss",
+        "fieldType": "msg",
+        "format": "css",
+        "syntax": "mustache",
+        "template": "        .ui-slider\n        {\n            height: 90px;\n            background-color: var(--color1) !important;\n        }\n        .ui-slider .ui-slider-handle \n        {\n            height: 100px;\n            width: 100px;\n            background-color: var(--color5) !important;\n        }\n",
+        "output": "str",
+        "x": 680,
+        "y": 2440,
+        "wires": [
+            [
+                "8a850e1.68de8f"
+            ]
+        ]
+    },
+    {
+        "id": "40df03da.f6335c",
+        "type": "subflow:8341090a.df9758",
+        "z": "9c854ea3.68416",
+        "name": "",
+        "x": 1290,
+        "y": 2440,
+        "wires": []
+    },
+    {
+        "id": "3f3b3cfd.e0ac24",
+        "type": "http in",
+        "z": "9c854ea3.68416",
+        "name": "/blinky-shaker",
+        "url": "/blinky-shaker",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 130,
+        "y": 2280,
+        "wires": [
+            [
+                "1c0c51bb.5cb60e"
+            ]
+        ]
+    },
+    {
+        "id": "1c0c51bb.5cb60e",
+        "type": "function",
+        "z": "9c854ea3.68416",
+        "name": "Allowed Roles",
+        "func": "msg.payload.allowedRoles = ['appView'];\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 140,
+        "y": 2320,
+        "wires": [
+            [
+                "6e9ed29b.e4bdac"
+            ]
+        ]
+    },
+    {
+        "id": "6e9ed29b.e4bdac",
+        "type": "subflow:2d027d69.1fdeb2",
+        "z": "9c854ea3.68416",
+        "x": 140,
+        "y": 2360,
+        "wires": [
+            [
+                "ef2d1708.d21768"
             ]
         ]
     }
