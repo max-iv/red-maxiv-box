@@ -713,6 +713,12 @@
         "wholemsg": "false"
     },
     {
+        "id": "8a054889.379478",
+        "type": "websocket-listener",
+        "path": "/solar-regulator/websocket",
+        "wholemsg": "false"
+    },
+    {
         "id": "d8aea031.7f89d",
         "type": "http in",
         "z": "dc20c6e0.0feb98",
@@ -2447,7 +2453,7 @@
         "retain": "false",
         "broker": "84d80994.260508",
         "x": 1100,
-        "y": 560,
+        "y": 840,
         "wires": []
     },
     {
@@ -2523,7 +2529,7 @@
         "type": "subflow:e13648d6.d698c8",
         "z": "8475ab9.3d26058",
         "x": 1310,
-        "y": 500,
+        "y": 780,
         "wires": []
     },
     {
@@ -3449,8 +3455,8 @@
         "name": "",
         "collection": "archiver",
         "operation": "find.toArray",
-        "x": 670,
-        "y": 940,
+        "x": 690,
+        "y": 1300,
         "wires": [
             [
                 "28d7885b.29ba58"
@@ -3561,14 +3567,22 @@
                 "t": "eq",
                 "v": "blinky-thermo",
                 "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "solar-regulator",
+                "vt": "str"
             }
         ],
         "checkall": "true",
         "repair": false,
-        "outputs": 6,
+        "outputs": 7,
         "x": 730,
         "y": 160,
         "wires": [
+            [
+                "72c58cab.a3c494"
+            ],
             [
                 "72c58cab.a3c494"
             ],
@@ -5491,11 +5505,16 @@
                 "t": "eq",
                 "v": "blinky-thermo",
                 "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "solar-regulator",
+                "vt": "str"
             }
         ],
         "checkall": "true",
         "repair": false,
-        "outputs": 6,
+        "outputs": 7,
         "x": 610,
         "y": 220,
         "wires": [
@@ -5516,6 +5535,9 @@
             ],
             [
                 "4a0e93c9.98b4fc"
+            ],
+            [
+                "5d622fc9.ab529"
             ]
         ]
     },
@@ -5545,8 +5567,8 @@
         "links": [
             "7e343bf8.8fec14"
         ],
-        "x": 695,
-        "y": 100,
+        "x": 715,
+        "y": 40,
         "wires": []
     },
     {
@@ -5557,7 +5579,7 @@
         "server": "e71c9288.03dd3",
         "client": "",
         "x": 1050,
-        "y": 60,
+        "y": 40,
         "wires": []
     },
     {
@@ -5573,7 +5595,7 @@
             "224d9b05.f92104"
         ],
         "x": 895,
-        "y": 60,
+        "y": 40,
         "wires": [
             [
                 "68378c41.1d2814"
@@ -5586,7 +5608,7 @@
         "z": "8475ab9.3d26058",
         "name": "",
         "x": 1050,
-        "y": 500,
+        "y": 780,
         "wires": [
             [
                 "d0fb8153.688bb"
@@ -5602,7 +5624,7 @@
         "action": "obj",
         "pretty": false,
         "x": 1170,
-        "y": 500,
+        "y": 780,
         "wires": [
             [
                 "ee0ee61b.770a18"
@@ -5650,8 +5672,8 @@
         "noerr": 0,
         "initialize": "",
         "finalize": "",
-        "x": 400,
-        "y": 940,
+        "x": 420,
+        "y": 1300,
         "wires": [
             [
                 "a3efdc0a.76eff"
@@ -5668,8 +5690,8 @@
         "noerr": 0,
         "initialize": "",
         "finalize": "",
-        "x": 930,
-        "y": 940,
+        "x": 950,
+        "y": 1300,
         "wires": [
             [
                 "36088082.3139d"
@@ -5708,13 +5730,18 @@
                 "t": "eq",
                 "v": "blinky-thermo",
                 "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "solar-regulator",
+                "vt": "str"
             }
         ],
         "checkall": "true",
         "repair": false,
-        "outputs": 5,
-        "x": 1110,
-        "y": 940,
+        "outputs": 6,
+        "x": 1130,
+        "y": 1300,
         "wires": [
             [
                 "e1a8363e.6beae8"
@@ -5730,6 +5757,9 @@
             ],
             [
                 "7011908d.95c51"
+            ],
+            [
+                "31c983a.65bbb7c"
             ]
         ]
     },
@@ -5741,8 +5771,8 @@
         "links": [
             "7e343bf8.8fec14"
         ],
-        "x": 1215,
-        "y": 860,
+        "x": 1235,
+        "y": 1220,
         "wires": []
     },
     {
@@ -5753,7 +5783,7 @@
         "server": "e71c9288.03dd3",
         "client": "",
         "x": 140,
-        "y": 440,
+        "y": 720,
         "wires": [
             [
                 "e6d1a4ad.2186e8"
@@ -5793,7 +5823,7 @@
         "repair": false,
         "outputs": 4,
         "x": 700,
-        "y": 580,
+        "y": 860,
         "wires": [
             [
                 "d6984859.a267c8"
@@ -5823,10 +5853,11 @@
             "3b3f00c.e1f7e",
             "c7b674e2.931c88",
             "6d4ae2aa.ffa1cc",
-            "ae6d0749.651b58"
+            "ae6d0749.651b58",
+            "d8b0e2fe.3e47e"
         ],
         "x": 835,
-        "y": 720,
+        "y": 1000,
         "wires": []
     },
     {
@@ -5840,7 +5871,7 @@
         "initialize": "",
         "finalize": "",
         "x": 890,
-        "y": 540,
+        "y": 820,
         "wires": [
             [
                 "2132a017.ba23f",
@@ -5913,7 +5944,7 @@
         "initialize": "",
         "finalize": "",
         "x": 890,
-        "y": 580,
+        "y": 860,
         "wires": [
             [
                 "2132a017.ba23f"
@@ -5929,7 +5960,7 @@
             "c4595efc.a717b"
         ],
         "x": 835,
-        "y": 620,
+        "y": 900,
         "wires": []
     },
     {
@@ -5940,8 +5971,8 @@
         "links": [
             "cc1f29ab.67bb78"
         ],
-        "x": 255,
-        "y": 940,
+        "x": 275,
+        "y": 1300,
         "wires": [
             [
                 "b6b8b063.9f62f"
@@ -6018,7 +6049,7 @@
         "type": "subflow:fee416c.fb205e8",
         "z": "8475ab9.3d26058",
         "x": 470,
-        "y": 620,
+        "y": 900,
         "wires": [
             [
                 "4bda293b.6a4c38"
@@ -7076,7 +7107,7 @@
         "fieldType": "msg",
         "format": "html",
         "syntax": "mustache",
-        "template": "                <div class='card'>\n                    <div class='card-body' align=\"center\">\n                        <div class='row' style='padding-bottom: 25px;'>\n                            <div class=\"col-md-4\" align=\"center\">\n                                <span class='card-text' >App</span>\n                            </div>\n                            <div class=\"col-md-8\" align=\"center\">\n                                <select class=\"custom-select big-text\" id=\"application\" onchange=\"appSelected()\">\n                                    <option value=\"none\">none</option>\n                                    <option value=\"blinky-basic\">blinky-basic</option>\n                                    <option value=\"blinky-power-relay\">blinky-power-relay</option>\n                                    <option value=\"blinky-stepper\">blinky-stepper</option>\n                                    <option value=\"blinky-shiver-expert\">blinky-shiver-expert</option>\n                                    <option value=\"blinky-shiver-simple\">blinky-shiver-simple</option>\n                                    <option value=\"blinky-shaker\">blinky-shaker</option>\n                                    <option value=\"blinky-thermo\">blinky-thermo</option>\n                                </select>\n                            </div>\n                        </div>\n                        <div class='row' style='padding-bottom: 25px;'>\n                            <div class=\"col-md-4\" align=\"center\">\n                                <span class='card-text' >Device</span>\n                            </div>\n                            <div class=\"col-md-8\" align=\"center\">\n                                <select class=\"custom-select big-text\" id=\"deviceA\" onchange=\"deviceAselected()\">\n                                    <option value=\"none\">none</option>\n                                    <option value=\"01\">01</option>\n                                    <option value=\"02\">02</option>\n                                    <option value=\"03\">03</option>\n                                    <option value=\"04\">04</option>\n                                </select>\n                            </div>\n                        </div>\n                        <div class='row' style='padding-bottom: 25px;'>\n                            <div class=\"col-md-1\" align=\"center\">\n                            </div>\n                            <div class=\"col-md-5\" align=\"center\">\n                            </div>\n                            <div class=\"col-md-5\" align=\"center\">\n                                <button class='btn btn-block card-button big-text' id='launchAppButton' onclick=\"launchApp()\" >Launch</button>\n                            </div>\n                            <div class=\"col-md-1\" align=\"center\">\n                            </div>\n                        </div>\n                    </div>\n                </div>",
+        "template": "                <div class='card'>\n                    <div class='card-body' align=\"center\">\n                        <div class='row' style='padding-bottom: 25px;'>\n                            <div class=\"col-md-4\" align=\"center\">\n                                <span class='card-text' >App</span>\n                            </div>\n                            <div class=\"col-md-8\" align=\"center\">\n                                <select class=\"custom-select big-text\" id=\"application\" onchange=\"appSelected()\">\n                                    <option value=\"none\">none</option>\n                                    <option value=\"blinky-basic\">blinky-basic</option>\n                                    <option value=\"blinky-power-relay\">blinky-power-relay</option>\n                                    <option value=\"blinky-stepper\">blinky-stepper</option>\n                                    <option value=\"blinky-shiver-expert\">blinky-shiver-expert</option>\n                                    <option value=\"blinky-shiver-simple\">blinky-shiver-simple</option>\n                                    <option value=\"blinky-shaker\">blinky-shaker</option>\n                                    <option value=\"blinky-thermo\">blinky-thermo</option>\n                                    <option value=\"solar-regulator\">solar-regulator</option>\n                                </select>\n                            </div>\n                        </div>\n                        <div class='row' style='padding-bottom: 25px;'>\n                            <div class=\"col-md-4\" align=\"center\">\n                                <span class='card-text' >Device</span>\n                            </div>\n                            <div class=\"col-md-8\" align=\"center\">\n                                <select class=\"custom-select big-text\" id=\"deviceA\" onchange=\"deviceAselected()\">\n                                    <option value=\"none\">none</option>\n                                    <option value=\"01\">01</option>\n                                    <option value=\"02\">02</option>\n                                    <option value=\"03\">03</option>\n                                    <option value=\"04\">04</option>\n                                </select>\n                            </div>\n                        </div>\n                        <div class='row' style='padding-bottom: 25px;'>\n                            <div class=\"col-md-1\" align=\"center\">\n                            </div>\n                            <div class=\"col-md-5\" align=\"center\">\n                            </div>\n                            <div class=\"col-md-5\" align=\"center\">\n                                <button class='btn btn-block card-button big-text' id='launchAppButton' onclick=\"launchApp()\" >Launch</button>\n                            </div>\n                            <div class=\"col-md-1\" align=\"center\">\n                            </div>\n                        </div>\n                    </div>\n                </div>",
         "output": "str",
         "x": 920,
         "y": 60,
@@ -7189,7 +7220,7 @@
         "server": "c4d6389f.42aca8",
         "client": "",
         "x": 1050,
-        "y": 120,
+        "y": 100,
         "wires": []
     },
     {
@@ -7204,7 +7235,7 @@
             "beaaec7b.14e4"
         ],
         "x": 895,
-        "y": 120,
+        "y": 100,
         "wires": [
             [
                 "7ad87996.ca0e68"
@@ -7219,8 +7250,8 @@
         "links": [
             "d0705889.a79d18"
         ],
-        "x": 695,
-        "y": 160,
+        "x": 715,
+        "y": 100,
         "wires": []
     },
     {
@@ -7231,7 +7262,7 @@
         "server": "c4d6389f.42aca8",
         "client": "",
         "x": 150,
-        "y": 500,
+        "y": 780,
         "wires": [
             [
                 "e6d1a4ad.2186e8"
@@ -7586,8 +7617,8 @@
         "links": [
             "d0705889.a79d18"
         ],
-        "x": 1215,
-        "y": 900,
+        "x": 1235,
+        "y": 1260,
         "wires": []
     },
     {
@@ -7600,8 +7631,8 @@
         "noerr": 0,
         "initialize": "",
         "finalize": "",
-        "x": 380,
-        "y": 1020,
+        "x": 400,
+        "y": 1380,
         "wires": [
             [
                 "5b671f90.f02c1"
@@ -7614,8 +7645,8 @@
         "z": "8475ab9.3d26058",
         "name": "encrypt token",
         "tokenconfig": "6acefdd9.69f124",
-        "x": 560,
-        "y": 1020,
+        "x": 580,
+        "y": 1380,
         "wires": [
             [
                 "7569e60e.54a608"
@@ -7632,8 +7663,8 @@
         "noerr": 0,
         "initialize": "",
         "finalize": "",
-        "x": 740,
-        "y": 1020,
+        "x": 760,
+        "y": 1380,
         "wires": [
             [
                 "224d9b05.f92104"
@@ -7648,8 +7679,8 @@
         "links": [
             "14b7f9da.2d7c86"
         ],
-        "x": 255,
-        "y": 1020,
+        "x": 275,
+        "y": 1380,
         "wires": [
             [
                 "28ebc7b7.46b498"
@@ -7665,7 +7696,7 @@
             "f4326ad5.3e47e8"
         ],
         "x": 835,
-        "y": 660,
+        "y": 940,
         "wires": []
     },
     {
@@ -7682,10 +7713,11 @@
             "3b3f00c.e1f7e",
             "c7b674e2.931c88",
             "6d4ae2aa.ffa1cc",
-            "ae6d0749.651b58"
+            "ae6d0749.651b58",
+            "d8b0e2fe.3e47e"
         ],
-        "x": 855,
-        "y": 1020,
+        "x": 875,
+        "y": 1380,
         "wires": []
     },
     {
@@ -7696,8 +7728,8 @@
         "links": [
             "80b48a2e.fb2228"
         ],
-        "x": 695,
-        "y": 220,
+        "x": 715,
+        "y": 160,
         "wires": []
     },
     {
@@ -7708,7 +7740,7 @@
         "server": "3c0c4adc.e7b956",
         "client": "",
         "x": 1070,
-        "y": 180,
+        "y": 160,
         "wires": []
     },
     {
@@ -7723,7 +7755,7 @@
             "1e710224.de723e"
         ],
         "x": 895,
-        "y": 180,
+        "y": 160,
         "wires": [
             [
                 "d594c50e.9ea898"
@@ -7738,8 +7770,8 @@
         "links": [
             "80b48a2e.fb2228"
         ],
-        "x": 1215,
-        "y": 940,
+        "x": 1235,
+        "y": 1300,
         "wires": []
     },
     {
@@ -8128,7 +8160,7 @@
         "server": "3c0c4adc.e7b956",
         "client": "",
         "x": 160,
-        "y": 560,
+        "y": 840,
         "wires": [
             [
                 "e6d1a4ad.2186e8"
@@ -8713,7 +8745,7 @@
         "server": "557f40b4.fc262",
         "client": "",
         "x": 1070,
-        "y": 240,
+        "y": 220,
         "wires": []
     },
     {
@@ -8728,7 +8760,7 @@
             "a4477b71.432a98"
         ],
         "x": 895,
-        "y": 240,
+        "y": 220,
         "wires": [
             [
                 "e96075b6.bf93b8"
@@ -8744,8 +8776,8 @@
             "a8a88b3.a878478",
             "4d17b368.0e74ac"
         ],
-        "x": 695,
-        "y": 280,
+        "x": 715,
+        "y": 220,
         "wires": []
     },
     {
@@ -8756,7 +8788,7 @@
         "server": "19f426d.ba145d9",
         "client": "",
         "x": 1070,
-        "y": 300,
+        "y": 280,
         "wires": []
     },
     {
@@ -8771,7 +8803,7 @@
             "a4477b71.432a98"
         ],
         "x": 895,
-        "y": 300,
+        "y": 280,
         "wires": [
             [
                 "f273d670.2eec68"
@@ -8786,7 +8818,7 @@
         "server": "557f40b4.fc262",
         "client": "",
         "x": 170,
-        "y": 620,
+        "y": 900,
         "wires": [
             [
                 "e6d1a4ad.2186e8"
@@ -8802,8 +8834,8 @@
             "4d17b368.0e74ac",
             "a8a88b3.a878478"
         ],
-        "x": 1215,
-        "y": 980,
+        "x": 1235,
+        "y": 1340,
         "wires": []
     },
     {
@@ -8814,7 +8846,7 @@
         "server": "19f426d.ba145d9",
         "client": "",
         "x": 170,
-        "y": 680,
+        "y": 960,
         "wires": [
             [
                 "e6d1a4ad.2186e8"
@@ -9399,8 +9431,8 @@
             "c7b674e2.931c88",
             "6d4ae2aa.ffa1cc"
         ],
-        "x": 695,
-        "y": 340,
+        "x": 715,
+        "y": 280,
         "wires": []
     },
     {
@@ -9411,7 +9443,7 @@
         "server": "11409eb4.88d3c1",
         "client": "",
         "x": 1050,
-        "y": 360,
+        "y": 340,
         "wires": []
     },
     {
@@ -9425,7 +9457,7 @@
             "66486726.3947a8"
         ],
         "x": 895,
-        "y": 360,
+        "y": 340,
         "wires": [
             [
                 "5293984d.80ce18"
@@ -9440,7 +9472,7 @@
         "server": "11409eb4.88d3c1",
         "client": "",
         "x": 150,
-        "y": 740,
+        "y": 1020,
         "wires": [
             [
                 "e6d1a4ad.2186e8"
@@ -9757,7 +9789,7 @@
         "server": "c9f0eb6c.93d8d8",
         "client": "",
         "x": 1050,
-        "y": 420,
+        "y": 400,
         "wires": []
     },
     {
@@ -9772,7 +9804,7 @@
             "7011908d.95c51"
         ],
         "x": 895,
-        "y": 420,
+        "y": 400,
         "wires": [
             [
                 "78d0accf.e38584"
@@ -9787,8 +9819,8 @@
         "links": [
             "ae6d0749.651b58"
         ],
-        "x": 695,
-        "y": 400,
+        "x": 715,
+        "y": 340,
         "wires": []
     },
     {
@@ -9799,7 +9831,7 @@
         "server": "c9f0eb6c.93d8d8",
         "client": "",
         "x": 150,
-        "y": 800,
+        "y": 1080,
         "wires": [
             [
                 "e6d1a4ad.2186e8"
@@ -9814,8 +9846,8 @@
         "links": [
             "ae6d0749.651b58"
         ],
-        "x": 1215,
-        "y": 1020,
+        "x": 1235,
+        "y": 1380,
         "wires": []
     },
     {
@@ -9902,7 +9934,7 @@
         "fieldType": "msg",
         "format": "javascript",
         "syntax": "mustache",
-        "template": "// Global Javascript\n        useWebSockets(true);\n        var mqttDevice = null;\n        var device = null;\n        var archiveRequestList = [];\n        var archiveList = [];\n        var pingInterval = 5000;\n        var lastPing = 0;\n\n        var restfulDevice = \n        {\n            deviceType  : '{{{payload.script.deviceType}}}',\n            name        : '{{{payload.script.name}}}',\n            project     : '{{{payload.script.project}}}'\n        };\n\n        var plotConfig = \n        {\n            trace1Title : 'Temp-A (C)',\n            trace1Color : '#557a95',\n            trace1GridColor : '#beceda',\n            trace2Title : 'Temp-B (C)',\n            trace2Color : '#f2a31f',\n            plotLength  : 600000,\n            width   : '',\n            height  :   '500',\n            htmlId  :   'temperatureStripChart'\n        };\n        let temperatureStripChart = new StripChart(plotConfig);\n\n        function onDocumentReady()\n        {\n            setRemoteApp(false);\n            if (remoteApp)\n            {\n                getCreds();\n                setInterval(function(){getCreds();}, 1000);\n            }\n            else\n            {\n                $('#userCardId').hide();\n            }\n            $('#archiveCardId').hide();\n            setInterval(function()\n            {\n                var now = new Date().getTime();\n                if ((now - lastPing) > pingInterval)\n                {\n                    lastPing = now;\n                    var actionMsg = \n                        {\n                            topic   : restfulDevice.project + '/' +  restfulDevice.deviceType + '/' +  restfulDevice.name + '/ping',\n                            payload : true\n                        };\n                    sendActionMsg('ping', 'ping', actionMsg);\n               }\n            }, 1000);\n        }\n        function onWebSocketOpen()\n        {\n            if (remoteApp) getArchive(24);\n        }\n        function onWebSocketClose()\n        {\n            \n        }\n        function onWebSocketMessage(msg)\n        {\n            switch(msg.topic)\n            {\n                case 'readings':\n                    if ((msg.mqttDevice.name == restfulDevice.name) && (msg.mqttDevice.deviceType == restfulDevice.deviceType)  && (msg.mqttDevice.project == restfulDevice.project) )\n                    {\n                        lastPing = new Date().getTime();\n                        heartbeat();\n                        device = JSON.parse(pako.inflate(msg.payload, { to: 'string' }));\n                        mqttDevice = msg.mqttDevice;\n                        updateDmaReadings();\n                    }\n                    break;\n                case 'readDatabase':\n                    if (msg.userID == userID)\n                    {\n                        if ((msg.payload.device.deviceType == restfulDevice.deviceType) && (msg.payload.device.name == restfulDevice.name) )\n                            putArchiveValues(msg.payload);\n                    }\n                    break;\n                case 'renew':\n                    if (msg.userID == userID)\n                    {\n                        updateCookie(msg);\n                    }\n                    break;\n                case 'permissionError':\n                    if (msg.userID == userID)\n                    {\n                        acknowledgeDialog('Permission', 'Error', msg.payload);\n                    }\n                    break;\n                case 'loginExpired':\n                    if (msg.userID == userID)\n                    {\n                       location.reload();\n                    }\n                    break;\n                default:\n                    break;\n            }\n        }\n        function sendSetting()\n        {\n            var actionMsg = \n                {\n                    topic   : mqttDevice.project + '/' +  mqttDevice.deviceType + '/' +  mqttDevice.name + '/setting',\n                    payload : pako.deflate(JSON.stringify(device))\n                };\n            sendActionMsg('setting','setting',actionMsg);\n       }\n        function setScalarValue(settingValue, attrName)\n        {\n            var settingAttr = device[attrName];\n            if ( (settingAttr.alarm.limits.lolo <= settingValue) && (settingValue <= settingAttr.alarm.limits.hihi) )\n            {\n                settingAttr.value = settingValue;\n                sendSetting();\n            } \n            else\n            {\n                acknowledgeDialog('Acknowledge', 'Error', 'Entry outside range! (' + settingAttr.alarm.limits.lolo.toString() + '-' + settingAttr.alarm.limits.hihi.toString() + ' ' + settingAttr.unit);\n            }\n        }\n        function reset(actionFlag)\n        {\n            var headerText = 'Warning';\n            var title = 'Resetting Tray';\n            var text = 'I hope you know what you are doing.';\n            var buttonTexts = ['Reset', 'Cancel'];\n            var buttonFunctions = \n            [\n                function()\n                {\n                    $( this ).dialog( \"close\" );\n                    setScalarValue(actionFlag, 'reset');\n                 }, \n                function()\n                {\n                    $( this ).dialog( \"close\" );\n                }\n            ];\n            if (actionFlag == 2)\n            {\n                title = 'Rebooting Tray';\n                buttonTexts[0] = 'Reboot';\n            }\n            optionDialog(headerText, title, text, buttonTexts, buttonFunctions);\n        }\n",
+        "template": "// Global Javascript\n        useWebSockets(true);\n        var mqttDevice = null;\n        var device = null;\n        var archiveRequestList = [];\n        var archiveList = [];\n        var pingInterval = 5000;\n        var lastPing = 0;\n\n        var restfulDevice = \n        {\n            deviceType  : '{{{payload.script.deviceType}}}',\n            name        : '{{{payload.script.name}}}',\n            project     : '{{{payload.script.project}}}'\n        };\n\n        var plotConfig = \n        {\n            trace1Title : 'Temp-A (C)',\n            trace1Color : '#557a95',\n            trace1GridColor : '#beceda',\n            trace2Title : 'Temp-B (C)',\n            trace2Color : '#f2a31f',\n            plotLength  : 600000,\n            width   : '',\n            height  :   '500',\n            htmlId  :   'temperatureStripChart'\n        };\n        let temperatureStripChart = new StripChart(plotConfig);\n\n        function onDocumentReady()\n        {\n            setRemoteApp(true);\n            if (remoteApp)\n            {\n                getCreds();\n                setInterval(function(){getCreds();}, 1000);\n            }\n            else\n            {\n                $('#userCardId').hide();\n            }\n            $('#archiveCardId').hide();\n            setInterval(function()\n            {\n                var now = new Date().getTime();\n                if ((now - lastPing) > pingInterval)\n                {\n                    lastPing = now;\n                    var actionMsg = \n                        {\n                            topic   : restfulDevice.project + '/' +  restfulDevice.deviceType + '/' +  restfulDevice.name + '/ping',\n                            payload : true\n                        };\n                    sendActionMsg('ping', 'ping', actionMsg);\n               }\n            }, 1000);\n        }\n        function onWebSocketOpen()\n        {\n            if (remoteApp) getArchive(24);\n        }\n        function onWebSocketClose()\n        {\n            \n        }\n        function onWebSocketMessage(msg)\n        {\n            switch(msg.topic)\n            {\n                case 'readings':\n                    if ((msg.mqttDevice.name == restfulDevice.name) && (msg.mqttDevice.deviceType == restfulDevice.deviceType)  && (msg.mqttDevice.project == restfulDevice.project) )\n                    {\n                        lastPing = new Date().getTime();\n                        heartbeat();\n                        device = JSON.parse(pako.inflate(msg.payload, { to: 'string' }));\n                        mqttDevice = msg.mqttDevice;\n                        updateDmaReadings();\n                    }\n                    break;\n                case 'readDatabase':\n                    if (msg.userID == userID)\n                    {\n                        if ((msg.payload.device.deviceType == restfulDevice.deviceType) && (msg.payload.device.name == restfulDevice.name) )\n                            putArchiveValues(msg.payload);\n                    }\n                    break;\n                case 'renew':\n                    if (msg.userID == userID)\n                    {\n                        updateCookie(msg);\n                    }\n                    break;\n                case 'permissionError':\n                    if (msg.userID == userID)\n                    {\n                        acknowledgeDialog('Permission', 'Error', msg.payload);\n                    }\n                    break;\n                case 'loginExpired':\n                    if (msg.userID == userID)\n                    {\n                       location.reload();\n                    }\n                    break;\n                default:\n                    break;\n            }\n        }\n        function sendSetting()\n        {\n            var actionMsg = \n                {\n                    topic   : mqttDevice.project + '/' +  mqttDevice.deviceType + '/' +  mqttDevice.name + '/setting',\n                    payload : pako.deflate(JSON.stringify(device))\n                };\n            sendActionMsg('setting','setting',actionMsg);\n       }\n        function setScalarValue(settingValue, attrName)\n        {\n            var settingAttr = device[attrName];\n            if ( (settingAttr.alarm.limits.lolo <= settingValue) && (settingValue <= settingAttr.alarm.limits.hihi) )\n            {\n                settingAttr.value = settingValue;\n                sendSetting();\n            } \n            else\n            {\n                acknowledgeDialog('Acknowledge', 'Error', 'Entry outside range! (' + settingAttr.alarm.limits.lolo.toString() + '-' + settingAttr.alarm.limits.hihi.toString() + ' ' + settingAttr.unit);\n            }\n        }\n        function reset(actionFlag)\n        {\n            var headerText = 'Warning';\n            var title = 'Resetting Tray';\n            var text = 'I hope you know what you are doing.';\n            var buttonTexts = ['Reset', 'Cancel'];\n            var buttonFunctions = \n            [\n                function()\n                {\n                    $( this ).dialog( \"close\" );\n                    setScalarValue(actionFlag, 'reset');\n                 }, \n                function()\n                {\n                    $( this ).dialog( \"close\" );\n                }\n            ];\n            if (actionFlag == 2)\n            {\n                title = 'Rebooting Tray';\n                buttonTexts[0] = 'Reboot';\n            }\n            optionDialog(headerText, title, text, buttonTexts, buttonFunctions);\n        }\n",
         "output": "str",
         "x": 690,
         "y": 2560,
@@ -10195,5 +10227,74 @@
                 "24e3a15c.86b8ee"
             ]
         ]
+    },
+    {
+        "id": "5d622fc9.ab529",
+        "type": "link out",
+        "z": "8475ab9.3d26058",
+        "name": "solar-regulator mqtt",
+        "links": [
+            "d8b0e2fe.3e47e"
+        ],
+        "x": 715,
+        "y": 400,
+        "wires": []
+    },
+    {
+        "id": "6e76a861.60f568",
+        "type": "websocket out",
+        "z": "8475ab9.3d26058",
+        "name": "/solar-regulator/websocket",
+        "server": "8a054889.379478",
+        "client": "",
+        "x": 1060,
+        "y": 460,
+        "wires": []
+    },
+    {
+        "id": "d8b0e2fe.3e47e",
+        "type": "link in",
+        "z": "8475ab9.3d26058",
+        "name": "solar-regulator input socket",
+        "links": [
+            "1e710224.de723e",
+            "224d9b05.f92104",
+            "5d622fc9.ab529",
+            "31c983a.65bbb7c"
+        ],
+        "x": 895,
+        "y": 460,
+        "wires": [
+            [
+                "6e76a861.60f568"
+            ]
+        ]
+    },
+    {
+        "id": "2eb7cbcf.fe44d4",
+        "type": "websocket in",
+        "z": "8475ab9.3d26058",
+        "name": "/solar-regulator/websocket",
+        "server": "8a054889.379478",
+        "client": "",
+        "x": 150,
+        "y": 1140,
+        "wires": [
+            [
+                "e6d1a4ad.2186e8"
+            ]
+        ]
+    },
+    {
+        "id": "31c983a.65bbb7c",
+        "type": "link out",
+        "z": "8475ab9.3d26058",
+        "name": "solar-regulator-archive",
+        "links": [
+            "d8b0e2fe.3e47e"
+        ],
+        "x": 1235,
+        "y": 1420,
+        "wires": []
     }
 ]
