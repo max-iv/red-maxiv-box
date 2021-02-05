@@ -483,6 +483,27 @@
         "color": "#DDAA99"
     },
     {
+        "id": "d7162906.0afcd8",
+        "type": "subflow",
+        "name": "Public HTML",
+        "info": "",
+        "category": "",
+        "in": [
+            {
+                "x": 60,
+                "y": 80,
+                "wires": [
+                    {
+                        "id": "6ca560.6e2ceaa"
+                    }
+                ]
+            }
+        ],
+        "out": [],
+        "env": [],
+        "color": "#DDAA99"
+    },
+    {
         "id": "6ad7c930.1a06b8",
         "type": "ui_base",
         "theme": {
@@ -4837,8 +4858,8 @@
         "id": "a1a28fc.c1deb7",
         "type": "http in",
         "z": "a858ad3a.95706",
-        "name": "/",
-        "url": "/",
+        "name": "/test",
+        "url": "/test",
         "method": "get",
         "upload": false,
         "swaggerDoc": "",
@@ -10672,6 +10693,350 @@
         "wires": [
             [
                 "db089069.b20af"
+            ]
+        ]
+    },
+    {
+        "id": "d6439f36.fbee7",
+        "type": "http in",
+        "z": "a858ad3a.95706",
+        "name": "/",
+        "url": "/",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 110,
+        "y": 780,
+        "wires": [
+            [
+                "19310ace.c992d5"
+            ]
+        ]
+    },
+    {
+        "id": "19310ace.c992d5",
+        "type": "template",
+        "z": "a858ad3a.95706",
+        "name": "title",
+        "field": "payload.title",
+        "fieldType": "msg",
+        "format": "html",
+        "syntax": "mustache",
+        "template": "Blinky-Lite",
+        "output": "str",
+        "x": 250,
+        "y": 780,
+        "wires": [
+            [
+                "680bc28.3fd903c"
+            ]
+        ]
+    },
+    {
+        "id": "7bd0e32c.fe3bdc",
+        "type": "template",
+        "z": "a858ad3a.95706",
+        "name": "javascript",
+        "field": "payload.javascript",
+        "fieldType": "msg",
+        "format": "javascript",
+        "syntax": "mustache",
+        "template": "        useWebSockets(false);\n        function onDocumentReady()\n        {\n        }\n        function onWebSocketOpen()\n        {\n        }\n        function onWebSocketClose()\n        {\n            \n        }\n        function onWebSocketMessage(msg)\n        {\n        }\n\n",
+        "output": "str",
+        "x": 500,
+        "y": 780,
+        "wires": [
+            [
+                "e05a37d2.a27198"
+            ]
+        ]
+    },
+    {
+        "id": "680bc28.3fd903c",
+        "type": "template",
+        "z": "a858ad3a.95706",
+        "name": "body",
+        "field": "payload.body",
+        "fieldType": "msg",
+        "format": "html",
+        "syntax": "mustache",
+        "template": "<!-- Body HTML -->\n    <div width=\"100%\">\n        <div class='row no-gutters'>\n            <div class='col-md-12' align='center'>\n                <a href=\"/examples\"><span class=\"card-text\" style=\"font-size:180%\">Examples</span></a>\n            </div>\n        </div>\n        <hr>\n        <div class='row'>\n            <div class='col-md-12' align='center'>\n                <span class=\"card-text\">Contact: blinky-lite@blinky-lite.io</span>\n            </div>\n        </div>\n    </div>\n",
+        "output": "str",
+        "x": 370,
+        "y": 780,
+        "wires": [
+            [
+                "7bd0e32c.fe3bdc"
+            ]
+        ]
+    },
+    {
+        "id": "30c36625.0c37ca",
+        "type": "subflow:ca529822.9112f8",
+        "z": "d7162906.0afcd8",
+        "name": "",
+        "x": 450,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "b02ee1e6.321d9",
+        "type": "http in",
+        "z": "a858ad3a.95706",
+        "name": "/examples",
+        "url": "/examples",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 120,
+        "y": 880,
+        "wires": [
+            [
+                "e7fb26ce.45c778"
+            ]
+        ]
+    },
+    {
+        "id": "e7fb26ce.45c778",
+        "type": "template",
+        "z": "a858ad3a.95706",
+        "name": "title",
+        "field": "payload.title",
+        "fieldType": "msg",
+        "format": "html",
+        "syntax": "mustache",
+        "template": "Blinky-Lite Examples",
+        "output": "str",
+        "x": 250,
+        "y": 880,
+        "wires": [
+            [
+                "74f0f8b3.bc0e68"
+            ]
+        ]
+    },
+    {
+        "id": "23ca2060.71198",
+        "type": "template",
+        "z": "d7162906.0afcd8",
+        "name": "navBar",
+        "field": "payload.navBar",
+        "fieldType": "msg",
+        "format": "html",
+        "syntax": "mustache",
+        "template": "<!-- navBar -->\n    <div class=\"jumbotron\" style=\"background-color:white;color: #547792;padding-top:10px; padding-bottom:10px;\" width=\"100%\">\n        <div class='row'>\n            <div class='col-md-2' align='left'>\n                <a href='https://www.blinky-lite.io/' target='_blank'>\n                    <img src=\"/img/BlinkyLogo.gif\" height=\"75px\"/>\n                </a>                \n            </div>\n            <div class='col-md-8' align='center'>\n                <h1 class=\"jumbotron-title big-text bold-text\">\n                    <span>{{{payload.title}}}</span>\n                </h1>\n            </div>\n            <div class='col-md-2' align='right'>\n                <a href='/'>\n                    <img src=\"/img/homeBlue.png\" height=\"75px\"/>\n                </a>                \n            </div>\n        </div>\n    </div>\n",
+        "output": "str",
+        "x": 320,
+        "y": 80,
+        "wires": [
+            [
+                "30c36625.0c37ca"
+            ]
+        ]
+    },
+    {
+        "id": "8bf5d087.fdd59",
+        "type": "template",
+        "z": "a858ad3a.95706",
+        "name": "javascript",
+        "field": "payload.javascript",
+        "fieldType": "msg",
+        "format": "javascript",
+        "syntax": "mustache",
+        "template": "        useWebSockets(false);\n        function onDocumentReady()\n        {\n        }\n        function onWebSocketOpen()\n        {\n        }\n        function onWebSocketClose()\n        {\n            \n        }\n        function onWebSocketMessage(msg)\n        {\n        }\n\n",
+        "output": "str",
+        "x": 800,
+        "y": 1120,
+        "wires": [
+            [
+                "251226a2.614dda"
+            ]
+        ]
+    },
+    {
+        "id": "a23f19d5.f894c8",
+        "type": "template",
+        "z": "a858ad3a.95706",
+        "name": "body",
+        "field": "payload.body",
+        "fieldType": "msg",
+        "format": "html",
+        "syntax": "mustache",
+        "template": "<!-- Body HTML -->\n    <div width=\"100%\" align=\"center\">\n        <table width=\"100px\">\n            <tr style='padding-bottom: 10px;'>\n                <td>\n{{{payload.html.blinkyThermo}}}\n                    <hr>\n                </td>\n            </tr>\n            <tr style='padding-bottom: 10px;'>\n                <td>\n{{{payload.html.blinkyPowerRelay}}}\n                    <hr>\n                </td>\n            </tr>\n            <tr style='padding-bottom: 10px;'>\n                <td>\n{{{payload.html.blinkyStepper}}}\n                    <hr>\n                </td>\n            </tr>\n            <tr style='padding-bottom: 10px;'>\n                <td>\n{{{payload.html.blinkyShiver}}}\n                    <hr>\n                </td>\n            </tr>\n            <tr style='padding-bottom: 10px;'>\n                <td>\n{{{payload.html.blinkyShaker}}}\n                    <hr>\n                </td>\n            </tr>\n            <tr style='padding-bottom: 10px;'>\n                <td>\n{{{payload.html.blinkyFever}}}\n                    <hr>\n                </td>\n            </tr>\n            <tr style='padding-bottom: 10px;'>\n                <td>\n{{{payload.html.blinkyBasic}}}\n                </td>\n            </tr>\n        </table>\n        <hr>\n        <div class='row'>\n            <div class='col-md-12' align='center'>\n                <span class=\"card-text\">Contact: blinky-lite@blinky-lite.io</span>\n            </div>\n        </div>\n    </div>\n",
+        "output": "str",
+        "x": 670,
+        "y": 1120,
+        "wires": [
+            [
+                "8bf5d087.fdd59"
+            ]
+        ]
+    },
+    {
+        "id": "6ca560.6e2ceaa",
+        "type": "template",
+        "z": "d7162906.0afcd8",
+        "name": "CSS",
+        "field": "payload.css",
+        "fieldType": "msg",
+        "format": "css",
+        "syntax": "mustache",
+        "template": "        :root \n        {\n          --color1: #415c71;\n          --color2: #547792;\n          --color3: #9eb5c7;\n          --color4: #c6c2bb;\n          --color5: #fdc300;\n          --big-text-size :300%;\n          --bold-text :900;\n          --vert-pad : 25px;\n          --horz-pad : 25px;\n        }\n        body \n        {\n          background-color: white !important;\n          padding-left:25px;\n          padding-right:25px;\n        }\n        \n        img \n        {\n          object-fit: contain;\n        }\n        a\n        {\n            color: white;\n        }\n        a:visited \n        { \n            color: var(--white);\n        }\n        a:hover \n        { \n            color: var(--color5);\n        }\n        .jumbotron-button\n        {\n          color: white;\n          background-color: var(--color1);\n        }\n        .card\n        {\n          background-color: var(--color2) !important;\n          text-align: center;\n          padding-left:5px;\n          padding-right:5px;\n          padding-bottom:5px;\n\n        }\n        .card-body\n        {\n          background-color: white;\n          text-align: center;\n        }\n        .card-button\n        {\n          color: var(--color5) !important;\n          background-color: var(--color1) !important;\n          font-weight: bold;\n        }\n        .card-title\n        {\n          color: white;\n          font-size: 200%;\n          font-style:oblique;\n          font-weight: var(--bold-text);\n         }\n        .card-text\n        {\n          color: var(--color2);\n          font-size: 150%;\n        }\n       .vert-pad\n        {\n            padding-top:var(--vert-pad);;\n            padding-bottom:var(--vert-pad);;\n        }\n        .horz-pad\n        {\n            padding-left:var(--horz-pad);;\n            padding-right:var(--horz-pad);;\n        }\n        .big-text\n        {\n            font-size: var(--big-text-size);\n        }\n        .bold-text\n        {\n            font-weight: var(--bold-text);\n        }\n",
+        "output": "str",
+        "x": 190,
+        "y": 80,
+        "wires": [
+            [
+                "23ca2060.71198"
+            ]
+        ]
+    },
+    {
+        "id": "251226a2.614dda",
+        "type": "subflow:d7162906.0afcd8",
+        "z": "a858ad3a.95706",
+        "x": 970,
+        "y": 1120,
+        "wires": []
+    },
+    {
+        "id": "e05a37d2.a27198",
+        "type": "subflow:d7162906.0afcd8",
+        "z": "a858ad3a.95706",
+        "x": 670,
+        "y": 780,
+        "wires": []
+    },
+    {
+        "id": "1d999967.acd457",
+        "type": "template",
+        "z": "a858ad3a.95706",
+        "name": "html.blinkyBasic",
+        "field": "payload.html.blinkyBasic",
+        "fieldType": "msg",
+        "format": "html",
+        "syntax": "mustache",
+        "template": "                    <div class='card'>\n                        <p class='card-title'>Blinky Basic</p>\n                        <div class='card-body'>\n                            <div class='row'>\n                                <div class=\"col-12\">\n                                     <span class=\"card-text\">The tutorial project that demonstrates Blinky-Lite features</span>\n                                </div>\n                            </div>\n                            <div class=\"jumbotron\" style=\"background-color:#9eb5c7;color: white;padding-top:10px; padding-bottom:10px;padding-left:10px;padding-right:10px;\" align=\"center\">\n                                <table width=\"200px\">\n                                    <tr>\n                                        <td>\n                                            <img src=\"/img/examples/blinky-basic/blinky-basic-screen.png\" height=\"350px\" style=\"padding-right:10px;\"/>\n                                        </td>\n                                        <td>\n                                            <img src=\"/img/examples/blinky-basic/blinky-basic-pcb.png\" height=\"350px\" style=\"padding-right:10px;\"/>\n                                        </td>\n                                        <td>\n                                            <table width=\"100%\">\n                                                <tr>\n                                                    <td  width=\"100%\">\n                                                        <img src=\"/img/examples/blinky-basic/blinky-basic-flow.png\" height=\"120px\"/>\n                                                    </td>\n                                                </tr>\n                                                <tr>\n                                                    <td  width=\"100%\">\n                                                        <img src=\"/img/examples/blinky-basic/blinky-basic-schem.png\" height=\"230px\"/>\n                                                    </td>\n                                                </tr>\n                                            </table>\n                                        </td>\n                                    </tr>\n                                </table>\n                            </div>\n                        </div>\n                    </div>\n",
+        "output": "str",
+        "x": 400,
+        "y": 1120,
+        "wires": [
+            [
+                "a23f19d5.f894c8"
+            ]
+        ]
+    },
+    {
+        "id": "74f0f8b3.bc0e68",
+        "type": "template",
+        "z": "a858ad3a.95706",
+        "name": "html.blinkyThermo",
+        "field": "payload.html.blinkyThermo",
+        "fieldType": "msg",
+        "format": "html",
+        "syntax": "mustache",
+        "template": "                    <div class='card'>\n                        <p class='card-title'>Blinky Thermo</p>\n                        <div class='card-body'>\n                            <div class='row'>\n                                <div class=\"col-12\">\n                                     <span class=\"card-text\">Wirelessly controlled temperature monitor with two K-Type thermocouples (Range: -200C to 1200C, Resolution: 0.25C)  and two high resolution bandgap temperature monitors (Range: -55C to 125C, Resolution: 0.05C)  </span>\n                                </div>\n                            </div>\n                            <div class=\"jumbotron\" style=\"background-color:#9eb5c7;color: white;padding-top:10px; padding-bottom:10px;padding-left:10px;padding-right:10px;\" align=\"center\">\n                                <table width=\"200px\">\n                                    <tr>\n                                        <td>\n                                            <img src=\"/img/examples/blinky-thermo/blinky-thermo-screen.png\" height=\"289px\" style=\"padding-right:10px;\"/>\n                                        </td>\n                                        <td>\n                                            <img src=\"/img/examples/blinky-thermo/blinky-thermo-pcb.png\" height=\"289px\" style=\"padding-right:10px;\"/>\n                                        </td>\n                                        <td>\n                                            <table width=\"100%\">\n                                                <tr>\n                                                    <td  width=\"100%\">\n                                                        <img src=\"/img/examples/blinky-thermo/blinky-thermo-flow.png\" height=\"100px\"/>\n                                                    </td>\n                                                </tr>\n                                                <tr>\n                                                    <td  width=\"100%\">\n                                                        <img src=\"/img/examples/blinky-thermo/blinky-thermo-schem.png\" height=\"189px\"/>\n                                                    </td>\n                                                </tr>\n                                            </table>\n                                        </td>\n                                    </tr>\n                                </table>\n                            </div>\n                        </div>\n                    </div>\n",
+        "output": "str",
+        "x": 410,
+        "y": 880,
+        "wires": [
+            [
+                "a76f0d2e.2f961"
+            ]
+        ]
+    },
+    {
+        "id": "a76f0d2e.2f961",
+        "type": "template",
+        "z": "a858ad3a.95706",
+        "name": "html.blinkyPowerRelay",
+        "field": "payload.html.blinkyPowerRelay",
+        "fieldType": "msg",
+        "format": "html",
+        "syntax": "mustache",
+        "template": "                    <div class='card'>\n                        <p class='card-title'>Blinky Power Relay</p>\n                        <div class='card-body'>\n                            <div class='row'>\n                                <div class=\"col-12\">\n                                     <span class=\"card-text\">Wirelessly controlled  1200 Watt, 240 Volt relay with power meter</span>\n                                </div>\n                            </div>\n                            <div class=\"jumbotron\" style=\"background-color:#9eb5c7;color: white;padding-top:10px; padding-bottom:10px;padding-left:10px;padding-right:10px;\" align=\"center\">\n                                <table width=\"200px\">\n                                    <tr>\n                                        <td>\n                                            <img src=\"/img/examples/blinky-power-relay/blinky-power-relay-screen.png\" height=\"292px\" style=\"padding-right:10px;\"/>\n                                        </td>\n                                        <td>\n                                            <img src=\"/img/examples/blinky-power-relay/blinky-power-relay-pcb.png\" height=\"292px\" style=\"padding-right:10px;\"/>\n                                        </td>\n                                        <td>\n                                            <table width=\"100%\">\n                                                <tr>\n                                                    <td  width=\"100%\">\n                                                        <img src=\"/img/examples/blinky-power-relay/blinky-power-relay-flow.png\" height=\"99px\"/>\n                                                    </td>\n                                                </tr>\n                                                <tr>\n                                                    <td  width=\"100%\">\n                                                        <img src=\"/img/examples/blinky-power-relay/blinky-power-relay-schem.png\" height=\"193px\"/>\n                                                    </td>\n                                                </tr>\n                                            </table>\n                                        </td>\n                                    </tr>\n                                </table>\n                            </div>\n                        </div>\n                    </div>\n",
+        "output": "str",
+        "x": 420,
+        "y": 920,
+        "wires": [
+            [
+                "f4a70f26.5b9ad"
+            ]
+        ]
+    },
+    {
+        "id": "f4a70f26.5b9ad",
+        "type": "template",
+        "z": "a858ad3a.95706",
+        "name": "html.blinkyStepper",
+        "field": "payload.html.blinkyStepper",
+        "fieldType": "msg",
+        "format": "html",
+        "syntax": "mustache",
+        "template": "                    <div class='card'>\n                        <p class='card-title'>Blinky Stepper</p>\n                        <div class='card-body'>\n                            <div class='row'>\n                                <div class=\"col-12\">\n                                     <span class=\"card-text\">Wirelessly controlled 12 V, 1.8 Amps stepper motor controller with 0.05 to 1.8 degrees of resolution</span>\n                                </div>\n                            </div>\n                            <div class=\"jumbotron\" style=\"background-color:#9eb5c7;color: white;padding-top:10px; padding-bottom:10px;padding-left:10px;padding-right:10px;\" align=\"center\">\n                                <table width=\"200px\">\n                                    <tr>\n                                        <td>\n                                            <img src=\"/img/examples/blinky-stepper/blinky-stepper-screen.png\" height=\"297px\" style=\"padding-right:10px;\"/>\n                                        </td>\n                                        <td>\n                                            <img src=\"/img/examples/blinky-stepper/blinky-stepper-pcb.png\" height=\"297px\" style=\"padding-right:10px;\"/>\n                                        </td>\n                                        <td>\n                                            <table width=\"100%\">\n                                                <tr>\n                                                    <td  width=\"100%\">\n                                                        <img src=\"/img/examples/blinky-stepper/blinky-stepper-flow.png\" height=\"102px\"/>\n                                                    </td>\n                                                </tr>\n                                                <tr>\n                                                    <td  width=\"100%\">\n                                                        <img src=\"/img/examples/blinky-stepper/blinky-stepper-schem.png\" height=\"195px\"/>\n                                                    </td>\n                                                </tr>\n                                            </table>\n                                        </td>\n                                    </tr>\n                                </table>\n                            </div>\n                        </div>\n                    </div>\n",
+        "output": "str",
+        "x": 410,
+        "y": 960,
+        "wires": [
+            [
+                "7fe1eeb9.a745b"
+            ]
+        ]
+    },
+    {
+        "id": "7fe1eeb9.a745b",
+        "type": "template",
+        "z": "a858ad3a.95706",
+        "name": "html.blinkyShiver",
+        "field": "payload.html.blinkyShiver",
+        "fieldType": "msg",
+        "format": "html",
+        "syntax": "mustache",
+        "template": "                    <div class='card'>\n                        <p class='card-title'>Blinky Shiver</p>\n                        <div class='card-body'>\n                            <div class='row'>\n                                <div class=\"col-12\">\n                                     <span class=\"card-text\">Wirelessly controlled non-invasive vibration detector with a sensitivity of 2um and a bandwidth of 250 Hz using ultrasonic technology</span>\n                                </div>\n                            </div>\n                            <div class=\"jumbotron\" style=\"background-color:#9eb5c7;color: white;padding-top:10px; padding-bottom:10px;padding-left:10px;padding-right:10px;\" align=\"center\">\n                                <table width=\"200px\">\n                                    <tr>\n                                        <td>\n                                            <img src=\"/img/examples/blinky-shiver/blinky-shiver-screen.png\" height=\"341px\" style=\"padding-right:10px;\"/>\n                                        </td>\n                                        <td>\n                                            <img src=\"/img/examples/blinky-shiver/blinky-shiver-pcb.png\" height=\"341px\" style=\"padding-right:10px;\"/>\n                                        </td>\n                                        <td>\n                                            <table width=\"100%\">\n                                                <tr>\n                                                    <td  width=\"100%\">\n                                                        <img src=\"/img/examples/blinky-shiver/blinky-shiver-flow.png\" height=\"119px\"/>\n                                                    </td>\n                                                </tr>\n                                                <tr>\n                                                    <td  width=\"100%\">\n                                                        <img src=\"/img/examples/blinky-shiver/blinky-shiver-schem.png\" height=\"222px\"/>\n                                                    </td>\n                                                </tr>\n                                            </table>\n                                        </td>\n                                    </tr>\n                                </table>\n                            </div>\n                        </div>\n                    </div>\n",
+        "output": "str",
+        "x": 410,
+        "y": 1000,
+        "wires": [
+            [
+                "8dad88a6.35b498"
+            ]
+        ]
+    },
+    {
+        "id": "8dad88a6.35b498",
+        "type": "template",
+        "z": "a858ad3a.95706",
+        "name": "html.blinkyShaker",
+        "field": "payload.html.blinkyShaker",
+        "fieldType": "msg",
+        "format": "html",
+        "syntax": "mustache",
+        "template": "                    <div class='card'>\n                        <p class='card-title'>Blinky Shaker</p>\n                        <div class='card-body'>\n                            <div class='row'>\n                                <div class=\"col-12\">\n                                     <span class=\"card-text\">Wirelessly controlled test bench for the Blinky Shiver</span>\n                                </div>\n                            </div>\n                            <div class=\"jumbotron\" style=\"background-color:#9eb5c7;color: white;padding-top:10px; padding-bottom:10px;padding-left:10px;padding-right:10px;\" align=\"center\">\n                                <table width=\"200px\">\n                                    <tr>\n                                        <td>\n                                            <img src=\"/img/examples/blinky-shaker/blinky-shaker-screen.png\" height=\"215px\" style=\"padding-right:10px;\"/>\n                                        </td>\n                                        <td>\n                                            <img src=\"/img/examples/blinky-shaker/blinky-shiver-spec.png\" height=\"215x\" style=\"padding-right:10px;\"/>\n                                        </td>\n                                        <td>\n                                            <img src=\"/img/examples/blinky-shaker/blinky-shaker-flow.png\" height=\"215px\"/>\n                                        </td>\n                                    </tr>\n                                </table>\n                            </div>\n                        </div>\n                    </div>\n",
+        "output": "str",
+        "x": 410,
+        "y": 1040,
+        "wires": [
+            [
+                "6b0605e9.89274c"
+            ]
+        ]
+    },
+    {
+        "id": "6b0605e9.89274c",
+        "type": "template",
+        "z": "a858ad3a.95706",
+        "name": "html.blinkyFever",
+        "field": "payload.html.blinkyFever",
+        "fieldType": "msg",
+        "format": "html",
+        "syntax": "mustache",
+        "template": "                    <div class='card'>\n                        <p class='card-title'>Blinky Fever</p>\n                        <div class='card-body'>\n                            <div class='row'>\n                                <div class=\"col-12\">\n                                     <span class=\"card-text\">Wirelessly controlled fever detector using infra-red technology</span>\n                                </div>\n                            </div>\n                            <div class=\"jumbotron\" style=\"background-color:#9eb5c7;color: white;padding-top:10px; padding-bottom:1px;padding-left:1px;padding-right:1px;\">\n                                <table width=\"200px\">\n                                    <tr>\n                                        <td align=\"left\">\n                                            <img src=\"/img/examples/blinky-fever/dianaFlip.png\" height=\"287px\"/>\n                                        </td>\n                                        <td>\n                                            <img src=\"/img/examples/blinky-fever/monitor.png\" height=\"287px\"/>\n                                        </td>\n                                        <td>\n                                            <img src=\"/img/examples/blinky-fever/gizmo.png\" height=\"287px\"/>\n                                        </td>\n                                        <td align=\"right\">\n                                            <img src=\"/img/examples/blinky-fever/androidControl.png\" height=\"287px\"/>\n                                        </td>\n                                    </tr>\n                                </table>\n                            </div>\n                        </div>\n                    </div>\n",
+        "output": "str",
+        "x": 400,
+        "y": 1080,
+        "wires": [
+            [
+                "1d999967.acd457"
             ]
         ]
     }
