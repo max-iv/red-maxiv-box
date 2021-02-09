@@ -70,134 +70,6 @@
         "color": "#DDAA99"
     },
     {
-        "id": "fcfe7ca7.f566a",
-        "type": "subflow",
-        "name": "Core CSS",
-        "info": "",
-        "category": "",
-        "in": [
-            {
-                "x": 60,
-                "y": 80,
-                "wires": [
-                    {
-                        "id": "ba2c1c11.88703"
-                    }
-                ]
-            }
-        ],
-        "out": [
-            {
-                "x": 320,
-                "y": 80,
-                "wires": [
-                    {
-                        "id": "ba2c1c11.88703",
-                        "port": 0
-                    }
-                ]
-            }
-        ],
-        "env": [],
-        "color": "#DDAA99"
-    },
-    {
-        "id": "e3c68b88.d82258",
-        "type": "subflow",
-        "name": "App CSS",
-        "info": "",
-        "category": "",
-        "in": [
-            {
-                "x": 60,
-                "y": 80,
-                "wires": [
-                    {
-                        "id": "f5a9eda8.5c5bc"
-                    }
-                ]
-            }
-        ],
-        "out": [
-            {
-                "x": 320,
-                "y": 80,
-                "wires": [
-                    {
-                        "id": "f5a9eda8.5c5bc",
-                        "port": 0
-                    }
-                ]
-            }
-        ],
-        "env": [],
-        "color": "#DDAA99"
-    },
-    {
-        "id": "2c5d25cb.3428ca",
-        "type": "subflow",
-        "name": "App NavBar",
-        "info": "",
-        "category": "",
-        "in": [
-            {
-                "x": 60,
-                "y": 80,
-                "wires": [
-                    {
-                        "id": "c104210d.418eb"
-                    }
-                ]
-            }
-        ],
-        "out": [
-            {
-                "x": 340,
-                "y": 80,
-                "wires": [
-                    {
-                        "id": "c104210d.418eb",
-                        "port": 0
-                    }
-                ]
-            }
-        ],
-        "env": [],
-        "color": "#DDAA99"
-    },
-    {
-        "id": "7eddf0fe.4ce23",
-        "type": "subflow",
-        "name": "Core NavBar",
-        "info": "",
-        "category": "",
-        "in": [
-            {
-                "x": 60,
-                "y": 80,
-                "wires": [
-                    {
-                        "id": "d08de07e.32d22"
-                    }
-                ]
-            }
-        ],
-        "out": [
-            {
-                "x": 340,
-                "y": 80,
-                "wires": [
-                    {
-                        "id": "d08de07e.32d22",
-                        "port": 0
-                    }
-                ]
-            }
-        ],
-        "env": [],
-        "color": "#DDAA99"
-    },
-    {
         "id": "f22a539a.a67b3",
         "type": "subflow",
         "name": "Core HTML",
@@ -209,7 +81,7 @@
                 "y": 80,
                 "wires": [
                     {
-                        "id": "e4d36fde.932ed"
+                        "id": "48e0f477.ea0e4c"
                     }
                 ]
             }
@@ -230,7 +102,7 @@
                 "y": 80,
                 "wires": [
                     {
-                        "id": "966e270e.701e48"
+                        "id": "a3eb7ad8.27c498"
                     }
                 ]
             }
@@ -433,48 +305,6 @@
                     {
                         "id": "92d40c38.2026a",
                         "port": 1
-                    }
-                ]
-            }
-        ],
-        "env": [],
-        "color": "#DDAA99"
-    },
-    {
-        "id": "4be599c9.8ea2d8",
-        "type": "subflow",
-        "name": "IpInfo",
-        "info": "",
-        "category": "",
-        "in": [
-            {
-                "x": 60,
-                "y": 80,
-                "wires": [
-                    {
-                        "id": "7656907d.147d7"
-                    }
-                ]
-            }
-        ],
-        "out": [
-            {
-                "x": 480,
-                "y": 80,
-                "wires": [
-                    {
-                        "id": "7656907d.147d7",
-                        "port": 0
-                    }
-                ]
-            },
-            {
-                "x": 480,
-                "y": 220,
-                "wires": [
-                    {
-                        "id": "810b0dbf.add52",
-                        "port": 0
                     }
                 ]
             }
@@ -1057,7 +887,7 @@
         "type": "subflow:ca529822.9112f8",
         "z": "f22a539a.a67b3",
         "name": "",
-        "x": 640,
+        "x": 410,
         "y": 80,
         "wires": []
     },
@@ -1773,130 +1603,13 @@
         ]
     },
     {
-        "id": "ba2c1c11.88703",
-        "type": "template",
-        "z": "fcfe7ca7.f566a",
-        "name": "CSS",
-        "field": "payload.css",
-        "fieldType": "msg",
-        "format": "css",
-        "syntax": "mustache",
-        "template": "        :root \n        {\n          --color1: #415c71;\n          --color2: #547792;\n          --color3: #9eb5c7;\n          --color4: #c6c2bb;\n          --color5: #fdc300;\n          --big-text-size :300%;\n          --bold-text :900;\n          --vert-pad : 25px;\n          --horz-pad : 25px;\n        }\n        body \n        {\n          background-color: white;\n          padding-left:25px;\n          padding-right:25px;\n        }\n        img \n        {\n          object-fit: contain;\n        }\n        a\n        {\n            color: white;\n        }\n        a:visited \n        { \n            color: var(--white);\n        }\n        a:hover \n        { \n            color: var(--color5);\n        }\n        .jumbotron \n        {\n          background-color: var(--color2) !important;\n          color:var(--white);\n          padding-bottom: 10px;\n          padding-top: 10px;\n        }\n        .jumbotron-title\n        {\n          color:var(--color5);\n        }\n        .jumbotron-button\n        {\n          color: white;\n          background-color: var(--color1);\n          font-weight: 900;\n        }\n        .card\n        {\n          background-color: var(--color2) !important;\n          text-align: center;\n          padding: 10px;\n        }\n        .card-body\n        {\n          background-color: var(--color3);\n        }\n        .card-button\n        {\n          color: var(--color5);\n          background-color: var(--color1) !important;\n          font-weight: bold;\n        }\n        .card-title\n        {\n          color: var(--color5);\n          font-weight: bold;\n        }\n        .card-text\n        {\n          color: white;\n          text-align: left;\n        }\n        .tableHeading\n        {\n          color:var(--color1);\n          font-weight: 900;\n        }\n        .tableText\n        {\n          color:var(--color1);\n          font-weight: 900;\n        }\n        .custom-select\n        {\n          color: white;\n          background-color: var(--color3);\n        \n        }\n        .form-control\n        {\n          text-align: center;\n        }\n        .checkbox-align\n        {\n          vertical-align: middle;\n          text-align: center;\n        }\n        .csv-linked\n        {\n            color: blue;\n        }\n        .csv-unlinked\n        {\n            color: red;\n        }\n        .vert-pad\n        {\n            padding-top:var(--vert-pad);;\n            padding-bottom:var(--vert-pad);;\n        }\n        .horz-pad\n        {\n            padding-left:var(--horz-pad);;\n            padding-right:var(--horz-pad);;\n        }\n        .big-text\n        {\n            font-size: var(--big-text-size);\n        }\n        .bold-text\n        {\n            font-weight: var(--bold-text);\n        }\n        .ui-dialog-titlebar-close \n        {\n            visibility: hidden;\n        }\n        div.ui-datepicker\n        {\n            font-size:30px;\n        }",
-        "output": "str",
-        "x": 190,
-        "y": 80,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "e4d36fde.932ed",
-        "type": "subflow:fcfe7ca7.f566a",
-        "z": "f22a539a.a67b3",
-        "name": "",
-        "x": 200,
-        "y": 80,
-        "wires": [
-            [
-                "c8d8e93c.2234a8"
-            ]
-        ]
-    },
-    {
-        "id": "f5a9eda8.5c5bc",
-        "type": "template",
-        "z": "e3c68b88.d82258",
-        "name": "CSS",
-        "field": "payload.css",
-        "fieldType": "msg",
-        "format": "css",
-        "syntax": "mustache",
-        "template": "        :root \n        {\n          --color1: #415c71;\n          --color2: #547792;\n          --color3: #9eb5c7;\n          --color4: #c6c2bb;\n          --color5: #fdc300;\n          --big-text-size :300%;\n          --bold-text :900;\n          --vert-pad : 25px;\n          --horz-pad : 25px;\n        }\n        body \n        {\n          background-color: white !important;\n          padding-left:25px;\n          padding-right:25px;\n        }\n        \n        img \n        {\n          object-fit: contain;\n        }\n        a\n        {\n            color: white;\n        }\n        a:visited \n        { \n            color: var(--white);\n        }\n        a:hover \n        { \n            color: var(--color5);\n        }\n\n        .jumbotron \n        {\n          background-color: var(--color2) !important;\n          color: white;\n          padding-top:25px;\n          padding-bottom:25px;\n        }\n        .jumbotron-title\n        {\n          color:var(--color5);\n        }\n        .jumbotron-button\n        {\n          color: white;\n          background-color: var(--color1);\n       }\n        .card\n        {\n          background-color: var(--color2) !important;\n          text-align: center;\n        }\n        .card-body\n        {\n          background-color: var(--color3);;\n        }\n        .card-button\n        {\n          color: var(--color5) !important;\n          background-color: var(--color1) !important;\n          font-weight: bold;\n        }\n        .card-title\n        {\n          color: var(--color5);\n          font-weight: var(--bold-text);\n          font-size: var(--big-text-size);\n         }\n        .card-text\n        {\n          color: white;\n          text-align: left;\n          font-size: var(--big-text-size);\n        }\n        .danger-card\n        {\n          background-color: yellow !important;\n          text-align: center;\n        }\n        .danger-card-body\n        {\n          background-color: yellow;\n        }\n        .danger-card-button\n        {\n          color: yellow !important;\n          background-color: red !important;\n          font-weight: bold;\n        }\n        .danger-card-title\n        {\n          color: red;\n          font-weight: var(--bold-text);\n          font-size: var(--big-text-size);\n         }\n        .danger-card-text\n        {\n          color: white;\n          text-align: left;\n          font-size: var(--big-text-size);\n        }\n        .tableHeading\n        {\n          color:var(--container-title-color);\n        }\n        .tableText\n        {\n          color:var(--container-text-color);\n          font-size: var(--big-text-size);\n        }\n       .vert-pad\n        {\n            padding-top:var(--vert-pad);;\n            padding-bottom:var(--vert-pad);;\n        }\n        .horz-pad\n        {\n            padding-left:var(--horz-pad);;\n            padding-right:var(--horz-pad);;\n        }\n        .big-text\n        {\n            font-size: var(--big-text-size);\n        }\n        .bold-text\n        {\n            font-weight: var(--bold-text);\n        }\n       .ui-dialog-titlebar-close \n        {\n            visibility: hidden;\n        }\n        input.inputLarger \n        { \n            transform: scale(3); \n            margin: 1px;\n        }\n        .googleSlide4by3-container \n        {\n            position: relative;\n            overflow: hidden;\n            padding-top: 75.0%;\n        }\n        .googleSlide4by3-iframe {\n            position: absolute;\n            top: 0;\n            left: 0;\n            width: 100%;\n            height: 100%;\n            border: 0;\n        }        \n        .custom-select\n        {\n            color: black;\n            background-color: white;\n            height:80px;\n            line-height:70px;\n        }\n",
-        "output": "str",
-        "x": 190,
-        "y": 80,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "966e270e.701e48",
-        "type": "subflow:e3c68b88.d82258",
-        "z": "8341090a.df9758",
-        "x": 200,
-        "y": 80,
-        "wires": [
-            [
-                "899d0666.97b868"
-            ]
-        ]
-    },
-    {
         "id": "9460eaf0.da7628",
         "type": "subflow:ca529822.9112f8",
         "z": "8341090a.df9758",
         "name": "",
-        "x": 620,
+        "x": 410,
         "y": 80,
         "wires": []
-    },
-    {
-        "id": "c104210d.418eb",
-        "type": "template",
-        "z": "2c5d25cb.3428ca",
-        "name": "navBar",
-        "field": "payload.navBar",
-        "fieldType": "msg",
-        "format": "html",
-        "syntax": "mustache",
-        "template": "<!-- navBar -->\n    <div class=\"jumbotron\" width=\"100%\">\n        <table width=\"100%\">\n            <tr>\n                <td style=\"text-align:left; vertical-align:middle;\"  width=\"20%\">\n                    <a href='https://www.blinky-lite.io/' target='_blank'>\n                        <img src=\"/img/BlinkyLogo.gif\" height=\"75px\"/>\n                    </a>                \n                </td>\n                <td width=\"60%\" style=\"text-align:center; vertical-align:middle;\">\n                    <h1 class=\"jumbotron-title big-text bold-text\">\n                        <img src=\"/img/{{{payload.navBarIcon}}}\" height=\"75px\" style=\"padding-right:20px;\"/><span>{{{payload.title}}}</span>\n                    </h1>\n                </td>\n                <td style=\"text-align:right; vertical-align:middle;\" width=\"20%\">\n                    <a href='/apps'><img src=\"/img/appsYellow.png\" height=\"75px\"/></a>\n                </td>\n            </tr>\n        </table>\n    </div>",
-        "output": "str",
-        "x": 200,
-        "y": 80,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "d08de07e.32d22",
-        "type": "template",
-        "z": "7eddf0fe.4ce23",
-        "name": "navBar",
-        "field": "payload.navBar",
-        "fieldType": "msg",
-        "format": "html",
-        "syntax": "mustache",
-        "template": "    <div class=\"jumbotron\" width=\"100%\">\n        <table width=\"100%\">\n            <tr>\n                <td style=\"text-align:left; vertical-align:middle;\"  width=\"20%\">\n                    <a href='https://www.blinky-lite.io/' target='_blank'>\n                        <img src=\"/img/BlinkyLogo.gif\" height=\"75px\"/>\n                    </a>                \n                </td>\n                <td width=\"60%\" style=\"text-align:center; vertical-align:middle;\">\n                    <h1 class=\"jumbotron-title big-text bold-text\">{{{payload.title}}}</h1>\n                </td>\n                <td style=\"text-align:right; vertical-align:middle;\" width=\"20%\">\n                    <a href='/core'><img src=\"/img/coreYellow.png\" height=\"75px\"/></a>\n                </td>\n            </tr>\n        </table>\n    </div>\n    \n",
-        "output": "str",
-        "x": 200,
-        "y": 80,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "899d0666.97b868",
-        "type": "subflow:2c5d25cb.3428ca",
-        "z": "8341090a.df9758",
-        "x": 420,
-        "y": 80,
-        "wires": [
-            [
-                "9460eaf0.da7628"
-            ]
-        ]
-    },
-    {
-        "id": "c8d8e93c.2234a8",
-        "type": "subflow:7eddf0fe.4ce23",
-        "z": "f22a539a.a67b3",
-        "x": 430,
-        "y": 80,
-        "wires": [
-            [
-                "8a439be9.030ab8"
-            ]
-        ]
     },
     {
         "id": "72941646.0206b8",
@@ -6724,79 +6437,6 @@
         "wires": []
     },
     {
-        "id": "7656907d.147d7",
-        "type": "function",
-        "z": "4be599c9.8ea2d8",
-        "name": "IP filter",
-        "func": "var ipfilter = [\n    \"127.0.0.16\"];\nvar ipAddress = ( msg.req.headers['x-forwarded-for'] || '').split(',').pop() || \n          msg.req.connection.remoteAddress || \n          msg.req.socket.remoteAddress || \n          msg.req.connection.socket.remoteAddress;\nif (ipAddress==undefined) return null;\nvar ipAddressSplit = ipAddress.split(\".\");\nfor (var ii =  0; ii < ipfilter.length; ++ii)\n{\n    var ipfilterSplit = ipfilter[ii].split(\".\");\n    if (ipAddress == ipfilter[ii])\n    { \n        return null;\n    }\n    if (ipfilterSplit[2] == '*')\n    {\n        if ((ipfilterSplit[0] == ipAddressSplit[0]) && (ipfilterSplit[1] == ipAddressSplit[1]))\n        {\n            return null;\n        }\n    }\n}\n\n\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "x": 190,
-        "y": 80,
-        "wires": [
-            [
-                "7357357e.f4145c"
-            ]
-        ]
-    },
-    {
-        "id": "7357357e.f4145c",
-        "type": "function",
-        "z": "4be599c9.8ea2d8",
-        "name": "ClientInfo",
-        "func": "var ipAddress = ( msg.req.headers['x-forwarded-for'] || '').split(',').pop() || \n          msg.req.connection.remoteAddress || \n          msg.req.socket.remoteAddress || \n          msg.req.connection.socket.remoteAddress;\nvar url = msg.req.url;\nreturn {\n    topic:'clientInfo', \n    payload:{\n        ipAddress   : ipAddress\n    },\n    extraInfo       : {url:url, userID:msg.payload.userID},\n};\n",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "x": 310,
-        "y": 140,
-        "wires": [
-            [
-                "a62eb946.b80ef8"
-            ]
-        ]
-    },
-    {
-        "id": "a62eb946.b80ef8",
-        "type": "http request",
-        "z": "4be599c9.8ea2d8",
-        "name": "",
-        "method": "GET",
-        "ret": "obj",
-        "paytoqs": "ignore",
-        "url": "https://tools.keycdn.com/geo.json?host={{{payload.ipAddress}}}",
-        "tls": "",
-        "persist": false,
-        "proxy": "",
-        "authType": "basic",
-        "x": 320,
-        "y": 180,
-        "wires": [
-            [
-                "810b0dbf.add52"
-            ]
-        ]
-    },
-    {
-        "id": "810b0dbf.add52",
-        "type": "function",
-        "z": "4be599c9.8ea2d8",
-        "name": "parseIpRequest",
-        "func": "var data = msg.payload.data.geo;\ndata['url'] = msg.extraInfo.url;\ndata['userID'] = msg.extraInfo.userID;\ndata['timeStamp'] = new Date().getTime();\nreturn {topic:'ipData', payload:data};\n",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "x": 330,
-        "y": 220,
-        "wires": [
-            []
-        ]
-    },
-    {
         "id": "f46a4c46.e6b3a",
         "type": "mongodb3 in",
         "z": "ca529822.9112f8",
@@ -10811,7 +10451,7 @@
         "y": 780,
         "wires": [
             [
-                "e05a37d2.a27198"
+                "bb7837ce.8d7338"
             ]
         ]
     },
@@ -10824,7 +10464,7 @@
         "fieldType": "msg",
         "format": "html",
         "syntax": "mustache",
-        "template": "<!-- Body HTML -->\n    <div width=\"100%\">\n        <div class='row no-gutters'>\n            <div class='col-md-12' align='center'>\n                <a href=\"/examples\"><span class=\"card-text\" style=\"font-size:180%\">Examples</span></a>\n            </div>\n        </div>\n        <hr>\n        <div class='row'>\n            <div class='col-md-12' align='center'>\n                <span class=\"card-text\">Contact: blinky-lite@blinky-lite.io</span>\n            </div>\n        </div>\n    </div>\n",
+        "template": "<!-- Body HTML -->\n    <div width=\"100%\" >\n        <div class='row no-gutters' >\n            <div class='col-12' align='center'>\n                <img src=\"/img/BlinkySplashScreen.png\" width=\"900px\" style=\"padding-bottom:20px;\"/>\n            </div>\n        </div>\n        <div class='row'>\n            <div class='col-12' align='center'>\n                <table width=\"900px\">\n                    <tr>\n                        <td width=\"25%\"><a class=\"btn btn-primary btn-lg btn-block\" href='/overview'>Overview</a></td>\n                        <td width=\"25%\"><a class=\"btn btn-primary btn-lg btn-block\"  href='/features'>Features</a></td>\n                        <td width=\"25%\"><a class=\"btn btn-primary btn-lg btn-block\"  href='/examples'>Examples</a></td>\n                        <td width=\"25%\"><a class=\"btn btn-primary btn-lg btn-block\"  href='/apps'>Apps</a></td>\n                    </tr>\n                </table>\n            </div>\n        </div>\n        <hr>\n        <div class='row'>\n            <div class='col-12' align='center'>\n                <span class=\"card-text\">Contact: blinky-lite@blinky-lite.io</span>\n            </div>\n        </div>\n    </div>\n",
         "output": "str",
         "x": 370,
         "y": 780,
@@ -10853,7 +10493,7 @@
         "upload": false,
         "swaggerDoc": "",
         "x": 120,
-        "y": 880,
+        "y": 840,
         "wires": [
             [
                 "e7fb26ce.45c778"
@@ -10872,10 +10512,10 @@
         "template": "Blinky-Lite Examples",
         "output": "str",
         "x": 250,
-        "y": 880,
+        "y": 840,
         "wires": [
             [
-                "74f0f8b3.bc0e68"
+                "b998e015.6cc39"
             ]
         ]
     },
@@ -10907,10 +10547,10 @@
         "fieldType": "msg",
         "format": "javascript",
         "syntax": "mustache",
-        "template": "        useWebSockets(false);\n        function onDocumentReady()\n        {\n        }\n        function onWebSocketOpen()\n        {\n        }\n        function onWebSocketClose()\n        {\n            \n        }\n        function onWebSocketMessage(msg)\n        {\n        }\n\n",
+        "template": "        useWebSockets(false);\n        var modeZeroVisible = false;\n        var blinkyRelayBakeVisible = false;\n        var blinkyThermoVisible = false;\n        var blinkyPowerRelayVisible = false;\n        var blinkyStepperVisible = false;\n        var blinkyShiverVisible = false;\n        var blinkyShakerVisible = false;\n        var blinkyFeverVisible = false;\n        var blinkyBasicVisible = false;\n\n        function onDocumentReady()\n        {\n            $('#modeZero').hide();\n            $('#blinkyRelayBake').hide();\n            $('#blinkyThermo').hide();\n            $('#blinkyPowerRelay').hide();\n            $('#blinkyStepper').hide();\n            $('#blinkyShiver').hide();\n            $('#blinkyShaker').hide();\n            $('#blinkyFever').hide();\n            $('#blinkyBasic').hide();\n            modeZeroVisible = false;\n            blinkyRelayBakeVisible = false;\n            blinkyThermoVisible = false;\n            blinkyPowerRelayVisible = false;\n            blinkyStepperVisible = false;\n            blinkyShiverVisible = false;\n            blinkyShakerVisible = false;\n            blinkyFeverVisible = false;\n            blinkyBasicVisible = false;\n        }\n        function onWebSocketOpen()\n        {\n        }\n        function onWebSocketClose()\n        {\n            \n        }\n        function onWebSocketMessage(msg)\n        {\n        }\n        function modeZero()\n        {\n            if (modeZeroVisible)\n            {\n                $('#modeZero').hide();\n                modeZeroVisible = false;\n                $('#modeZeroBtn').text('More');\n            }\n            else\n            {\n                $('#modeZero').show();\n                modeZeroVisible = true;\n                $('#modeZeroBtn').text('Less');\n            }\n        }\n        function blinkyRelayBake()\n        {\n            if (blinkyRelayBakeVisible)\n            {\n                $('#blinkyRelayBake').hide();\n                blinkyRelayBakeVisible = false;\n                $('#blinkyRelayBakeBtn').text('More');\n            }\n            else\n            {\n                $('#blinkyRelayBake').show();\n                blinkyRelayBakeVisible = true;\n                $('#blinkyRelayBakeBtn').text('Less');\n            }\n        }\n        function blinkyThermo()\n        {\n            if (blinkyThermoVisible)\n            {\n                $('#blinkyThermo').hide();\n                blinkyThermoVisible = false;\n                $('#blinkyThermoBtn').text('More');\n            }\n            else\n            {\n                $('#blinkyThermo').show();\n                blinkyThermoVisible = true;\n                $('#blinkyThermoBtn').text('Less');\n            }\n        }\n        function blinkyPowerRelay()\n        {\n            if (blinkyPowerRelayVisible)\n            {\n                $('#blinkyPowerRelay').hide();\n                blinkyPowerRelayVisible = false;\n                $('#blinkyPowerRelayBtn').text('More');\n            }\n            else\n            {\n                $('#blinkyPowerRelay').show();\n                blinkyPowerRelayVisible = true;\n                $('#blinkyPowerRelayBtn').text('Less');\n            }\n        }\n        function blinkyStepper()\n        {\n            if (blinkyStepperVisible)\n            {\n                $('#blinkyStepper').hide();\n                blinkyStepperVisible = false;\n                $('#blinkyStepperBtn').text('More');\n            }\n            else\n            {\n                $('#blinkyStepper').show();\n                blinkyStepperVisible = true;\n                $('#blinkyStepperBtn').text('Less');\n            }\n        }\n        function blinkyShiver()\n        {\n            if (blinkyShiverVisible)\n            {\n                $('#blinkyShiver').hide();\n                blinkyShiverVisible = false;\n                $('#blinkyShiverBtn').text('More');\n            }\n            else\n            {\n                $('#blinkyShiver').show();\n                blinkyShiverVisible = true;\n                $('#blinkyShiverBtn').text('Less');\n            }\n        }\n        function blinkyShaker()\n        {\n            if (blinkyShakerVisible)\n            {\n                $('#blinkyShaker').hide();\n                blinkyShakerVisible = false;\n                $('#blinkyShakerBtn').text('More');\n            }\n            else\n            {\n                $('#blinkyShaker').show();\n                blinkyShakerVisible = true;\n                $('#blinkyShakerBtn').text('Less');\n            }\n        }\n        function blinkyFever()\n        {\n            if (blinkyFeverVisible)\n            {\n                $('#blinkyFever').hide();\n                blinkyFeverVisible = false;\n                $('#blinkyFeverBtn').text('More');\n            }\n            else\n            {\n                $('#blinkyFever').show();\n                blinkyFeverVisible = true;\n                $('#blinkyFeverBtn').text('Less');\n            }\n        }\n        function blinkyBasic()\n        {\n            if (blinkyBasicVisible)\n            {\n                $('#blinkyBasic').hide();\n                blinkyBasicVisible = false;\n                $('#blinkyBasicBtn').text('More');\n            }\n            else\n            {\n                $('#blinkyBasic').show();\n                blinkyBasicVisible = true;\n                $('#blinkyBasicBtn').text('Less');\n            }\n        }\n\n",
         "output": "str",
         "x": 800,
-        "y": 1120,
+        "y": 1160,
         "wires": [
             [
                 "251226a2.614dda"
@@ -10926,10 +10566,10 @@
         "fieldType": "msg",
         "format": "html",
         "syntax": "mustache",
-        "template": "<!-- Body HTML -->\n    <div width=\"100%\" align=\"center\">\n        <table width=\"100px\">\n            <tr style='padding-bottom: 10px;'>\n                <td>\n{{{payload.html.blinkyThermo}}}\n                    <hr>\n                </td>\n            </tr>\n            <tr style='padding-bottom: 10px;'>\n                <td>\n{{{payload.html.blinkyPowerRelay}}}\n                    <hr>\n                </td>\n            </tr>\n            <tr style='padding-bottom: 10px;'>\n                <td>\n{{{payload.html.blinkyStepper}}}\n                    <hr>\n                </td>\n            </tr>\n            <tr style='padding-bottom: 10px;'>\n                <td>\n{{{payload.html.blinkyShiver}}}\n                    <hr>\n                </td>\n            </tr>\n            <tr style='padding-bottom: 10px;'>\n                <td>\n{{{payload.html.blinkyShaker}}}\n                    <hr>\n                </td>\n            </tr>\n            <tr style='padding-bottom: 10px;'>\n                <td>\n{{{payload.html.blinkyFever}}}\n                    <hr>\n                </td>\n            </tr>\n            <tr style='padding-bottom: 10px;'>\n                <td>\n{{{payload.html.blinkyBasic}}}\n                </td>\n            </tr>\n        </table>\n        <hr>\n        <div class='row'>\n            <div class='col-md-12' align='center'>\n                <span class=\"card-text\">Contact: blinky-lite@blinky-lite.io</span>\n            </div>\n        </div>\n    </div>\n",
+        "template": "<!-- Body HTML -->\n    <div width=\"100%\" align=\"center\">\n        <table width=\"100px\">\n            <tr style='padding-bottom: 10px;'>\n                <td>\n{{{payload.html.modeZero}}}\n                    <hr>\n                </td>\n            </tr>\n            <tr style='padding-bottom: 10px;'>\n                <td>\n{{{payload.html.blinkyRelayBake}}}\n                    <hr>\n                </td>\n            </tr>\n            <tr style='padding-bottom: 10px;'>\n                <td>\n{{{payload.html.blinkyThermo}}}\n                    <hr>\n                </td>\n            </tr>\n            <tr style='padding-bottom: 10px;'>\n                <td>\n{{{payload.html.blinkyPowerRelay}}}\n                    <hr>\n                </td>\n            </tr>\n            <tr style='padding-bottom: 10px;'>\n                <td>\n{{{payload.html.blinkyStepper}}}\n                    <hr>\n                </td>\n            </tr>\n            <tr style='padding-bottom: 10px;'>\n                <td>\n{{{payload.html.blinkyShiver}}}\n                    <hr>\n                </td>\n            </tr>\n            <tr style='padding-bottom: 10px;'>\n                <td>\n{{{payload.html.blinkyShaker}}}\n                    <hr>\n                </td>\n            </tr>\n            <tr style='padding-bottom: 10px;'>\n                <td>\n{{{payload.html.blinkyFever}}}\n                    <hr>\n                </td>\n            </tr>\n            <tr style='padding-bottom: 10px;'>\n                <td>\n{{{payload.html.blinkyBasic}}}\n                </td>\n            </tr>\n        </table>\n        <hr>\n        <div class='row'>\n            <div class='col-md-12' align='center'>\n                <span class=\"card-text\">Contact: blinky-lite@blinky-lite.io</span>\n            </div>\n        </div>\n    </div>\n",
         "output": "str",
         "x": 670,
-        "y": 1120,
+        "y": 1160,
         "wires": [
             [
                 "8bf5d087.fdd59"
@@ -10945,7 +10585,7 @@
         "fieldType": "msg",
         "format": "css",
         "syntax": "mustache",
-        "template": "        :root \n        {\n          --color1: #415c71;\n          --color2: #547792;\n          --color3: #9eb5c7;\n          --color4: #c6c2bb;\n          --color5: #fdc300;\n          --big-text-size :300%;\n          --bold-text :900;\n          --vert-pad : 25px;\n          --horz-pad : 25px;\n        }\n        body \n        {\n          background-color: white !important;\n          padding-left:25px;\n          padding-right:25px;\n        }\n        \n        img \n        {\n          object-fit: contain;\n        }\n        a\n        {\n            color: white;\n        }\n        a:visited \n        { \n            color: var(--white);\n        }\n        a:hover \n        { \n            color: var(--color5);\n        }\n        .jumbotron-button\n        {\n          color: white;\n          background-color: var(--color1);\n        }\n        .card\n        {\n          background-color: var(--color2) !important;\n          text-align: center;\n          padding-left:5px;\n          padding-right:5px;\n          padding-bottom:5px;\n\n        }\n        .card-body\n        {\n          background-color: white;\n          text-align: center;\n        }\n        .card-button\n        {\n          color: var(--color5) !important;\n          background-color: var(--color1) !important;\n          font-weight: bold;\n        }\n        .card-title\n        {\n          color: white;\n          font-size: 200%;\n          font-style:oblique;\n          font-weight: var(--bold-text);\n         }\n        .card-text\n        {\n          color: var(--color2);\n          font-size: 150%;\n        }\n       .vert-pad\n        {\n            padding-top:var(--vert-pad);;\n            padding-bottom:var(--vert-pad);;\n        }\n        .horz-pad\n        {\n            padding-left:var(--horz-pad);;\n            padding-right:var(--horz-pad);;\n        }\n        .big-text\n        {\n            font-size: var(--big-text-size);\n        }\n        .bold-text\n        {\n            font-weight: var(--bold-text);\n        }\n",
+        "template": "        :root \n        {\n          --color1: #415c71;\n          --color2: #547792;\n          --color3: #9eb5c7;\n          --color4: #c6c2bb;\n          --color5: #fdc300;\n          --big-text-size :300%;\n          --bold-text :900;\n          --vert-pad : 25px;\n          --horz-pad : 25px;\n        }\n        body \n        {\n          background-color: white !important;\n          padding-left:25px;\n          padding-right:25px;\n        }\n        \n        img \n        {\n          object-fit: contain;\n        }\n        a\n        {\n            color: white;\n        }\n        a:visited \n        { \n            color: var(--white);\n        }\n        a:hover \n        { \n            color: var(--color5);\n        }\n        .jumbotron-button\n        {\n          color: white;\n          background-color: var(--color1);\n        }\n        .card\n        {\n          background-color: var(--color2) !important;\n          text-align: center;\n          padding-left:5px;\n          padding-right:5px;\n          padding-bottom:5px;\n\n        }\n        .card-body\n        {\n          background-color: white;\n          text-align: center;\n        }\n        .card-button\n        {\n          color: var(--color5) !important;\n          background-color: var(--color1) !important;\n          font-weight: bold;\n        }\n        .card-title\n        {\n          color: white;\n          font-size: 200%;\n          font-style:oblique;\n          font-weight: var(--bold-text);\n         }\n        .card-text\n        {\n          color: var(--color2);\n          font-size: 150%;\n        }\n       .vert-pad\n        {\n            padding-top:var(--vert-pad);;\n            padding-bottom:var(--vert-pad);;\n        }\n        .horz-pad\n        {\n            padding-left:var(--horz-pad);;\n            padding-right:var(--horz-pad);;\n        }\n        .big-text\n        {\n            font-size: var(--big-text-size);\n        }\n        .bold-text\n        {\n            font-weight: var(--bold-text);\n        }\n        .justify\n        {\n            text-align: justify;\n            text-justify: inter-word;\n        }\n",
         "output": "str",
         "x": 190,
         "y": 80,
@@ -10960,15 +10600,7 @@
         "type": "subflow:d7162906.0afcd8",
         "z": "a858ad3a.95706",
         "x": 970,
-        "y": 1120,
-        "wires": []
-    },
-    {
-        "id": "e05a37d2.a27198",
-        "type": "subflow:d7162906.0afcd8",
-        "z": "a858ad3a.95706",
-        "x": 670,
-        "y": 780,
+        "y": 1160,
         "wires": []
     },
     {
@@ -10980,10 +10612,10 @@
         "fieldType": "msg",
         "format": "html",
         "syntax": "mustache",
-        "template": "                    <div class='card'>\n                        <p class='card-title'>Blinky Basic</p>\n                        <div class='card-body'>\n                            <div class='row'>\n                                <div class=\"col-12\">\n                                     <span class=\"card-text\">The tutorial project that demonstrates Blinky-Lite features</span>\n                                </div>\n                            </div>\n                            <div class=\"jumbotron\" style=\"background-color:#9eb5c7;color: white;padding-top:10px; padding-bottom:10px;padding-left:10px;padding-right:10px;\" align=\"center\">\n                                <table width=\"200px\">\n                                    <tr>\n                                        <td>\n                                            <img src=\"/img/examples/blinky-basic/blinky-basic-screen.png\" height=\"350px\" style=\"padding-right:10px;\"/>\n                                        </td>\n                                        <td>\n                                            <img src=\"/img/examples/blinky-basic/blinky-basic-pcb.png\" height=\"350px\" style=\"padding-right:10px;\"/>\n                                        </td>\n                                        <td>\n                                            <table width=\"100%\">\n                                                <tr>\n                                                    <td  width=\"100%\">\n                                                        <img src=\"/img/examples/blinky-basic/blinky-basic-flow.png\" height=\"120px\"/>\n                                                    </td>\n                                                </tr>\n                                                <tr>\n                                                    <td  width=\"100%\">\n                                                        <img src=\"/img/examples/blinky-basic/blinky-basic-schem.png\" height=\"230px\"/>\n                                                    </td>\n                                                </tr>\n                                            </table>\n                                        </td>\n                                    </tr>\n                                </table>\n                            </div>\n                        </div>\n                    </div>\n",
+        "template": "                    <div class='card'>\n                        <table width='900px'>\n                            <tr>\n                                <td  width='800px' align='left'><span class='card-title'>Blinky Basic</span></td>\n                                <td  width='100px'><button class=\"btn btn-block card-text\" style=\"background-color:var(--color1);color:white\" type=\"button\" id=\"blinkyBasicBtn\" onclick=\"blinkyBasic()\">More</button></td>\n                            </tr>\n                        </table>\n                        <div class='card-body' id=\"blinkyBasic\">\n                            <div class='row'>\n                                <div class=\"col-12 justify\">\n                                     <span class=\"card-text\">The tutorial project that demonstrates Blinky-Lite features</span>\n                                </div>\n                            </div>\n                            <div class=\"jumbotron\" style=\"background-color:#9eb5c7;color: white;padding-top:10px; padding-bottom:10px;padding-left:10px;padding-right:10px;\" align=\"center\">\n                                <table width=\"200px\">\n                                    <tr>\n                                        <td>\n                                            <img src=\"/img/examples/blinky-basic/blinky-basic-screen.png\" height=\"350px\" style=\"padding-right:10px;\"/>\n                                        </td>\n                                        <td>\n                                            <img src=\"/img/examples/blinky-basic/blinky-basic-pcb.png\" height=\"350px\" style=\"padding-right:10px;\"/>\n                                        </td>\n                                        <td>\n                                            <table width=\"100%\">\n                                                <tr>\n                                                    <td  width=\"100%\">\n                                                        <img src=\"/img/examples/blinky-basic/blinky-basic-flow.png\" height=\"120px\"/>\n                                                    </td>\n                                                </tr>\n                                                <tr>\n                                                    <td  width=\"100%\">\n                                                        <img src=\"/img/examples/blinky-basic/blinky-basic-schem.png\" height=\"230px\"/>\n                                                    </td>\n                                                </tr>\n                                            </table>\n                                        </td>\n                                    </tr>\n                                </table>\n                            </div>\n                        </div>\n                    </div>\n",
         "output": "str",
         "x": 400,
-        "y": 1120,
+        "y": 1160,
         "wires": [
             [
                 "a23f19d5.f894c8"
@@ -10999,10 +10631,10 @@
         "fieldType": "msg",
         "format": "html",
         "syntax": "mustache",
-        "template": "                    <div class='card'>\n                        <p class='card-title'>Blinky Thermo</p>\n                        <div class='card-body'>\n                            <div class='row'>\n                                <div class=\"col-12\">\n                                     <span class=\"card-text\">Wirelessly controlled temperature monitor with two K-Type thermocouples (Range: -200C to 1200C, Resolution: 0.25C)  and two high resolution bandgap temperature monitors (Range: -55C to 125C, Resolution: 0.05C)  </span>\n                                </div>\n                            </div>\n                            <div class=\"jumbotron\" style=\"background-color:#9eb5c7;color: white;padding-top:10px; padding-bottom:10px;padding-left:10px;padding-right:10px;\" align=\"center\">\n                                <table width=\"200px\">\n                                    <tr>\n                                        <td>\n                                            <img src=\"/img/examples/blinky-thermo/blinky-thermo-screen.png\" height=\"289px\" style=\"padding-right:10px;\"/>\n                                        </td>\n                                        <td>\n                                            <img src=\"/img/examples/blinky-thermo/blinky-thermo-pcb.png\" height=\"289px\" style=\"padding-right:10px;\"/>\n                                        </td>\n                                        <td>\n                                            <table width=\"100%\">\n                                                <tr>\n                                                    <td  width=\"100%\">\n                                                        <img src=\"/img/examples/blinky-thermo/blinky-thermo-flow.png\" height=\"100px\"/>\n                                                    </td>\n                                                </tr>\n                                                <tr>\n                                                    <td  width=\"100%\">\n                                                        <img src=\"/img/examples/blinky-thermo/blinky-thermo-schem.png\" height=\"189px\"/>\n                                                    </td>\n                                                </tr>\n                                            </table>\n                                        </td>\n                                    </tr>\n                                </table>\n                            </div>\n                        </div>\n                    </div>\n",
+        "template": "                    <div class='card'>\n                        <table width='900px'>\n                            <tr>\n                                <td  width='800px' align='left'><span class='card-title'>Blinky Thermo</span></td>\n                                <td  width='100px'><button class=\"btn btn-block card-text\" style=\"background-color:var(--color1);color:white\" type=\"button\" id=\"blinkyThermoBtn\" onclick=\"blinkyThermo()\">More</button></td>\n                            </tr>\n                        </table>\n                        <div class='card-body' id=\"blinkyThermo\">\n                            <div class='row'>\n                                <div class=\"col-12 justify\">\n                                     <span class=\"card-text\">Wirelessly controlled temperature monitor with two K-Type thermocouples (Range: -200C to 1200C, Resolution: 0.25C)  and two high resolution bandgap temperature monitors (Range: -55C to 125C, Resolution: 0.05C)  </span>\n                                </div>\n                            </div>\n                            <div class=\"jumbotron\" style=\"background-color:#9eb5c7;color: white;padding-top:10px; padding-bottom:10px;padding-left:10px;padding-right:10px;\" align=\"center\">\n                                <table width=\"200px\">\n                                    <tr>\n                                        <td>\n                                            <img src=\"/img/examples/blinky-thermo/blinky-thermo-screen.png\" height=\"289px\" style=\"padding-right:10px;\"/>\n                                        </td>\n                                        <td>\n                                            <img src=\"/img/examples/blinky-thermo/blinky-thermo-pcb.png\" height=\"289px\" style=\"padding-right:10px;\"/>\n                                        </td>\n                                        <td>\n                                            <table width=\"100%\">\n                                                <tr>\n                                                    <td  width=\"100%\">\n                                                        <img src=\"/img/examples/blinky-thermo/blinky-thermo-flow.png\" height=\"100px\"/>\n                                                    </td>\n                                                </tr>\n                                                <tr>\n                                                    <td  width=\"100%\">\n                                                        <img src=\"/img/examples/blinky-thermo/blinky-thermo-schem.png\" height=\"189px\"/>\n                                                    </td>\n                                                </tr>\n                                            </table>\n                                        </td>\n                                    </tr>\n                                </table>\n                            </div>\n                        </div>\n                    </div>\n",
         "output": "str",
         "x": 410,
-        "y": 880,
+        "y": 920,
         "wires": [
             [
                 "a76f0d2e.2f961"
@@ -11018,10 +10650,10 @@
         "fieldType": "msg",
         "format": "html",
         "syntax": "mustache",
-        "template": "                    <div class='card'>\n                        <p class='card-title'>Blinky Power Relay</p>\n                        <div class='card-body'>\n                            <div class='row'>\n                                <div class=\"col-12\">\n                                     <span class=\"card-text\">Wirelessly controlled  1200 Watt, 240 Volt relay with power meter</span>\n                                </div>\n                            </div>\n                            <div class=\"jumbotron\" style=\"background-color:#9eb5c7;color: white;padding-top:10px; padding-bottom:10px;padding-left:10px;padding-right:10px;\" align=\"center\">\n                                <table width=\"200px\">\n                                    <tr>\n                                        <td>\n                                            <img src=\"/img/examples/blinky-power-relay/blinky-power-relay-screen.png\" height=\"292px\" style=\"padding-right:10px;\"/>\n                                        </td>\n                                        <td>\n                                            <img src=\"/img/examples/blinky-power-relay/blinky-power-relay-pcb.png\" height=\"292px\" style=\"padding-right:10px;\"/>\n                                        </td>\n                                        <td>\n                                            <table width=\"100%\">\n                                                <tr>\n                                                    <td  width=\"100%\">\n                                                        <img src=\"/img/examples/blinky-power-relay/blinky-power-relay-flow.png\" height=\"99px\"/>\n                                                    </td>\n                                                </tr>\n                                                <tr>\n                                                    <td  width=\"100%\">\n                                                        <img src=\"/img/examples/blinky-power-relay/blinky-power-relay-schem.png\" height=\"193px\"/>\n                                                    </td>\n                                                </tr>\n                                            </table>\n                                        </td>\n                                    </tr>\n                                </table>\n                            </div>\n                        </div>\n                    </div>\n",
+        "template": "                    <div class='card'>\n                        <table width='900px'>\n                            <tr>\n                                <td  width='800px' align='left'><span class='card-title'>Blinky Power Relay</span></td>\n                                <td  width='100px'><button class=\"btn btn-block card-text\" style=\"background-color:var(--color1);color:white\" type=\"button\" id=\"blinkyPowerRelayBtn\" onclick=\"blinkyPowerRelay()\">More</button></td>\n                            </tr>\n                        </table>\n                        <div class='card-body' id='blinkyPowerRelay'>\n                            <div class='row'>\n                                <div class=\"col-12 justify\">\n                                     <span class=\"card-text\">Wirelessly controlled  1200 Watt, 240 Volt relay with power meter</span>\n                                </div>\n                            </div>\n                            <div class=\"jumbotron\" style=\"background-color:#9eb5c7;color: white;padding-top:10px; padding-bottom:10px;padding-left:10px;padding-right:10px;\" align=\"center\">\n                                <table width=\"200px\">\n                                    <tr>\n                                        <td>\n                                            <img src=\"/img/examples/blinky-power-relay/blinky-power-relay-screen.png\" height=\"292px\" style=\"padding-right:10px;\"/>\n                                        </td>\n                                        <td>\n                                            <img src=\"/img/examples/blinky-power-relay/blinky-power-relay-pcb.png\" height=\"292px\" style=\"padding-right:10px;\"/>\n                                        </td>\n                                        <td>\n                                            <table width=\"100%\">\n                                                <tr>\n                                                    <td  width=\"100%\">\n                                                        <img src=\"/img/examples/blinky-power-relay/blinky-power-relay-flow.png\" height=\"99px\"/>\n                                                    </td>\n                                                </tr>\n                                                <tr>\n                                                    <td  width=\"100%\">\n                                                        <img src=\"/img/examples/blinky-power-relay/blinky-power-relay-schem.png\" height=\"193px\"/>\n                                                    </td>\n                                                </tr>\n                                            </table>\n                                        </td>\n                                    </tr>\n                                </table>\n                            </div>\n                        </div>\n                    </div>\n",
         "output": "str",
         "x": 420,
-        "y": 920,
+        "y": 960,
         "wires": [
             [
                 "f4a70f26.5b9ad"
@@ -11037,10 +10669,10 @@
         "fieldType": "msg",
         "format": "html",
         "syntax": "mustache",
-        "template": "                    <div class='card'>\n                        <p class='card-title'>Blinky Stepper</p>\n                        <div class='card-body'>\n                            <div class='row'>\n                                <div class=\"col-12\">\n                                     <span class=\"card-text\">Wirelessly controlled 12 V, 1.8 Amps stepper motor controller with 0.05 to 1.8 degrees of resolution</span>\n                                </div>\n                            </div>\n                            <div class=\"jumbotron\" style=\"background-color:#9eb5c7;color: white;padding-top:10px; padding-bottom:10px;padding-left:10px;padding-right:10px;\" align=\"center\">\n                                <table width=\"200px\">\n                                    <tr>\n                                        <td>\n                                            <img src=\"/img/examples/blinky-stepper/blinky-stepper-screen.png\" height=\"297px\" style=\"padding-right:10px;\"/>\n                                        </td>\n                                        <td>\n                                            <img src=\"/img/examples/blinky-stepper/blinky-stepper-pcb.png\" height=\"297px\" style=\"padding-right:10px;\"/>\n                                        </td>\n                                        <td>\n                                            <table width=\"100%\">\n                                                <tr>\n                                                    <td  width=\"100%\">\n                                                        <img src=\"/img/examples/blinky-stepper/blinky-stepper-flow.png\" height=\"102px\"/>\n                                                    </td>\n                                                </tr>\n                                                <tr>\n                                                    <td  width=\"100%\">\n                                                        <img src=\"/img/examples/blinky-stepper/blinky-stepper-schem.png\" height=\"195px\"/>\n                                                    </td>\n                                                </tr>\n                                            </table>\n                                        </td>\n                                    </tr>\n                                </table>\n                            </div>\n                        </div>\n                    </div>\n",
+        "template": "                    <div class='card'>\n                        <table width='900px'>\n                            <tr>\n                                <td  width='800px' align='left'><span class='card-title'>Blinky Stepper</span></td>\n                                <td  width='100px'><button class=\"btn btn-block card-text\" style=\"background-color:var(--color1);color:white\" type=\"button\" id=\"blinkyStepperBtn\" onclick=\"blinkyStepper()\">More</button></td>\n                            </tr>\n                        </table>\n                        <div class='card-body' id=\"blinkyStepper\">\n                            <div class='row'>\n                                <div class=\"col-12 justify\">\n                                     <span class=\"card-text\">Wirelessly controlled 12 V, 1.8 Amps stepper motor controller with 0.05 to 1.8 degrees of resolution</span>\n                                </div>\n                            </div>\n                            <div class=\"jumbotron\" style=\"background-color:#9eb5c7;color: white;padding-top:10px; padding-bottom:10px;padding-left:10px;padding-right:10px;\" align=\"center\">\n                                <table width=\"200px\">\n                                    <tr>\n                                        <td>\n                                            <img src=\"/img/examples/blinky-stepper/blinky-stepper-screen.png\" height=\"297px\" style=\"padding-right:10px;\"/>\n                                        </td>\n                                        <td>\n                                            <img src=\"/img/examples/blinky-stepper/blinky-stepper-pcb.png\" height=\"297px\" style=\"padding-right:10px;\"/>\n                                        </td>\n                                        <td>\n                                            <table width=\"100%\">\n                                                <tr>\n                                                    <td  width=\"100%\">\n                                                        <img src=\"/img/examples/blinky-stepper/blinky-stepper-flow.png\" height=\"102px\"/>\n                                                    </td>\n                                                </tr>\n                                                <tr>\n                                                    <td  width=\"100%\">\n                                                        <img src=\"/img/examples/blinky-stepper/blinky-stepper-schem.png\" height=\"195px\"/>\n                                                    </td>\n                                                </tr>\n                                            </table>\n                                        </td>\n                                    </tr>\n                                </table>\n                            </div>\n                        </div>\n                    </div>\n",
         "output": "str",
         "x": 410,
-        "y": 960,
+        "y": 1000,
         "wires": [
             [
                 "7fe1eeb9.a745b"
@@ -11056,10 +10688,10 @@
         "fieldType": "msg",
         "format": "html",
         "syntax": "mustache",
-        "template": "                    <div class='card'>\n                        <p class='card-title'>Blinky Shiver</p>\n                        <div class='card-body'>\n                            <div class='row'>\n                                <div class=\"col-12\">\n                                     <span class=\"card-text\">Wirelessly controlled non-invasive vibration detector with a sensitivity of 2um and a bandwidth of 250 Hz using ultrasonic technology</span>\n                                </div>\n                            </div>\n                            <div class=\"jumbotron\" style=\"background-color:#9eb5c7;color: white;padding-top:10px; padding-bottom:10px;padding-left:10px;padding-right:10px;\" align=\"center\">\n                                <table width=\"200px\">\n                                    <tr>\n                                        <td>\n                                            <img src=\"/img/examples/blinky-shiver/blinky-shiver-screen.png\" height=\"341px\" style=\"padding-right:10px;\"/>\n                                        </td>\n                                        <td>\n                                            <img src=\"/img/examples/blinky-shiver/blinky-shiver-pcb.png\" height=\"341px\" style=\"padding-right:10px;\"/>\n                                        </td>\n                                        <td>\n                                            <table width=\"100%\">\n                                                <tr>\n                                                    <td  width=\"100%\">\n                                                        <img src=\"/img/examples/blinky-shiver/blinky-shiver-flow.png\" height=\"119px\"/>\n                                                    </td>\n                                                </tr>\n                                                <tr>\n                                                    <td  width=\"100%\">\n                                                        <img src=\"/img/examples/blinky-shiver/blinky-shiver-schem.png\" height=\"222px\"/>\n                                                    </td>\n                                                </tr>\n                                            </table>\n                                        </td>\n                                    </tr>\n                                </table>\n                            </div>\n                        </div>\n                    </div>\n",
+        "template": "                    <div class='card'>\n                        <table width='900px'>\n                            <tr>\n                                <td  width='800px' align='left'><span class='card-title'>Blinky Shiver</span></td>\n                                <td  width='100px'><button class=\"btn btn-block card-text\" style=\"background-color:var(--color1);color:white\" type=\"button\" id=\"blinkyShiverBtn\" onclick=\"blinkyShiver()\">More</button></td>\n                            </tr>\n                        </table>\n                        <div class='card-body' id=\"blinkyShiver\">\n                            <div class='row'>\n                                <div class=\"col-12 justify\">\n                                     <span class=\"card-text\">Wirelessly controlled non-invasive vibration detector with a sensitivity of 2um and a bandwidth of 250 Hz using ultrasonic technology</span>\n                                </div>\n                            </div>\n                            <div class=\"jumbotron\" style=\"background-color:#9eb5c7;color: white;padding-top:10px; padding-bottom:10px;padding-left:10px;padding-right:10px;\" align=\"center\">\n                                <table width=\"200px\">\n                                    <tr>\n                                        <td>\n                                            <img src=\"/img/examples/blinky-shiver/blinky-shiver-screen.png\" height=\"341px\" style=\"padding-right:10px;\"/>\n                                        </td>\n                                        <td>\n                                            <img src=\"/img/examples/blinky-shiver/blinky-shiver-pcb.png\" height=\"341px\" style=\"padding-right:10px;\"/>\n                                        </td>\n                                        <td>\n                                            <table width=\"100%\">\n                                                <tr>\n                                                    <td  width=\"100%\">\n                                                        <img src=\"/img/examples/blinky-shiver/blinky-shiver-flow.png\" height=\"119px\"/>\n                                                    </td>\n                                                </tr>\n                                                <tr>\n                                                    <td  width=\"100%\">\n                                                        <img src=\"/img/examples/blinky-shiver/blinky-shiver-schem.png\" height=\"222px\"/>\n                                                    </td>\n                                                </tr>\n                                            </table>\n                                        </td>\n                                    </tr>\n                                </table>\n                            </div>\n                        </div>\n                    </div>\n",
         "output": "str",
         "x": 410,
-        "y": 1000,
+        "y": 1040,
         "wires": [
             [
                 "8dad88a6.35b498"
@@ -11075,10 +10707,10 @@
         "fieldType": "msg",
         "format": "html",
         "syntax": "mustache",
-        "template": "                    <div class='card'>\n                        <p class='card-title'>Blinky Shaker</p>\n                        <div class='card-body'>\n                            <div class='row'>\n                                <div class=\"col-12\">\n                                     <span class=\"card-text\">Wirelessly controlled test bench for the Blinky Shiver</span>\n                                </div>\n                            </div>\n                            <div class=\"jumbotron\" style=\"background-color:#9eb5c7;color: white;padding-top:10px; padding-bottom:10px;padding-left:10px;padding-right:10px;\" align=\"center\">\n                                <table width=\"200px\">\n                                    <tr>\n                                        <td>\n                                            <img src=\"/img/examples/blinky-shaker/blinky-shaker-screen.png\" height=\"215px\" style=\"padding-right:10px;\"/>\n                                        </td>\n                                        <td>\n                                            <img src=\"/img/examples/blinky-shaker/blinky-shiver-spec.png\" height=\"215x\" style=\"padding-right:10px;\"/>\n                                        </td>\n                                        <td>\n                                            <img src=\"/img/examples/blinky-shaker/blinky-shaker-flow.png\" height=\"215px\"/>\n                                        </td>\n                                    </tr>\n                                </table>\n                            </div>\n                        </div>\n                    </div>\n",
+        "template": "                    <div class='card'>\n                        <table width='900px'>\n                            <tr>\n                                <td  width='800px' align='left'><span class='card-title'>Blinky Shaker</span></td>\n                                <td  width='100px'><button class=\"btn btn-block card-text\" style=\"background-color:var(--color1);color:white\" type=\"button\" id=\"blinkyShakerBtn\" onclick=\"blinkyShaker()\">More</button></td>\n                            </tr>\n                        </table>\n                        <div class='card-body' id=\"blinkyShaker\">\n                            <div class='row'>\n                                <div class=\"col-12 justify\">\n                                     <span class=\"card-text\">Wirelessly controlled test bench for the Blinky Shiver</span>\n                                </div>\n                            </div>\n                            <div class=\"jumbotron\" style=\"background-color:#9eb5c7;color: white;padding-top:10px; padding-bottom:10px;padding-left:10px;padding-right:10px;\" align=\"center\">\n                                <table width=\"200px\">\n                                    <tr>\n                                        <td>\n                                            <img src=\"/img/examples/blinky-shaker/blinky-shaker-screen.png\" height=\"215px\" style=\"padding-right:10px;\"/>\n                                        </td>\n                                        <td>\n                                            <img src=\"/img/examples/blinky-shaker/blinky-shiver-spec.png\" height=\"215x\" style=\"padding-right:10px;\"/>\n                                        </td>\n                                        <td>\n                                            <img src=\"/img/examples/blinky-shaker/blinky-shaker-flow.png\" height=\"215px\"/>\n                                        </td>\n                                    </tr>\n                                </table>\n                            </div>\n                        </div>\n                    </div>\n",
         "output": "str",
         "x": 410,
-        "y": 1040,
+        "y": 1080,
         "wires": [
             [
                 "6b0605e9.89274c"
@@ -11094,10 +10726,10 @@
         "fieldType": "msg",
         "format": "html",
         "syntax": "mustache",
-        "template": "                    <div class='card'>\n                        <p class='card-title'>Blinky Fever</p>\n                        <div class='card-body'>\n                            <div class='row'>\n                                <div class=\"col-12\">\n                                     <span class=\"card-text\">Wirelessly controlled fever detector using infra-red technology</span>\n                                </div>\n                            </div>\n                            <div class=\"jumbotron\" style=\"background-color:#9eb5c7;color: white;padding-top:10px; padding-bottom:1px;padding-left:1px;padding-right:1px;\">\n                                <table width=\"200px\">\n                                    <tr>\n                                        <td align=\"left\">\n                                            <img src=\"/img/examples/blinky-fever/dianaFlip.png\" height=\"287px\"/>\n                                        </td>\n                                        <td>\n                                            <img src=\"/img/examples/blinky-fever/monitor.png\" height=\"287px\"/>\n                                        </td>\n                                        <td>\n                                            <img src=\"/img/examples/blinky-fever/gizmo.png\" height=\"287px\"/>\n                                        </td>\n                                        <td align=\"right\">\n                                            <img src=\"/img/examples/blinky-fever/androidControl.png\" height=\"287px\"/>\n                                        </td>\n                                    </tr>\n                                </table>\n                            </div>\n                        </div>\n                    </div>\n",
+        "template": "                    <div class='card'>\n                        <table width='900px'>\n                            <tr>\n                                <td  width='800px' align='left'><span class='card-title'>Blinky Fever</span></td>\n                                <td  width='100px'><button class=\"btn btn-block card-text\" style=\"background-color:var(--color1);color:white\" type=\"button\" id=\"blinkyFeverBtn\" onclick=\"blinkyFever()\">More</button></td>\n                            </tr>\n                        </table>\n                        <div class='card-body' id=\"blinkyFever\">\n                            <div class='row'>\n                                <div class=\"col-12 justify\">\n                                     <span class=\"card-text\">Wirelessly controlled fever detector using infra-red technology</span>\n                                </div>\n                            </div>\n                            <div class=\"jumbotron\" style=\"background-color:#9eb5c7;color: white;padding-top:10px; padding-bottom:1px;padding-left:1px;padding-right:1px;\">\n                                <table width=\"200px\">\n                                    <tr>\n                                        <td align=\"left\">\n                                            <img src=\"/img/examples/blinky-fever/dianaFlip.png\" height=\"287px\"/>\n                                        </td>\n                                        <td>\n                                            <img src=\"/img/examples/blinky-fever/monitor.png\" height=\"287px\"/>\n                                        </td>\n                                        <td>\n                                            <img src=\"/img/examples/blinky-fever/gizmo.png\" height=\"287px\"/>\n                                        </td>\n                                        <td align=\"right\">\n                                            <img src=\"/img/examples/blinky-fever/androidControl.png\" height=\"287px\"/>\n                                        </td>\n                                    </tr>\n                                </table>\n                            </div>\n                        </div>\n                    </div>\n",
         "output": "str",
         "x": 400,
-        "y": 1080,
+        "y": 1120,
         "wires": [
             [
                 "1d999967.acd457"
@@ -11704,7 +11336,7 @@
         "fieldType": "msg",
         "format": "javascript",
         "syntax": "mustache",
-        "template": "// Global Javascript\n        useWebSockets(true);\n        var mqttDevice = null;\n        var device = null;\n        var archiveRequestList = [];\n        var archiveList = [];\n        var pingInterval = 5000;\n        var lastPing = 0;\n\n        var restfulDevice = \n        {\n            deviceType  : '{{{payload.script.deviceType}}}',\n            name        : '{{{payload.script.name}}}',\n            project     : '{{{payload.script.project}}}'\n        };\n\n        let historyStripChart = new StripChart();\n        var rampUpTimeChanged = false;\n        var rampDownTimeChanged = false;\n        var regTempChanged = false;\n        var regWindowChanged = false;\n        var changingState = false;\n        \n        function onDocumentReady()\n        {\n            setRemoteApp(false);\n            if (remoteApp)\n            {\n                getCreds();\n                setInterval(function(){getCreds();}, 1000);\n            }\n            else\n            {\n                $('#userCardId').hide();\n            }\n            $('#archiveCardId').hide();\n            setInterval(function()\n            {\n                var now = new Date().getTime();\n                if ((now - lastPing) > pingInterval)\n                {\n                    lastPing = now;\n                    var actionMsg = \n                        {\n                            topic   : restfulDevice.project + '/' +  restfulDevice.deviceType + '/' +  restfulDevice.name + '/ping',\n                            payload : true\n                        };\n                    sendActionMsg('ping', 'ping', actionMsg);\n               }\n            }, 1000);\n            $('#rampUpTimeButton').hide();\n            $('#rampDownTimeButton').hide();\n            $('#regTempButton').hide();\n            $('#regWindowButton').hide();\n            $('#temperatureButton').attr('disabled',true);\n            $('#dutyFactorButton').attr('disabled',true);\n        }\n        function onWebSocketOpen()\n        {\n            if (remoteApp) getArchive(24);\n        }\n        function onWebSocketClose()\n        {\n            \n        }\n        function onWebSocketMessage(msg)\n        {\n            switch(msg.topic)\n            {\n                case 'readings':\n                    if ((msg.mqttDevice.name == restfulDevice.name) && (msg.mqttDevice.deviceType == restfulDevice.deviceType)  && (msg.mqttDevice.project == restfulDevice.project) )\n                    {\n                        lastPing = new Date().getTime();\n                        heartbeat();\n                        device = JSON.parse(pako.inflate(msg.payload, { to: 'string' }));\n                        mqttDevice = msg.mqttDevice;\n                        updateDmaReadings();\n                    }\n                    break;\n                case 'readDatabase':\n                    if (msg.userID == userID)\n                    {\n                        if ((msg.payload.device.deviceType == restfulDevice.deviceType) && (msg.payload.device.name == restfulDevice.name) )\n                            putArchiveValues(msg.payload);\n                    }\n                    break;\n                case 'renew':\n                    if (msg.userID == userID)\n                    {\n                        updateCookie(msg);\n                    }\n                    break;\n                case 'permissionError':\n                    if (msg.userID == userID)\n                    {\n                        acknowledgeDialog('Permission', 'Error', msg.payload);\n                    }\n                    break;\n                case 'loginExpired':\n                    if (msg.userID == userID)\n                    {\n                       location.reload();\n                    }\n                    break;\n                default:\n                    break;\n            }\n        }\n        function sendSetting()\n        {\n            var actionMsg = \n                {\n                    topic   : mqttDevice.project + '/' +  mqttDevice.deviceType + '/' +  mqttDevice.name + '/setting',\n                    payload : pako.deflate(JSON.stringify(device))\n                };\n            sendActionMsg('setting','setting',actionMsg);\n       }\n        function setScalarValue(settingValue, attrName)\n        {\n            var settingAttr = device[attrName];\n            if ( (settingAttr.alarm.limits.lolo <= settingValue) && (settingValue <= settingAttr.alarm.limits.hihi) )\n            {\n                settingAttr.value = settingValue;\n                sendSetting();\n            } \n            else\n            {\n                acknowledgeDialog('Acknowledge', 'Error', 'Entry outside range! (' + settingAttr.alarm.limits.lolo.toString() + '-' + settingAttr.alarm.limits.hihi.toString() + ' ' + settingAttr.unit);\n            }\n        }\n        function reset(actionFlag)\n        {\n            var headerText = 'Warning';\n            var title = 'Resetting Tray';\n            var text = 'I hope you know what you are doing.';\n            var buttonTexts = ['Reset', 'Cancel'];\n            var buttonFunctions = \n            [\n                function()\n                {\n                    $( this ).dialog( \"close\" );\n                    setScalarValue(actionFlag, 'reset');\n                 }, \n                function()\n                {\n                    $( this ).dialog( \"close\" );\n                }\n            ];\n            if (actionFlag == 2)\n            {\n                title = 'Rebooting Tray';\n                buttonTexts[0] = 'Reboot';\n            }\n            optionDialog(headerText, title, text, buttonTexts, buttonFunctions);\n            \n        }\n",
+        "template": "// Global Javascript\n        useWebSockets(true);\n        var mqttDevice = null;\n        var device = null;\n        var archiveRequestList = [];\n        var archiveList = [];\n        var pingInterval = 5000;\n        var lastPing = 0;\n\n        var restfulDevice = \n        {\n            deviceType  : '{{{payload.script.deviceType}}}',\n            name        : '{{{payload.script.name}}}',\n            project     : '{{{payload.script.project}}}'\n        };\n\n        let historyStripChart = new StripChart();\n        var rampUpTimeChanged = false;\n        var rampDownTimeChanged = false;\n        var regTempChanged = false;\n        var regWindowChanged = false;\n        var changingState = false;\n        \n        function onDocumentReady()\n        {\n            setRemoteApp(true);\n            if (remoteApp)\n            {\n                getCreds();\n                setInterval(function(){getCreds();}, 1000);\n            }\n            else\n            {\n                $('#userCardId').hide();\n            }\n            $('#archiveCardId').hide();\n            setInterval(function()\n            {\n                var now = new Date().getTime();\n                if ((now - lastPing) > pingInterval)\n                {\n                    lastPing = now;\n                    var actionMsg = \n                        {\n                            topic   : restfulDevice.project + '/' +  restfulDevice.deviceType + '/' +  restfulDevice.name + '/ping',\n                            payload : true\n                        };\n                    sendActionMsg('ping', 'ping', actionMsg);\n               }\n            }, 1000);\n            $('#rampUpTimeButton').hide();\n            $('#rampDownTimeButton').hide();\n            $('#regTempButton').hide();\n            $('#regWindowButton').hide();\n            $('#temperatureButton').attr('disabled',true);\n            $('#dutyFactorButton').attr('disabled',true);\n        }\n        function onWebSocketOpen()\n        {\n            if (remoteApp) getArchive(24);\n        }\n        function onWebSocketClose()\n        {\n            \n        }\n        function onWebSocketMessage(msg)\n        {\n            switch(msg.topic)\n            {\n                case 'readings':\n                    if ((msg.mqttDevice.name == restfulDevice.name) && (msg.mqttDevice.deviceType == restfulDevice.deviceType)  && (msg.mqttDevice.project == restfulDevice.project) )\n                    {\n                        lastPing = new Date().getTime();\n                        heartbeat();\n                        device = JSON.parse(pako.inflate(msg.payload, { to: 'string' }));\n                        mqttDevice = msg.mqttDevice;\n                        updateDmaReadings();\n                    }\n                    break;\n                case 'readDatabase':\n                    if (msg.userID == userID)\n                    {\n                        if ((msg.payload.device.deviceType == restfulDevice.deviceType) && (msg.payload.device.name == restfulDevice.name) )\n                            putArchiveValues(msg.payload);\n                    }\n                    break;\n                case 'renew':\n                    if (msg.userID == userID)\n                    {\n                        updateCookie(msg);\n                    }\n                    break;\n                case 'permissionError':\n                    if (msg.userID == userID)\n                    {\n                        acknowledgeDialog('Permission', 'Error', msg.payload);\n                    }\n                    break;\n                case 'loginExpired':\n                    if (msg.userID == userID)\n                    {\n                       location.reload();\n                    }\n                    break;\n                default:\n                    break;\n            }\n        }\n        function sendSetting()\n        {\n            var actionMsg = \n                {\n                    topic   : mqttDevice.project + '/' +  mqttDevice.deviceType + '/' +  mqttDevice.name + '/setting',\n                    payload : pako.deflate(JSON.stringify(device))\n                };\n            sendActionMsg('setting','setting',actionMsg);\n       }\n        function setScalarValue(settingValue, attrName)\n        {\n            var settingAttr = device[attrName];\n            if ( (settingAttr.alarm.limits.lolo <= settingValue) && (settingValue <= settingAttr.alarm.limits.hihi) )\n            {\n                settingAttr.value = settingValue;\n                sendSetting();\n            } \n            else\n            {\n                acknowledgeDialog('Acknowledge', 'Error', 'Entry outside range! (' + settingAttr.alarm.limits.lolo.toString() + '-' + settingAttr.alarm.limits.hihi.toString() + ' ' + settingAttr.unit);\n            }\n        }\n        function reset(actionFlag)\n        {\n            var headerText = 'Warning';\n            var title = 'Resetting Tray';\n            var text = 'I hope you know what you are doing.';\n            var buttonTexts = ['Reset', 'Cancel'];\n            var buttonFunctions = \n            [\n                function()\n                {\n                    $( this ).dialog( \"close\" );\n                    setScalarValue(actionFlag, 'reset');\n                 }, \n                function()\n                {\n                    $( this ).dialog( \"close\" );\n                }\n            ];\n            if (actionFlag == 2)\n            {\n                title = 'Rebooting Tray';\n                buttonTexts[0] = 'Reboot';\n            }\n            optionDialog(headerText, title, text, buttonTexts, buttonFunctions);\n            \n        }\n",
         "output": "str",
         "x": 690,
         "y": 3780,
@@ -12052,6 +11684,331 @@
         "wires": [
             [
                 "5a40c79.a843338"
+            ]
+        ]
+    },
+    {
+        "id": "12e5e267.d874be",
+        "type": "subflow:ca529822.9112f8",
+        "z": "a858ad3a.95706",
+        "name": "",
+        "x": 890,
+        "y": 780,
+        "wires": []
+    },
+    {
+        "id": "4eb98e2d.07b03",
+        "type": "template",
+        "z": "a858ad3a.95706",
+        "name": "navBar",
+        "field": "payload.navBar",
+        "fieldType": "msg",
+        "format": "html",
+        "syntax": "mustache",
+        "template": "<!-- navBar -->\n    <div class=\"jumbotron\" style=\"background-color:white;color: #547792;padding-top:10px; padding-bottom:10px;\" width=\"100%\">\n        <div class='row'>\n            <div class='col-md-2' align='left'>\n            </div>\n            <div class='col-md-8' align='center'>\n            </div>\n            <div class='col-md-2' align='right'>\n            </div>\n        </div>\n    </div>\n",
+        "output": "str",
+        "x": 760,
+        "y": 780,
+        "wires": [
+            [
+                "12e5e267.d874be"
+            ]
+        ]
+    },
+    {
+        "id": "bb7837ce.8d7338",
+        "type": "template",
+        "z": "a858ad3a.95706",
+        "name": "CSS",
+        "field": "payload.css",
+        "fieldType": "msg",
+        "format": "css",
+        "syntax": "mustache",
+        "template": "        :root \n        {\n          --color1: #415c71;\n          --color2: #547792;\n          --color3: #9eb5c7;\n          --color4: #c6c2bb;\n          --color5: #fdc300;\n          --big-text-size :300%;\n          --bold-text :900;\n          --vert-pad : 25px;\n          --horz-pad : 25px;\n        }\n        body \n        {\n          background-color: white !important;\n          padding-left:25px;\n          padding-right:25px;\n        }\n        \n        img \n        {\n          object-fit: contain;\n        }\n        a\n        {\n            color: white;\n        }\n        a:visited \n        { \n            color: var(--white);\n        }\n        .btn-primary, .btn-primary:active, .btn-primary:visited \n        {\n            background-color: var(--color2) !important;\n            color : white !important;\n            font-size: 200% !important;\n        }\n        .btn-primary:hover \n        {\n            background-color: var(--color1) !important;\n            color : var(--color5) !important;\n            font-size: 200% !important;\n        }\n        a:hover \n        { \n            color: var(--color5);\n        }\n        .jumbotron-button\n        {\n          color: white;\n          background-color: var(--color1);\n        }\n        .card\n        {\n          background-color: var(--color2) !important;\n          text-align: center;\n          padding-left:5px;\n          padding-right:5px;\n          padding-bottom:5px;\n\n        }\n        .card-body\n        {\n          background-color: white;\n          text-align: center;\n        }\n        .card-button\n        {\n          color: var(--color5) !important;\n          background-color: var(--color1) !important;\n          font-weight: bold;\n        }\n        .card-title\n        {\n          color: white;\n          font-size: 200%;\n          font-style:oblique;\n          font-weight: var(--bold-text);\n         }\n        .card-text\n        {\n          color: var(--color2);\n          font-size: 150%;\n        }\n       .vert-pad\n        {\n            padding-top:var(--vert-pad);;\n            padding-bottom:var(--vert-pad);;\n        }\n        .horz-pad\n        {\n            padding-left:var(--horz-pad);;\n            padding-right:var(--horz-pad);;\n        }\n        .big-text\n        {\n            font-size: var(--big-text-size);\n        }\n        .bold-text\n        {\n            font-weight: var(--bold-text);\n        }\n        .justify\n        {\n            text-align: justify;\n            text-justify: inter-word;\n        }\n",
+        "output": "str",
+        "x": 630,
+        "y": 780,
+        "wires": [
+            [
+                "4eb98e2d.07b03"
+            ]
+        ]
+    },
+    {
+        "id": "aac70d3b.5b519",
+        "type": "http in",
+        "z": "a858ad3a.95706",
+        "name": "/overview",
+        "url": "/overview",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 120,
+        "y": 1280,
+        "wires": [
+            [
+                "bba39af5.b80438"
+            ]
+        ]
+    },
+    {
+        "id": "bba39af5.b80438",
+        "type": "template",
+        "z": "a858ad3a.95706",
+        "name": "title",
+        "field": "payload.title",
+        "fieldType": "msg",
+        "format": "html",
+        "syntax": "mustache",
+        "template": "Blinky-Lite Overview",
+        "output": "str",
+        "x": 250,
+        "y": 1280,
+        "wires": [
+            [
+                "314dbc36.31da74"
+            ]
+        ]
+    },
+    {
+        "id": "905fa702.e610f8",
+        "type": "template",
+        "z": "a858ad3a.95706",
+        "name": "javascript",
+        "field": "payload.javascript",
+        "fieldType": "msg",
+        "format": "javascript",
+        "syntax": "mustache",
+        "template": "        useWebSockets(false);\n        function onDocumentReady()\n        {\n        }\n        function onWebSocketOpen()\n        {\n        }\n        function onWebSocketClose()\n        {\n            \n        }\n        function onWebSocketMessage(msg)\n        {\n        }\n\n",
+        "output": "str",
+        "x": 500,
+        "y": 1280,
+        "wires": [
+            [
+                "d368bce5.2285e"
+            ]
+        ]
+    },
+    {
+        "id": "314dbc36.31da74",
+        "type": "template",
+        "z": "a858ad3a.95706",
+        "name": "body",
+        "field": "payload.body",
+        "fieldType": "msg",
+        "format": "html",
+        "syntax": "mustache",
+        "template": "<!-- Body HTML -->\n    <div width=\"100%\" align=\"center\">\n        <table width=\"900px\">\n            <tr style='padding-bottom: 10px;'>\n                <td align=\"center\">\n                    <img src=\"/img/infoPics/ControlBox.png\" width=\"800px\" style=\"padding-bottom:1px;\"/>\n                    <hr>\n                </td>\n            </tr>\n            <tr style='padding-bottom: 10px;'>\n                <td>\n                    <ul class=\"card-text\" style=\"font-size: 190%;\">\n                        <li><b>Blinky-Lite</b>\n                            <ul>\n                                <li>is a full-stack Internet of Things (IoT) control platform</li> \n                                <li>designed to be easy-to-use for engineers</li>\n                            </ul>\n                        </li>\n                        <li><b>Blinky Lite</b> has been used to control\n                            <ul>\n                                <li>simple medical diagnostics</li>\n                                <li>to complicated particle accelerator systems</li>\n                            </ul>\n                        </li>\n                        <li><b>Blinky Lite IoT technology</b> offers \n                            <ul>\n                                <li>a large array of versatile, inexpensive, and easy-to-use sensors</li>\n                                <li>powerful low cost computing that can placed close to the devices you want to control resulting in high reliablity</li>\n                                <li>cloud services for low maintenance, high reliablity, and rapid deployment</li>\n                            </ul>\n                        </li>\n                    </ul>                    \n                </td>\n            </tr>\n        </table>\n        <hr>\n        <div class='row'>\n            <div class='col-md-12' align='center'>\n                <span class=\"card-text\">Contact: blinky-lite@blinky-lite.io</span>\n            </div>\n        </div>\n    </div>\n",
+        "output": "str",
+        "x": 370,
+        "y": 1280,
+        "wires": [
+            [
+                "905fa702.e610f8"
+            ]
+        ]
+    },
+    {
+        "id": "d368bce5.2285e",
+        "type": "subflow:d7162906.0afcd8",
+        "z": "a858ad3a.95706",
+        "x": 670,
+        "y": 1280,
+        "wires": []
+    },
+    {
+        "id": "ecb8837b.e1913",
+        "type": "http in",
+        "z": "a858ad3a.95706",
+        "name": "/features",
+        "url": "/features",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 120,
+        "y": 1340,
+        "wires": [
+            [
+                "fc1315d2.67a148"
+            ]
+        ]
+    },
+    {
+        "id": "fc1315d2.67a148",
+        "type": "template",
+        "z": "a858ad3a.95706",
+        "name": "title",
+        "field": "payload.title",
+        "fieldType": "msg",
+        "format": "html",
+        "syntax": "mustache",
+        "template": "Blinky-Lite Features",
+        "output": "str",
+        "x": 250,
+        "y": 1340,
+        "wires": [
+            [
+                "5270c931.4c26a8"
+            ]
+        ]
+    },
+    {
+        "id": "362cf24d.d8ac1e",
+        "type": "template",
+        "z": "a858ad3a.95706",
+        "name": "javascript",
+        "field": "payload.javascript",
+        "fieldType": "msg",
+        "format": "javascript",
+        "syntax": "mustache",
+        "template": "        useWebSockets(false);\n        function onDocumentReady()\n        {\n        }\n        function onWebSocketOpen()\n        {\n        }\n        function onWebSocketClose()\n        {\n            \n        }\n        function onWebSocketMessage(msg)\n        {\n        }\n\n",
+        "output": "str",
+        "x": 500,
+        "y": 1340,
+        "wires": [
+            [
+                "2c22e691.d1bcba"
+            ]
+        ]
+    },
+    {
+        "id": "5270c931.4c26a8",
+        "type": "template",
+        "z": "a858ad3a.95706",
+        "name": "body",
+        "field": "payload.body",
+        "fieldType": "msg",
+        "format": "html",
+        "syntax": "mustache",
+        "template": "<!-- Body HTML -->\n    <div width=\"100%\" align=\"center\">\n        <table width=\"900px\">\n            <tr style='padding-bottom: 10px;'>\n                <td align=\"center\">\n                    <img src=\"/img/infoPics/BlinkyLiteCoreApps.png\" width=\"800px\" style=\"padding-bottom:1px;\"/>\n                    <hr>\n                </td>\n            </tr>\n            <tr style='padding-bottom: 10px;'>\n                <td>\n                    <ul class=\"card-text\" style=\"font-size: 190%;\">\n                        <li><b>Eight web-based utility applications</b></li>\n                        <li><b>Cloud capable</b>\n                            <ul>\n                                <li>Accessibility and deployment capability</li>\n                                <li>Along with enhanced reliability and security (https:// and wss://)</li>\n                            </ul>\n                        </li>\n                        <li><b>Layered authentication</b>\n                            <ul>\n                                <li>JSON Web Tokens for client-server transactions</li>\n                                <li>Authenticated MQTT broker for server-device transactions</li>\n                            </ul>\n                        </li>\n                        <li><b>JSON Device configuration</b>\n                            <ul>\n                                <li>Flexible data types (scalar, vector, text, images, blobs,...)</li>\n                                <li>Human readable and configurable</li>\n                            </ul>\n                        </li>\n                        <li><b>MQTT and Websocket communication</b>\n                            <ul>\n                                <li>Publish-subscribe instead of polling protocols</li>\n                            </ul>\n                        </li>\n                        <li><b>SMS Alarm notification</b></li>\n                        <li><b>Graphical Node-Red code environment</b>\n                            <ul>\n                                <li>Re-usable code</li>\n                                <li>Self documentation</li>\n                            </ul>\n                        </li>\n                     </ul>                    \n                </td>\n            </tr>\n        </table>\n        <hr>\n        <div class='row'>\n            <div class='col-md-12' align='center'>\n                <span class=\"card-text\">Contact: blinky-lite@blinky-lite.io</span>\n            </div>\n        </div>\n    </div>\n",
+        "output": "str",
+        "x": 370,
+        "y": 1340,
+        "wires": [
+            [
+                "362cf24d.d8ac1e"
+            ]
+        ]
+    },
+    {
+        "id": "2c22e691.d1bcba",
+        "type": "subflow:d7162906.0afcd8",
+        "z": "a858ad3a.95706",
+        "x": 670,
+        "y": 1340,
+        "wires": []
+    },
+    {
+        "id": "b998e015.6cc39",
+        "type": "template",
+        "z": "a858ad3a.95706",
+        "name": "html.modeZero",
+        "field": "payload.html.modeZero",
+        "fieldType": "msg",
+        "format": "html",
+        "syntax": "mustache",
+        "template": "                    <div class='card'>\n                        <table width='900px'>\n                            <tr>\n                                <td  width='800px' align='left'><span class='card-title'>MaxIV Mode 0 Beam Stablizer</span></td>\n                                <td  width='100px'><button class=\"btn btn-block card-text\" style=\"background-color:var(--color1);color:white\" type=\"button\" id=\"modeZeroBtn\" onclick=\"modeZero()\">More</button></td>\n                            </tr>\n                        </table>\n                        <div class='card-body' id=\"modeZero\">\n                            <div class='row'>\n                                <div class=\"col-12 justify\">\n                                     <span class=\"card-text\" >First wirelessly controlled system for a particle accelerator. Increased MaxIV beam brightness by 2x. Material cost less than 150 euros and took less than 5 months from concept to operations. No system failures in over 2 years of operation.</span>\n                                </div>\n                            </div>\n                            <div class=\"jumbotron\" style=\"background-color:#9eb5c7;color: white;padding-top:10px; padding-bottom:10px;padding-left:10px;padding-right:10px;\" align=\"center\">\n                                <table width=\"200px\">\n                                    <tr>\n                                        <td align=\"center\">\n                                            <table  align=\"center\">\n                                                <tr>\n                                                    <td>\n                                                        <img src=\"/img/examples/modeZero/modeZerod.png\" height=\"320px\" style=\"padding-right:10px;\"/>\n                                                    </td>\n                                                    <td>\n                                                        <img src=\"/img/examples/modeZero/modeZeroa.png\" height=\"320px\" style=\"padding-right:1px;\"/>\n                                                    </td>\n                                                </tr>\n                                            </table>\n                                        </td>\n                                    </tr> \n                                    <tr>\n                                        <td align=\"center\">\n                                            <table align=\"center\">\n                                                <tr>\n                                                    <td>\n                                                        <img src=\"/img/examples/modeZero/modeZeroc.png\" height=\"370px\" style=\"padding-right:10px;\"/>\n                                                    </td>\n                                                    <td>\n                                                        <img src=\"/img/examples/modeZero/modeZerob.png\" height=\"370px\" style=\"padding-right:1px;\"/>\n                                                    </td>\n                                                </tr>\n                                            </table>\n                                        </td>\n                                    </tr> \n                                </table>\n                            </div>\n                        </div>\n                    </div>\n",
+        "output": "str",
+        "x": 400,
+        "y": 840,
+        "wires": [
+            [
+                "be312f35.cee4"
+            ]
+        ]
+    },
+    {
+        "id": "be312f35.cee4",
+        "type": "template",
+        "z": "a858ad3a.95706",
+        "name": "html.blinkyRelayBake",
+        "field": "payload.html.blinkyRelayBake",
+        "fieldType": "msg",
+        "format": "html",
+        "syntax": "mustache",
+        "template": "                    <div class='card'>\n                        <table width='900px'>\n                            <tr>\n                                <td  width='800px' align='left'><span class='card-title'>Blinky Relay Bake</span></td>\n                                <td  width='100px'><button class=\"btn btn-block card-text\" style=\"background-color:var(--color1);color:white\" type=\"button\" id=\"blinkyRelayBakeBtn\" onclick=\"blinkyRelayBake()\">More</button></td>\n                            </tr>\n                        </table>\n                        <div class='card-body' id=\"blinkyRelayBake\">\n                            <div class='row'>\n                                <div class=\"col-12 justify\">\n                                     <span class=\"card-text\" >Wirelessly controlled ultra-high-vacuum bake-out system with programmable temperature ramp</span>\n                                </div>\n                            </div>\n                            <div class=\"jumbotron\" style=\"background-color:#9eb5c7;color: white;padding-top:10px; padding-bottom:10px;padding-left:10px;padding-right:10px;\" align=\"center\">\n                                <table width=\"200px\">\n                                    <tr>\n                                        <td align=\"center\">\n                                            <img src=\"/img/examples/blinky-relay-bake/blinky-relay-bake.png\" width=\"822px\" style=\"padding-right:1px;\"/>\n                                        </td>\n                                    </tr> \n                                </table>\n                            </div>\n                        </div>\n                    </div>\n",
+        "output": "str",
+        "x": 420,
+        "y": 880,
+        "wires": [
+            [
+                "74f0f8b3.bc0e68"
+            ]
+        ]
+    },
+    {
+        "id": "48e0f477.ea0e4c",
+        "type": "template",
+        "z": "f22a539a.a67b3",
+        "name": "CSS",
+        "field": "payload.css",
+        "fieldType": "msg",
+        "format": "css",
+        "syntax": "mustache",
+        "template": "        :root \n        {\n          --color1: #415c71;\n          --color2: #547792;\n          --color3: #9eb5c7;\n          --color4: #c6c2bb;\n          --color5: #fdc300;\n          --big-text-size :300%;\n          --bold-text :900;\n          --vert-pad : 25px;\n          --horz-pad : 25px;\n        }\n        body \n        {\n          background-color: white;\n          padding-left:25px;\n          padding-right:25px;\n        }\n        img \n        {\n          object-fit: contain;\n        }\n        a\n        {\n            color: white;\n        }\n        a:visited \n        { \n            color: var(--white);\n        }\n        a:hover \n        { \n            color: var(--color5);\n        }\n        .jumbotron \n        {\n          background-color: var(--color2) !important;\n          color:var(--white);\n          padding-bottom: 10px;\n          padding-top: 10px;\n        }\n        .jumbotron-title\n        {\n          color:var(--color5);\n        }\n        .jumbotron-button\n        {\n          color: white;\n          background-color: var(--color1);\n          font-weight: 900;\n        }\n        .card\n        {\n          background-color: var(--color2) !important;\n          text-align: center;\n          padding: 10px;\n        }\n        .card-body\n        {\n          background-color: var(--color3);\n        }\n        .card-button\n        {\n          color: var(--color5);\n          background-color: var(--color1) !important;\n          font-weight: bold;\n        }\n        .card-title\n        {\n          color: var(--color5);\n          font-weight: bold;\n        }\n        .card-text\n        {\n          color: white;\n          text-align: left;\n        }\n        .tableHeading\n        {\n          color:var(--color1);\n          font-weight: 900;\n        }\n        .tableText\n        {\n          color:var(--color1);\n          font-weight: 900;\n        }\n        .custom-select\n        {\n          color: white;\n          background-color: var(--color3);\n        \n        }\n        .form-control\n        {\n          text-align: center;\n        }\n        .checkbox-align\n        {\n          vertical-align: middle;\n          text-align: center;\n        }\n        .csv-linked\n        {\n            color: blue;\n        }\n        .csv-unlinked\n        {\n            color: red;\n        }\n        .vert-pad\n        {\n            padding-top:var(--vert-pad);;\n            padding-bottom:var(--vert-pad);;\n        }\n        .horz-pad\n        {\n            padding-left:var(--horz-pad);;\n            padding-right:var(--horz-pad);;\n        }\n        .big-text\n        {\n            font-size: var(--big-text-size);\n        }\n        .bold-text\n        {\n            font-weight: var(--bold-text);\n        }\n        .ui-dialog-titlebar-close \n        {\n            visibility: hidden;\n        }\n        div.ui-datepicker\n        {\n            font-size:30px;\n        }",
+        "output": "str",
+        "x": 150,
+        "y": 80,
+        "wires": [
+            [
+                "b7076b42.4012e8"
+            ]
+        ]
+    },
+    {
+        "id": "b7076b42.4012e8",
+        "type": "template",
+        "z": "f22a539a.a67b3",
+        "name": "navBar",
+        "field": "payload.navBar",
+        "fieldType": "msg",
+        "format": "html",
+        "syntax": "mustache",
+        "template": "    <div class=\"jumbotron\" width=\"100%\">\n        <table width=\"100%\">\n            <tr>\n                <td style=\"text-align:left; vertical-align:middle;\"  width=\"20%\">\n                    <a href='/' >\n                        <img src=\"/img/BlinkyLogo.gif\" height=\"75px\"/>\n                    </a>                \n                </td>\n                <td width=\"60%\" style=\"text-align:center; vertical-align:middle;\">\n                    <h1 class=\"jumbotron-title big-text bold-text\">{{{payload.title}}}</h1>\n                </td>\n                <td style=\"text-align:right; vertical-align:middle;\" width=\"20%\">\n                    <a href='/core'><img src=\"/img/coreYellow.png\" height=\"75px\"/></a>\n                </td>\n            </tr>\n        </table>\n    </div>\n    \n",
+        "output": "str",
+        "x": 280,
+        "y": 80,
+        "wires": [
+            [
+                "8a439be9.030ab8"
+            ]
+        ]
+    },
+    {
+        "id": "a3eb7ad8.27c498",
+        "type": "template",
+        "z": "8341090a.df9758",
+        "name": "CSS",
+        "field": "payload.css",
+        "fieldType": "msg",
+        "format": "css",
+        "syntax": "mustache",
+        "template": "        :root \n        {\n          --color1: #415c71;\n          --color2: #547792;\n          --color3: #9eb5c7;\n          --color4: #c6c2bb;\n          --color5: #fdc300;\n          --big-text-size :300%;\n          --bold-text :900;\n          --vert-pad : 25px;\n          --horz-pad : 25px;\n        }\n        body \n        {\n          background-color: white !important;\n          padding-left:25px;\n          padding-right:25px;\n        }\n        \n        img \n        {\n          object-fit: contain;\n        }\n        a\n        {\n            color: white;\n        }\n        a:visited \n        { \n            color: var(--white);\n        }\n        a:hover \n        { \n            color: var(--color5);\n        }\n\n        .jumbotron \n        {\n          background-color: var(--color2) !important;\n          color: white;\n          padding-top:25px;\n          padding-bottom:25px;\n        }\n        .jumbotron-title\n        {\n          color:var(--color5);\n        }\n        .jumbotron-button\n        {\n          color: white;\n          background-color: var(--color1);\n       }\n        .card\n        {\n          background-color: var(--color2) !important;\n          text-align: center;\n        }\n        .card-body\n        {\n          background-color: var(--color3);;\n        }\n        .card-button\n        {\n          color: var(--color5) !important;\n          background-color: var(--color1) !important;\n          font-weight: bold;\n        }\n        .card-title\n        {\n          color: var(--color5);\n          font-weight: var(--bold-text);\n          font-size: var(--big-text-size);\n         }\n        .card-text\n        {\n          color: white;\n          text-align: left;\n          font-size: var(--big-text-size);\n        }\n        .danger-card\n        {\n          background-color: yellow !important;\n          text-align: center;\n        }\n        .danger-card-body\n        {\n          background-color: yellow;\n        }\n        .danger-card-button\n        {\n          color: yellow !important;\n          background-color: red !important;\n          font-weight: bold;\n        }\n        .danger-card-title\n        {\n          color: red;\n          font-weight: var(--bold-text);\n          font-size: var(--big-text-size);\n         }\n        .danger-card-text\n        {\n          color: white;\n          text-align: left;\n          font-size: var(--big-text-size);\n        }\n        .tableHeading\n        {\n          color:var(--container-title-color);\n        }\n        .tableText\n        {\n          color:var(--container-text-color);\n          font-size: var(--big-text-size);\n        }\n       .vert-pad\n        {\n            padding-top:var(--vert-pad);;\n            padding-bottom:var(--vert-pad);;\n        }\n        .horz-pad\n        {\n            padding-left:var(--horz-pad);;\n            padding-right:var(--horz-pad);;\n        }\n        .big-text\n        {\n            font-size: var(--big-text-size);\n        }\n        .bold-text\n        {\n            font-weight: var(--bold-text);\n        }\n       .ui-dialog-titlebar-close \n        {\n            visibility: hidden;\n        }\n        input.inputLarger \n        { \n            transform: scale(3); \n            margin: 1px;\n        }\n        .googleSlide4by3-container \n        {\n            position: relative;\n            overflow: hidden;\n            padding-top: 75.0%;\n        }\n        .googleSlide4by3-iframe {\n            position: absolute;\n            top: 0;\n            left: 0;\n            width: 100%;\n            height: 100%;\n            border: 0;\n        }        \n        .custom-select\n        {\n            color: black;\n            background-color: white;\n            height:80px;\n            line-height:70px;\n        }\n",
+        "output": "str",
+        "x": 150,
+        "y": 80,
+        "wires": [
+            [
+                "6f95e75a.75d6d8"
+            ]
+        ]
+    },
+    {
+        "id": "6f95e75a.75d6d8",
+        "type": "template",
+        "z": "8341090a.df9758",
+        "name": "navBar",
+        "field": "payload.navBar",
+        "fieldType": "msg",
+        "format": "html",
+        "syntax": "mustache",
+        "template": "<!-- navBar -->\n    <div class=\"jumbotron\" width=\"100%\">\n        <table width=\"100%\">\n            <tr>\n                <td style=\"text-align:left; vertical-align:middle;\"  width=\"20%\">\n                    <a href='/' >\n                        <img src=\"/img/BlinkyLogo.gif\" height=\"75px\"/>\n                    </a>                \n                </td>\n                <td width=\"60%\" style=\"text-align:center; vertical-align:middle;\">\n                    <h1 class=\"jumbotron-title big-text bold-text\">\n                        <img src=\"/img/{{{payload.navBarIcon}}}\" height=\"75px\" style=\"padding-right:20px;\"/><span>{{{payload.title}}}</span>\n                    </h1>\n                </td>\n                <td style=\"text-align:right; vertical-align:middle;\" width=\"20%\">\n                    <a href='/apps'><img src=\"/img/appsYellow.png\" height=\"75px\"/></a>\n                </td>\n            </tr>\n        </table>\n    </div>",
+        "output": "str",
+        "x": 280,
+        "y": 80,
+        "wires": [
+            [
+                "9460eaf0.da7628"
             ]
         ]
     }
