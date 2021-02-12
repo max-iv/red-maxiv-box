@@ -11,6 +11,7 @@ NEXMOAPIKEY=aaa
 NEXMOAPISECRET=zzz  
 JWTKEYSECRET=bbb  
 MAXDBSIZE=300000000  
+IPREFWEB=https://blinky-lite.io  
 NODEREDCONFIGSECRET=ddd  
   
 with no CR after the last line
