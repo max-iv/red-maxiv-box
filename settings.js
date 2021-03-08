@@ -16,7 +16,7 @@
 
 // The `https` setting requires the `fs` module. Uncomment the following
 // to make it available:
-//var fs = require("fs");
+var fs = require("fs");
 
 module.exports = {
     // the tcp port that the Node-RED web server is listening on
@@ -119,7 +119,7 @@ module.exports = {
         type: "credentials",
         users: [{
             username: "admin",
-            password: "$2a$08$KaclKnSDZ7.pGtci1ZSOIep/Dqu582RURal12L7kbJ1bnv/SYPNFq",
+            password: "$2a$08$tw7oEZ6NpljniPLypNbeh.DTgZWAri1PCKJxkkKDHKYW.12KSpF7.",
             permissions: "*"
         }]
     },
@@ -128,8 +128,8 @@ module.exports = {
     // the static content (httpStatic), the following properties can be used.
     // The pass field is a bcrypt hash of the password.
     // See http://nodered.org/docs/security.html#generating-the-password-hash
-    //httpNodeAuth: {user:"user",pass:"$2a$08$KaclKnSDZ7.pGtci1ZSOIep/Dqu582RURal12L7kbJ1bnv/SYPNFq"},
-    //httpStaticAuth: {user:"user",pass:"$2a$08$KaclKnSDZ7.pGtci1ZSOIep/Dqu582RURal12L7kbJ1bnv/SYPNFq"},
+    //httpNodeAuth: {user:"user",pass:"$2a$08$tw7oEZ6NpljniPLypNbeh.DTgZWAri1PCKJxkkKDHKYW.12KSpF7."},
+    //httpStaticAuth: {user:"user",pass:"$2a$08$tw7oEZ6NpljniPLypNbeh.DTgZWAri1PCKJxkkKDHKYW.12KSpF7."},
 
     // The following property can be used to enable HTTPS
     // See http://nodejs.org/api/https.html#https_https_createserver_options_requestlistener
@@ -137,11 +137,10 @@ module.exports = {
     // See the comment at the top of this file on how to load the `fs` module used by
     // this setting.
     //
-    //https: {
-    //    key: fs.readFileSync('privatekey.pem'),
-    //    cert: fs.readFileSync('certificate.pem')
-    //},
-
+    https: {
+        key: fs.readFileSync('maxiv-controlbox-01_maxiv_lu_se.key'),
+        cert: fs.readFileSync('maxiv-controlbox-01_maxiv_lu_se.cer')
+    },
     // The following property can be used to cause insecure HTTP connections to
     // be redirected to HTTPS.
     //requireHttps: true

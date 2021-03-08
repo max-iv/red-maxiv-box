@@ -1,7 +1,7 @@
 # blinky-basic box
 ## need to add .env file with the following
-PROJECT=blinky-lite-v2  
-ARCHIVETOPIC=blinky-lite-v2/+/+/reading  
+PROJECT=maxiv  
+ARCHIVETOPIC=maxiv/+/+/reading  
 MONGODBIP=mongodb+srv://blinky-lite...  
 MQTTCLIENTID=blinky-basic-box-local  
 MQTTSERVERIP=hhhh.cloudmqtt.com  
